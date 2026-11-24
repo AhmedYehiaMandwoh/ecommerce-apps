@@ -203,6 +203,11 @@
       "sha256": "dc5d038779f949a9dfca4a1cd6079ed4799ee4204c5c8e883192c6dcfad2c726"
     },
     {
+      "path": "assets/ref/skyline.png",
+      "bytes": 58458,
+      "sha256": "b960c19894b16e87769727671778813a6de31d37a114b139a3e0045ee28dc0f9"
+    },
+    {
       "path": "assets/ref/track-map.png",
       "bytes": 74848,
       "sha256": "e0c365a9970231314f95d62caadc117a4c8bbb17505c50cda6ec8980b395b0c1"
@@ -254,8 +259,8 @@
     },
     {
       "path": "index.ts",
-      "bytes": 95,
-      "sha256": "d542e11db8fce8320808a35a1b725ebf1a63a449ee2f1356405b61434ba48a5e"
+      "bytes": 166,
+      "sha256": "9e4fd13a92bda5beef4af61d18b36a09c5c9dd32eae2da81d0a953b2fb4022ba"
     },
     {
       "path": "metro.config.js",
