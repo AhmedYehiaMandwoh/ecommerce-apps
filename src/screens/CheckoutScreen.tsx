@@ -24,18 +24,20 @@ export function CheckoutScreen({ c }: { c: any }) {
           <Card key={g.shopId}>
             <View className="flex-row items-center justify-end mb-2"><Text className="font-extrabold ml-2">{g.name}</Text><View className="w-10 h-10 rounded-xl bg-accent items-center justify-center"><Text className="text-white text-lg">🏪</Text></View></View>
             <View className="flex-row mb-2" style={{ gap: 6 }}>{g.items.slice(0, 4).map((i: any) => <Image key={i.offerId} source={img(i.image)} style={{ width: "23.5%", aspectRatio: 1, resizeMode: "cover", backgroundColor: "#f3eee8", borderRadius: 10 }} />)}</View>
-            <View className="flex-row items-center bg-brand-light rounded-xl p-2"><Text className="text-slate-400 text-xl">‹</Text><View className="flex-1 mx-2 items-end"><Text className="font-bold">خيارات التوصيل</Text><Text className="text-slate-500 text-xs">{quote ? "محسوب حسب المنطقة" : "تحدد بعد اختيار المنطقة"}</Text></View><Text>🚚</Text></View>
+            <View className="flex-row items-center bg-brand-light rounded-xl px-2 py-1"><Text className="text-slate-400 text-xl">‹</Text><View className="flex-1 mx-2 items-end"><Text className="font-bold">خيارات التوصيل</Text><Text className="text-slate-500 text-xs">{quote ? "محسوب حسب المنطقة" : "تحدد بعد اختيار المنطقة"}</Text></View><Text>🚚</Text></View>
           </Card>
         ))}
-        <Text className="font-extrabold text-right mb-2">منطقة التوصيل</Text>
-        {deliveryAreas.map((a: any) => {
-          const on = deliveryAreaId === a.id;
-          return (
-            <Pressable key={a.id} accessibilityRole="button" accessibilityLabel={`${a.city} ${a.area}`} onPress={() => setDeliveryAreaId(a.id)} className={`flex-row items-center justify-between rounded-xl p-3 mb-2 border-2 ${on ? "border-brand bg-brand-light" : "border-slate-100 bg-slate-50"}`}>
-              <Text className="font-bold text-brand">{money(a.fee)}</Text><Text className="font-bold">{a.city} • {a.area}</Text>
-            </Pressable>
-          );
-        })}
+        <Text className="font-extrabold text-right mb-1">منطقة التوصيل</Text>
+        <View className="flex-row flex-wrap justify-end mb-2" style={{ gap: 6 }}>
+          {deliveryAreas.map((a: any) => {
+            const on = deliveryAreaId === a.id;
+            return (
+              <Pressable key={a.id} accessibilityRole="button" accessibilityLabel={`${a.city} ${a.area}`} onPress={() => setDeliveryAreaId(a.id)} className={`flex-row items-center rounded-full px-3 py-2 border ${on ? "border-brand bg-brand-light" : "border-slate-200 bg-slate-50"}`}>
+                <Text className="font-bold text-brand ml-2">{money(a.fee)}</Text><Text className="font-bold text-sm">{a.city} • {a.area}</Text>
+              </Pressable>
+            );
+          })}
+        </View>
         <Card className="bg-slate-50">
           <View className="flex-row justify-between"><Text className="font-bold">{money(subtotal)}</Text><Text className="text-slate-600">سعر المنتجات</Text></View>
           {!!quote?.discount && <View className="flex-row justify-between mt-1"><Text className="font-bold text-green-700">- {money(quote.discount)}</Text><Text className="text-slate-600">خصم ({quote.discountCode})</Text></View>}
@@ -44,8 +46,10 @@ export function CheckoutScreen({ c }: { c: any }) {
         </Card>
         <Pressable accessibilityRole="button" accessibilityLabel="أضف كود خصم" onPress={() => setCodeOpen(!codeOpen)} className="flex-row items-center justify-between bg-slate-50 rounded-xl p-3 mb-3"><Text className="text-slate-500 text-xl">{codeOpen || discountCode ? "⌄" : "‹"}</Text><Text className="text-slate-600 font-bold">أضف كود خصم  🎟</Text></Pressable>
         {(codeOpen || !!discountCode) && <Input label="كود الخصم" value={discountCode} onChange={setDiscountCode} placeholder="أدخل كود الخصم (اختياري)" />}
-        <Cta title="راجع التكلفة النهائية" soft disabled={!addressId || !deliveryAreaId || busy} onPress={reviewQuote} />
-        <Cta title="متابعة ‹" disabled={!addressId || !deliveryAreaId || !quote} onPress={() => go("payment")} />
+        <View className="flex-row" style={{ gap: 8 }}>
+          <View className="flex-1"><Cta title="راجع التكلفة النهائية" soft disabled={!addressId || !deliveryAreaId || busy} onPress={reviewQuote} /></View>
+          <View className="flex-1"><Cta title="متابعة ‹" disabled={!addressId || !deliveryAreaId || !quote} onPress={() => go("payment")} /></View>
+        </View>
       </View>
     </View>
   );

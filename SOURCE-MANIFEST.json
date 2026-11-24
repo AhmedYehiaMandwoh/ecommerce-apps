@@ -14,8 +14,8 @@
     },
     {
       "path": "App.tsx",
-      "bytes": 21591,
-      "sha256": "237dd1966781c214e603d2ef4f86b353649912a234dfb701d4662a9a528be8e3"
+      "bytes": 22155,
+      "sha256": "7ae73c683a751b65a68e922e4f787620e17e2b9cba989602bc21378bb5674fec"
     },
     {
       "path": "HANDOVER.md",
@@ -329,8 +329,8 @@
     },
     {
       "path": "src/screens/CheckoutScreen.tsx",
-      "bytes": 5031,
-      "sha256": "48a8430df81797b47c26507a6b2ac3d5c2089653e610eb79be1fd0af7689f503"
+      "bytes": 5288,
+      "sha256": "f58e135176e87e405c360f1cdd227c3ea80a6db0d9b11e6b1decfcc26d162417"
     },
     {
       "path": "src/screens/EmailLoginScreen.tsx",
@@ -374,8 +374,8 @@
     },
     {
       "path": "src/screens/ProductScreen.tsx",
-      "bytes": 5631,
-      "sha256": "f18604cb197ce8c47486042b61b84f4e86a33b7158c41921332854506407b2fb"
+      "bytes": 5488,
+      "sha256": "a4a14bd0b9ab7b2d4e71a2c7d40e04ddec7148f906c286d071c5a279395fbefa"
     },
     {
       "path": "src/screens/SearchScreen.tsx",

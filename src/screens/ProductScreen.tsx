@@ -6,7 +6,7 @@ import { money } from "../shared";
 
 export function ProductScreen({ c }: { c: any }) {
   const { selected, addMany, favorite, favorites, go, back, count, user, vehicles } = c;
-  const [qty, setQty] = useState(1);
+  const qty: number = c.productQty; const setQty = c.setProductQty;
   const [tab, setTab] = useState<"details" | "shop">("details");
   if (!selected) return null;
   const offer = selected.offers[0];
@@ -60,7 +60,6 @@ export function ProductScreen({ c }: { c: any }) {
             ))}
           </View>
         )}
-        <Cta title={offer?.stock ? "أضف للسلة 🛒" : "غير متوفر"} disabled={!offer?.stock} onPress={() => { addMany(selected, offer, qty); go("cart"); }} />
         <View className="h-6" />
       </View>
     </View>

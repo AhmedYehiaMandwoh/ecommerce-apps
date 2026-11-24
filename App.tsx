@@ -25,6 +25,7 @@ import { FavoritesScreen } from "./src/screens/FavoritesScreen";
 import "./global.css";
 import { API, BASE, imageUrl, money, statuses, storage, egPhone } from "./src/shared";
 import React, { useState, useEffect } from "react";
+import { Cta } from "./src/ui/kit";
 import {
   View,
   Text,
@@ -65,6 +66,8 @@ export default function App() {
   const [category, setCategory] = useState("");
   const [shop, setShop] = useState("");
   const [selected, setSelected] = useState<any>(null);
+  const [productQty, setProductQty] = useState(1);
+  useEffect(() => { setProductQty(1); }, [selected?.id]);
   const [cart, setCart] = useState<any[]>([]);
   const [cartReady,setCartReady]=useState(false);
   const [favorites,setFavorites]=useState<any[]>([]);
@@ -291,7 +294,7 @@ export default function App() {
   }
   const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
   const count = cart.reduce((a, i) => a + i.quantity, 0);
-  const ctx: any = { setError, discountCode, setDiscountCode, vehicleCatalog, add, addMany, address, addressId, addresses, api, application, auth, back, browse, busy, cancelReasons, cart, categories, category, count, deliveryAreaId, deliveryAreas, detailId, error, favorite, favorites, fitmentVehicle, go, hasDevice, history, join, key, lastPlacedOrder, load, login, notice, order, orders, page, pages, personal, phoneAuth, phoneLogin, phoneMode, placedSnapshot, products, profileName, protectedOptions, quote, register, returnForm, reviewQuote, run, screen, search, selected, setAddress, setAddressId, setAuth, setCancelReasons, setCart, setCategory, setDeliveryAreaId, setDetailId, setFitmentVehicle, setHasDevice, setJoin, setLastPlacedOrder, setNotice, setPage, setPendingDevice, setPhoneAuth, setPhoneMode, setProducts, setProfileName, setRegister, setReturn, setScreen, setSearch, setSelected, setShop, setSupport, setTickets, setToken, setUser, setVehicle, shop, shops, subtotal, support, tickets, unlockDevice, user, vehicle, vehicles };
+  const ctx: any = { productQty, setProductQty, setError, discountCode, setDiscountCode, vehicleCatalog, add, addMany, address, addressId, addresses, api, application, auth, back, browse, busy, cancelReasons, cart, categories, category, count, deliveryAreaId, deliveryAreas, detailId, error, favorite, favorites, fitmentVehicle, go, hasDevice, history, join, key, lastPlacedOrder, load, login, notice, order, orders, page, pages, personal, phoneAuth, phoneLogin, phoneMode, placedSnapshot, products, profileName, protectedOptions, quote, register, returnForm, reviewQuote, run, screen, search, selected, setAddress, setAddressId, setAuth, setCancelReasons, setCart, setCategory, setDeliveryAreaId, setDetailId, setFitmentVehicle, setHasDevice, setJoin, setLastPlacedOrder, setNotice, setPage, setPendingDevice, setPhoneAuth, setPhoneMode, setProducts, setProfileName, setRegister, setReturn, setScreen, setSearch, setSelected, setShop, setSupport, setTickets, setToken, setUser, setVehicle, shop, shops, subtotal, support, tickets, unlockDevice, user, vehicle, vehicles };
   const NOTAB = ["splash", "phone", "emaillogin", "placed"];
   const INLINE = ["checkout", "payment", "addresses", "addaddress", "vehicle", "support", "settings", "phone"];
   const tabs: [string, string, any][] = [
@@ -338,6 +341,11 @@ export default function App() {
             {body}
           </ScrollView>
         </KeyboardAvoidingView>
+        {screen === "product" && !!selected?.offers?.[0] && (
+          <View className="bg-white px-3 pt-2 pb-2 border-t border-slate-200">
+            <Cta title={selected.offers[0].stock ? "أضف للسلة 🛒" : "غير متوفر"} disabled={!selected.offers[0].stock} onPress={() => { addMany(selected, selected.offers[0], productQty); go("cart"); }} />
+          </View>
+        )}
         {!NOTAB.includes(screen) && (
           <View className="flex-row-reverse bg-white border-t border-slate-200">
             {tabs.map(([s, t, icon]) => (
