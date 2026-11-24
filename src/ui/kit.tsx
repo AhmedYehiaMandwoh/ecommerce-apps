@@ -8,13 +8,14 @@ export const art = {
   store: require("../../assets/store-white.png"),
 };
 
-export function Cta({ title, onPress, disabled, outline, soft, testID }: { title: string; onPress: () => void; disabled?: boolean; outline?: boolean; soft?: boolean; testID?: string }) {
+export function Cta({ title, onPress, disabled, outline, soft, testID, chevron }: { chevron?: boolean; title: string; onPress: () => void; disabled?: boolean; outline?: boolean; soft?: boolean; testID?: string }) {
   const base = "rounded-2xl py-4 px-5 items-center justify-center mt-3";
   const tone = outline ? "bg-white border-2 border-brand" : soft ? "bg-brand-light" : "bg-accent";
   const text = outline || soft ? "text-brand font-extrabold text-lg" : "text-white font-extrabold text-lg";
   return (
     <Pressable testID={testID} accessibilityRole="button" accessibilityLabel={title} disabled={disabled} onPress={onPress} className={`${base} ${tone} ${disabled ? "opacity-50" : ""}`}>
-      <Text className={text}>{title}</Text>
+      <Text className={text}>{chevron ? title.replace(/\s*‹$/, "") : title}</Text>
+      {chevron && <View style={{ position: "absolute", right: 16, top: 0, bottom: 0, justifyContent: "center" }}><Text className="text-white font-extrabold" style={{ fontSize: 34, lineHeight: 38 }}>›</Text></View>}
     </Pressable>
   );
 }
@@ -61,9 +62,9 @@ export function Card({ children, className = "", onPress }: { children: React.Re
 
 export function Input({ label, icon, value, onChange, placeholder, numeric, secure, multiline, inline }: { inline?: boolean; label?: string; icon?: string; value: string; onChange: (t: string) => void; placeholder?: string; numeric?: boolean; secure?: boolean; multiline?: boolean }) {
   if (inline) return (
-    <View className="flex-row-reverse items-center bg-white border border-slate-200 rounded-2xl px-3 mb-2" style={{ height: 50 }}>
-      <View className="flex-row-reverse items-center" style={{ maxWidth: "55%" }}>{icon && icons[icon] ? <View className="ml-2"><Ico n={icon} size={20} /></View> : icon ? <Text className="ml-2">{icon}</Text> : null}<Text className="text-right font-bold text-slate-900" numberOfLines={1}>{label}</Text></View>
-      <TextInput accessibilityLabel={label || placeholder} value={value} onChangeText={onChange} placeholder={placeholder} placeholderTextColor="#94a3b8" keyboardType={numeric ? "numeric" : "default"} secureTextEntry={secure} className="flex-1 mr-3 text-base" style={{ textAlign: "left", height: 48 } as any} />
+    <View className="flex-row-reverse items-center bg-white border border-slate-200 rounded-2xl px-3 mb-2 overflow-hidden" style={{ height: 50 }}>
+      <View className="flex-row-reverse items-center" style={{ maxWidth: "55%" }}>{icon && icons[icon] ? <View className="ml-2"><Ico n={icon} size={20} /></View> : icon ? <Text className="ml-2">{icon}</Text> : null}<Text className="text-right font-bold text-slate-900 text-sm" numberOfLines={1}>{label}</Text></View>
+      <TextInput accessibilityLabel={label || placeholder} value={value} onChangeText={onChange} placeholder={placeholder} placeholderTextColor="#94a3b8" keyboardType={numeric ? "numeric" : "default"} secureTextEntry={secure} className="flex-1 mr-3 text-base" style={{ textAlign: "left", height: 48, minWidth: 0, width: 0 } as any} />
     </View>
   );
   return (

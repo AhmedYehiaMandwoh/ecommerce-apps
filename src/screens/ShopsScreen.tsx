@@ -12,25 +12,25 @@ export function ShopsScreen({ c }: { c: any }) {
       <View className="bg-brand px-4 pt-3 pb-4">
         <View className="flex-row items-center justify-between h-10">
           <Pressable accessibilityRole="button" accessibilityLabel="رجوع" onPress={back} className="w-10"><Text className="text-white text-3xl">‹</Text></Pressable>
-          <Text className="text-white text-xl font-extrabold">المحلات</Text>
+          <Text className="text-white text-3xl font-extrabold">المحلات</Text>
           <View className="w-10" />
         </View>
-        <View className="bg-white rounded-full h-12 mt-2 px-4 flex-row items-center">
+        <View className="bg-white rounded-full h-14 mt-3 px-4 flex-row items-center">
           <TextInput accessibilityLabel="ابحث باسم المحل" value={q} onChangeText={setQ} placeholder="ابحث باسم المحل" placeholderTextColor="#94a3b8" className="flex-1 text-right text-base" />
           <Text className="text-lg ml-2">🔍</Text>
         </View>
-        <View className="flex-row-reverse mt-3">
-          {["الأقرب", "التخصص", "الترتيب"].map((t) => <View key={t} className="bg-white rounded-xl px-4 py-2 ml-2"><Text className="font-bold text-slate-700">{t} ⌄</Text></View>)}
+        <View className="flex-row-reverse mt-4">
+          {["الأقرب", "التخصص", "الترتيب"].map((t) => <View key={t} className="bg-white rounded-2xl py-3 ml-2 flex-1 items-center"><Text className="font-extrabold text-slate-800 text-base">{t}  ⌄</Text></View>)}
         </View>
       </View>
       <View className="p-4">
         {list.map((s: any, n: number) => (
           <Pressable key={s.id} accessibilityRole="button" accessibilityLabel={s.name} onPress={() => browse("", "", s.id)} className="bg-white rounded-2xl border border-slate-200 mb-4 overflow-hidden">
-            <Image source={shopPhoto(n)} style={{ width: "100%", height: 130, resizeMode: "cover" }} />
-            <View className="flex-row items-center p-3">
-              <Text className="text-slate-400 text-2xl">‹</Text>
-              <View className="flex-1 mx-3 items-end"><Text className="font-extrabold text-base">{s.name}</Text><Text className="text-slate-500 text-sm">قطع غيار وصيانة • {s.city}</Text></View>
-              <View className="w-12 h-12 rounded-full bg-accent items-center justify-center"><Ico n="shop" size={26} color="#fff" /></View>
+            <Image source={shopPhoto(n)} style={{ width: "100%", height: 125, resizeMode: "cover" }} />
+            <View className="flex-row items-center px-3 py-2">
+              <View className="w-14 h-14 rounded-full bg-accent items-center justify-center"><Ico n="shop" size={30} color="#fff" /></View>
+              <View className="flex-1 mx-3 items-start"><Text className="font-extrabold text-lg">{s.name}</Text><Text className="text-slate-500 text-sm">قطع غيار وصيانة • {s.city}</Text></View>
+              <Text className="text-slate-500 text-3xl">›</Text>
             </View>
           </Pressable>
         ))}

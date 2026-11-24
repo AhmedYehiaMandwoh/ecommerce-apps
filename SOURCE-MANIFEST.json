@@ -409,8 +409,8 @@
     },
     {
       "path": "src/screens/AddAddressScreen.tsx",
-      "bytes": 2474,
-      "sha256": "0308cd2639c0f61e31572561f20779cb8620d9cab26cde4f30d52c2c665fe6f4"
+      "bytes": 2469,
+      "sha256": "86f7e49122e9e2aca2e694b02f664a13e64e8cbd831a5210964f126c82a62806"
     },
     {
       "path": "src/screens/AddressesScreen.tsx",
@@ -489,13 +489,13 @@
     },
     {
       "path": "src/screens/ShopsScreen.tsx",
-      "bytes": 2564,
-      "sha256": "9e3a17de5e804418182fcb484237b37311dff51c27facdf0707a5808d3a1d11f"
+      "bytes": 2603,
+      "sha256": "b667a44c6c582bb1ae653f3c9bb9005fe64a727c6493aaa8386e6808ba7382cd"
     },
     {
       "path": "src/screens/SplashScreen.tsx",
-      "bytes": 2371,
-      "sha256": "c8b5ccccba2629370f3a8178945738ae740f3d28e697117df20062f0326ac319"
+      "bytes": 2379,
+      "sha256": "b9fb2bde1d3480e3b8505382a07337272e435151d654174c24f0f804047d3c7a"
     },
     {
       "path": "src/screens/SupportScreen.tsx",
@@ -529,8 +529,8 @@
     },
     {
       "path": "src/ui/kit.tsx",
-      "bytes": 7712,
-      "sha256": "c2a623917e38508f16a504948e2d1ae7207a4f8ec9c2c95805f7b587c230abe3"
+      "bytes": 8045,
+      "sha256": "4100a9ce58abfc5481efb2456c9ad5081cef3d32c2b08988f271f1f80aa41db5"
     },
     {
       "path": "src/webfont.ts",
