@@ -23,12 +23,12 @@ export function ShopsScreen({ c }: { c: any }) {
           {["الأقرب", "التخصص", "الترتيب"].map((t) => <View key={t} className="bg-white rounded-2xl py-2 ml-2 flex-1 items-center"><Text className="font-extrabold text-slate-800 text-base">{t}  ⌄</Text></View>)}
         </View>
       </View>
-      <View className="p-3">
+      <View className="px-3 pt-2">
         {list.map((s: any, n: number) => (
-          <Pressable key={s.id} accessibilityRole="button" accessibilityLabel={s.name} onPress={() => browse("", "", s.id)} className="bg-white rounded-2xl border border-slate-200 mb-3 overflow-hidden">
-            <Image source={shopPhoto(n)} style={{ width: "100%", height: 78, resizeMode: "cover" }} />
-            <View className="flex-row items-center px-3 py-1.5">
-              <View className="w-12 h-12 rounded-full bg-accent items-center justify-center"><Ico n="shop" size={30} color="#fff" /></View>
+          <Pressable key={s.id} accessibilityRole="button" accessibilityLabel={s.name} onPress={() => browse("", "", s.id)} className="bg-white rounded-2xl border border-slate-200 mb-2 overflow-hidden">
+            <Image source={shopPhoto(n)} style={{ width: "100%", height: 62, resizeMode: "cover" }} />
+            <View className="flex-row items-center px-3 py-1">
+              <View className="w-11 h-11 rounded-full bg-accent items-center justify-center"><Ico n="shop" size={30} color="#fff" /></View>
               <View className="flex-1 mx-3 items-start"><Text className="font-extrabold text-lg">{s.name}</Text><Text className="text-slate-500 text-sm">قطع غيار وصيانة • {s.city}</Text></View>
               <Text className="text-slate-500 text-3xl">›</Text>
             </View>

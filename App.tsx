@@ -332,11 +332,13 @@ export default function App() {
     <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1, backgroundColor: "#0751e8" }}>
         <StatusBar style="light" />
+        <View pointerEvents="none" style={{ position: "absolute", top: 8, left: 8, right: 8, zIndex: 50 }}>
+          {!!error && !INLINE.includes(screen) && <Text accessibilityRole="alert" className="bg-red-50 text-red-700 p-3 text-right rounded-xl border border-red-200">{error}</Text>}
+          {!!notice && !INLINE.includes(screen) && <Text className="bg-green-50 text-green-800 p-3 text-right rounded-xl border border-green-200">{notice}</Text>}
+        </View>
         <KeyboardAvoidingView style={{ flex: 1, backgroundColor: "#ffffff" }} behavior={Platform.OS === "ios" ? "padding" : undefined}>
           <ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: "#ffffff", width: "100%", maxWidth: 804, alignSelf: "center" }} keyboardShouldPersistTaps="handled">
-            {!!error && !INLINE.includes(screen) && <Text accessibilityRole="alert" className="bg-red-50 text-red-700 p-3 text-right">{error}</Text>}
-            {!!notice && !INLINE.includes(screen) && <Text className="bg-green-50 text-green-800 p-3 text-right">{notice}</Text>}
-            {busy && <ActivityIndicator color="#0757e9" />}
+                        {busy && <ActivityIndicator color="#0757e9" />}
             {pendingDevice&&Platform.OS!=='web'&&<View className="bg-white rounded-2xl p-3 m-3"><Text style={st.h3}>الدخول السريع على جهازك</Text><Text style={st.small}>اختياري. نحفظ مفتاحًا محميًا على الجهاز بدل إرسال كود كل مرة. تغيير البصمة أو انتهاء الجلسة أو إلغاؤها قد يطلب التحقق من جديد.</Text><Btn title="تفعيل الدخول المحمي" onPress={enableDevice}/><Btn title="مش دلوقتي" alt onPress={()=>setPendingDevice(null)}/></View>}
             {body}
           </ScrollView>

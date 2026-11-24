@@ -6,13 +6,13 @@ export function SplashScreen({ c }: { c: any }) {
   const { go, setScreen } = c;
   return (
     <View className="flex-1 bg-white items-center" style={{ minHeight: 760 }}>
-      <View className="w-full bg-brand items-center pt-10 pb-3">
-        <Image source={art.logo} style={{ width: 170, height: 78, resizeMode: "contain" }} />
-        <Text className="text-white font-extrabold text-center mt-5 px-8" style={{ fontSize: 44, lineHeight: 54 }}>كل اللي عربيتك{"\n"}محتاجاه.</Text>
-        <Text className="text-white text-lg text-center mt-3">من محلات كتير .. في <Text className="font-extrabold">مكان واحد</Text></Text>
+      <View className="w-full bg-brand items-center pt-6 pb-2">
+        <Image source={art.logo} style={{ width: 140, height: 64, resizeMode: "contain" }} />
+        <Text className="text-white font-extrabold text-center mt-3 px-8" style={{ fontSize: 34, lineHeight: 42 }}>كل اللي عربيتك{"\n"}محتاجاه.</Text>
+        <Text className="text-white text-base text-center mt-2">من محلات كتير .. في <Text className="font-extrabold">مكان واحد</Text></Text>
       </View>
-      <View className="w-full" style={{ height: 300 }}>
-        <Image source={require("../../assets/ref/onboard-hero.png")} style={{ width: "100%", height: 300, resizeMode: "cover" }} />
+      <View className="w-full" style={{ height: 232 }}>
+        <Image source={require("../../assets/ref/onboard-hero.png")} style={{ width: "100%", height: 232, resizeMode: "cover" }} />
         <View pointerEvents="none" style={{ position: "absolute", left: 0, right: 0, top: 0 }}>
           {Array.from({ length: 10 }, (_, i) => <View key={i} style={{ height: 6, backgroundColor: "#0751e8", opacity: 1 - i / 10 }} />)}
         </View>
@@ -20,10 +20,10 @@ export function SplashScreen({ c }: { c: any }) {
           {Array.from({ length: 14 }, (_, i) => <View key={i} style={{ height: 6, backgroundColor: "#ffffff", opacity: i / 14 }} />)}
         </View>
       </View>
-      <View className="flex-row mt-1">
+      <View className="flex-row mt-0">
         {[0, 1, 2, 3].map((n) => <View key={n} className={`w-2 h-2 rounded-full mx-1 ${n === 0 ? "bg-brand" : "bg-slate-300"}`} />)}
       </View>
-      <View className="w-full px-6 mt-2">
+      <View className="w-full px-6 mt-0" style={{ marginTop: -4 }}>
         <Cta chevron title="ابدأ الآن ‹" onPress={() => setScreen("home")} />
         <Cta title="تسجيل الدخول" outline onPress={() => go("phone")} />
       </View>

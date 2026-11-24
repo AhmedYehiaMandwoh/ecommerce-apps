@@ -62,7 +62,7 @@ export function Card({ children, className = "", onPress }: { children: React.Re
 
 export function Input({ label, icon, value, onChange, placeholder, numeric, secure, multiline, inline }: { inline?: boolean; label?: string; icon?: string; value: string; onChange: (t: string) => void; placeholder?: string; numeric?: boolean; secure?: boolean; multiline?: boolean }) {
   if (inline) return (
-    <View className="flex-row-reverse items-center bg-white border border-slate-200 rounded-2xl px-3 mb-2 overflow-hidden" style={{ height: 50 }}>
+    <View className="flex-row-reverse items-center bg-white border border-slate-200 rounded-2xl px-3 mb-1.5 overflow-hidden" style={{ height: 44 }}>
       <View className="flex-row-reverse items-center" style={{ maxWidth: "55%" }}>{icon && icons[icon] ? <View className="ml-2"><Ico n={icon} size={20} /></View> : icon ? <Text className="ml-2">{icon}</Text> : null}<Text className="text-right font-bold text-slate-900 text-sm" numberOfLines={1}>{label}</Text></View>
       <TextInput accessibilityLabel={label || placeholder} value={value} onChangeText={onChange} placeholder={placeholder} placeholderTextColor="#94a3b8" keyboardType={numeric ? "numeric" : "default"} secureTextEntry={secure} className="flex-1 mr-3 text-base" style={{ textAlign: "left", height: 48, minWidth: 0, width: 0 } as any} />
     </View>

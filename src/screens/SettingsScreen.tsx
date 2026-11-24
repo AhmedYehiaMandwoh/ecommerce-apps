@@ -23,6 +23,10 @@ export function SettingsScreen({ c }: { c: any }) {
             })} />
           </Card>
         ) : <Text className="text-center text-slate-500">سجّل الدخول لإدارة حسابك.</Text>}
+        <View className="mt-4 rounded-2xl bg-slate-50 border border-slate-100 p-3">
+          <Text className="text-right font-extrabold text-sm">عن النسخة التجريبية</Text>
+          <Text className="text-right text-slate-500 text-xs mt-1">كل المنتجات والأسعار والطلبات للتجربة فقط. الدفع كاش عند الاستلام بدون تحصيل فعلي، والتوصيل غير مفعّل.</Text>
+        </View>
         <Text className="text-center text-xs text-slate-400 mt-4">غيار • إصدار تطوير 0.1 • لوحة التاجر والإدارة على موقع الويب فقط</Text>
       </View>
     </View>

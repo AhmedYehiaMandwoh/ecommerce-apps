@@ -11,10 +11,10 @@ await p.goto(APP,{waitUntil:'networkidle',timeout:110000});await p.waitForTimeou
 await snap('01-splash','تسجيل الدخول');await click('تسجيل الدخول');await p.waitForTimeout(800);await snap('02-phone','رقم الموبايل');
 await p.getByLabel('رقم الموبايل').fill(phoneNo);await click('إرسال رمز التحقق ‹');await p.waitForTimeout(1500);
 if(await p.getByLabel('الاسم').count())await p.getByLabel('الاسم').first().fill('مستخدم تجريبي');await p.getByLabel('كود التحقق').first().fill('123456');await click('تأكيد الكود ‹');await p.waitForTimeout(2500);
-await snap('07-home','بتدور على إيه');
+await p.waitForTimeout(4500);await snap('07-home','بتدور على إيه');
 await click('اختر عربيتك');await p.waitForTimeout(800);await snap('04-vehicle','اختار عربيتك');await click('الرئيسية');
 await click('فرامل');await p.waitForTimeout(1500);await snap('08-search','نتائج البحث');
-await p.locator('[role=button][aria-label^="تيل فرامل"]').first().click();await p.waitForTimeout(1500);await snap('11-product','أضف للسلة');await click('الرئيسية');
+await p.locator('[role=button][aria-label="مجموعة ديسك وفرامل توضيحية"]').first().click();await p.waitForTimeout(1500);await snap('11-product','أضف للسلة');await click('رجوع');await p.waitForTimeout(600);await click('الرئيسية');
 await click('حسابي');await snap('03-account','مرحبا بك في غيار');console.log('account rows: support',await p.getByRole('button',{name:'المساعدة'}).count(),'settings',await p.getByRole('button',{name:'الإعدادات'}).count());await click('عناويني');
 for(const [c,a] of [['الجيزة','6 أكتوبر'],['القاهرة','مدينة نصر']]){await click('إضافة عنوان جديد');if(c==='الجيزة')await snap('06-add-address','المدينة');await p.getByLabel('المدينة').fill(c);await p.getByLabel('المنطقة').fill(a);await p.getByLabel('الشارع').fill('شارع 9');await p.getByLabel('تفاصيل العنوان').fill('عمارة 5 شقة 3');await p.getByLabel('رقم التواصل').fill(phoneNo);await click('حفظ العنوان');await p.waitForTimeout(1500);}
 await snap('05-two-addresses','عناويني');
@@ -24,6 +24,6 @@ await click('متابعة الطلب');await p.waitForTimeout(1500);
 await p.locator('[role=button]').filter({hasText:'مدينة نصر'}).first().click();await p.getByRole('button',{name:'القاهرة مدينة نصر'}).first().click().catch(()=>{});await click('راجع التكلفة');await p.waitForTimeout(2000);await p.evaluate(()=>{window.scrollTo(0,0);document.querySelectorAll('*').forEach(e=>{if(e.scrollTop)e.scrollTop=0})});await snap('13-checkout','إتمام الطلب');
 await click('متابعة ‹');await p.waitForTimeout(1000);await snap('14-payment','طريقة الدفع');
 await click('مراجعة الطلب وتأكيده ‹');await p.waitForTimeout(3000);await snap('15-placed','تم استلام طلبك');
-await click('تتبع الطلب 🚚');await p.waitForTimeout(1500);await snap('17-track','تتبع الطلب');await click('رجوع');await p.waitForTimeout(600);await click('الرئيسية');await click('طلباتي');await p.waitForTimeout(1500);await snap('16-orders','عرض التفاصيل');
+await click('تتبع الطلب');await p.waitForTimeout(1500);await snap('17-track','تتبع الطلب');await click('رجوع');await p.waitForTimeout(600);await click('الرئيسية');await click('طلباتي');await p.waitForTimeout(1500);await snap('16-orders','عرض التفاصيل');
 await click('حسابي');await click('المساعدة');await p.waitForTimeout(1200);await snap('18-support','المساعدة');
 await b.close();

@@ -14,8 +14,8 @@
     },
     {
       "path": "App.tsx",
-      "bytes": 22200,
-      "sha256": "0673ca61131a5f73b49587a3ad1d1926ef60a7d682d9bcd430e25d4b88151152"
+      "bytes": 22400,
+      "sha256": "f4cf1781dbc5a9a099e919d8117cfc852fadb650fe7645ede30fb095286e29c6"
     },
     {
       "path": "HANDOVER.md",
@@ -348,6 +348,11 @@
       "sha256": "e4816f1c21a8198f90d7840f2f97d576e47e007f2c75ec75681d95306aaddc64"
     },
     {
+      "path": "ci/android-apk.yml.txt",
+      "bytes": 1396,
+      "sha256": "f12e9767850bfc401d37a15cd0bc6d39c6e6a04103befc2703b04216b81c507b"
+    },
+    {
       "path": "components/Controls.tsx",
       "bytes": 1464,
       "sha256": "902ab0bbfc6055fc981ca41acc8a85dda1ee720984e2b4602175178bd013c7b0"
@@ -394,13 +399,13 @@
     },
     {
       "path": "scripts/capture-matched.mjs",
-      "bytes": 5003,
-      "sha256": "5a05520d230a6b3f5e980dde622cd6bb641fb4b3558c5133c274762fe7c5f6f1"
+      "bytes": 5110,
+      "sha256": "39f0f42a2bbfd68db3de5b8cab120cee53047a603fcb0d87a34b335c67569115"
     },
     {
       "path": "scripts/mobile-test.mjs",
-      "bytes": 7368,
-      "sha256": "fea7b6bd3c9aa1afe2d141cc4329ecaa4e3aec5685051cb53cb9c096a696467c"
+      "bytes": 7363,
+      "sha256": "78f5293c54adf11a60f2cb17c2fcaa86e053854be36795f967bb5d6e12dec99a"
     },
     {
       "path": "src/nativefont.ts",
@@ -409,13 +414,13 @@
     },
     {
       "path": "src/screens/AccountScreen.tsx",
-      "bytes": 3199,
-      "sha256": "a62a8ce02f700fcbad91f42fb65ccdc1d7c868d9000a5f145ab00ba9bbfb20b9"
+      "bytes": 2737,
+      "sha256": "81bbc0befa8f9b5a78510a7ca007518b33483d2d405c4f08f8b0a6615d11ac92"
     },
     {
       "path": "src/screens/AddAddressScreen.tsx",
-      "bytes": 2469,
-      "sha256": "86f7e49122e9e2aca2e694b02f664a13e64e8cbd831a5210964f126c82a62806"
+      "bytes": 2479,
+      "sha256": "b35f9d3f6dfef3902e963344dd7e16a3e0a13b1e67807457cda1fc214c80ba6a"
     },
     {
       "path": "src/screens/AddressesScreen.tsx",
@@ -429,8 +434,8 @@
     },
     {
       "path": "src/screens/CheckoutScreen.tsx",
-      "bytes": 6313,
-      "sha256": "fc0f0ac2f2b4483fe4c5b8e15198deb6e204f7fb7ed91163296edb8051201d16"
+      "bytes": 6316,
+      "sha256": "0a7687090adde2b8e9f508073e61d67aca369dd1f0a496da42480a5b7734032e"
     },
     {
       "path": "src/screens/EmailLoginScreen.tsx",
@@ -469,8 +474,8 @@
     },
     {
       "path": "src/screens/PlacedScreen.tsx",
-      "bytes": 2773,
-      "sha256": "61b102e6fe267f6e6c771a84ac037b3fe38203d240453775450c282663f6c8f7"
+      "bytes": 2781,
+      "sha256": "49762c256af93f216ebe1be20994dd767311bce4ad3908ff6d24302b947c93d1"
     },
     {
       "path": "src/screens/ProductScreen.tsx",
@@ -484,8 +489,8 @@
     },
     {
       "path": "src/screens/SettingsScreen.tsx",
-      "bytes": 2110,
-      "sha256": "1fbe045bfd6ad5010aa757b5822180553d727d78fc8b46ff439361c31c69237b"
+      "bytes": 2578,
+      "sha256": "fa160727130d2636b072857330a01856625815c1d0f92b2173cd148fa39a1f7c"
     },
     {
       "path": "src/screens/ShopScreen.tsx",
@@ -494,13 +499,13 @@
     },
     {
       "path": "src/screens/ShopsScreen.tsx",
-      "bytes": 2604,
-      "sha256": "3332368ffda78b6102f938b7c94f023f8d65f15eb03cb19f313cb330fbea2165"
+      "bytes": 2608,
+      "sha256": "8d5412dc78d542c938ff8f205f0ad330f361f6021fdb8ab3370c6aeb00284f00"
     },
     {
       "path": "src/screens/SplashScreen.tsx",
-      "bytes": 2379,
-      "sha256": "b9fb2bde1d3480e3b8505382a07337272e435151d654174c24f0f804047d3c7a"
+      "bytes": 2406,
+      "sha256": "93f2c7daba942bf3d3929805b7c9ace9036bde21a9c6efba6352a13a67b1871b"
     },
     {
       "path": "src/screens/SupportScreen.tsx",
@@ -534,8 +539,8 @@
     },
     {
       "path": "src/ui/kit.tsx",
-      "bytes": 8045,
-      "sha256": "4100a9ce58abfc5481efb2456c9ad5081cef3d32c2b08988f271f1f80aa41db5"
+      "bytes": 8047,
+      "sha256": "bd7c112fe70e3be08bbc51bc30363470863a965b8ee40575f2466493b51df193"
     },
     {
       "path": "src/webfont.ts",

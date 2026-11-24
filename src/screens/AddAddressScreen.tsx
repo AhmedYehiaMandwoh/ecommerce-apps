@@ -13,10 +13,10 @@ export function AddAddressScreen({ c }: { c: any }) {
     setAddressId(a.id); await personal(); setNotice("تم حفظ العنوان"); back();
   });
   return (
-    <View className="bg-white flex-1" style={{ minHeight: 800 }}>
+    <View className="bg-white flex-1" style={{ minHeight: 700 }}>
       <Header back onBack={back} title="أضف عنوان" subtitle="أدخل بيانات العنوان بالكامل" onCart={() => go("cart")} count={count} />
-      <Image source={require("../../assets/ref/map-small.png")} style={{ width: "100%", height: 110, resizeMode: "cover" }} />
-      <View className="p-4 -mt-3 bg-white rounded-t-3xl">
+      <Image source={require("../../assets/ref/map-small.png")} style={{ width: "100%", height: 92, resizeMode: "cover" }} />
+      <View className="px-4 pt-3 pb-2 -mt-3 bg-white rounded-t-3xl">
         <ErrorNote error={error} notice={notice} />
         <Input inline label="المدينة" icon="f-pin" value={address.city} onChange={(city) => setAddress({ ...address, city })} placeholder="اختر المدينة" />
         <Input inline label="المنطقة" icon="f-map" value={area} onChange={setArea} placeholder="اختر المنطقة" />
