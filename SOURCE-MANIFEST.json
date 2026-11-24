@@ -359,8 +359,8 @@
     },
     {
       "path": "src/screens/SearchScreen.tsx",
-      "bytes": 5608,
-      "sha256": "ffad227c52b920b68c55b3d6f59bde43604e6cc2af1dfd332474a80a2e24d46f"
+      "bytes": 5653,
+      "sha256": "ea49b4f46017d163c8fbf713ef8015e530ce5a07702a180c99e6767a96b50156"
     },
     {
       "path": "src/screens/SettingsScreen.tsx",
@@ -369,8 +369,8 @@
     },
     {
       "path": "src/screens/ShopScreen.tsx",
-      "bytes": 4360,
-      "sha256": "c57957583ae5b11d448ccfd20e43378566e20a226e250e63775f4862d5e724a7"
+      "bytes": 4451,
+      "sha256": "62032c66683412484164e8dfa11de04665d70b42cbe203b62dae82b8ae6f0eaa"
     },
     {
       "path": "src/screens/ShopsScreen.tsx",
