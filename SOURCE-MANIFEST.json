@@ -78,6 +78,16 @@
       "sha256": "7d2b16f56fd332623cda9b4600fa7d060799c79a3aa9ff8e912b38449ac01f4e"
     },
     {
+      "path": "assets/fonts/NotoKufiArabic-Bold.ttf",
+      "bytes": 180552,
+      "sha256": "11c1608fb7c70135ab4cfd126f2300c81c7ca08c9bcffaff61b947edba234e65"
+    },
+    {
+      "path": "assets/fonts/NotoKufiArabic-Regular.ttf",
+      "bytes": 176740,
+      "sha256": "befb9d07506942ba2a7e0e85c65a24a76792c937d812bc80f1095d0f660cf330"
+    },
+    {
       "path": "assets/hero-parts.png",
       "bytes": 212513,
       "sha256": "c1a3c407177b21078ad84ea66e6268c31d788355189593db89356578ebcefe91"
@@ -289,8 +299,8 @@
     },
     {
       "path": "scripts/mobile-test.mjs",
-      "bytes": 6297,
-      "sha256": "0ee89098677af5c86f6431a1a07a09dfdb293d7e5964bea13eb075b1a3332d14"
+      "bytes": 7116,
+      "sha256": "265e307c8af57c72d6d095f4d32d647f3762f202ab88f1a6fbe459856eb31ad8"
     },
     {
       "path": "src/screens/AccountScreen.tsx",
@@ -304,8 +314,8 @@
     },
     {
       "path": "src/screens/AddressesScreen.tsx",
-      "bytes": 2324,
-      "sha256": "c4831be3db6a74c945ff07b8d3cc3afa8e340657de8aee140a9a3fbf229e33e3"
+      "bytes": 3372,
+      "sha256": "9035041ba4ba56182b5354a14c32a68671bef814f4e4ea771dac2d4c8c153f60"
     },
     {
       "path": "src/screens/CartScreen.tsx",
@@ -339,8 +349,8 @@
     },
     {
       "path": "src/screens/OrdersScreen.tsx",
-      "bytes": 3299,
-      "sha256": "0e22472cdd6ff50d60063ca67be4647829a86463afbd0fdc3a12e339599630e3"
+      "bytes": 3404,
+      "sha256": "725ccaf3681fb62fc5e7c0c9f141a007340007bf68b0217d8ea9ff5c3069ebfe"
     },
     {
       "path": "src/screens/PaymentScreen.tsx",
@@ -421,6 +431,11 @@
       "path": "src/ui/kit.tsx",
       "bytes": 5346,
       "sha256": "4f57309a5d8a0d894d2e40eab0fbc8ec2d1103c6217f05e2a33ce3092f2321d5"
+    },
+    {
+      "path": "src/webfont.ts",
+      "bytes": 987,
+      "sha256": "09bcd1f044d21f0ea864cb8f24c32efe6e656ae21ebbfea65ccb6d476d0fcc92"
     },
     {
       "path": "tailwind.config.js",

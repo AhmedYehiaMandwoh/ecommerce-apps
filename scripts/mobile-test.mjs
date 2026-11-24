@@ -21,6 +21,10 @@ await p.locator('[role=button]').filter({hasText:'قطع غيار وصيانة'}
 await click('حسابي');await click('عناويني');await p.waitForTimeout(1000);await snap('05-addresses-empty');
 await click('إضافة عنوان جديد');await p.getByLabel('المدينة').fill('القاهرة');await p.getByLabel('المنطقة').fill('مدينة نصر');await p.getByLabel('الشارع').fill('شارع 9');await p.getByLabel('تفاصيل العنوان').fill('عمارة 5 شقة 3');await p.getByLabel('رقم التواصل').fill(phoneNo);await snap('06-add-address');
 await click('حفظ العنوان');await p.waitForTimeout(2000);await snap('05-addresses');
+await p.getByLabel(/^خيارات عنوان/).first().click();await p.getByLabel(/^حذف عنوان/).first().click();await p.waitForTimeout(1500);
+{const gone=await p.getByText('لسه مفيش عناوين').count();console.log('address delete via kebab removes it',gone>0);if(!gone)errs.push('address delete via kebab failed');}
+await click('إضافة عنوان جديد');await p.getByLabel('المدينة').fill('القاهرة');await p.getByLabel('المنطقة').fill('مدينة نصر');await p.getByLabel('الشارع').fill('شارع 9');await p.getByLabel('تفاصيل العنوان').fill('عمارة 5 شقة 3');await p.getByLabel('رقم التواصل').fill(phoneNo);await snap('06-add-address');
+await click('حفظ العنوان');await p.waitForTimeout(2000);await snap('05-addresses');
 await click('الرئيسية');await click('السلة');await p.waitForTimeout(800);await click('متابعة الطلب');await p.waitForTimeout(1500);
 await p.locator('[role=button]').filter({hasText:'مدينة نصر'}).first().click();await p.getByPlaceholder('أدخل كود الخصم').fill('ghiyar10');await click('راجع التكلفة النهائية');await p.waitForTimeout(2000);await snap('13-checkout');if(!(await p.getByText('خصم (GHIYAR10)').count()))errs.push('discount line missing on checkout');
 await click('متابعة ‹');await p.waitForTimeout(1000);await snap('14-payment');
