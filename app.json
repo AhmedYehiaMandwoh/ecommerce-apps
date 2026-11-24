@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "غيار تجريبي",
+    "slug": "ghiyar-marketplace",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "ghiyar",
+    "userInterfaceStyle": "light",
+    "android": {
+      "package": "com.ghiyar.marketplace.dev",
+      "versionCode": 1,
+      "usesCleartextTraffic": false
+    },
+    "ios": {
+      "bundleIdentifier": "com.ghiyar.marketplace.dev",
+      "supportsTablet": true
+    },
+    "plugins": [
+      [
+        "expo-secure-store",
+        {
+          "faceIDPermission": "اسمح لغيار باستخدام Face ID لحماية جلسة الدخول"
+        }
+      ],
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "اسمح لغيار بفتح الجلسة باستخدام Face ID"
+        }
+      ]
+    ],
+    "extra": {
+      "stage": "development"
+    }
+  }
+}

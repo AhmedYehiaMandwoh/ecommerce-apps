@@ -1,0 +1,161 @@
+{
+  "audience": "owner-selected public source repository",
+  "nonLive": true,
+  "files": [
+    {
+      "path": ".env.example",
+      "bytes": 259,
+      "sha256": "93fea521a58f7b65f73fc5dcba49ad90bb5cd8fcbf537efbab140c7faf61ad8f"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 275,
+      "sha256": "ec68b3591a955436a1c1b8d4a8aeeacc3494df2ba03fc7ecc5642fbd14b67afe"
+    },
+    {
+      "path": "App.tsx",
+      "bytes": 51675,
+      "sha256": "a5c2f8328ebfb4c67a72d72af7faff2589bd39646d6b2b5b71108230943ad719"
+    },
+    {
+      "path": "HANDOVER.md",
+      "bytes": 657,
+      "sha256": "670fb4139ad1329039ef71abdbc2dd5f6915bd2bd5923be9e8925dfc04133ff3"
+    },
+    {
+      "path": "README.md",
+      "bytes": 944,
+      "sha256": "f96786d64e54a96ba4bf0ef8f40375031c0e048bb33bbb3c0d171cd4c94ada27"
+    },
+    {
+      "path": "app.json",
+      "bytes": 865,
+      "sha256": "891c44adba571733b76aa191133f5f848665c395532af11d456b710136fe1bb7"
+    },
+    {
+      "path": "assets/braking-parts.png",
+      "bytes": 101154,
+      "sha256": "e07201355a1f161def052ebd5f5baf21d601f1061d410471ecf46ba6c652619e"
+    },
+    {
+      "path": "assets/car-icon.png",
+      "bytes": 578,
+      "sha256": "91282063a42370856bee024b0f0070d2a12eaeaab1f1494e7e770bfc5fe55667"
+    },
+    {
+      "path": "assets/cart-icon.png",
+      "bytes": 350,
+      "sha256": "2171817627de7cf02c74414e86d4372921525f31641a9e593ea71e1371e0cf02"
+    },
+    {
+      "path": "assets/category-accessory.png",
+      "bytes": 44452,
+      "sha256": "75ddbe72d5bcc27b02ff76fce684d8a8a1a16d9d9efca26533f4213cc03e8d8e"
+    },
+    {
+      "path": "assets/category-brakes.png",
+      "bytes": 46198,
+      "sha256": "2535986d2e7a89b0c6fc40363981883f9cb50831525374ed335bd2a42e0fad21"
+    },
+    {
+      "path": "assets/category-filter.png",
+      "bytes": 41934,
+      "sha256": "0c10573859d00f53c47eff0a564ccafaf49348259aa1e7fbca9ddd4310014cf5"
+    },
+    {
+      "path": "assets/category-oil.png",
+      "bytes": 45103,
+      "sha256": "e9292b01a7594f267dd50bef3b301867eecdae01df1fc5c97aede19cf33eb935"
+    },
+    {
+      "path": "assets/category-suspension.png",
+      "bytes": 44791,
+      "sha256": "7d2b16f56fd332623cda9b4600fa7d060799c79a3aa9ff8e912b38449ac01f4e"
+    },
+    {
+      "path": "assets/hero-parts.png",
+      "bytes": 212513,
+      "sha256": "c1a3c407177b21078ad84ea66e6268c31d788355189593db89356578ebcefe91"
+    },
+    {
+      "path": "assets/home-icon.png",
+      "bytes": 376,
+      "sha256": "e423e501d1bd0425fbbf953ab54fe3775ec7f59a7f6872c7c5410a3d37a1c4c3"
+    },
+    {
+      "path": "assets/maintenance-parts.png",
+      "bytes": 85884,
+      "sha256": "0587d562fa76e515fb9938e2446b2256ac826d58c29131dc21f9075a16c0d2e7"
+    },
+    {
+      "path": "assets/orders-icon.png",
+      "bytes": 266,
+      "sha256": "1befb98539584e99d6145308f74d78e4acc0ccd217b9a1a29fabc90bf587524d"
+    },
+    {
+      "path": "assets/profile-icon.png",
+      "bytes": 436,
+      "sha256": "c65ee64e41f64bdddc120b8795d1e52ae84099fa7469d635ed3a61ac2156368f"
+    },
+    {
+      "path": "assets/reference-logo.png",
+      "bytes": 24104,
+      "sha256": "cae8b88c86cc69d57fa7c5051ebf5f4da10d86d412df5d3fe9a8782210b1af52"
+    },
+    {
+      "path": "assets/shop-demo-1.png",
+      "bytes": 158938,
+      "sha256": "8a25b269f8f268f48d8b036e24cb8a01dcadc4b6f8e08287fa01ce4e102a15d1"
+    },
+    {
+      "path": "assets/shop-demo-2.png",
+      "bytes": 159110,
+      "sha256": "8ef44b0b72c21da9948b2601846704f5690eb13d53ddf193211d2bd2f237c882"
+    },
+    {
+      "path": "assets/shops-icon.png",
+      "bytes": 357,
+      "sha256": "076dbe8f854e144c0cafc3ded02d0af1824709b5f0f9b471efbd4a75a5c9afba"
+    },
+    {
+      "path": "assets/store-white.png",
+      "bytes": 297,
+      "sha256": "87615c8e0696505b3862295850a255a7b1175d4b7e21afa519197081e23cecb7"
+    },
+    {
+      "path": "components/Controls.tsx",
+      "bytes": 1464,
+      "sha256": "902ab0bbfc6055fc981ca41acc8a85dda1ee720984e2b4602175178bd013c7b0"
+    },
+    {
+      "path": "components/MarketplaceHome.tsx",
+      "bytes": 8650,
+      "sha256": "226a303b7a6938a9a110c14af4ac9768bbaf5bbeec2db87f847d9a942b36481f"
+    },
+    {
+      "path": "eas.json",
+      "bytes": 309,
+      "sha256": "55554722a23346710b9b7705f517da054a3700e1a9e6f6e5343735ef46e15232"
+    },
+    {
+      "path": "index.ts",
+      "bytes": 95,
+      "sha256": "d542e11db8fce8320808a35a1b725ebf1a63a449ee2f1356405b61434ba48a5e"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 238798,
+      "sha256": "faf676421d28f59987c4e89ad72b4f167b024b5a7b4443a2dc62e019c236b09a"
+    },
+    {
+      "path": "package.json",
+      "bytes": 845,
+      "sha256": "ac82914063bf4c1a332169e8341e220244479752e23faae2d20137a1968aaab3"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 117,
+      "sha256": "32b1876837b0811013efbc1122e552f89630ddfce455acb733a54b1ce59d9a46"
+    }
+  ]
+}
