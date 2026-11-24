@@ -329,8 +329,8 @@
     },
     {
       "path": "src/screens/CheckoutScreen.tsx",
-      "bytes": 5288,
-      "sha256": "f58e135176e87e405c360f1cdd227c3ea80a6db0d9b11e6b1decfcc26d162417"
+      "bytes": 5452,
+      "sha256": "8d3b7821d4cb2645fb16d2ace94b7dc3b2194bc231008aa0731c4d36c6c5d463"
     },
     {
       "path": "src/screens/EmailLoginScreen.tsx",
@@ -374,8 +374,8 @@
     },
     {
       "path": "src/screens/ProductScreen.tsx",
-      "bytes": 5576,
-      "sha256": "9f638dd3b6d0f20d408772f188b33fc1fc8c5eac3582787b88cd9d251dc35e90"
+      "bytes": 5795,
+      "sha256": "227a3a4a8d375e27bace577d03a28cd03d9eac056d018fc1490db58f1e564a9d"
     },
     {
       "path": "src/screens/SearchScreen.tsx",
@@ -434,8 +434,8 @@
     },
     {
       "path": "src/ui/kit.tsx",
-      "bytes": 5346,
-      "sha256": "4f57309a5d8a0d894d2e40eab0fbc8ec2d1103c6217f05e2a33ce3092f2321d5"
+      "bytes": 5529,
+      "sha256": "2deacb21a0926930433273278aa86b0cac0d928a3a93cd6535cfa5a41ba83f2b"
     },
     {
       "path": "src/webfont.ts",

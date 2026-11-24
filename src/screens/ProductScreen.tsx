@@ -37,9 +37,12 @@ export function ProductScreen({ c }: { c: any }) {
           <View className="flex-1 mx-3 items-end"><Text className="font-extrabold">{offer?.shop?.name}</Text><Text className="text-slate-500 text-sm">قطع غيار وصيانة • {offer?.shop?.city}</Text></View>
           <View className="w-11 h-11 rounded-full bg-slate-700 items-center justify-center"><Text className="text-white">🏪</Text></View>
         </Card>
-        <Card className="bg-brand-light border-0">
-          <Text className="font-extrabold text-base text-right">هل القطعة مناسبة لعربيتك؟</Text>
-          <Text className="text-slate-600 text-sm text-right">راجع رقم القطعة مع البائع</Text>
+        <Card className="bg-brand-light border-brand-light">
+          <View className="flex-row items-center">
+            <Text className="text-brand text-2xl">‹</Text>
+            <View className="flex-1 mx-3"><Text className="font-extrabold text-base text-right">هل القطعة مناسبة لعربيتك؟</Text><Text className="text-slate-600 text-sm text-right">راجع رقم القطعة مع البائع</Text></View>
+            <Text className="text-3xl">🚘</Text>
+          </View>
           <Pressable accessibilityRole="button" accessibilityLabel="اختر عربيتك" onPress={() => go(user ? "vehicle" : "phone")} className="bg-white border border-brand rounded-xl py-3 mt-3 items-center"><Text className="text-brand font-extrabold">🚘 {vehicles.length ? "غيّر عربيتك" : "اختر عربيتك"}</Text></Pressable>
         </Card>
         <Card className="flex-row items-center justify-between"><Text className="font-bold">جديد</Text><Text className="text-slate-500">حالة القطعة ⚙</Text></Card>

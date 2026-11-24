@@ -19,9 +19,9 @@ export function Cta({ title, onPress, disabled, outline, soft, testID }: { title
   );
 }
 
-export function Header({ title, subtitle, back, onBack, count, onCart, tall }: { title?: string; subtitle?: string; back?: boolean; onBack?: () => void; count?: number; onCart?: () => void; tall?: boolean }) {
+export function Header({ title, subtitle, back, onBack, count, onCart, tall, small }: { small?: boolean; title?: string; subtitle?: string; back?: boolean; onBack?: () => void; count?: number; onCart?: () => void; tall?: boolean }) {
   return (
-    <View className={`bg-brand px-4 ${tall ? "pb-6" : "pb-4"} pt-3`} style={tall ? { borderBottomLeftRadius: 28, borderBottomRightRadius: 28 } : undefined}>
+    <View className={`bg-brand px-4 ${tall ? "pb-6" : small ? "pb-3" : "pb-4"} pt-3`} style={tall ? { borderBottomLeftRadius: 28, borderBottomRightRadius: 28 } : undefined}>
       <View className="flex-row items-center justify-between h-12">
         {back ? (
           <Pressable accessibilityRole="button" accessibilityLabel="رجوع" onPress={onBack} className="w-10 h-10 items-center justify-center">
@@ -36,14 +36,14 @@ export function Header({ title, subtitle, back, onBack, count, onCart, tall }: {
           </Pressable>
         ) : <View className="w-10" />}
       </View>
-      {!!title && <Text className="text-white text-2xl font-extrabold text-center mt-1">{title}</Text>}
+      {!!title && <Text className={small ? "text-white text-lg font-extrabold text-center -mt-2" : "text-white text-2xl font-extrabold text-center mt-1"}>{title}</Text>}
       {!!subtitle && <Text className="text-white/90 text-sm text-center mt-1">{subtitle}</Text>}
     </View>
   );
 }
 
 export function Card({ children, className = "", onPress }: { children: React.ReactNode; className?: string; onPress?: () => void }) {
-  const cls = `bg-white rounded-2xl border border-slate-200 p-3 mb-3 ${className}`;
+  const cls = `${/\bbg-/.test(className) ? "" : "bg-white "}rounded-2xl border ${/\bborder-/.test(className) ? "" : "border-slate-200 "}p-3 mb-3 ${className}`;
   return onPress ? <Pressable accessibilityRole="button" onPress={onPress} className={cls}>{children}</Pressable> : <View className={cls}>{children}</View>;
 }
 
