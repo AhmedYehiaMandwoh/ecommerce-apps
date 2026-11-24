@@ -374,8 +374,8 @@
     },
     {
       "path": "src/screens/AccountScreen.tsx",
-      "bytes": 2634,
-      "sha256": "1daf787ee2b9e80d43780c592d0800794d2eb92991cf5d662d73c30d703f8d5f"
+      "bytes": 2875,
+      "sha256": "1d9014d8d458ab26363ca01cf0e46c5e68e23ca1eb64d3e8f0319bb7b77cd2d2"
     },
     {
       "path": "src/screens/AddAddressScreen.tsx",
