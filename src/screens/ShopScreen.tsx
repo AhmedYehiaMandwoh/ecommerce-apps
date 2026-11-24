@@ -23,7 +23,7 @@ export function ShopScreen({ c }: { c: any }) {
         <View className="bg-white rounded-full h-11 mt-1 px-4 justify-center"><Text className="text-right text-slate-400">ابحث باسم القطعة أو رقمها 🔍</Text></View>
       </View>
       <Image source={shopPhoto(n)} style={{ width: "100%", height: 130, resizeMode: "cover" }} />
-      <View className="flex-row-reverse items-center px-4 -mt-7">
+      <View className="flex-row-reverse items-center px-4 -mt-7" style={{ zIndex: 2, position: "relative" }}>
         <View className="w-20 h-20 rounded-full bg-orange-50 border-4 border-white items-center justify-center"><Text className="text-4xl">🏪</Text></View>
         <View className="mr-3 mt-6 items-end"><Text className="text-2xl font-extrabold">{s?.name || "المحل"}</Text><Text className="text-slate-500">قطع غيار وصيانة</Text></View>
       </View>

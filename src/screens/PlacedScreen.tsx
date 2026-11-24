@@ -11,7 +11,7 @@ export function PlacedScreen({ c }: { c: any }) {
     <View className="bg-white flex-1" style={{ minHeight: 760 }}>
       <Header title="تم استلام طلبك" />
       <View className="p-3">
-        <Image source={require("../../assets/ref/confirm.png")} style={{ width: "100%", height: 190, resizeMode: "contain" }} />
+        <View style={{ width: "100%", height: 176, overflow: "hidden" }}><Image source={require("../../assets/ref/confirm.png")} style={{ width: "100%", height: 190, resizeMode: "contain" }} /></View>
         <Text className="text-3xl font-extrabold text-center mt-2">تم استلام طلبك</Text>
         <Text className="text-accent text-xl font-extrabold text-center">طلب تجريبي</Text>
         <Text className="text-center text-slate-600 mt-1">رقم الطلب: {lastPlacedOrder.id.slice(0, 8)}</Text>

@@ -14,7 +14,7 @@ export function TrackScreen({ c }: { c: any }) {
     <View className="bg-white flex-1" style={{ minHeight: 760 }}>
       <Header back onBack={back} title="تتبع الطلب" onCart={() => go("cart")} count={count} />
       <View className="p-3">
-        <Image source={require("../../assets/ref/track-map.png")} style={{ width: "100%", height: 150, resizeMode: "cover", borderRadius: 14 }} />
+        <View><Image source={require("../../assets/ref/track-map.png")} style={{ width: "100%", height: 150, resizeMode: "cover", borderRadius: 14 }} /><Text className="absolute bottom-2 left-2 bg-white/90 text-slate-700 text-xs px-2 py-1 rounded-lg">رسم توضيحي ثابت، ليس تتبعًا مباشرًا</Text></View>
         <View className="flex-row items-center bg-brand-light rounded-2xl p-3 my-3">
           <View className="flex-1 items-end"><Text className="text-xl font-extrabold">{statuses[o.status]}</Text><Text className="text-slate-500 text-xs">حالة توضيحية • #{o.id.slice(0, 8)}</Text></View>
           <Text className="text-3xl mr-3">🚚</Text>
