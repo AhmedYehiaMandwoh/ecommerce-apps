@@ -284,13 +284,13 @@
     },
     {
       "path": "package.json",
-      "bytes": 1054,
-      "sha256": "745c024f273b5f2ccb9de047c48a2514f5b0a719fe05d89c15f7cd948db785c4"
+      "bytes": 1113,
+      "sha256": "9c8a3af30ce05c39077c2b59cef695c4aac3769ca401619691a7b1e6a5e9211c"
     },
     {
       "path": "pnpm-lock.yaml",
-      "bytes": 233759,
-      "sha256": "ddecfcc92a94da07b8020a4d06b59ccae850be765943586994945024ef3ab0b1"
+      "bytes": 234438,
+      "sha256": "01a883b62628e3126156200f264d5742cff852c3d7aee9c39327dbd5c5791cdf"
     },
     {
       "path": "pnpm-workspace.yaml",
@@ -301,6 +301,11 @@
       "path": "scripts/mobile-test.mjs",
       "bytes": 7152,
       "sha256": "b87813e0aa1e4f99b0505736e0dcbfa92f13784d448408ad1f239a809ed0395a"
+    },
+    {
+      "path": "src/nativefont.ts",
+      "bytes": 1383,
+      "sha256": "4d9221fd7e52e0c5f86aafa9fd8ea2da8422346ede4dd4f2774f74e994b5ae5f"
     },
     {
       "path": "src/screens/AccountScreen.tsx",
@@ -324,8 +329,8 @@
     },
     {
       "path": "src/screens/CheckoutScreen.tsx",
-      "bytes": 5087,
-      "sha256": "805f72189d090c01d9d2db3817852eca49e8f024bb26d8f9b1753fb151b10da7"
+      "bytes": 5031,
+      "sha256": "48a8430df81797b47c26507a6b2ac3d5c2089653e610eb79be1fd0af7689f503"
     },
     {
       "path": "src/screens/EmailLoginScreen.tsx",
@@ -349,8 +354,8 @@
     },
     {
       "path": "src/screens/OrdersScreen.tsx",
-      "bytes": 3412,
-      "sha256": "43e0385a9c6948ea6c05185ffe3e54085347d7fcc7c965e7e93fb2de70dc7e91"
+      "bytes": 3410,
+      "sha256": "03c8a6845a12af4b2ade8e533c0db8a1cb48065a5209c81c350c49b0799c50c3"
     },
     {
       "path": "src/screens/PaymentScreen.tsx",

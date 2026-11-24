@@ -22,8 +22,8 @@ export function CheckoutScreen({ c }: { c: any }) {
         <Text className="font-extrabold text-right mb-2">المنتجات حسب كل محل</Text>
         {groups.map((g) => (
           <Card key={g.shopId}>
-            <View className="flex-row items-center justify-between mb-2"><View className="flex-row flex-1 ml-3">{g.items.slice(0, 4).map((i: any) => <Image key={i.offerId} source={img(i.image)} style={{ flex: 1, aspectRatio: 1, maxWidth: 74, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 10, marginRight: 4 }} />)}</View>
-              <View className="flex-row items-center"><Text className="font-extrabold ml-2">{g.name}</Text><View className="w-9 h-9 rounded-xl bg-accent items-center justify-center"><Text className="text-white">🏪</Text></View></View></View>
+            <View className="flex-row items-center justify-end mb-2"><Text className="font-extrabold ml-2">{g.name}</Text><View className="w-10 h-10 rounded-xl bg-accent items-center justify-center"><Text className="text-white text-lg">🏪</Text></View></View>
+            <View className="flex-row mb-2" style={{ gap: 6 }}>{g.items.slice(0, 4).map((i: any) => <Image key={i.offerId} source={img(i.image)} style={{ width: "23.5%", aspectRatio: 1, resizeMode: "cover", backgroundColor: "#f3eee8", borderRadius: 10 }} />)}</View>
             <View className="flex-row items-center bg-brand-light rounded-xl p-2"><Text className="text-slate-400 text-xl">‹</Text><View className="flex-1 mx-2 items-end"><Text className="font-bold">خيارات التوصيل</Text><Text className="text-slate-500 text-xs">{quote ? "محسوب حسب المنطقة" : "تحدد بعد اختيار المنطقة"}</Text></View><Text>🚚</Text></View>
           </Card>
         ))}
