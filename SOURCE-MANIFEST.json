@@ -284,8 +284,8 @@
     },
     {
       "path": "scripts/mobile-test.mjs",
-      "bytes": 5739,
-      "sha256": "5620af0a57724d40efb500ffbf9f72b8d2fbc6d8ae20b4b560418e29b0b83bbc"
+      "bytes": 6297,
+      "sha256": "0ee89098677af5c86f6431a1a07a09dfdb293d7e5964bea13eb075b1a3332d14"
     },
     {
       "path": "src/screens/AccountScreen.tsx",
@@ -344,8 +344,8 @@
     },
     {
       "path": "src/screens/PhoneLoginScreen.tsx",
-      "bytes": 2870,
-      "sha256": "0a15c77c807db5fc0da1532bb66d772084500682e20e0bba5b2250cf80643ec3"
+      "bytes": 2976,
+      "sha256": "75b2839e8d7742b6924009c5224af0e794659cb1648e77aed7c36e01d5b84654"
     },
     {
       "path": "src/screens/PlacedScreen.tsx",
@@ -359,8 +359,8 @@
     },
     {
       "path": "src/screens/SearchScreen.tsx",
-      "bytes": 5653,
-      "sha256": "ea49b4f46017d163c8fbf713ef8015e530ce5a07702a180c99e6767a96b50156"
+      "bytes": 7952,
+      "sha256": "bfb8131ba70d955a7b7b93139ccbfc0adfb60bb6dbf628e4f15f9ea6dc968707"
     },
     {
       "path": "src/screens/SettingsScreen.tsx",

@@ -17,6 +17,7 @@ await p.locator('[role=button][aria-label="مجموعة ديسك وفرامل ت
 await click('أضف للسلة 🛒');await p.waitForTimeout(1200);await snap('12-cart');
 await click('المحلات');await snap('09-shops');
 await p.locator('[role=button]').filter({hasText:'قطع غيار وصيانة'}).first().click();await p.waitForTimeout(1500);await snap('10-shop');
+{const hit=await p.evaluate(()=>[...document.querySelectorAll('[role=button][aria-label^="أضف "]')].map(e=>{e.scrollIntoView({block:'center'});const r=e.getBoundingClientRect();const t=document.elementFromPoint(r.x+r.width/2,r.y+r.height/2);return {l:e.getAttribute('aria-label'),ok:!!t&&e.contains(t)}}));if(!hit.length)errs.push('shop page has no add buttons');for(const h of hit)if(!h.ok)errs.push('shop add button covered by card overlay: '+h.l);console.log('shop add-button hit-target check',hit.length,'buttons',hit.every(h=>h.ok)?'ok':'COVERED');}
 await click('حسابي');await click('عناويني');await p.waitForTimeout(1000);await snap('05-addresses-empty');
 await click('إضافة عنوان جديد');await p.getByLabel('المدينة').fill('القاهرة');await p.getByLabel('المنطقة').fill('مدينة نصر');await p.getByLabel('الشارع').fill('شارع 9');await p.getByLabel('تفاصيل العنوان').fill('عمارة 5 شقة 3');await p.getByLabel('رقم التواصل').fill(phoneNo);await snap('06-add-address');
 await click('حفظ العنوان');await p.waitForTimeout(2000);await snap('05-addresses');

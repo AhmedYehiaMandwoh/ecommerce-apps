@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, Image, Pressable, TextInput, ScrollView } from "react-native";
 import { Chip } from "../ui/kit";
 import { img } from "../ui/helpers";
@@ -6,7 +6,17 @@ import { money } from "../shared";
 
 export function SearchScreen({ c }: { c: any }) {
   const { products, search, setSearch, categories, category, shop, shops, back, load, add, setSelected, go, page, pages, vehicles, fitmentVehicle, setFitmentVehicle, browse, setShop, setCategory } = c;
-  const list = products.filter((p: any) => p.offers.some((o: any) => !shop || o.shopId === shop));
+  const [open, setOpen] = useState("");
+  const [brand, setBrand] = useState("");
+  const [sort, setSort] = useState("");
+  const brands: string[] = Array.from(new Set(products.map((p: any) => p.brand).filter(Boolean)));
+  const bestPrice = (p: any) => Math.min(...p.offers.filter((o: any) => !shop || o.shopId === shop).map((o: any) => o.price));
+  const list = products.filter((p: any) => p.offers.some((o: any) => !shop || o.shopId === shop) && (!brand || p.brand === brand)).sort((a: any, b: any) => (sort === "asc" ? bestPrice(a) - bestPrice(b) : sort === "desc" ? bestPrice(b) - bestPrice(a) : 0));
+  const pills: [string, string, [string, string][], (v: string) => void][] = [
+    ["brand", brand || "الماركة", [["", "كل الماركات"], ...brands.map((b): [string, string] => [b, b])], setBrand],
+    ["sort", sort === "asc" ? "الأرخص أولًا" : sort === "desc" ? "الأغلى أولًا" : "السعر", [["", "بدون ترتيب"], ["asc", "الأرخص أولًا"], ["desc", "الأغلى أولًا"]], setSort],
+    ["shop", shop ? shops.find((x: any) => x.id === shop)?.name || "المحل" : "المحل", [["", "كل المحلات"], ...shops.map((x: any): [string, string] => [x.id, x.name])], (v: string) => { setShop(v); browse(search, category, v); }],
+  ];
   return (
     <View className="bg-white flex-1">
       <View className="bg-brand px-4 pt-3 pb-4">
@@ -20,9 +30,24 @@ export function SearchScreen({ c }: { c: any }) {
           <TextInput accessibilityLabel="البحث في المنتجات" value={search} onChangeText={setSearch} onSubmitEditing={() => load(category)} placeholder="ابحث باسم القطعة أو رقمها" placeholderTextColor="#94a3b8" className="flex-1 text-right text-base" />
           <Pressable accessibilityRole="button" accessibilityLabel="بحث" onPress={() => load(category)}><Text className="text-lg ml-2">🔍</Text></Pressable>
         </View>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} className="mt-3">
+        <View className="flex-row-reverse mt-3 justify-between">
+          {pills.map(([k, label, opts, set]) => (
+            <Pressable key={k} accessibilityRole="button" accessibilityLabel={"فلتر " + label} onPress={() => setOpen(open === k ? "" : k)} className="flex-row items-center justify-center bg-white rounded-full px-4 h-10" style={{ width: "32%" }}>
+              <Text className="text-brand-dark font-bold text-sm" numberOfLines={1}>{label}</Text>
+              <Text className="text-brand-dark mr-1">⌄</Text>
+            </Pressable>
+          ))}
+        </View>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} className="mt-2" style={{ flexGrow: 0 }}>
           {["", ...categories].map((k: string) => <Chip key={k || "all"} title={k || "كل الأقسام"} active={category === k} onPress={() => { setCategory(k); load(k); }} />)}
         </ScrollView>
+        {!!open && (
+          <View className="bg-white rounded-2xl mt-2 p-1">
+            {pills.find((x) => x[0] === open)![2].map(([v, t]) => (
+              <Pressable key={v || "none"} accessibilityRole="button" accessibilityLabel={"خيار " + t} onPress={() => { pills.find((x) => x[0] === open)![3](v); setOpen(""); }} className="px-4 py-3"><Text className="text-right text-slate-800 font-bold">{t}</Text></Pressable>
+            ))}
+          </View>
+        )}
       </View>
       {vehicles.length > 0 && (
         <View className="px-4 pt-3 flex-row-reverse items-center flex-wrap">
