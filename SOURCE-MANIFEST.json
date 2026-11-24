@@ -98,6 +98,71 @@
       "sha256": "e423e501d1bd0425fbbf953ab54fe3775ec7f59a7f6872c7c5410a3d37a1c4c3"
     },
     {
+      "path": "assets/icons/car.png",
+      "bytes": 4541,
+      "sha256": "4b4418cb650293813addab2cb4c5553adb638cc37dcd507deb909d63ef96d8e6"
+    },
+    {
+      "path": "assets/icons/f-doc.png",
+      "bytes": 4096,
+      "sha256": "0f418919e368b384425121e35267d68da8665a01cd3a74fb79468b3eaa1c4da2"
+    },
+    {
+      "path": "assets/icons/f-landmark.png",
+      "bytes": 5543,
+      "sha256": "757e7f541009d66e71efd8acf52fde6ea150572c8cb5fcca4d086ccf5b0f116e"
+    },
+    {
+      "path": "assets/icons/f-map.png",
+      "bytes": 4237,
+      "sha256": "3a2dbb048fb94223484551f636ae4448a7e29c4a2480c9f0ecf8806eb9f10e20"
+    },
+    {
+      "path": "assets/icons/f-pin.png",
+      "bytes": 3896,
+      "sha256": "dc4690deda1ca5c62a84e367bbebe19159643573dab8a1b29e3d64c71c871c08"
+    },
+    {
+      "path": "assets/icons/f-road.png",
+      "bytes": 3407,
+      "sha256": "452934c8c03890d3dd24e3c3d4d0a5d466081acefa134b76c2d71a21d182174c"
+    },
+    {
+      "path": "assets/icons/pin.png",
+      "bytes": 5147,
+      "sha256": "36101326540db2f291fe6ef987b73883996ba332c4078656e40c4989dc4b8236"
+    },
+    {
+      "path": "assets/icons/shop.png",
+      "bytes": 1225,
+      "sha256": "995f63a248306d7b6e42235f0efe91fc43aef5f7f959142e7dc67ce3e2307226"
+    },
+    {
+      "path": "assets/icons/ticket.png",
+      "bytes": 3526,
+      "sha256": "b5f69ad4063e5c9ac5f1f65eb2c83ab2e591297fc491da62a1de9a809a6ecd48"
+    },
+    {
+      "path": "assets/icons/truck.png",
+      "bytes": 4191,
+      "sha256": "2ca1fc08880b4462e42f2403aa72d750e659a43f3a52766bfe1275e0713e1559"
+    },
+    {
+      "path": "assets/icons/v-cal.png",
+      "bytes": 4531,
+      "sha256": "ef9bd90ad31a6cc86f9bb67244a472fe59276096f491639979fe1f2bc290db8a"
+    },
+    {
+      "path": "assets/icons/v-car.png",
+      "bytes": 5402,
+      "sha256": "bd47e5550f9d95fc4b26416ed5db88b751fc20f716ddbc96a0d67b2293b3adfa"
+    },
+    {
+      "path": "assets/icons/v-engine.png",
+      "bytes": 4658,
+      "sha256": "963ab9e694ac0f50c29eeb2390fa4460362f0f8143ee9a481568f7c345477bb4"
+    },
+    {
       "path": "assets/maintenance-parts.png",
       "bytes": 85884,
       "sha256": "0587d562fa76e515fb9938e2446b2256ac826d58c29131dc21f9075a16c0d2e7"
@@ -299,8 +364,8 @@
     },
     {
       "path": "scripts/mobile-test.mjs",
-      "bytes": 7385,
-      "sha256": "64c9039cd2dd2efeef016191f1dc4b422870bbd79dcdfde4d6735148b2a7b718"
+      "bytes": 7368,
+      "sha256": "fea7b6bd3c9aa1afe2d141cc4329ecaa4e3aec5685051cb53cb9c096a696467c"
     },
     {
       "path": "src/nativefont.ts",
@@ -329,8 +394,8 @@
     },
     {
       "path": "src/screens/CheckoutScreen.tsx",
-      "bytes": 5566,
-      "sha256": "cb6a4eabd7e77d14d5bc45c7d8bd1e8e3bebde87a573f5a3bae0fa0bd9c0258f"
+      "bytes": 5502,
+      "sha256": "e7a097e413880c9b631ec5f514f58894d366e29752145fb5c3f211a544f06981"
     },
     {
       "path": "src/screens/EmailLoginScreen.tsx",

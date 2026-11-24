@@ -48,10 +48,7 @@ export function CheckoutScreen({ c }: { c: any }) {
         </Card>
         <Pressable accessibilityRole="button" accessibilityLabel="أضف كود خصم" onPress={() => setCodeOpen(!codeOpen)} className="flex-row items-center justify-between bg-slate-50 rounded-xl p-2 mb-2"><Text className="text-slate-500 text-xl">{codeOpen || discountCode ? "⌄" : "‹"}</Text><Text className="text-slate-600 font-bold">أضف كود خصم</Text><View className="ml-2"><Ico n="ticket" size={24} color="#475569" /></View></Pressable>
         {(codeOpen || !!discountCode) && <Input label="كود الخصم" value={discountCode} onChange={setDiscountCode} placeholder="أدخل كود الخصم (اختياري)" />}
-        <View className="flex-row" style={{ gap: 8 }}>
-          <View className="flex-1"><Cta title="راجع التكلفة النهائية" soft disabled={!addressId || !deliveryAreaId || busy} onPress={reviewQuote} /></View>
-          <View className="flex-1"><Cta title="متابعة ‹" disabled={!addressId || !deliveryAreaId || !quote} onPress={() => go("payment")} /></View>
-        </View>
+        {(() => { const needsReview = !quote || (discountCode || "").trim().toUpperCase() !== (quote.discountCode || "").toUpperCase(); return <Cta title={needsReview ? "راجع التكلفة ‹" : "متابعة ‹"} disabled={!addressId || !deliveryAreaId || busy} onPress={needsReview ? reviewQuote : () => go("payment")} />; })()}
       </View>
     </View>
   );
