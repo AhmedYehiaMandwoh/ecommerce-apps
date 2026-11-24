@@ -24,8 +24,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 962,
-      "sha256": "504d2a28da61f537fbdae776412ab1686346f25b9a540eb1e2d164ef0e62ca7a"
+      "bytes": 1739,
+      "sha256": "2504429639419dee7376597c5ccf5e42106d44420015eb7a70e96c7977e93d6f"
     },
     {
       "path": "app.json",
@@ -284,8 +284,8 @@
     },
     {
       "path": "scripts/mobile-test.mjs",
-      "bytes": 4608,
-      "sha256": "97b77137c717dabdc07d0d4390c33c61b8cbf1e4b9687f639ed534c3df448980"
+      "bytes": 5739,
+      "sha256": "5620af0a57724d40efb500ffbf9f72b8d2fbc6d8ae20b4b560418e29b0b83bbc"
     },
     {
       "path": "src/screens/AccountScreen.tsx",

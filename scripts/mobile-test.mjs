@@ -27,6 +27,15 @@ await click('مراجعة الطلب وتأكيده ‹');await p.waitForTimeout
 await click('تتبع الطلب 🚚');await p.waitForTimeout(1500);await snap('17-track');
 await click('طلباتي');await p.waitForTimeout(1500);await snap('16-orders');
 await click('الرئيسية');await click('اختر عربيتك');await p.waitForTimeout(800);if(await p.getByRole('button',{name:'اختر الماركة'}).count()){await click('اختر الماركة');await click('Toyota');await click('اختر الموديل');await click('Corolla');await click('اختر سنة الصنع');await click('2020');await click('اختر المحرك');await click('1.6L');await snap('04-vehicle')}else{await snap('04-vehicle-fail');errs.push('vehicle selectors not shown')};await click('حسابي');await click('المساعدة');await snap('18-support');
+// Support ticket with a real image attachment through the UI (file chooser -> preview -> send -> shown on ticket).
+{const msg='اختبار مرفق صورة '+Date.now();await p.getByPlaceholder('اكتب رسالتك هنا...').fill(msg);
+ const [fc]=await Promise.all([p.waitForEvent('filechooser',{timeout:10000}),click('أضف صورة')]);await fc.setFiles(new URL('../assets/braking-parts.png',import.meta.url).pathname);await p.waitForTimeout(800);
+ if(!(await p.getByText('تم اختيار صورة').count()))errs.push('support image not selected');
+ await snap('18-support-image-selected');await click('إرسال الطلب');await p.waitForTimeout(1500);
+ const shown=await p.getByText(msg).count();const imgs=await p.evaluate(m=>{const t=[...document.querySelectorAll('div')].filter(d=>d.textContent&&d.textContent.includes(m)&&d.querySelector('img'));return t.length},msg);
+ if(!shown)errs.push('support ticket not shown after send');else if(!imgs)errs.push('support ticket shows no attachment image');
+ await snap('18-support-image-sent');console.log('support image ticket shown',shown>0,'with image',imgs>0);}
+
 await b.close();
 if(errs.length){console.log('FAIL browser errors:',errs.slice(0,8));process.exit(1)}
 console.log('PASS mobile customer flow (phone login, browse, product, cart, address, checkout, cash payment, order placed, tracking, orders, support). No browser errors.');
