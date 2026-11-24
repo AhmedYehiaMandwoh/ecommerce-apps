@@ -17,7 +17,7 @@ export function OrdersScreen({ c }: { c: any }) {
       <View className="px-4 mt-1">
         <View className="flex-row bg-slate-100 rounded-full p-1">
           {([["past", "السابقة"], ["now", "الحالية"]] as const).map(([k, t]) => (
-            <Pressable key={k} accessibilityRole="button" accessibilityLabel={t} onPress={() => setTab(k)} className={`flex-1 items-center py-3 rounded-full ${tab === k ? "bg-brand" : ""}`}><Text className={tab === k ? "text-white font-extrabold" : "text-slate-600 font-bold"}>{t}</Text></Pressable>
+            <Pressable key={k} accessibilityRole="button" accessibilityLabel={t} onPress={() => setTab(k)} className={`flex-1 items-center py-2 rounded-full ${tab === k ? "bg-brand" : ""}`}><Text className={tab === k ? "text-white font-extrabold" : "text-slate-600 font-bold"}>{t}</Text></Pressable>
           ))}
         </View>
         {!user && <Cta title="سجّل الدخول لمتابعة طلباتك" onPress={() => go("phone")} />}
@@ -29,7 +29,7 @@ export function OrdersScreen({ c }: { c: any }) {
               <Text className={`px-3 py-1 rounded-lg text-xs font-bold ${tone(o.status)}`}>{statuses[o.status]}</Text>
               <View className="flex-row items-center"><View className="items-end ml-2"><Text className="font-extrabold">{o.shop.name}</Text><Text className="text-slate-500 text-xs">طلب تجريبي</Text><Text className="text-slate-500 text-xs">#{o.id.slice(0, 8)}</Text></View><View className="w-12 h-12 rounded-full bg-accent items-center justify-center"><Ico n="shop" size={26} color="#fff" /></View></View>
             </View>
-            <View className="flex-row justify-start my-2">{o.items.slice(0, 3).map((i: any) => <Image key={i.id} source={img(i.offer?.product?.image)} style={{ width: 96, height: 84, resizeMode: "cover", backgroundColor: "#f3eee8", borderRadius: 10, marginLeft: 4 }} />)}</View>
+            <View className="flex-row justify-start my-2">{o.items.slice(0, 3).map((i: any) => <Image key={i.id} source={img(i.offer?.product?.image)} style={{ width: 72, height: 64, resizeMode: "cover", backgroundColor: "#f3eee8", borderRadius: 10, marginLeft: 4 }} />)}</View>
             <Pressable accessibilityRole="button" accessibilityLabel="عرض التفاصيل" onPress={() => { setDetailId(o.id); go("orderdetail"); }}><Text className="text-brand font-bold text-left">‹ عرض التفاصيل</Text></Pressable>
           </View>
         ))}

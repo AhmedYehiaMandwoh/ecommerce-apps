@@ -9,6 +9,7 @@ export function CheckoutScreen({ c }: { c: any }) {
   const addr = addresses.find((a: any) => a.id === addressId);
   const groups = groupByShop(cart, shops);
   const [codeOpen, setCodeOpen] = React.useState(false);
+  const [areaOpen, setAreaOpen] = React.useState(false);
   return (
     <View className="bg-white flex-1" style={{ minHeight: 760 }}>
       <Header small back onBack={back} title="إتمام الطلب" onCart={() => go("cart")} count={count} />
@@ -20,17 +21,30 @@ export function CheckoutScreen({ c }: { c: any }) {
           <View className="flex-1 mx-3 items-end"><Text className="font-extrabold">اختر عنوان التوصيل</Text><Text className="text-slate-500 text-sm" numberOfLines={1}>{addr ? `${addr.label} - ${addr.city}` : "لم يتم اختيار عنوان"}</Text></View>
           <Ico n="pin" size={26} color="#0751e8" />
           </Pressable>
-        <Text className="font-bold text-right text-slate-600 text-xs mt-1 mb-1">منطقة التوصيل</Text>
-        <View className="flex-row flex-wrap justify-end" style={{ gap: 6 }}>
-          {deliveryAreas.map((a: any) => {
-            const on = deliveryAreaId === a.id;
-            return (
-              <Pressable key={a.id} accessibilityRole="button" accessibilityLabel={`${a.city} ${a.area}`} onPress={() => setDeliveryAreaId(a.id)} className={`flex-row items-center rounded-full px-3 py-1 border ${on ? "border-brand bg-brand-light" : "border-slate-200 bg-slate-50"}`}>
-                <Text className="font-bold text-brand ml-2">{money(a.fee)}</Text><Text className="font-bold text-xs">{a.city} • {a.area}</Text>
+        {(() => {
+          const sel = deliveryAreas.find((x: any) => x.id === deliveryAreaId);
+          const show = areaOpen || !sel;
+          return (
+            <>
+              <Pressable accessibilityRole="button" accessibilityLabel="منطقة التوصيل" onPress={() => setAreaOpen(!areaOpen)} className="flex-row items-center justify-between mt-1 px-1">
+                <Text className="text-slate-500 text-sm">{show ? "⌃" : "⌄"}</Text>
+                <Text className="font-bold text-slate-700 text-sm">منطقة التوصيل: {sel ? `${sel.city} • ${sel.area} (${money(sel.fee)})` : "اختر المنطقة"}</Text>
               </Pressable>
-            );
-          })}
-        </View>
+              {show && (
+                <View className="flex-row flex-wrap justify-end mt-1" style={{ gap: 6 }}>
+                  {deliveryAreas.map((a: any) => {
+                    const on = deliveryAreaId === a.id;
+                    return (
+                      <Pressable key={a.id} accessibilityRole="button" accessibilityLabel={`${a.city} ${a.area}`} onPress={() => { setDeliveryAreaId(a.id); setAreaOpen(false); }} className={`flex-row items-center rounded-full px-3 py-1 border ${on ? "border-brand bg-brand-light" : "border-slate-200 bg-slate-50"}`}>
+                        <Text className="font-bold text-brand ml-2">{money(a.fee)}</Text><Text className="font-bold text-xs">{a.city} • {a.area}</Text>
+                      </Pressable>
+                    );
+                  })}
+                </View>
+              )}
+            </>
+          );
+        })()}
         </Card>
         <Text className="font-extrabold text-right mb-2">المنتجات حسب كل محل</Text>
         {groups.map((g) => (

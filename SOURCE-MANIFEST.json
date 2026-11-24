@@ -393,6 +393,11 @@
       "sha256": "0cae2ab16a3aa16bed51dbfe286f6db518c4cc40f22938b96c48dd03458daf8d"
     },
     {
+      "path": "scripts/capture-matched.mjs",
+      "bytes": 4084,
+      "sha256": "6c27695eeaf28302b4b2941117a61a8dd90e7c14fb15e226e25a292766eefd13"
+    },
+    {
       "path": "scripts/mobile-test.mjs",
       "bytes": 7368,
       "sha256": "fea7b6bd3c9aa1afe2d141cc4329ecaa4e3aec5685051cb53cb9c096a696467c"
@@ -419,13 +424,13 @@
     },
     {
       "path": "src/screens/CartScreen.tsx",
-      "bytes": 4316,
-      "sha256": "5378934e7812fde71ad4f93ea9d97bca9271dcc6afdf36be48de0b4b8db89d86"
+      "bytes": 4337,
+      "sha256": "57fd973908f2e4929d6d0beb84501d0d734b67d8efffd99e12639f31d98a57c7"
     },
     {
       "path": "src/screens/CheckoutScreen.tsx",
-      "bytes": 5502,
-      "sha256": "9cbf193610c97c2ba9120fc8ae2c05007757dcc8e9a1fe1bb7ab3d5636288d1e"
+      "bytes": 6313,
+      "sha256": "fc0f0ac2f2b4483fe4c5b8e15198deb6e204f7fb7ed91163296edb8051201d16"
     },
     {
       "path": "src/screens/EmailLoginScreen.tsx",
@@ -450,7 +455,7 @@
     {
       "path": "src/screens/OrdersScreen.tsx",
       "bytes": 3407,
-      "sha256": "97ee44eeba93df08e399f36ae8b73ea17094eb46e6184fe40af1c81f45f31eb7"
+      "sha256": "c8149b0590dc258deffeea3b14f29fa68f09f166df91748bdb521a0937175a31"
     },
     {
       "path": "src/screens/PaymentScreen.tsx",
@@ -490,7 +495,7 @@
     {
       "path": "src/screens/ShopsScreen.tsx",
       "bytes": 2604,
-      "sha256": "395979d5394e7143acbba3c7ef5d3478c8c1a549b379dfe8714bacb857eb7070"
+      "sha256": "3332368ffda78b6102f938b7c94f023f8d65f15eb03cb19f313cb330fbea2165"
     },
     {
       "path": "src/screens/SplashScreen.tsx",
@@ -504,13 +509,13 @@
     },
     {
       "path": "src/screens/TrackScreen.tsx",
-      "bytes": 4172,
-      "sha256": "cc5705eb1fa6833207c74917ae68aa471b431c20309cb7f88c921bc9d397d397"
+      "bytes": 4171,
+      "sha256": "c027368f42cd1c08ca94be9732ae32815272d8ab223ec273ee2bd2ce991bc5a6"
     },
     {
       "path": "src/screens/VehicleScreen.tsx",
-      "bytes": 5016,
-      "sha256": "86024d3c92b837aa4349654f28e1bfb203a4d5580ccc7fd55eab6f2e46496085"
+      "bytes": 5018,
+      "sha256": "8bd0324195c58301e247cd6f59dc064eb596182504b22f2f1ced03131723c32d"
     },
     {
       "path": "src/shared.ts",

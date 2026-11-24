@@ -13,11 +13,11 @@ export function TrackScreen({ c }: { c: any }) {
   return (
     <View className="bg-white flex-1" style={{ minHeight: 760 }}>
       <Header back onBack={back} title="تتبع الطلب" onCart={() => go("cart")} count={count} />
-      <View className="p-3" style={{ minHeight: 650 }}>
-        <View><Image source={require("../../assets/ref/track-map.png")} style={{ width: "100%", height: 210, resizeMode: "cover", borderRadius: 16 }} /><Text className="absolute bottom-2 left-2 bg-white/90 text-slate-700 text-xs px-2 py-1 rounded-lg">رسم توضيحي ثابت، ليس تتبعًا مباشرًا</Text></View>
-        <View className="flex-row items-center bg-brand-light rounded-2xl p-4 my-3">
-          <View className="w-16 h-16 rounded-full bg-white items-center justify-center"><Ico n="truck" size={38} color="#0751e8" /></View>
-          <View className="flex-1 items-end"><Text className="text-2xl font-extrabold text-brand-dark" style={{ color: "#0b3fb8" }}>{statuses[o.status]}</Text><Text className="text-slate-600 text-sm">حالة توضيحية • #{o.id.slice(0, 8)}</Text></View>
+      <View className="p-3" style={{ minHeight: 560 }}>
+        <View><Image source={require("../../assets/ref/track-map.png")} style={{ width: "100%", height: 150, resizeMode: "cover", borderRadius: 16 }} /><Text className="absolute bottom-2 left-2 bg-white/90 text-slate-700 text-xs px-2 py-1 rounded-lg">رسم توضيحي ثابت، ليس تتبعًا مباشرًا</Text></View>
+        <View className="flex-row items-center bg-brand-light rounded-2xl p-3 my-2">
+          <View className="w-14 h-14 rounded-full bg-white items-center justify-center"><Ico n="truck" size={38} color="#0751e8" /></View>
+          <View className="flex-1 items-end"><Text className="text-xl font-extrabold text-brand-dark" style={{ color: "#0b3fb8" }}>{statuses[o.status]}</Text><Text className="text-slate-600 text-sm">حالة توضيحية • #{o.id.slice(0, 8)}</Text></View>
         </View>
         <View className="mb-4" style={{ paddingTop: 2 }}>
           <View style={{ position: "absolute", top: 13, left: "12%", right: "12%", height: 3, backgroundColor: "#cbd5e1" }} />

@@ -49,9 +49,9 @@ export function CartScreen({ c }: { c: any }) {
         ))}
         {!!cart.length && (
           <>
-            <Card><View className="flex-row justify-between"><Text className="text-xl font-extrabold">{money(subtotal)}</Text><Text className="text-slate-600">إجمالي المنتجات</Text></View>
+            <Card className="p-2 mb-2"><View className="flex-row justify-between"><Text className="text-xl font-extrabold">{money(subtotal)}</Text><Text className="text-slate-600">إجمالي المنتجات</Text></View>
               <View className="flex-row justify-between mt-2"><View className="flex-row items-center"><Text className="font-bold text-slate-700">يحدد عند إتمام الطلب</Text><Text className="text-slate-500 text-lg ml-1">🚚</Text></View><Text className="text-slate-600">مصاريف التوصيل</Text></View></Card>
-            {groups.length > 1 && <Text className="bg-amber-100 text-amber-900 rounded-xl p-3 text-right mb-2 font-semibold">قد تصل منتجات كل محل في شحنة منفصلة.</Text>}
+            {groups.length > 1 && <Text className="bg-amber-100 text-amber-900 rounded-xl p-2 text-right mb-1 font-semibold">قد تصل منتجات كل محل في شحنة منفصلة.</Text>}
             <Cta title="متابعة الطلب" onPress={() => go(user ? "checkout" : "phone")} />
           </>
         )}
