@@ -17,7 +17,10 @@ export function AccountScreen({ c }: { c: any }) {
   const { user, go } = c;
   return (
     <View className="bg-white flex-1 px-4 pt-4" style={{ minHeight: 700 }}>
-      <Text className="text-xl font-extrabold text-center">حسابي</Text>
+      <View className="flex-row items-center justify-center">
+        <Pressable accessibilityRole="button" accessibilityLabel="إعدادات التطبيق" onPress={() => go("settings")} style={{ position: "absolute", right: 4 }}><Text style={{ fontSize: 28, color: "#0f172a" }}>⚙︎</Text></Pressable>
+        <Text className="text-xl font-extrabold text-center">حسابي</Text>
+      </View>
       <View className="items-center my-4">
         <Image accessibilityElementsHidden source={require("../../assets/acct-avatar.png")} style={{ width: 120, height: 120 }} />
         <Text className="text-xl font-extrabold mt-3">{user ? user.name : "ضيف"}</Text>

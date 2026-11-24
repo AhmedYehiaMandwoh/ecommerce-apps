@@ -14,8 +14,8 @@
     },
     {
       "path": "App.tsx",
-      "bytes": 22195,
-      "sha256": "42646021dd7a29346e8db6e14033e1a2f0ccb1457a27544b8be09b5119659626"
+      "bytes": 22200,
+      "sha256": "0673ca61131a5f73b49587a3ad1d1926ef60a7d682d9bcd430e25d4b88151152"
     },
     {
       "path": "HANDOVER.md",
@@ -299,8 +299,8 @@
     },
     {
       "path": "assets/ref/shop-banner.png",
-      "bytes": 193515,
-      "sha256": "faa0c523ca83ec6d0db86ec16c2ceba5864dc6084c826508e2273b1a61018608"
+      "bytes": 124016,
+      "sha256": "571e0511a255da1c009a2a67887d23b899fcb3a9bfbe39e1bebbe15c7a724e52"
     },
     {
       "path": "assets/ref/shop-world.png",
@@ -404,8 +404,8 @@
     },
     {
       "path": "src/screens/AccountScreen.tsx",
-      "bytes": 2875,
-      "sha256": "1d9014d8d458ab26363ca01cf0e46c5e68e23ca1eb64d3e8f0319bb7b77cd2d2"
+      "bytes": 3199,
+      "sha256": "a62a8ce02f700fcbad91f42fb65ccdc1d7c868d9000a5f145ab00ba9bbfb20b9"
     },
     {
       "path": "src/screens/AddAddressScreen.tsx",
