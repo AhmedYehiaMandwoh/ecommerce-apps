@@ -465,7 +465,7 @@
     {
       "path": "src/screens/PlacedScreen.tsx",
       "bytes": 2740,
-      "sha256": "e09c4d6d867b178b7421d7ee65fd32ba1d772f2d44b0610e31b252cca8276d0a"
+      "sha256": "30bab706fd61a5494a1ad3aea919649e888f83d846f81e52d6690a629e3cc1fd"
     },
     {
       "path": "src/screens/ProductScreen.tsx",
@@ -484,8 +484,8 @@
     },
     {
       "path": "src/screens/ShopScreen.tsx",
-      "bytes": 4507,
-      "sha256": "832706aea510e68928e266c2ca6a52dcc360856a24ff43dc76024c6620821290"
+      "bytes": 4490,
+      "sha256": "8d13e1d3a1702e8774273b602a2ccda9eac0cb4b6d0afa8c6154a0644e3d1b83"
     },
     {
       "path": "src/screens/ShopsScreen.tsx",

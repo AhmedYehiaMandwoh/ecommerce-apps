@@ -25,7 +25,7 @@ export function ShopScreen({ c }: { c: any }) {
       <Image source={shopPhoto(n)} style={{ width: "100%", height: 170, resizeMode: "cover" }} />
       <View className="flex-row items-center px-4 -mt-9" style={{ zIndex: 2, position: "relative" }}>
         <View className="w-24 h-24 rounded-full bg-orange-50 border-4 border-white items-center justify-center"><Ico n="shop" size={52} color="#0b2a5b" /></View>
-        <View className="flex-1 ml-3 mt-8 items-end"><Text className="text-xl font-extrabold text-right" numberOfLines={1}>{s?.name || "المحل"}</Text><Text className="text-slate-500 text-base">قطع غيار وصيانة</Text></View>
+        <View className="flex-1 ml-3 mt-10 items-end"><Text className="text-lg font-extrabold text-right">{s?.name || "المحل"}</Text><Text className="text-slate-500 text-base">قطع غيار وصيانة</Text></View>
       </View>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} className="px-4 mt-3 flex-grow-0">
         {["", ...categories].map((k: string) => <Chip key={k || "all"} title={k || "الكل"} active={category === k} onPress={() => { setCategory(k); load(k); }} />)}

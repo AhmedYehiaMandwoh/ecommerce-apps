@@ -11,8 +11,8 @@ export function PlacedScreen({ c }: { c: any }) {
     <View className="bg-white flex-1" style={{ minHeight: 760 }}>
       <Header title="تم استلام طلبك" tall />
       <View className="p-3">
-        <View style={{ width: "100%", height: 230, overflow: "hidden" }}><Image source={require("../../assets/ref/confirm.png")} style={{ width: "100%", height: 230, resizeMode: "contain" }} /></View>
-        <Text className="text-4xl font-extrabold text-center mt-2">تم استلام طلبك</Text>
+        <View style={{ width: "100%", height: 190, overflow: "hidden" }}><Image source={require("../../assets/ref/confirm.png")} style={{ width: "100%", height: 200, resizeMode: "contain" }} /></View>
+        <Text className="text-3xl font-extrabold text-center mt-2">تم استلام طلبك</Text>
         <Text className="text-accent text-xl font-extrabold text-center">طلب تجريبي</Text>
         <Text className="text-center text-slate-600 mt-1">رقم الطلب: {lastPlacedOrder.id.slice(0, 8)}</Text>
         <Text className="bg-brand-light text-brand rounded-xl p-3 text-center my-3">ⓘ حالة توضيحية وليست عملية شراء. الدفع كاش عند الاستلام.</Text>
@@ -20,7 +20,7 @@ export function PlacedScreen({ c }: { c: any }) {
         {groups.map((g) => (
           <View key={g.shopId} className="flex-row items-center bg-white border border-slate-200 rounded-xl p-2 mb-2">
             <Text className="text-slate-400 text-xl">‹</Text>
-            <View className="flex-row mx-2">{g.items.slice(0, 3).map((i: any) => <Image key={i.offerId} source={img(i.image)} style={{ width: 58, height: 58, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 8, marginRight: 3 }} />)}</View>
+            <View className="flex-row mx-2">{g.items.slice(0, 3).map((i: any) => <Image key={i.offerId} source={img(i.image)} style={{ width: 48, height: 48, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 8, marginRight: 3 }} />)}</View>
             <View className="flex-1 items-end"><Text className="font-extrabold text-lg">{g.name}</Text><Text className="text-slate-500 text-xs">{g.items.reduce((a: number, i: any) => a + i.quantity, 0)} منتجات</Text></View>
             <View className="w-9 h-9 rounded-full bg-accent items-center justify-center mr-1"><Ico n="shop" size={20} color="#fff" /></View>
           </View>
