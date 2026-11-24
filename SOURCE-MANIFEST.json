@@ -519,8 +519,8 @@
     },
     {
       "path": "src/screens/VehicleScreen.tsx",
-      "bytes": 4988,
-      "sha256": "5e04dd258af2f1d0a1133f38e228e678746d825af050dd61ce5e92f9238f4b6f"
+      "bytes": 4990,
+      "sha256": "b9207d79d911894598ddf1f776889c2b8e978da6d3f8a40602d0ec010c33aa2e"
     },
     {
       "path": "src/shared.ts",
