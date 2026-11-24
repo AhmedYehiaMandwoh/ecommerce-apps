@@ -12,7 +12,7 @@ export function VehicleScreen({ c }: { c: any }) {
   return (
     <View className="bg-white flex-1" style={{ minHeight: 700 }}>
       <Header back onBack={back} title="اختار عربيتك" subtitle="راجع بيانات عربيتك عشان تختار القطعة المناسبة." onCart={() => go("cart")} count={count} tall />
-      <Image source={require("../../assets/ref/car.png")} style={{ width: "100%", height: 150, resizeMode: "cover" }} />
+      <Image source={require("../../assets/ref/car.png")} style={{ width: "100%", height: 176, resizeMode: "cover" }} />
       <View className="p-4 bg-white" style={{ marginTop: -22, borderTopLeftRadius: 28, borderTopRightRadius: 28 }}>
         <ErrorNote error={error} notice={notice} />
         {(() => {
@@ -30,7 +30,7 @@ export function VehicleScreen({ c }: { c: any }) {
             const isOpen = open === k;
             const placeholder = k === "make" ? "اختر الماركة" : k === "model" ? "اختر الموديل" : k === "year" ? "اختر سنة الصنع" : "اختر المحرك";
             return (
-              <View key={k} className="mb-2 bg-slate-50 rounded-2xl p-1.5">
+              <View key={k} className="mb-2">
                 <View className="flex-row-reverse items-center">
                   <View className="w-32 flex-row-reverse items-center justify-start"><Ico n={k === "year" ? "v-cal" : k === "engine" ? "v-engine" : "v-car"} size={22} /><Text className="font-extrabold mr-2 text-base">{label}</Text></View>
                   <Pressable accessibilityRole="button" accessibilityLabel={`${placeholder}${val ? ": " + val : ""}`} onPress={() => setOpen(isOpen ? "" : k)} className="flex-1 flex-row items-center justify-between rounded-2xl border border-slate-200 bg-white px-3 py-3 ml-3">

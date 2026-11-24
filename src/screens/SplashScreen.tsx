@@ -8,7 +8,7 @@ export function SplashScreen({ c }: { c: any }) {
     <View className="flex-1 bg-white items-center" style={{ minHeight: 760 }}>
       <View className="w-full bg-brand items-center pt-6 pb-2">
         <Image source={art.logo} style={{ width: 140, height: 64, resizeMode: "contain" }} />
-        <Text className="text-white font-extrabold text-center mt-3 px-8" style={{ fontSize: 34, lineHeight: 42 }}>كل اللي عربيتك{"\n"}محتاجاه.</Text>
+        <Text className="text-white font-extrabold text-center mt-3 px-8" style={{ fontSize: 36, lineHeight: 46 }}>كل اللي عربيتك{"\n"}محتاجاه.</Text>
         <Text className="text-white text-base text-center mt-2">من محلات كتير .. في <Text className="font-extrabold">مكان واحد</Text></Text>
       </View>
       <View className="w-full" style={{ height: 232 }}>

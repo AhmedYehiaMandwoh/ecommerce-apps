@@ -435,7 +435,7 @@
     {
       "path": "src/screens/CheckoutScreen.tsx",
       "bytes": 6312,
-      "sha256": "207881c87befad191bd33afe9e70e1b9524cc55b04a608fc2bfea5a7e2c76e36"
+      "sha256": "f1c3f0fe2ab2a4e9900a44f96cc3d21b0d0f9d4f618e1938a1e081c0f8fa3740"
     },
     {
       "path": "src/screens/EmailLoginScreen.tsx",
@@ -505,7 +505,7 @@
     {
       "path": "src/screens/SplashScreen.tsx",
       "bytes": 2406,
-      "sha256": "93f2c7daba942bf3d3929805b7c9ace9036bde21a9c6efba6352a13a67b1871b"
+      "sha256": "18824a3e3090a783e313e53abb0bc194de200ade170cfe1ea500ca711a94c8d4"
     },
     {
       "path": "src/screens/SupportScreen.tsx",
@@ -519,8 +519,8 @@
     },
     {
       "path": "src/screens/VehicleScreen.tsx",
-      "bytes": 5018,
-      "sha256": "8bd0324195c58301e247cd6f59dc064eb596182504b22f2f1ced03131723c32d"
+      "bytes": 4988,
+      "sha256": "5e04dd258af2f1d0a1133f38e228e678746d825af050dd61ce5e92f9238f4b6f"
     },
     {
       "path": "src/shared.ts",
