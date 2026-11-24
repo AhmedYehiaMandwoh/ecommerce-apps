@@ -295,7 +295,7 @@ export default function App() {
   const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
   const count = cart.reduce((a, i) => a + i.quantity, 0);
   const ctx: any = { productQty, setProductQty, setError, discountCode, setDiscountCode, vehicleCatalog, add, addMany, address, addressId, addresses, api, application, auth, back, browse, busy, cancelReasons, cart, categories, category, count, deliveryAreaId, deliveryAreas, detailId, error, favorite, favorites, fitmentVehicle, go, hasDevice, history, join, key, lastPlacedOrder, load, login, notice, order, orders, page, pages, personal, phoneAuth, phoneLogin, phoneMode, placedSnapshot, products, profileName, protectedOptions, quote, register, returnForm, reviewQuote, run, screen, search, selected, setAddress, setAddressId, setAuth, setCancelReasons, setCart, setCategory, setDeliveryAreaId, setDetailId, setFitmentVehicle, setHasDevice, setJoin, setLastPlacedOrder, setNotice, setPage, setPendingDevice, setPhoneAuth, setPhoneMode, setProducts, setProfileName, setRegister, setReturn, setScreen, setSearch, setSelected, setShop, setSupport, setTickets, setToken, setUser, setVehicle, shop, shops, subtotal, support, tickets, unlockDevice, user, vehicle, vehicles };
-  const NOTAB = ["splash", "phone", "emaillogin", "placed", "product", "cart", "checkout", "track"];
+  const NOTAB = ["splash", "phone", "emaillogin", "placed", "product", "cart", "checkout"];
   const INLINE = ["checkout", "payment", "addresses", "addaddress", "vehicle", "support", "settings", "phone"];
   const tabs: [string, string, any][] = [
     ["home", "الرئيسية", require("./assets/home-icon.png")], ["shops", "المحلات", require("./assets/shops-icon.png")],

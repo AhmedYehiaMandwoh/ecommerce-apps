@@ -24,21 +24,21 @@ export function SupportScreen({ c }: { c: any }) {
   });
   return (
     <View className="bg-white flex-1" style={{ minHeight: 760 }}>
-      <Header back onBack={back} onCart={() => go("cart")} count={count} />
-      <View className="p-3">
-        <Text className="text-center font-extrabold text-lg mb-2">المساعدة</Text>
+      <Header small back onBack={back} onCart={() => go("cart")} count={count} />
+      <View className="px-3 pt-1">
+        <Text className="text-center font-extrabold text-lg">المساعدة</Text>
         <ErrorNote error={error} notice={notice} />
-        <View className="flex-row bg-brand-light rounded-2xl p-3 items-center">
+        <View className="flex-row bg-brand-light rounded-2xl p-2 items-center">
           <View className="flex-1 items-end"><Text className="text-2xl font-extrabold text-right">نحن هنا لمساعدتك</Text><Text className="text-slate-500 text-sm text-right">اختر نوع المشكلة وسيتم الرد عليك قريبًا.</Text></View>
-          <Image source={require("../../assets/ref/agent.png")} style={{ width: 90, height: 110, resizeMode: "contain" }} />
+          <Image source={require("../../assets/ref/agent.png")} style={{ width: 64, height: 76, resizeMode: "contain" }} />
         </View>
-        <View className="flex-row-reverse justify-between my-3">
+        <View className="flex-row-reverse justify-between my-2">
           {kinds.map(([t, icon, bg]) => (
-            <Pressable key={t} accessibilityRole="button" accessibilityLabel={t} onPress={() => setKind(t)} className={`w-[31%] rounded-2xl items-center py-4 px-1 border-2 ${bg} ${kind === t ? "border-accent" : "border-transparent"}`}><Text className="text-2xl">{icon}</Text><Text className="font-bold text-xs text-center mt-1">{t}</Text></Pressable>
+            <Pressable key={t} accessibilityRole="button" accessibilityLabel={t} onPress={() => setKind(t)} className={`w-[31%] rounded-2xl items-center py-1 px-1 border-2 ${bg} ${kind === t ? "border-accent" : "border-transparent"}`}><Text className="text-2xl">{icon}</Text><Text className="font-bold text-xs text-center mt-1">{t}</Text></Pressable>
           ))}
         </View>
         {!!user && !!orders.length && (<>
-          <Text className="font-extrabold text-right mb-1">اختر الطلب</Text>
+          <Text className="font-extrabold text-right">اختر الطلب</Text>
           <View className="flex-row-reverse flex-wrap mb-2">{orders.slice(0, 6).map((o: any) => <Chip key={o.id} title={"#" + o.id.slice(0, 8)} active={orderId === o.id} onPress={() => setOrderId(orderId === o.id ? "" : o.id)} />)}</View>
         </>)}
         <Input label="اكتب رسالتك" icon="✏" multiline value={support.message} onChange={(message) => setSupport({ ...support, message })} placeholder="اكتب رسالتك هنا..." />

@@ -70,7 +70,7 @@ export function Input({ label, icon, value, onChange, placeholder, numeric, secu
   return (
     <View className="mb-3">
       {!!label && <View className="flex-row items-center mb-1">{icon && icons[icon] ? <View className="ml-2"><Ico n={icon} size={18} /></View> : null}<Text className="text-right font-bold text-slate-900">{icon && !icons[icon] ? icon + "  " : ""}{label}</Text></View>}
-      <TextInput accessibilityLabel={label || placeholder} value={value} onChangeText={onChange} placeholder={placeholder} placeholderTextColor="#94a3b8" keyboardType={numeric ? "numeric" : "default"} secureTextEntry={secure} multiline={multiline} className={`bg-white border border-slate-200 rounded-xl px-4 text-right text-base ${multiline ? "py-3 min-h-[90px]" : "h-12"}`} />
+      <TextInput accessibilityLabel={label || placeholder} value={value} onChangeText={onChange} placeholder={placeholder} placeholderTextColor="#94a3b8" keyboardType={numeric ? "numeric" : "default"} secureTextEntry={secure} multiline={multiline} className={`bg-white border border-slate-200 rounded-xl px-4 text-right text-base ${multiline ? "py-2 min-h-[70px]" : "h-12"}`} />
     </View>
   );
 }
