@@ -37,8 +37,8 @@ export function SearchScreen({ c }: { c: any }) {
           const offers = p.offers.filter((o: any) => !shop || o.shopId === shop);
           const best = offers.reduce((a: any, o: any) => (o.price < a.price ? o : a), offers[0]);
           return (
-            <Pressable key={p.id} accessibilityRole="button" accessibilityLabel={p.title} onPress={() => { setSelected({ ...p, offers }); go("product"); }} className="flex-row bg-white rounded-2xl border border-slate-200 mb-3 overflow-hidden">
-              <Pressable accessibilityRole="button" accessibilityLabel={"أضف " + p.title} onPress={() => add(p, best)} className="w-11 h-11 rounded-full bg-accent items-center justify-center self-center mx-3"><Text className="text-white text-2xl">+</Text></Pressable>
+            <View key={p.id} className="flex-row bg-white rounded-2xl border border-slate-200 mb-3 overflow-hidden">
+              <Pressable accessibilityRole="button" accessibilityLabel={"أضف " + p.title} onPress={() => add(p, best)} className="z-10 w-11 h-11 rounded-full bg-accent items-center justify-center self-center mx-3"><Text className="text-white text-2xl">+</Text></Pressable>
               <View className="flex-1 py-3 items-end">
                 <Text className="font-extrabold text-base text-right">{p.title}</Text>
                 <Text className="text-slate-500 text-xs">من {best?.shop?.name}</Text>
@@ -46,7 +46,8 @@ export function SearchScreen({ c }: { c: any }) {
                 <Text className="text-slate-500 text-xs">{p.brand} • {p.partNumber}</Text>
               </View>
               <Image source={img(p.image)} style={{ width: 120, height: 120, resizeMode: "contain", backgroundColor: "#fbf4ec" }} />
-            </Pressable>
+            <Pressable accessibilityRole="button" accessibilityLabel={p.title} onPress={() => { setSelected({ ...p, offers }); go("product"); }} className="absolute inset-0 z-[5]" />
+            </View>
           );
         })}
         {!list.length && <Text className="text-center text-slate-500 my-10">مفيش نتائج. جرّب كلمة تانية.</Text>}

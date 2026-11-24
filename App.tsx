@@ -114,8 +114,11 @@ export default function App() {
   const [deliveryAreas,setDeliveryAreas]=useState<any[]>([]);
   const [deliveryAreaId,setDeliveryAreaId]=useState('');
   const [quote,setQuote]=useState<any>(null);
-  useEffect(()=>{setQuote(null);key.current='';},[addressId,deliveryAreaId,JSON.stringify(cart.map(i=>[i.offerId,i.quantity]))]);
-  async function reviewQuote(){await run(async()=>{setQuote(await api('/orders/quote','POST',{items:cart.map(i=>({offerId:i.offerId,quantity:i.quantity})),addressId,deliveryAreaId}));});}
+  const [discountCode,setDiscountCode]=useState('');
+  const [vehicleCatalog,setVehicleCatalog]=useState<any>({makes:[]});
+  useEffect(()=>{api('/vehicle-catalog').then(setVehicleCatalog).catch(()=>{});},[]);
+  useEffect(()=>{setQuote(null);key.current='';},[addressId,deliveryAreaId,JSON.stringify(cart.map(i=>[i.offerId,i.quantity])),discountCode]);
+  async function reviewQuote(){await run(async()=>{setQuote(await api('/orders/quote','POST',{items:cart.map(i=>({offerId:i.offerId,quantity:i.quantity})),addressId,deliveryAreaId,...(discountCode.trim()?{discountCode:discountCode.trim()}:{})}));});}
   async function api(path: string, method = "GET", body?: any, t = token) {
     const res = await fetch(API + path, {
       method,
@@ -136,6 +139,7 @@ export default function App() {
       );
     return data;
   }
+  const arabicError = (m: string) => ({ 'Delivery area does not serve this address city': 'منطقة التوصيل المختارة لا تخدم مدينة هذا العنوان. اختر منطقة من نفس المدينة.', 'Discount code invalid or expired': 'كود الخصم غير صحيح أو منتهي.', 'Insufficient stock': 'الكمية المطلوبة غير متوفرة.', 'Basket total changed, review a fresh quote': 'تغير إجمالي السلة. راجع التكلفة مرة أخرى.', 'Choose your address': 'اختر عنوان التوصيل.' } as Record<string, string>)[m] || m;
   async function run(fn: () => Promise<void>) {
     if (busy) return;
     setBusy(true);
@@ -147,7 +151,7 @@ export default function App() {
       setError(
         e.message === "Failed to fetch"
           ? "تعذر الاتصال بالخادم. راجع عنوان API واتصال الشبكة."
-          : e.message,
+          : arabicError(e.message),
       );
     } finally {
       setBusy(false);
@@ -272,6 +276,7 @@ export default function App() {
         addressId,
         expectedTotal: quote.total,
         deliveryAreaId,
+        ...(quote.discountCode ? { discountCode: quote.discountCode } : {}),
         requestKey: key.current,
       });
       setPlacedSnapshot(cart);
@@ -285,7 +290,7 @@ export default function App() {
   }
   const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
   const count = cart.reduce((a, i) => a + i.quantity, 0);
-  const ctx: any = { add, addMany, address, addressId, addresses, api, application, auth, back, browse, busy, cancelReasons, cart, categories, category, count, deliveryAreaId, deliveryAreas, detailId, error, favorite, favorites, fitmentVehicle, go, hasDevice, history, join, key, lastPlacedOrder, load, login, notice, order, orders, page, pages, personal, phoneAuth, phoneLogin, phoneMode, placedSnapshot, products, profileName, protectedOptions, quote, register, returnForm, reviewQuote, run, screen, search, selected, setAddress, setAddressId, setAuth, setCancelReasons, setCart, setCategory, setDeliveryAreaId, setDetailId, setFitmentVehicle, setHasDevice, setJoin, setLastPlacedOrder, setNotice, setPage, setPendingDevice, setPhoneAuth, setPhoneMode, setProducts, setProfileName, setRegister, setReturn, setScreen, setSearch, setSelected, setShop, setSupport, setTickets, setToken, setUser, setVehicle, shop, shops, subtotal, support, tickets, unlockDevice, user, vehicle, vehicles };
+  const ctx: any = { setError, discountCode, setDiscountCode, vehicleCatalog, add, addMany, address, addressId, addresses, api, application, auth, back, browse, busy, cancelReasons, cart, categories, category, count, deliveryAreaId, deliveryAreas, detailId, error, favorite, favorites, fitmentVehicle, go, hasDevice, history, join, key, lastPlacedOrder, load, login, notice, order, orders, page, pages, personal, phoneAuth, phoneLogin, phoneMode, placedSnapshot, products, profileName, protectedOptions, quote, register, returnForm, reviewQuote, run, screen, search, selected, setAddress, setAddressId, setAuth, setCancelReasons, setCart, setCategory, setDeliveryAreaId, setDetailId, setFitmentVehicle, setHasDevice, setJoin, setLastPlacedOrder, setNotice, setPage, setPendingDevice, setPhoneAuth, setPhoneMode, setProducts, setProfileName, setRegister, setReturn, setScreen, setSearch, setSelected, setShop, setSupport, setTickets, setToken, setUser, setVehicle, shop, shops, subtotal, support, tickets, unlockDevice, user, vehicle, vehicles };
   const NOTAB = ["splash", "phone", "emaillogin", "placed"];
   const INLINE = ["checkout", "payment", "addresses", "addaddress", "vehicle", "support", "settings", "phone"];
   const tabs: [string, string, any][] = [

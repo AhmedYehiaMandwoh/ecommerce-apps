@@ -34,15 +34,16 @@ export function ShopScreen({ c }: { c: any }) {
         {list.map((p: any) => {
           const o = p.offers.find((x: any) => x.shopId === shop);
           return (
-            <Pressable key={p.id} accessibilityRole="button" accessibilityLabel={p.title} onPress={() => { setSelected({ ...p, offers: p.offers.filter((x: any) => x.shopId === shop) }); go("product"); }} className="w-[48%] bg-white rounded-2xl border border-slate-200 mb-3 overflow-hidden">
+            <View key={p.id} className="w-[48%] bg-white rounded-2xl border border-slate-200 mb-3 overflow-hidden">
               <Pressable accessibilityRole="button" accessibilityLabel={"مفضلة " + p.title} onPress={() => favorite(p)} className="absolute z-10 top-2 left-2"><Text className="text-lg">{favorites.some((f: any) => f.id === p.id) ? "❤" : "♡"}</Text></Pressable>
               <Image source={img(p.image)} style={{ width: "100%", height: 110, resizeMode: "contain", backgroundColor: "#fbf4ec" }} />
               <View className="p-2 items-end"><Text className="font-bold text-sm text-right" numberOfLines={2}>{p.title}</Text></View>
               <View className="flex-row items-center justify-between p-2">
-                <Pressable accessibilityRole="button" accessibilityLabel={"أضف " + p.title} onPress={() => add(p, o)} className="w-9 h-9 rounded-full bg-accent items-center justify-center"><Text className="text-white text-xl">+</Text></Pressable>
+                <Pressable accessibilityRole="button" accessibilityLabel={"أضف " + p.title} onPress={() => add(p, o)} className="z-10 w-9 h-9 rounded-full bg-accent items-center justify-center"><Text className="text-white text-xl">+</Text></Pressable>
                 <Text className="text-accent font-extrabold">{money(o.price)}</Text>
               </View>
-            </Pressable>
+            <Pressable accessibilityRole="button" accessibilityLabel={p.title} onPress={() => { setSelected({ ...p, offers: p.offers.filter((x: any) => x.shopId === shop) }); go("product"); }} className="absolute inset-0 z-[5]" />
+            </View>
           );
         })}
       </View>

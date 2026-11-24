@@ -1,11 +1,11 @@
 import React from "react";
 import { View, Text, Image, Pressable } from "react-native";
-import { Cta, Header, Card, ErrorNote } from "../ui/kit";
+import { Cta, Header, Card, Input, ErrorNote } from "../ui/kit";
 import { groupByShop, img } from "../ui/helpers";
 import { money } from "../shared";
 
 export function CheckoutScreen({ c }: { c: any }) {
-  const { cart, shops, subtotal, addresses, addressId, deliveryAreas, deliveryAreaId, setDeliveryAreaId, quote, reviewQuote, go, back, count, busy, error, notice } = c;
+  const { discountCode, setDiscountCode, cart, shops, subtotal, addresses, addressId, deliveryAreas, deliveryAreaId, setDeliveryAreaId, quote, reviewQuote, go, back, count, busy, error, notice } = c;
   const addr = addresses.find((a: any) => a.id === addressId);
   const groups = groupByShop(cart, shops);
   return (
@@ -37,10 +37,11 @@ export function CheckoutScreen({ c }: { c: any }) {
         })}
         <Card className="bg-slate-50">
           <View className="flex-row justify-between"><Text className="font-bold">{money(subtotal)}</Text><Text className="text-slate-600">سعر المنتجات</Text></View>
-          <View className="flex-row justify-between mt-1"><Text className="font-bold">{quote ? money(quote.total - subtotal) : "يحدد حسب العنوان"}</Text><Text className="text-slate-600">التوصيل</Text></View>
+          {!!quote?.discount && <View className="flex-row justify-between mt-1"><Text className="font-bold text-green-700">- {money(quote.discount)}</Text><Text className="text-slate-600">خصم ({quote.discountCode})</Text></View>}
+          <View className="flex-row justify-between mt-1"><Text className="font-bold">{quote ? money(quote.total - quote.subtotal) : "يحدد حسب العنوان"}</Text><Text className="text-slate-600">التوصيل</Text></View>
           <View className="flex-row justify-between mt-1"><Text className="font-extrabold">{quote ? money(quote.total) : "يظهر بعد تحديد التوصيل"}</Text><Text className="font-extrabold">الإجمالي</Text></View>
         </Card>
-        <View className="flex-row items-center bg-slate-50 rounded-xl p-3 mb-1 opacity-60"><Text className="text-slate-400 text-xl">‹</Text><Text className="flex-1 text-right mr-3 text-slate-500">أضف كود خصم • قريبًا 🎟</Text></View>
+        <Input label="كود الخصم" icon="🎟" value={discountCode} onChange={setDiscountCode} placeholder="أدخل كود الخصم (اختياري)" />
         <Cta title="راجع التكلفة النهائية" soft disabled={!addressId || !deliveryAreaId || busy} onPress={reviewQuote} />
         <Cta title="متابعة ‹" disabled={!addressId || !deliveryAreaId || !quote} onPress={() => go("payment")} />
       </View>

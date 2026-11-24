@@ -3,7 +3,7 @@ const b=await chromium.launch({executablePath:process.env.CHROME_PATH,headless:t
 const p=await b.newPage({viewport:{width:430,height:900}});
 const errs=[];const phoneNo='01'+String(Date.now()).slice(-9);p.on('pageerror',e=>errs.push(e.message.slice(0,200)));p.on('console',m=>{if(m.type()==='error')errs.push('c:'+m.text().slice(0,160))});
 p.on('response',r=>{if(r.status()>=400)errs.push(r.status()+' '+r.url().slice(0,80))});
-const snap=async n=>{await p.waitForTimeout(1200);await p.screenshot({path:`${process.env.OUT||'/tmp/shots'}/${n}.png`,fullPage:true});console.log('shot',n)};
+const snap=async n=>{await p.waitForTimeout(1200);await p.screenshot({path:`${process.env.OUT||'/tmp/shots'}/${n}.png`,fullPage:true});console.log('shot',n);const nb=await p.evaluate(()=>[...document.querySelectorAll('[role=button] [role=button], button button')].map(e=>(e.getAttribute('aria-label')||e.textContent||'').slice(0,40)));if(nb.length){errs.push('nested interactive on '+n+': '+nb.join('|'))}};
 const btn=(t,o={})=>p.getByRole('button',{name:t,...o}).first();
 const click=async(t,o)=>{await btn(t,o).click({timeout:8000})};
 await p.goto((process.env.APP_URL||'http://127.0.0.1:8081'),{waitUntil:'networkidle',timeout:110000});await p.waitForTimeout(3000);
@@ -13,7 +13,7 @@ await p.getByLabel('رقم الموبايل').fill(phoneNo);await click('إرس�
 if(await p.getByLabel('الاسم').count())await p.getByLabel('الاسم').first().fill('مستخدم تجريبي');await p.getByLabel('كود التحقق').first().fill('123456');await click('تأكيد الكود ‹');await p.waitForTimeout(2500);await snap('07-home');
 await click('فرامل');await p.waitForTimeout(1500);await snap('08-search');
 await btn('',{exact:false}).count();
-await p.locator('[role=button]').filter({hasText:'ج.م'}).first().click();await p.waitForTimeout(1200);await snap('11-product');
+await p.locator('[role=button][aria-label="مجموعة ديسك وفرامل توضيحية"]').first().click();await p.waitForTimeout(1200);await snap('11-product');
 await click('أضف للسلة 🛒');await p.waitForTimeout(1200);await snap('12-cart');
 await click('المحلات');await snap('09-shops');
 await p.locator('[role=button]').filter({hasText:'قطع غيار وصيانة'}).first().click();await p.waitForTimeout(1500);await snap('10-shop');
@@ -21,12 +21,12 @@ await click('حسابي');await click('عناويني');await p.waitForTimeout(1
 await click('إضافة عنوان جديد');await p.getByLabel('المدينة').fill('القاهرة');await p.getByLabel('المنطقة').fill('مدينة نصر');await p.getByLabel('الشارع').fill('شارع 9');await p.getByLabel('تفاصيل العنوان').fill('عمارة 5 شقة 3');await p.getByLabel('رقم التواصل').fill(phoneNo);await snap('06-add-address');
 await click('حفظ العنوان');await p.waitForTimeout(2000);await snap('05-addresses');
 await click('الرئيسية');await click('السلة');await p.waitForTimeout(800);await click('متابعة الطلب');await p.waitForTimeout(1500);
-await p.locator('[role=button]').filter({hasText:'مدينة نصر'}).first().click();await click('راجع التكلفة النهائية');await p.waitForTimeout(2000);await snap('13-checkout');
+await p.locator('[role=button]').filter({hasText:'مدينة نصر'}).first().click();await p.getByPlaceholder('أدخل كود الخصم').fill('ghiyar10');await click('راجع التكلفة النهائية');await p.waitForTimeout(2000);await snap('13-checkout');if(!(await p.getByText('خصم (GHIYAR10)').count()))errs.push('discount line missing on checkout');
 await click('متابعة ‹');await p.waitForTimeout(1000);await snap('14-payment');
 await click('مراجعة الطلب وتأكيده ‹');await p.waitForTimeout(3000);await snap('15-placed');
 await click('تتبع الطلب 🚚');await p.waitForTimeout(1500);await snap('17-track');
 await click('طلباتي');await p.waitForTimeout(1500);await snap('16-orders');
-await click('حسابي');await click('المساعدة');await snap('18-support');
+await click('الرئيسية');await click('اختر عربيتك');await p.waitForTimeout(800);if(await p.getByText('اختر الحقل السابق أولًا').count()){await click('Toyota');await click('Corolla');await click('2020');await click('1.6L');await snap('04-vehicle')}else errs.push('vehicle selectors not shown');await click('حسابي');await click('المساعدة');await snap('18-support');
 await b.close();
 if(errs.length){console.log('FAIL browser errors:',errs.slice(0,8));process.exit(1)}
 console.log('PASS mobile customer flow (phone login, browse, product, cart, address, checkout, cash payment, order placed, tracking, orders, support). No browser errors.');
