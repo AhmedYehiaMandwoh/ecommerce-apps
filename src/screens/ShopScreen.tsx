@@ -20,12 +20,12 @@ export function ShopScreen({ c }: { c: any }) {
             {!!count && <View className="absolute top-0 right-0 bg-accent rounded-full min-w-[18px] h-[18px] items-center justify-center"><Text className="text-white text-[11px] font-bold">{count}</Text></View>}
           </Pressable>
         </View>
-        <View className="bg-white rounded-full h-11 mt-1 px-4 justify-center"><Text className="text-right text-slate-400">ابحث باسم القطعة أو رقمها 🔍</Text></View>
+        <View className="bg-white rounded-full h-12 mt-1 px-4 justify-center"><Text className="text-right text-slate-400 text-base">ابحث باسم القطعة أو رقمها 🔍</Text></View>
       </View>
-      <Image source={shopPhoto(n)} style={{ width: "100%", height: 130, resizeMode: "cover" }} />
-      <View className="flex-row-reverse items-center px-4 -mt-7" style={{ zIndex: 2, position: "relative" }}>
-        <View className="w-20 h-20 rounded-full bg-orange-50 border-4 border-white items-center justify-center"><Ico n="shop" size={44} color="#0b2a5b" /></View>
-        <View className="mr-3 mt-6 items-end"><Text className="text-2xl font-extrabold">{s?.name || "المحل"}</Text><Text className="text-slate-500">قطع غيار وصيانة</Text></View>
+      <Image source={shopPhoto(n)} style={{ width: "100%", height: 170, resizeMode: "cover" }} />
+      <View className="flex-row items-center px-4 -mt-9" style={{ zIndex: 2, position: "relative" }}>
+        <View className="w-24 h-24 rounded-full bg-orange-50 border-4 border-white items-center justify-center"><Ico n="shop" size={52} color="#0b2a5b" /></View>
+        <View className="flex-1 ml-3 mt-8 items-end"><Text className="text-xl font-extrabold text-right" numberOfLines={1}>{s?.name || "المحل"}</Text><Text className="text-slate-500 text-base">قطع غيار وصيانة</Text></View>
       </View>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} className="px-4 mt-3 flex-grow-0">
         {["", ...categories].map((k: string) => <Chip key={k || "all"} title={k || "الكل"} active={category === k} onPress={() => { setCategory(k); load(k); }} />)}

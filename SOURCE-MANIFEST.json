@@ -454,8 +454,8 @@
     },
     {
       "path": "src/screens/PaymentScreen.tsx",
-      "bytes": 2833,
-      "sha256": "c74e413c05a8668d7764f0c25322185b8fc1694c348cde6ea84628fef3fa14c8"
+      "bytes": 2904,
+      "sha256": "740039c948ce8454dced007f117157595a33178f5597b8e13412086a9ddcdde2"
     },
     {
       "path": "src/screens/PhoneLoginScreen.tsx",
@@ -464,8 +464,8 @@
     },
     {
       "path": "src/screens/PlacedScreen.tsx",
-      "bytes": 2704,
-      "sha256": "2bce77cb0b2fd8d84486a0e512bfb34d62f3081fd2d76ead78d07837c60f4bf9"
+      "bytes": 2740,
+      "sha256": "e09c4d6d867b178b7421d7ee65fd32ba1d772f2d44b0610e31b252cca8276d0a"
     },
     {
       "path": "src/screens/ProductScreen.tsx",
@@ -474,8 +474,8 @@
     },
     {
       "path": "src/screens/SearchScreen.tsx",
-      "bytes": 7996,
-      "sha256": "69496badfc97d0705bf1421614f03f27ed1fc30c87f864ba5565e8099caf8b18"
+      "bytes": 8014,
+      "sha256": "9240bd982e3089fde3874b2c7f07cbf13cac551a8a77a8379c20d9b5ad1d2ad5"
     },
     {
       "path": "src/screens/SettingsScreen.tsx",
@@ -484,8 +484,8 @@
     },
     {
       "path": "src/screens/ShopScreen.tsx",
-      "bytes": 4460,
-      "sha256": "e759075d3ddb6da6af6d1179ac43a67c854a82d47dd65eb93843b79bc85c230c"
+      "bytes": 4507,
+      "sha256": "832706aea510e68928e266c2ca6a52dcc360856a24ff43dc76024c6620821290"
     },
     {
       "path": "src/screens/ShopsScreen.tsx",
@@ -509,8 +509,8 @@
     },
     {
       "path": "src/screens/VehicleScreen.tsx",
-      "bytes": 4938,
-      "sha256": "b7880846e4d5c75e5ae74d5f2cdb0bf878c507cfd146897297a5aa124648e005"
+      "bytes": 5016,
+      "sha256": "86024d3c92b837aa4349654f28e1bfb203a4d5580ccc7fd55eab6f2e46496085"
     },
     {
       "path": "src/shared.ts",

@@ -22,18 +22,18 @@ export function SearchScreen({ c }: { c: any }) {
       <View className="bg-brand px-4 pt-3 pb-4">
         <View className="flex-row items-center justify-between h-10">
           <Pressable accessibilityRole="button" accessibilityLabel="رجوع" onPress={back} className="w-10"><Text className="text-white text-3xl">‹</Text></Pressable>
-          <Text className="text-white text-xl font-extrabold">{shop ? shops.find((s: any) => s.id === shop)?.name || "المحل" : "نتائج البحث"}</Text>
+          <Text className="text-white text-2xl font-extrabold">{shop ? shops.find((s: any) => s.id === shop)?.name || "المحل" : "نتائج البحث"}</Text>
           <View className="w-10" />
         </View>
-        <View className="bg-white rounded-full h-12 mt-2 px-4 flex-row items-center">
+        <View className="bg-white rounded-full h-14 mt-2 px-4 flex-row items-center">
           <Pressable accessibilityRole="button" accessibilityLabel="مسح" onPress={() => { setSearch(""); browse("", category, shop); }}><Text className="text-slate-500 text-lg ml-2">✕</Text></Pressable>
-          <TextInput accessibilityLabel="البحث في المنتجات" value={search} onChangeText={setSearch} onSubmitEditing={() => load(category)} placeholder="ابحث باسم القطعة أو رقمها" placeholderTextColor="#94a3b8" className="flex-1 text-right text-base" />
+          <TextInput accessibilityLabel="البحث في المنتجات" value={search} onChangeText={setSearch} onSubmitEditing={() => load(category)} placeholder="ابحث باسم القطعة أو رقمها" placeholderTextColor="#94a3b8" className="flex-1 text-right text-lg" />
           <Pressable accessibilityRole="button" accessibilityLabel="بحث" onPress={() => load(category)}><Text className="text-lg ml-2">🔍</Text></Pressable>
         </View>
         <View className="flex-row-reverse mt-3 justify-between">
           {pills.map(([k, label, opts, set]) => (
-            <Pressable key={k} accessibilityRole="button" accessibilityLabel={"فلتر " + label} onPress={() => setOpen(open === k ? "" : k)} className="flex-row items-center justify-center bg-white rounded-full px-4 h-10" style={{ width: "32%" }}>
-              <Text className="text-brand-dark font-bold text-sm" numberOfLines={1}>{label}</Text>
+            <Pressable key={k} accessibilityRole="button" accessibilityLabel={"فلتر " + label} onPress={() => setOpen(open === k ? "" : k)} className="flex-row items-center justify-center bg-white rounded-full px-4 h-12" style={{ width: "32%" }}>
+              <Text className="text-brand-dark font-bold text-base" numberOfLines={1}>{label}</Text>
               <Text className="text-brand-dark mr-1">⌄</Text>
             </Pressable>
           ))}
@@ -59,21 +59,21 @@ export function SearchScreen({ c }: { c: any }) {
         </View>
       )}
       <View className="px-4 pt-3">
-        <Text className="text-right text-slate-500 text-xs mb-2">{list.length} نتيجة</Text>
+        <Text className="text-right text-slate-600 text-base font-semibold mb-2">{list.length} نتيجة</Text>
         {list.map((p: any) => {
           const offers = p.offers.filter((o: any) => !shop || o.shopId === shop);
           const best = offers.reduce((a: any, o: any) => (o.price < a.price ? o : a), offers[0]);
           return (
             <View key={p.id} className="flex-row bg-white rounded-2xl border border-slate-200 mb-3 overflow-hidden">
-              <Pressable style={{ position: "relative", zIndex: 10 }} accessibilityRole="button" accessibilityLabel={"أضف " + p.title} onPress={() => add(p, best)} className="z-10 w-11 h-11 rounded-full bg-accent items-center justify-center self-center mx-3"><Text className="text-white text-2xl">+</Text></Pressable>
+              <Pressable style={{ position: "relative", zIndex: 10 }} accessibilityRole="button" accessibilityLabel={"أضف " + p.title} onPress={() => add(p, best)} className="z-10 w-14 h-14 rounded-full bg-accent items-center justify-center self-center mx-3"><Text className="text-white text-3xl">+</Text></Pressable>
               <View className="flex-1 py-3 items-end">
-                <Text className="font-extrabold text-base text-right">{p.title}</Text>
-                <Text className="text-slate-500 text-xs">من {best?.shop?.name}</Text>
-                <Text className="text-accent font-extrabold text-lg">{money(best.price)}</Text>
+                <Text className="font-extrabold text-xl text-right">{p.title}</Text>
+                <Text className="text-slate-500 text-base">من {best?.shop?.name}</Text>
+                <Text className="text-accent font-extrabold text-2xl">{money(best.price)}</Text>
                 <Text className="text-slate-500 text-xs">{p.brand} • {p.partNumber}</Text>
-                <View className="bg-slate-100 rounded-lg px-3 py-1 mt-1"><Text className="text-slate-600 text-xs font-bold">راجع التوافق</Text></View>
+                <View className="bg-slate-100 rounded-lg px-4 py-2 mt-1"><Text className="text-slate-600 text-sm font-bold">راجع التوافق</Text></View>
               </View>
-              <Image source={img(p.image)} style={{ width: 120, height: 120, resizeMode: "contain", backgroundColor: "#fbf4ec" }} />
+              <Image source={img(p.image)} style={{ width: 140, height: 140, resizeMode: "contain", backgroundColor: "#fbf4ec" }} />
             <Pressable accessibilityRole="button" accessibilityLabel={p.title} onPress={() => { setSelected({ ...p, offers }); go("product"); }} className="absolute inset-0 z-[5]" />
             </View>
           );
