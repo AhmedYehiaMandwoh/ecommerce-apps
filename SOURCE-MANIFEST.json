@@ -314,23 +314,23 @@
     },
     {
       "path": "src/screens/AddAddressScreen.tsx",
-      "bytes": 2421,
-      "sha256": "64fc34f4c28ee0699deea9dd412d39d58cd743a8b60e7b440a9d4875cb6cc2c1"
+      "bytes": 2432,
+      "sha256": "bb3cd5ad122ce3e1c4a0635f6e562c651ff239b3cc227af1370a59d666ee002a"
     },
     {
       "path": "src/screens/AddressesScreen.tsx",
-      "bytes": 3372,
-      "sha256": "9035041ba4ba56182b5354a14c32a68671bef814f4e4ea771dac2d4c8c153f60"
+      "bytes": 3376,
+      "sha256": "608307f0c57488f66af55ad12694b3eddc584db4b4b9da4082c7b6d544fce871"
     },
     {
       "path": "src/screens/CartScreen.tsx",
-      "bytes": 3415,
-      "sha256": "d8d2a4d9e5ebf9de7126b105d956d29ec395297f05b15cef8d64964cfb046a4b"
+      "bytes": 3414,
+      "sha256": "efb03fc50dec08807cdda4812142810e781e4d2ba2859ed66de1fe97138bfef6"
     },
     {
       "path": "src/screens/CheckoutScreen.tsx",
-      "bytes": 5452,
-      "sha256": "8d3b7821d4cb2645fb16d2ace94b7dc3b2194bc231008aa0731c4d36c6c5d463"
+      "bytes": 5566,
+      "sha256": "cb6a4eabd7e77d14d5bc45c7d8bd1e8e3bebde87a573f5a3bae0fa0bd9c0258f"
     },
     {
       "path": "src/screens/EmailLoginScreen.tsx",
@@ -354,13 +354,13 @@
     },
     {
       "path": "src/screens/OrdersScreen.tsx",
-      "bytes": 3410,
-      "sha256": "03c8a6845a12af4b2ade8e533c0db8a1cb48065a5209c81c350c49b0799c50c3"
+      "bytes": 3406,
+      "sha256": "401b4cb184f5e9e533db61e0df77936a56c2fe7aa74fbc3be8876dbcab320590"
     },
     {
       "path": "src/screens/PaymentScreen.tsx",
-      "bytes": 2836,
-      "sha256": "cedf97fccfe0f7c258810e88fbd8b4f7d597748e824f0d3e95fbec1bddd4c72c"
+      "bytes": 2833,
+      "sha256": "c74e413c05a8668d7764f0c25322185b8fc1694c348cde6ea84628fef3fa14c8"
     },
     {
       "path": "src/screens/PhoneLoginScreen.tsx",
@@ -369,13 +369,13 @@
     },
     {
       "path": "src/screens/PlacedScreen.tsx",
-      "bytes": 2700,
-      "sha256": "8a7303ffedd31350ec0ff40e2192428e91aeedb0ac22469f8883f27811a94bb9"
+      "bytes": 2704,
+      "sha256": "2bce77cb0b2fd8d84486a0e512bfb34d62f3081fd2d76ead78d07837c60f4bf9"
     },
     {
       "path": "src/screens/ProductScreen.tsx",
-      "bytes": 5795,
-      "sha256": "227a3a4a8d375e27bace577d03a28cd03d9eac056d018fc1490db58f1e564a9d"
+      "bytes": 5874,
+      "sha256": "08804294106acf99de54894379ce81a5afc643078e5e4e504e1389951ebe419e"
     },
     {
       "path": "src/screens/SearchScreen.tsx",
@@ -389,13 +389,13 @@
     },
     {
       "path": "src/screens/ShopScreen.tsx",
-      "bytes": 4451,
-      "sha256": "62032c66683412484164e8dfa11de04665d70b42cbe203b62dae82b8ae6f0eaa"
+      "bytes": 4460,
+      "sha256": "e759075d3ddb6da6af6d1179ac43a67c854a82d47dd65eb93843b79bc85c230c"
     },
     {
       "path": "src/screens/ShopsScreen.tsx",
-      "bytes": 2540,
-      "sha256": "bb354e141da9c6c7c7a693b7b024043d613a66a187addd79dade164aba0a996b"
+      "bytes": 2564,
+      "sha256": "9e3a17de5e804418182fcb484237b37311dff51c27facdf0707a5808d3a1d11f"
     },
     {
       "path": "src/screens/SplashScreen.tsx",
@@ -409,13 +409,13 @@
     },
     {
       "path": "src/screens/TrackScreen.tsx",
-      "bytes": 3290,
-      "sha256": "6ff46b8a02b34774dbb555f44b2a4c8030c196077e81d001d41d9c16ec614657"
+      "bytes": 3325,
+      "sha256": "0b1b83daee27d15582aed820ac0844229983a4a5b9e9e73a4602ff2f52ea0096"
     },
     {
       "path": "src/screens/VehicleScreen.tsx",
-      "bytes": 4706,
-      "sha256": "8d64c1294982e36cf6736cfafda99751671b024bfb7703e2ebf48d64dadaf37c"
+      "bytes": 4812,
+      "sha256": "23023332416ed3d987379ac3e14c50ce009200e067d4d2b796cca1510f7233c7"
     },
     {
       "path": "src/shared.ts",
@@ -434,8 +434,8 @@
     },
     {
       "path": "src/ui/kit.tsx",
-      "bytes": 5529,
-      "sha256": "2deacb21a0926930433273278aa86b0cac0d928a3a93cd6535cfa5a41ba83f2b"
+      "bytes": 6894,
+      "sha256": "fa71656e3ed8b131e94e1d53990b314733dfc408876a7d5d03e08bc31222e7bf"
     },
     {
       "path": "src/webfont.ts",

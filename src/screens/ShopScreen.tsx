@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image, Pressable, ScrollView, TextInput } from "react-native";
-import { Chip, art } from "../ui/kit";
+import { Chip, art, Ico } from "../ui/kit";
 import { img, shopPhoto } from "../ui/helpers";
 import { money } from "../shared";
 
@@ -24,7 +24,7 @@ export function ShopScreen({ c }: { c: any }) {
       </View>
       <Image source={shopPhoto(n)} style={{ width: "100%", height: 130, resizeMode: "cover" }} />
       <View className="flex-row-reverse items-center px-4 -mt-7" style={{ zIndex: 2, position: "relative" }}>
-        <View className="w-20 h-20 rounded-full bg-orange-50 border-4 border-white items-center justify-center"><Text className="text-4xl">🏪</Text></View>
+        <View className="w-20 h-20 rounded-full bg-orange-50 border-4 border-white items-center justify-center"><Ico n="shop" size={44} color="#0b2a5b" /></View>
         <View className="mr-3 mt-6 items-end"><Text className="text-2xl font-extrabold">{s?.name || "المحل"}</Text><Text className="text-slate-500">قطع غيار وصيانة</Text></View>
       </View>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} className="px-4 mt-3 flex-grow-0">

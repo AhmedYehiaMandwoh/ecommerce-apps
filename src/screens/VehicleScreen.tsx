@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image, Pressable } from "react-native";
-import { Cta, Header, Card, ErrorNote } from "../ui/kit";
+import { Cta, Header, Card, ErrorNote, Ico } from "../ui/kit";
 
 export function VehicleScreen({ c }: { c: any }) {
   const { vehicleCatalog, vehicle, setVehicle, vehicles, api, run, personal, setNotice, back, go, count, error, notice } = c;
@@ -21,10 +21,10 @@ export function VehicleScreen({ c }: { c: any }) {
           const md = mk?.models.find((m: any) => m.model === vehicle.model);
           const years: number[] = md ? Array.from({ length: md.to - md.from + 1 }, (_, i) => md.to - i) : [];
           const rows: [string, string, string[], (v: string) => void, string][] = [
-            ["🚘 الماركة", vehicle.make, makes.map((m) => m.make), (v) => setVehicle({ ...vehicle, make: v, model: "", year: "", engine: "" }), "make"],
-            ["🚘 الموديل", vehicle.model, mk ? mk.models.map((m: any) => m.model) : [], (v) => setVehicle({ ...vehicle, model: v, year: "", engine: "" }), "model"],
-            ["📅 سنة الصنع", String(vehicle.year || ""), years.map(String), (v) => setVehicle({ ...vehicle, year: v }), "year"],
-            ["⚙ المحرك", vehicle.engine, md ? md.engines : [], (v) => setVehicle({ ...vehicle, engine: v }), "engine"],
+            ["الماركة", vehicle.make, makes.map((m) => m.make), (v) => setVehicle({ ...vehicle, make: v, model: "", year: "", engine: "" }), "make"],
+            ["الموديل", vehicle.model, mk ? mk.models.map((m: any) => m.model) : [], (v) => setVehicle({ ...vehicle, model: v, year: "", engine: "" }), "model"],
+            ["سنة الصنع", String(vehicle.year || ""), years.map(String), (v) => setVehicle({ ...vehicle, year: v }), "year"],
+            ["المحرك", vehicle.engine, md ? md.engines : [], (v) => setVehicle({ ...vehicle, engine: v }), "engine"],
           ];
           return rows.map(([label, val, opts, onPick, k]) => {
             const isOpen = open === k;
@@ -32,7 +32,7 @@ export function VehicleScreen({ c }: { c: any }) {
             return (
               <View key={k} className="mb-3">
                 <View className="flex-row-reverse items-center">
-                  <Text className="font-extrabold w-24 text-right">{label}</Text>
+                  <View className="w-28 flex-row items-center"><Ico n={k === "year" ? "v-cal" : k === "engine" ? "v-engine" : "v-car"} size={22} /><Text className="font-extrabold mr-2">{label}</Text></View>
                   <Pressable accessibilityRole="button" accessibilityLabel={`${placeholder}${val ? ": " + val : ""}`} onPress={() => setOpen(isOpen ? "" : k)} className="flex-1 flex-row items-center justify-between rounded-xl border border-slate-200 bg-white px-3 py-3 ml-3">
                     <Text className="text-slate-400">{isOpen ? "▲" : "▼"}</Text>
                     <Text className={val ? "text-slate-900 font-bold" : "text-slate-400"}>{val || placeholder}</Text>
@@ -52,7 +52,7 @@ export function VehicleScreen({ c }: { c: any }) {
           });
         })()}
         <Cta title="حفظ العربية" disabled={!vehicle.make || !vehicle.model || !vehicle.year || !vehicle.engine} onPress={() => run(async () => { await api("/vehicles", "POST", { ...vehicle, year: Number(vehicle.year) }); await personal(); setNotice("تم حفظ العربية. التوافق يحتاج مراجعة منفصلة."); })} />
-        {vehicles.map((v: any) => <Card key={v.id} className="mt-3"><Text className="text-right font-bold">🚘 {v.make} {v.model} • {v.year} • {v.engine}</Text></Card>)}
+        {vehicles.map((v: any) => <Card key={v.id} className="mt-3"><Text className="text-right font-bold">{v.make} {v.model} • {v.year} • {v.engine}</Text></Card>)}
       </View>
     </View>
   );

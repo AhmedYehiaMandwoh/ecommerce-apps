@@ -18,11 +18,11 @@ export function AddAddressScreen({ c }: { c: any }) {
       <Image source={require("../../assets/ref/map-small.png")} style={{ width: "100%", height: 130, resizeMode: "cover" }} />
       <View className="p-4 -mt-3 bg-white rounded-t-3xl">
         <ErrorNote error={error} notice={notice} />
-        <Input label="المدينة" icon="📍" value={address.city} onChange={(city) => setAddress({ ...address, city })} placeholder="اختر المدينة" />
-        <Input label="المنطقة" icon="🗺" value={area} onChange={setArea} placeholder="اختر المنطقة" />
-        <Input label="الشارع" icon="🛣" value={street} onChange={setStreet} placeholder="أدخل اسم الشارع" />
-        <Input label="تفاصيل العنوان" icon="📄" value={address.details} onChange={(details) => setAddress({ ...address, details })} placeholder="أدخل تفاصيل العنوان" />
-        <Input label="معلم قريب (اختياري)" icon="📌" value={landmark} onChange={setLandmark} placeholder="أدخل معلم قريب" />
+        <Input label="المدينة" icon="f-pin" value={address.city} onChange={(city) => setAddress({ ...address, city })} placeholder="اختر المدينة" />
+        <Input label="المنطقة" icon="f-map" value={area} onChange={setArea} placeholder="اختر المنطقة" />
+        <Input label="الشارع" icon="f-road" value={street} onChange={setStreet} placeholder="أدخل اسم الشارع" />
+        <Input label="تفاصيل العنوان" icon="f-doc" value={address.details} onChange={(details) => setAddress({ ...address, details })} placeholder="أدخل تفاصيل العنوان" />
+        <Input label="معلم قريب (اختياري)" icon="f-landmark" value={landmark} onChange={setLandmark} placeholder="أدخل معلم قريب" />
         <Input label="رقم التواصل" icon="📞" numeric value={address.phone} onChange={(phone) => setAddress({ ...address, phone })} placeholder="01XXXXXXXXX" />
         <Cta title="حفظ العنوان" onPress={save} />
       </View>

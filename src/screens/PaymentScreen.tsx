@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image, Pressable } from "react-native";
-import { Cta, Header, Card, ErrorNote } from "../ui/kit";
+import { Cta, Header, Card, ErrorNote, Ico } from "../ui/kit";
 import { money } from "../shared";
 
 export function PaymentScreen({ c }: { c: any }) {
@@ -14,7 +14,7 @@ export function PaymentScreen({ c }: { c: any }) {
         <Card className="flex-row items-center bg-slate-50" onPress={() => go("addresses")}>
           <Text className="text-slate-400 text-2xl">‹</Text>
           <View className="flex-1 mx-3 items-end"><Text className="font-extrabold">عنوان التوصيل</Text><Text className="text-slate-500 text-sm" numberOfLines={1}>{addr ? `${addr.label} - ${addr.city}` : "-"}</Text></View>
-          <Text className="text-brand text-2xl">📍</Text>
+          <Ico n="pin" size={26} color="#0751e8" />
         </Card>
         <Text className="font-extrabold text-lg text-brand-dark text-right my-2">اختر طريقة الدفع</Text>
         <View className="flex-row items-center bg-brand-light rounded-2xl p-3 mb-3 border-2 border-accent">

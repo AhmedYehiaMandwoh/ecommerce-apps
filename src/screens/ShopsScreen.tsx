@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, Image, Pressable, TextInput } from "react-native";
 import { shopPhoto } from "../ui/helpers";
+import { Ico } from "../ui/kit";
 
 export function ShopsScreen({ c }: { c: any }) {
   const { shops, browse, back } = c;
@@ -29,7 +30,7 @@ export function ShopsScreen({ c }: { c: any }) {
             <View className="flex-row items-center p-3">
               <Text className="text-slate-400 text-2xl">‹</Text>
               <View className="flex-1 mx-3 items-end"><Text className="font-extrabold text-base">{s.name}</Text><Text className="text-slate-500 text-sm">قطع غيار وصيانة • {s.city}</Text></View>
-              <View className="w-12 h-12 rounded-full bg-accent items-center justify-center"><Text className="text-white text-xl">🏪</Text></View>
+              <View className="w-12 h-12 rounded-full bg-accent items-center justify-center"><Ico n="shop" size={26} color="#fff" /></View>
             </View>
           </Pressable>
         ))}

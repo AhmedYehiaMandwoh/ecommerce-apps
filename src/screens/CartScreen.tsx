@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image, Pressable } from "react-native";
-import { Cta, Header, Stepper, Card } from "../ui/kit";
+import { Cta, Header, Stepper, Card, Ico } from "../ui/kit";
 import { groupByShop, img } from "../ui/helpers";
 import { money } from "../shared";
 
@@ -20,7 +20,7 @@ export function CartScreen({ c }: { c: any }) {
             <View className="flex-row items-center bg-slate-100 rounded-xl p-2 mb-2">
               <Text className="text-slate-400 text-xl">‹</Text>
               <View className="flex-1 mx-2 items-end"><Text className="font-extrabold">{g.name}</Text><Text className="text-slate-500 text-xs">قطع غيار وصيانة</Text></View>
-              <View className="w-9 h-9 rounded-full bg-slate-700 items-center justify-center"><Text className="text-white">🏪</Text></View>
+              <View className="w-9 h-9 rounded-full bg-slate-700 items-center justify-center"><Ico n="shop" size={22} color="#fff" /></View>
             </View>
             {g.items.map((i: any) => (
               <View key={i.offerId} className="flex-row items-center py-2">
@@ -38,7 +38,7 @@ export function CartScreen({ c }: { c: any }) {
         {!!cart.length && (
           <>
             <Card><View className="flex-row justify-between"><Text className="text-xl font-extrabold">{money(subtotal)}</Text><Text className="text-slate-600">إجمالي المنتجات</Text></View>
-              <View className="flex-row justify-between mt-2"><Text className="font-bold text-slate-700">يحدد عند إتمام الطلب 🚚</Text><Text className="text-slate-600">مصاريف التوصيل</Text></View></Card>
+              <View className="flex-row justify-between mt-2"><Text className="font-bold text-slate-700">يحدد عند إتمام الطلب</Text><Text className="text-slate-600">مصاريف التوصيل</Text></View></Card>
             {groups.length > 1 && <Text className="bg-amber-50 text-amber-900 rounded-xl p-3 text-right mb-2">ⓘ قد تصل منتجات كل محل في شحنة منفصلة.</Text>}
             <Cta title="متابعة الطلب" onPress={() => go(user ? "checkout" : "phone")} />
           </>

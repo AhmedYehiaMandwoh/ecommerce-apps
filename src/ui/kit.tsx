@@ -19,6 +19,18 @@ export function Cta({ title, onPress, disabled, outline, soft, testID }: { title
   );
 }
 
+export const icons: Record<string, any> = {
+  shop: require("../../assets/icons/shop.png"), truck: require("../../assets/icons/truck.png"), car: require("../../assets/icons/car.png"),
+  ticket: require("../../assets/icons/ticket.png"), pin: require("../../assets/icons/pin.png"),
+  "f-pin": require("../../assets/icons/f-pin.png"), "f-map": require("../../assets/icons/f-map.png"), "f-road": require("../../assets/icons/f-road.png"),
+  "f-doc": require("../../assets/icons/f-doc.png"), "f-landmark": require("../../assets/icons/f-landmark.png"),
+  "v-car": require("../../assets/icons/v-car.png"), "v-cal": require("../../assets/icons/v-cal.png"), "v-engine": require("../../assets/icons/v-engine.png"),
+};
+// Icons are cropped from the supplied PDF and used as tintable masks.
+export function Ico({ n, size = 22, color = "#0b2a5b" }: { n: string; size?: number; color?: string }) {
+  return <Image accessibilityElementsHidden importantForAccessibility="no-hide-descendants" source={icons[n]} style={{ width: size, height: size, resizeMode: "contain", tintColor: color }} />;
+}
+
 export function Header({ title, subtitle, back, onBack, count, onCart, tall, small }: { small?: boolean; title?: string; subtitle?: string; back?: boolean; onBack?: () => void; count?: number; onCart?: () => void; tall?: boolean }) {
   return (
     <View className={`bg-brand px-4 ${tall ? "pb-6" : small ? "pb-3" : "pb-4"} pt-3`} style={tall ? { borderBottomLeftRadius: 28, borderBottomRightRadius: 28 } : undefined}>
@@ -36,21 +48,21 @@ export function Header({ title, subtitle, back, onBack, count, onCart, tall, sma
           </Pressable>
         ) : <View className="w-10" />}
       </View>
-      {!!title && <Text className={small ? "text-white text-lg font-extrabold text-center -mt-2" : "text-white text-2xl font-extrabold text-center mt-1"}>{title}</Text>}
+      {!!title && <Text className={small ? "text-white text-lg font-extrabold text-center -mt-2" : tall ? "text-white text-3xl font-extrabold text-center mt-1" : "text-white text-2xl font-extrabold text-center mt-1"}>{title}</Text>}
       {!!subtitle && <Text className="text-white/90 text-sm text-center mt-1">{subtitle}</Text>}
     </View>
   );
 }
 
 export function Card({ children, className = "", onPress }: { children: React.ReactNode; className?: string; onPress?: () => void }) {
-  const cls = `${/\bbg-/.test(className) ? "" : "bg-white "}rounded-2xl border ${/\bborder-/.test(className) ? "" : "border-slate-200 "}p-3 mb-3 ${className}`;
+  const cls = `${/\bbg-/.test(className) ? "" : "bg-white "}rounded-2xl border ${/\bborder-/.test(className) ? "" : "border-slate-200 "}${/\bp-\d/.test(className) ? "" : "p-3 "}${/\bmb-/.test(className) ? "" : "mb-3 "}${className}`;
   return onPress ? <Pressable accessibilityRole="button" onPress={onPress} className={cls}>{children}</Pressable> : <View className={cls}>{children}</View>;
 }
 
 export function Input({ label, icon, value, onChange, placeholder, numeric, secure, multiline }: { label?: string; icon?: string; value: string; onChange: (t: string) => void; placeholder?: string; numeric?: boolean; secure?: boolean; multiline?: boolean }) {
   return (
     <View className="mb-3">
-      {!!label && <Text className="text-right font-bold text-slate-900 mb-1">{icon ? icon + "  " : ""}{label}</Text>}
+      {!!label && <View className="flex-row items-center mb-1">{icon && icons[icon] ? <View className="ml-2"><Ico n={icon} size={18} /></View> : null}<Text className="text-right font-bold text-slate-900">{icon && !icons[icon] ? icon + "  " : ""}{label}</Text></View>}
       <TextInput accessibilityLabel={label || placeholder} value={value} onChangeText={onChange} placeholder={placeholder} placeholderTextColor="#94a3b8" keyboardType={numeric ? "numeric" : "default"} secureTextEntry={secure} multiline={multiline} className={`bg-white border border-slate-200 rounded-xl px-4 text-right text-base ${multiline ? "py-3 min-h-[90px]" : "h-12"}`} />
     </View>
   );
@@ -67,9 +79,9 @@ export function Chip({ title, active, onPress }: { title: string; active?: boole
 export function Stepper({ value, onMinus, onPlus }: { value: number; onMinus: () => void; onPlus: () => void }) {
   return (
     <View className="flex-row items-center border border-slate-300 rounded-xl overflow-hidden self-start">
-      <Pressable accessibilityRole="button" accessibilityLabel="زيادة" onPress={onPlus} className="w-10 h-10 items-center justify-center"><Text className="text-xl text-brand">+</Text></Pressable>
-      <Text className="w-10 text-center font-bold">{value}</Text>
       <Pressable accessibilityRole="button" accessibilityLabel="تقليل" onPress={onMinus} className="w-10 h-10 items-center justify-center"><Text className="text-xl text-brand">−</Text></Pressable>
+      <Text className="w-10 text-center font-bold">{value}</Text>
+      <Pressable accessibilityRole="button" accessibilityLabel="زيادة" onPress={onPlus} className="w-10 h-10 items-center justify-center"><Text className="text-xl text-brand">+</Text></Pressable>
     </View>
   );
 }
