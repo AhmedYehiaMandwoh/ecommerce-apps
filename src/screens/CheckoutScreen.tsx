@@ -8,6 +8,7 @@ export function CheckoutScreen({ c }: { c: any }) {
   const { discountCode, setDiscountCode, cart, shops, subtotal, addresses, addressId, deliveryAreas, deliveryAreaId, setDeliveryAreaId, quote, reviewQuote, go, back, count, busy, error, notice } = c;
   const addr = addresses.find((a: any) => a.id === addressId);
   const groups = groupByShop(cart, shops);
+  const [codeOpen, setCodeOpen] = React.useState(false);
   return (
     <View className="bg-white flex-1" style={{ minHeight: 760 }}>
       <Header back onBack={back} title="إتمام الطلب" onCart={() => go("cart")} count={count} />
@@ -21,7 +22,7 @@ export function CheckoutScreen({ c }: { c: any }) {
         <Text className="font-extrabold text-right mb-2">المنتجات حسب كل محل</Text>
         {groups.map((g) => (
           <Card key={g.shopId}>
-            <View className="flex-row items-center justify-between mb-2"><View className="flex-row">{g.items.slice(0, 4).map((i: any) => <Image key={i.offerId} source={img(i.image)} style={{ width: 58, height: 58, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 10, marginRight: 4 }} />)}</View>
+            <View className="flex-row items-center justify-between mb-2"><View className="flex-row flex-1 ml-3">{g.items.slice(0, 4).map((i: any) => <Image key={i.offerId} source={img(i.image)} style={{ flex: 1, aspectRatio: 1, maxWidth: 74, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 10, marginRight: 4 }} />)}</View>
               <View className="flex-row items-center"><Text className="font-extrabold ml-2">{g.name}</Text><View className="w-9 h-9 rounded-xl bg-accent items-center justify-center"><Text className="text-white">🏪</Text></View></View></View>
             <View className="flex-row items-center bg-brand-light rounded-xl p-2"><Text className="text-slate-400 text-xl">‹</Text><View className="flex-1 mx-2 items-end"><Text className="font-bold">خيارات التوصيل</Text><Text className="text-slate-500 text-xs">{quote ? "محسوب حسب المنطقة" : "تحدد بعد اختيار المنطقة"}</Text></View><Text>🚚</Text></View>
           </Card>
@@ -41,7 +42,8 @@ export function CheckoutScreen({ c }: { c: any }) {
           <View className="flex-row justify-between mt-1"><Text className="font-bold">{quote ? money(quote.total - quote.subtotal) : "يحدد حسب العنوان"}</Text><Text className="text-slate-600">التوصيل</Text></View>
           <View className="flex-row justify-between mt-1"><Text className="font-extrabold">{quote ? money(quote.total) : "يظهر بعد تحديد التوصيل"}</Text><Text className="font-extrabold">الإجمالي</Text></View>
         </Card>
-        <Input label="كود الخصم" icon="🎟" value={discountCode} onChange={setDiscountCode} placeholder="أدخل كود الخصم (اختياري)" />
+        <Pressable accessibilityRole="button" accessibilityLabel="أضف كود خصم" onPress={() => setCodeOpen(!codeOpen)} className="flex-row items-center justify-between bg-slate-50 rounded-xl p-3 mb-3"><Text className="text-slate-500 text-xl">{codeOpen || discountCode ? "⌄" : "‹"}</Text><Text className="text-slate-600 font-bold">أضف كود خصم  🎟</Text></Pressable>
+        {(codeOpen || !!discountCode) && <Input label="كود الخصم" value={discountCode} onChange={setDiscountCode} placeholder="أدخل كود الخصم (اختياري)" />}
         <Cta title="راجع التكلفة النهائية" soft disabled={!addressId || !deliveryAreaId || busy} onPress={reviewQuote} />
         <Cta title="متابعة ‹" disabled={!addressId || !deliveryAreaId || !quote} onPress={() => go("payment")} />
       </View>

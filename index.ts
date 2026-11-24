@@ -1,6 +1,7 @@
 import { registerRootComponent } from "expo";
 import App from "./App";
 import { installWebFont } from "./src/webfont";
+import { loadNativeFont } from "./src/nativefont";
 
 installWebFont();
-registerRootComponent(App);
+loadNativeFont().finally(() => registerRootComponent(App));

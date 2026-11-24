@@ -14,8 +14,8 @@
     },
     {
       "path": "App.tsx",
-      "bytes": 21600,
-      "sha256": "3365e745a80416afb803f8535bf6c037bc354f7ecee716282bb21eb01aa01ade"
+      "bytes": 21591,
+      "sha256": "237dd1966781c214e603d2ef4f86b353649912a234dfb701d4662a9a528be8e3"
     },
     {
       "path": "HANDOVER.md",
@@ -269,8 +269,8 @@
     },
     {
       "path": "index.ts",
-      "bytes": 166,
-      "sha256": "9e4fd13a92bda5beef4af61d18b36a09c5c9dd32eae2da81d0a953b2fb4022ba"
+      "bytes": 249,
+      "sha256": "5cf5931da12e87d04917480f53f1660e93a5cb1a6b64733e5276d454bca3dd72"
     },
     {
       "path": "metro.config.js",
@@ -299,8 +299,8 @@
     },
     {
       "path": "scripts/mobile-test.mjs",
-      "bytes": 7116,
-      "sha256": "265e307c8af57c72d6d095f4d32d647f3762f202ab88f1a6fbe459856eb31ad8"
+      "bytes": 7152,
+      "sha256": "b87813e0aa1e4f99b0505736e0dcbfa92f13784d448408ad1f239a809ed0395a"
     },
     {
       "path": "src/screens/AccountScreen.tsx",
@@ -324,8 +324,8 @@
     },
     {
       "path": "src/screens/CheckoutScreen.tsx",
-      "bytes": 4592,
-      "sha256": "02af2268e6a3d2af63e6ed6f52f03f300682e3f3d5989e468eaba0819b9665c7"
+      "bytes": 5087,
+      "sha256": "805f72189d090c01d9d2db3817852eca49e8f024bb26d8f9b1753fb151b10da7"
     },
     {
       "path": "src/screens/EmailLoginScreen.tsx",
@@ -349,8 +349,8 @@
     },
     {
       "path": "src/screens/OrdersScreen.tsx",
-      "bytes": 3404,
-      "sha256": "725ccaf3681fb62fc5e7c0c9f141a007340007bf68b0217d8ea9ff5c3069ebfe"
+      "bytes": 3412,
+      "sha256": "43e0385a9c6948ea6c05185ffe3e54085347d7fcc7c965e7e93fb2de70dc7e91"
     },
     {
       "path": "src/screens/PaymentScreen.tsx",

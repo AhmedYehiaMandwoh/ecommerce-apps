@@ -298,7 +298,7 @@ export default function App() {
     ["home", "الرئيسية", require("./assets/home-icon.png")], ["shops", "المحلات", require("./assets/shops-icon.png")],
     ["orders", "طلباتي", require("./assets/orders-icon.png")], ["account", "حسابي", require("./assets/profile-icon.png")],
   ];
-  const active = ({ search: "shops", shop: "shops", product: "home", cart: "home", checkout: "home", payment: "home", addresses: "account", addaddress: "account", vehicle: "account", favorites: "account", settings: "account", support: "orders", track: "orders", orderdetail: "orders" } as Record<string, string>)[screen] || screen;
+  const active = ({ search: "shops", shop: "shops", product: "home", cart: "home", checkout: "home", payment: "home", addresses: "home", addaddress: "home", vehicle: "home", favorites: "account", settings: "account", support: "orders", track: "orders", orderdetail: "orders" } as Record<string, string>)[screen] || screen;
   const body = (
     <>
       {screen === "splash" && <SplashScreen c={ctx} />}
