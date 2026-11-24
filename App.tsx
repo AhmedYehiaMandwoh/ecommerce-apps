@@ -57,6 +57,7 @@ export default function App() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
+  useEffect(() => { if (!notice) return; const t = setTimeout(() => setNotice(""), 4000); return () => clearTimeout(t); }, [notice]);
   const [products, setProducts] = useState<any[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [shops, setShops] = useState<any[]>([]);
@@ -297,7 +298,7 @@ export default function App() {
     ["home", "الرئيسية", require("./assets/home-icon.png")], ["shops", "المحلات", require("./assets/shops-icon.png")],
     ["orders", "طلباتي", require("./assets/orders-icon.png")], ["account", "حسابي", require("./assets/profile-icon.png")],
   ];
-  const active = ({ search: "shops", shop: "shops", product: "home", cart: "home", checkout: "home", payment: "home", addresses: "account", addaddress: "account", vehicle: "account", favorites: "account", settings: "account", support: "account", track: "orders", orderdetail: "orders" } as Record<string, string>)[screen] || screen;
+  const active = ({ search: "shops", shop: "shops", product: "home", cart: "home", checkout: "home", payment: "home", addresses: "account", addaddress: "account", vehicle: "account", favorites: "account", settings: "account", support: "orders", track: "orders", orderdetail: "orders" } as Record<string, string>)[screen] || screen;
   const body = (
     <>
       {screen === "splash" && <SplashScreen c={ctx} />}

@@ -14,8 +14,8 @@
     },
     {
       "path": "App.tsx",
-      "bytes": 21467,
-      "sha256": "9853e8a4f5c46d571ab98bae6fb500484c542c8d85b829f9a41c4c750e19bf4b"
+      "bytes": 21600,
+      "sha256": "3365e745a80416afb803f8535bf6c037bc354f7ecee716282bb21eb01aa01ade"
     },
     {
       "path": "HANDOVER.md",
@@ -289,8 +289,8 @@
     },
     {
       "path": "src/screens/AccountScreen.tsx",
-      "bytes": 2169,
-      "sha256": "4dde2176051ee62866c2579dfde5cd6ce5dc0e5f07c547744c5fb249aa7ca9c7"
+      "bytes": 2634,
+      "sha256": "1daf787ee2b9e80d43780c592d0800794d2eb92991cf5d662d73c30d703f8d5f"
     },
     {
       "path": "src/screens/AddAddressScreen.tsx",
@@ -359,8 +359,8 @@
     },
     {
       "path": "src/screens/SearchScreen.tsx",
-      "bytes": 5446,
-      "sha256": "0180e55559ce879f6d4580022a4223eb46d06ada81673ec9fde768c385cc6f0f"
+      "bytes": 5608,
+      "sha256": "ffad227c52b920b68c55b3d6f59bde43604e6cc2af1dfd332474a80a2e24d46f"
     },
     {
       "path": "src/screens/SettingsScreen.tsx",
@@ -379,8 +379,8 @@
     },
     {
       "path": "src/screens/SplashScreen.tsx",
-      "bytes": 1376,
-      "sha256": "62bad4d69a1b8e9792e983f9426eb4fc4c226b15291d3da2f55c8a2d036c0cdb"
+      "bytes": 1528,
+      "sha256": "0911ed9f0757f93a31fe37a9182c83a0843945d6eb43b1fc6e843a9ad96c1914"
     },
     {
       "path": "src/screens/SupportScreen.tsx",

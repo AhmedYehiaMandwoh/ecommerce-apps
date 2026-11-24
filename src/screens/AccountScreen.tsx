@@ -27,6 +27,10 @@ export function AccountScreen({ c }: { c: any }) {
           <View className={`w-12 h-12 rounded-xl items-center justify-center ${bg}`}><Text className="text-2xl">{icon}</Text></View>
         </Pressable>
       ))}
+      <View className="mt-2 mb-4 rounded-2xl bg-slate-50 border border-slate-100 p-3">
+        <Text className="text-right font-extrabold text-sm">عن النسخة التجريبية</Text>
+        <Text className="text-right text-slate-500 text-xs mt-1">كل المنتجات والأسعار والطلبات للتجربة فقط. الدفع كاش عند الاستلام بدون تحصيل فعلي، والتوصيل غير مفعّل.</Text>
+      </View>
     </View>
   );
 }

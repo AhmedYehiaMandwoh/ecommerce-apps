@@ -44,6 +44,7 @@ export function SearchScreen({ c }: { c: any }) {
                 <Text className="text-slate-500 text-xs">من {best?.shop?.name}</Text>
                 <Text className="text-accent font-extrabold text-lg">{money(best.price)}</Text>
                 <Text className="text-slate-500 text-xs">{p.brand} • {p.partNumber}</Text>
+                <View className="bg-slate-100 rounded-lg px-3 py-1 mt-1"><Text className="text-slate-600 text-xs font-bold">راجع التوافق</Text></View>
               </View>
               <Image source={img(p.image)} style={{ width: 120, height: 120, resizeMode: "contain", backgroundColor: "#fbf4ec" }} />
             <Pressable accessibilityRole="button" accessibilityLabel={p.title} onPress={() => { setSelected({ ...p, offers }); go("product"); }} className="absolute inset-0 z-[5]" />
