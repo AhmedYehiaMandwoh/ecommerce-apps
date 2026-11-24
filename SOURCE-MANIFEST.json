@@ -14,8 +14,8 @@
     },
     {
       "path": "App.tsx",
-      "bytes": 51675,
-      "sha256": "a5c2f8328ebfb4c67a72d72af7faff2589bd39646d6b2b5b71108230943ad719"
+      "bytes": 21467,
+      "sha256": "9853e8a4f5c46d571ab98bae6fb500484c542c8d85b829f9a41c4c750e19bf4b"
     },
     {
       "path": "HANDOVER.md",
@@ -58,6 +58,11 @@
       "sha256": "2535986d2e7a89b0c6fc40363981883f9cb50831525374ed335bd2a42e0fad21"
     },
     {
+      "path": "assets/category-electric.png",
+      "bytes": 18139,
+      "sha256": "6c4a68d5fffd2f2f27bfe1b6e7da74dc82cce391072df036a20d7fddb85680ce"
+    },
+    {
       "path": "assets/category-filter.png",
       "bytes": 41934,
       "sha256": "0c10573859d00f53c47eff0a564ccafaf49348259aa1e7fbca9ddd4310014cf5"
@@ -98,6 +103,111 @@
       "sha256": "c65ee64e41f64bdddc120b8795d1e52ae84099fa7469d635ed3a61ac2156368f"
     },
     {
+      "path": "assets/ref/agent.png",
+      "bytes": 60713,
+      "sha256": "2de771e5f9e7755377eda6101498fa1f8b74c1372307971e82c216bd236b7d38"
+    },
+    {
+      "path": "assets/ref/building.png",
+      "bytes": 14369,
+      "sha256": "2ec5d38ece43af30c6a59fcf6cf68cc267757441eec3fb4aa764073926a363bc"
+    },
+    {
+      "path": "assets/ref/car.png",
+      "bytes": 129312,
+      "sha256": "278fbf1d6548cd57df4d04ad6145fa9eca6c01e4f837ec4750344691b96ee544"
+    },
+    {
+      "path": "assets/ref/card.png",
+      "bytes": 24023,
+      "sha256": "379f6d929d28a63a8f1d62b8819a982515e5fff8f2fdb761bc91be369a080928"
+    },
+    {
+      "path": "assets/ref/cart-filter.png",
+      "bytes": 22206,
+      "sha256": "154a82ecef8b895183d1732992e0ec6f7bbc92f9ea46ee3bc33504b7548cfd3b"
+    },
+    {
+      "path": "assets/ref/cart-pad.png",
+      "bytes": 24123,
+      "sha256": "0a7d9217ec0041727c9d57b1e6da12ae83db82fb853a021a21b2e3a42cba0058"
+    },
+    {
+      "path": "assets/ref/cash.png",
+      "bytes": 23927,
+      "sha256": "4e5ee09411f5d8158871047600f6b2618938001ddaba82850b06ac6a21e7ba27"
+    },
+    {
+      "path": "assets/ref/confirm.png",
+      "bytes": 175303,
+      "sha256": "dd97df3451b6d6c62be0b699ac6cbec55465efbb5b2f6cdca895a96646d77bd0"
+    },
+    {
+      "path": "assets/ref/grid-filter.png",
+      "bytes": 36349,
+      "sha256": "299aa226544a3de096387a0b64db0d1daf6e872465aec48e4eed4f644a13ca04"
+    },
+    {
+      "path": "assets/ref/grid-pad.png",
+      "bytes": 41475,
+      "sha256": "54142c0cd1f9f865ca8422b6ed4235c24ac2a49aeb85a6e224aacb9c3f1fb62f"
+    },
+    {
+      "path": "assets/ref/house.png",
+      "bytes": 13751,
+      "sha256": "3e967a5b0551764accc6feda5eadff4dd189672b940d1c65a6af29e0a0be3a67"
+    },
+    {
+      "path": "assets/ref/map-small.png",
+      "bytes": 70331,
+      "sha256": "413817533395fc0affb9d8f857d16ac4a9e66beb5c4b3dfc0d4f98c631d6bcd3"
+    },
+    {
+      "path": "assets/ref/onboard-hero.png",
+      "bytes": 205434,
+      "sha256": "883b9dd11e0dcc9f491dbf079247234e6e4ddef3791ffbf8632676e26f22de3d"
+    },
+    {
+      "path": "assets/ref/pad-a.png",
+      "bytes": 36361,
+      "sha256": "4e33186ed4d3e47776da36f907d863e59f86972f67c22602f51353a8c879db9c"
+    },
+    {
+      "path": "assets/ref/pad-b.png",
+      "bytes": 37389,
+      "sha256": "643898a19d1b6158d829f50b2a906ace23e993b0036e0f51235a13a01121a2a6"
+    },
+    {
+      "path": "assets/ref/pad-big.png",
+      "bytes": 151253,
+      "sha256": "8f754b4f23e47f5baffa5978deb1d20674491bc02a7f3115091e0544378264e7"
+    },
+    {
+      "path": "assets/ref/pad-c.png",
+      "bytes": 40470,
+      "sha256": "7b518740c4033d88b8cc9935761cadd015c09ac3dc5125fd8b98112ace2f2002"
+    },
+    {
+      "path": "assets/ref/phone-hero.png",
+      "bytes": 135373,
+      "sha256": "5d950580039fdafc8f904710f5ead4c5b1c294eb9f5d5a3001c5967e31f672fe"
+    },
+    {
+      "path": "assets/ref/shop-banner.png",
+      "bytes": 193515,
+      "sha256": "faa0c523ca83ec6d0db86ec16c2ceba5864dc6084c826508e2273b1a61018608"
+    },
+    {
+      "path": "assets/ref/shop-world.png",
+      "bytes": 98170,
+      "sha256": "dc5d038779f949a9dfca4a1cd6079ed4799ee4204c5c8e883192c6dcfad2c726"
+    },
+    {
+      "path": "assets/ref/track-map.png",
+      "bytes": 74848,
+      "sha256": "e0c365a9970231314f95d62caadc117a4c8bbb17505c50cda6ec8980b395b0c1"
+    },
+    {
       "path": "assets/reference-logo.png",
       "bytes": 24104,
       "sha256": "cae8b88c86cc69d57fa7c5051ebf5f4da10d86d412df5d3fe9a8782210b1af52"
@@ -123,14 +233,14 @@
       "sha256": "87615c8e0696505b3862295850a255a7b1175d4b7e21afa519197081e23cecb7"
     },
     {
+      "path": "babel.config.js",
+      "bytes": 165,
+      "sha256": "e4816f1c21a8198f90d7840f2f97d576e47e007f2c75ec75681d95306aaddc64"
+    },
+    {
       "path": "components/Controls.tsx",
       "bytes": 1464,
       "sha256": "902ab0bbfc6055fc981ca41acc8a85dda1ee720984e2b4602175178bd013c7b0"
-    },
-    {
-      "path": "components/MarketplaceHome.tsx",
-      "bytes": 8650,
-      "sha256": "226a303b7a6938a9a110c14af4ac9768bbaf5bbeec2db87f847d9a942b36481f"
     },
     {
       "path": "eas.json",
@@ -138,19 +248,34 @@
       "sha256": "55554722a23346710b9b7705f517da054a3700e1a9e6f6e5343735ef46e15232"
     },
     {
+      "path": "global.css",
+      "bytes": 59,
+      "sha256": "cc1a7ad0d019ddb1d32d0ecb588ba0ac26ce41d8625dd6c366348b25f83a28ec"
+    },
+    {
       "path": "index.ts",
       "bytes": 95,
       "sha256": "d542e11db8fce8320808a35a1b725ebf1a63a449ee2f1356405b61434ba48a5e"
     },
     {
+      "path": "metro.config.js",
+      "bytes": 227,
+      "sha256": "cc355a9d9cbc860f783fd139c6601855ef36f996beb83300d220489ff904137a"
+    },
+    {
+      "path": "nativewind-env.d.ts",
+      "bytes": 67,
+      "sha256": "f5449798d7a25e28d4f5efb30bf6acada7438daa8d08358b4d3f9ef5d5d6a9c0"
+    },
+    {
       "path": "package.json",
-      "bytes": 845,
-      "sha256": "ac82914063bf4c1a332169e8341e220244479752e23faae2d20137a1968aaab3"
+      "bytes": 1054,
+      "sha256": "745c024f273b5f2ccb9de047c48a2514f5b0a719fe05d89c15f7cd948db785c4"
     },
     {
       "path": "pnpm-lock.yaml",
-      "bytes": 179465,
-      "sha256": "34f8bc30ba5b401ea33bb15753575d585238efcd85d5c6888d269875aee3bac9"
+      "bytes": 233759,
+      "sha256": "ddecfcc92a94da07b8020a4d06b59ccae850be765943586994945024ef3ab0b1"
     },
     {
       "path": "pnpm-workspace.yaml",
@@ -158,9 +283,149 @@
       "sha256": "0cae2ab16a3aa16bed51dbfe286f6db518c4cc40f22938b96c48dd03458daf8d"
     },
     {
+      "path": "scripts/mobile-test.mjs",
+      "bytes": 4608,
+      "sha256": "97b77137c717dabdc07d0d4390c33c61b8cbf1e4b9687f639ed534c3df448980"
+    },
+    {
+      "path": "src/screens/AccountScreen.tsx",
+      "bytes": 2169,
+      "sha256": "4dde2176051ee62866c2579dfde5cd6ce5dc0e5f07c547744c5fb249aa7ca9c7"
+    },
+    {
+      "path": "src/screens/AddAddressScreen.tsx",
+      "bytes": 2421,
+      "sha256": "64fc34f4c28ee0699deea9dd412d39d58cd743a8b60e7b440a9d4875cb6cc2c1"
+    },
+    {
+      "path": "src/screens/AddressesScreen.tsx",
+      "bytes": 2324,
+      "sha256": "c4831be3db6a74c945ff07b8d3cc3afa8e340657de8aee140a9a3fbf229e33e3"
+    },
+    {
+      "path": "src/screens/CartScreen.tsx",
+      "bytes": 3415,
+      "sha256": "d8d2a4d9e5ebf9de7126b105d956d29ec395297f05b15cef8d64964cfb046a4b"
+    },
+    {
+      "path": "src/screens/CheckoutScreen.tsx",
+      "bytes": 4592,
+      "sha256": "02af2268e6a3d2af63e6ed6f52f03f300682e3f3d5989e468eaba0819b9665c7"
+    },
+    {
+      "path": "src/screens/EmailLoginScreen.tsx",
+      "bytes": 1172,
+      "sha256": "a7986e5f2478b8f667e57bb6e422a247263ea3c8596b3b33f84ff34845337941"
+    },
+    {
+      "path": "src/screens/FavoritesScreen.tsx",
+      "bytes": 1569,
+      "sha256": "6aac199ea36606ea042ff4d41d3e664b9a43658da530f1f56260b531bf8a3004"
+    },
+    {
+      "path": "src/screens/HomeScreen.tsx",
+      "bytes": 4796,
+      "sha256": "923993ecb0a686500841179687dc4c81ffbad9523f951a940345d6718dabd7c7"
+    },
+    {
+      "path": "src/screens/OrderDetailScreen.tsx",
+      "bytes": 5569,
+      "sha256": "40e0921e6524c7edd4bccba337b7ac1f831c194fd0807755173c07262c106885"
+    },
+    {
+      "path": "src/screens/OrdersScreen.tsx",
+      "bytes": 3299,
+      "sha256": "0e22472cdd6ff50d60063ca67be4647829a86463afbd0fdc3a12e339599630e3"
+    },
+    {
+      "path": "src/screens/PaymentScreen.tsx",
+      "bytes": 2836,
+      "sha256": "cedf97fccfe0f7c258810e88fbd8b4f7d597748e824f0d3e95fbec1bddd4c72c"
+    },
+    {
+      "path": "src/screens/PhoneLoginScreen.tsx",
+      "bytes": 2870,
+      "sha256": "0a15c77c807db5fc0da1532bb66d772084500682e20e0bba5b2250cf80643ec3"
+    },
+    {
+      "path": "src/screens/PlacedScreen.tsx",
+      "bytes": 2700,
+      "sha256": "8a7303ffedd31350ec0ff40e2192428e91aeedb0ac22469f8883f27811a94bb9"
+    },
+    {
+      "path": "src/screens/ProductScreen.tsx",
+      "bytes": 5631,
+      "sha256": "f18604cb197ce8c47486042b61b84f4e86a33b7158c41921332854506407b2fb"
+    },
+    {
+      "path": "src/screens/SearchScreen.tsx",
+      "bytes": 5446,
+      "sha256": "0180e55559ce879f6d4580022a4223eb46d06ada81673ec9fde768c385cc6f0f"
+    },
+    {
+      "path": "src/screens/SettingsScreen.tsx",
+      "bytes": 2110,
+      "sha256": "1fbe045bfd6ad5010aa757b5822180553d727d78fc8b46ff439361c31c69237b"
+    },
+    {
+      "path": "src/screens/ShopScreen.tsx",
+      "bytes": 4360,
+      "sha256": "c57957583ae5b11d448ccfd20e43378566e20a226e250e63775f4862d5e724a7"
+    },
+    {
+      "path": "src/screens/ShopsScreen.tsx",
+      "bytes": 2540,
+      "sha256": "bb354e141da9c6c7c7a693b7b024043d613a66a187addd79dade164aba0a996b"
+    },
+    {
+      "path": "src/screens/SplashScreen.tsx",
+      "bytes": 1376,
+      "sha256": "62bad4d69a1b8e9792e983f9426eb4fc4c226b15291d3da2f55c8a2d036c0cdb"
+    },
+    {
+      "path": "src/screens/SupportScreen.tsx",
+      "bytes": 4907,
+      "sha256": "081eb96becdbfb31273273204cf9a1840918686f8858d612d0b0bb935ca5bf7a"
+    },
+    {
+      "path": "src/screens/TrackScreen.tsx",
+      "bytes": 3290,
+      "sha256": "6ff46b8a02b34774dbb555f44b2a4c8030c196077e81d001d41d9c16ec614657"
+    },
+    {
+      "path": "src/screens/VehicleScreen.tsx",
+      "bytes": 4706,
+      "sha256": "8d64c1294982e36cf6736cfafda99751671b024bfb7703e2ebf48d64dadaf37c"
+    },
+    {
+      "path": "src/shared.ts",
+      "bytes": 1362,
+      "sha256": "37eb237f4c5e66c9d09fd781907cd87065c94c6281b77fb257ad6c583b553d88"
+    },
+    {
+      "path": "src/styles.ts",
+      "bytes": 5275,
+      "sha256": "db09ccaf670fa9153f77d59d9d15a3c1620ba6b49c9420c7056dccc3506a7706"
+    },
+    {
+      "path": "src/ui/helpers.ts",
+      "bytes": 719,
+      "sha256": "0c4b663eafa036d864e9fb9cd6e3465235ab1bc524e8f52bdeab6284af4a2faf"
+    },
+    {
+      "path": "src/ui/kit.tsx",
+      "bytes": 5346,
+      "sha256": "4f57309a5d8a0d894d2e40eab0fbc8ec2d1103c6217f05e2a33ce3092f2321d5"
+    },
+    {
+      "path": "tailwind.config.js",
+      "bytes": 377,
+      "sha256": "ffc90fdeb4f4845eaf707241a8f03dc483c4370652091226aaf14809c2049c2e"
+    },
+    {
       "path": "tsconfig.json",
-      "bytes": 117,
-      "sha256": "32b1876837b0811013efbc1122e552f89630ddfce455acb733a54b1ce59d9a46"
+      "bytes": 161,
+      "sha256": "8e7af9306f8e13307052a21b224aec685f24019020e7f552fa9b91556765effa"
     }
   ]
 }
