@@ -14,18 +14,21 @@ export function TrackScreen({ c }: { c: any }) {
     <View className="bg-white flex-1" style={{ minHeight: 760 }}>
       <Header back onBack={back} title="تتبع الطلب" onCart={() => go("cart")} count={count} />
       <View className="p-3">
-        <View><Image source={require("../../assets/ref/track-map.png")} style={{ width: "100%", height: 150, resizeMode: "cover", borderRadius: 14 }} /><Text className="absolute bottom-2 left-2 bg-white/90 text-slate-700 text-xs px-2 py-1 rounded-lg">رسم توضيحي ثابت، ليس تتبعًا مباشرًا</Text></View>
-        <View className="flex-row items-center bg-brand-light rounded-2xl p-3 my-3">
-          <View className="flex-1 items-end"><Text className="text-xl font-extrabold">{statuses[o.status]}</Text><Text className="text-slate-500 text-xs">حالة توضيحية • #{o.id.slice(0, 8)}</Text></View>
-          <View className="mr-3"><Ico n="truck" size={34} color="#0751e8" /></View>
+        <View><Image source={require("../../assets/ref/track-map.png")} style={{ width: "100%", height: 210, resizeMode: "cover", borderRadius: 16 }} /><Text className="absolute bottom-2 left-2 bg-white/90 text-slate-700 text-xs px-2 py-1 rounded-lg">رسم توضيحي ثابت، ليس تتبعًا مباشرًا</Text></View>
+        <View className="flex-row items-center bg-brand-light rounded-2xl p-4 my-3">
+          <View className="w-16 h-16 rounded-full bg-white items-center justify-center"><Ico n="truck" size={38} color="#0751e8" /></View>
+          <View className="flex-1 items-end"><Text className="text-2xl font-extrabold text-brand-dark" style={{ color: "#0b3fb8" }}>{statuses[o.status]}</Text><Text className="text-slate-600 text-sm">حالة توضيحية • #{o.id.slice(0, 8)}</Text></View>
         </View>
-        <View className="flex-row-reverse justify-between mb-4">
+        <View className="mb-4" style={{ paddingTop: 2 }}>
+          <View style={{ position: "absolute", top: 13, left: "12%", right: "12%", height: 3, backgroundColor: "#cbd5e1" }} />
+          <View className="flex-row-reverse justify-between">
           {steps.map(([k, t], n) => (
             <View key={k} className="items-center flex-1">
-              <View className={`w-7 h-7 rounded-full items-center justify-center ${n <= idx ? "bg-brand" : "bg-slate-300"}`}><Text className="text-white text-xs">{n <= idx ? "✓" : ""}</Text></View>
-              <Text className="text-xs mt-1 text-center">{t}</Text>
+              <View className={`w-8 h-8 rounded-full items-center justify-center ${n <= idx ? "bg-brand" : "bg-slate-300"}`}><Text className="text-white text-sm">{n <= idx ? "✓" : ""}</Text></View>
+              <Text className={`text-xs mt-1 text-center ${n <= idx ? "font-bold" : ""}`}>{t}</Text>
             </View>
           ))}
+          </View>
         </View>
         <Text className="font-extrabold text-right mb-2">محتويات الطلب</Text>
         <View className="flex-row items-center bg-white border border-slate-200 rounded-xl p-2 mb-2">
@@ -33,9 +36,9 @@ export function TrackScreen({ c }: { c: any }) {
           <View className="flex-row mx-2">{o.items.slice(0, 3).map((i: any) => <Image key={i.id} source={img(i.offer?.product?.image)} style={{ width: 44, height: 44, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 8, marginRight: 3 }} />)}</View>
           <View className="flex-1 items-end"><Text className="font-extrabold">{o.shop.name}</Text><Text className="text-slate-500 text-xs">{o.items.length} قطع</Text></View>
         </View>
-        <View className="flex-row mt-2">
-          <View className="flex-1 ml-2"><Cta title="تواصل مع الدعم 🎧" outline onPress={() => go("support")} /></View>
-          <View className="flex-1"><Cta title="تفاصيل الطلب" onPress={() => go("orderdetail")} /></View>
+        <View className="flex-row mt-3" style={{ gap: 10 }}>
+          <Pressable accessibilityRole="button" accessibilityLabel="تواصل مع الدعم 🎧" onPress={() => go("support")} className="flex-1 bg-white border-2 border-brand rounded-2xl items-center justify-center" style={{ height: 58 }}><Text className="text-brand font-extrabold text-base">تواصل مع الدعم 🎧</Text></Pressable>
+          <Pressable accessibilityRole="button" accessibilityLabel="تفاصيل الطلب" onPress={() => go("orderdetail")} className="flex-1 bg-accent rounded-2xl items-center justify-center" style={{ height: 58 }}><Text className="text-white font-extrabold text-base">تفاصيل الطلب</Text></Pressable>
         </View>
       </View>
     </View>

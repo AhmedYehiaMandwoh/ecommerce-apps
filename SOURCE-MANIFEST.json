@@ -449,8 +449,8 @@
     },
     {
       "path": "src/screens/OrdersScreen.tsx",
-      "bytes": 3406,
-      "sha256": "401b4cb184f5e9e533db61e0df77936a56c2fe7aa74fbc3be8876dbcab320590"
+      "bytes": 3407,
+      "sha256": "97ee44eeba93df08e399f36ae8b73ea17094eb46e6184fe40af1c81f45f31eb7"
     },
     {
       "path": "src/screens/PaymentScreen.tsx",
@@ -504,8 +504,8 @@
     },
     {
       "path": "src/screens/TrackScreen.tsx",
-      "bytes": 3325,
-      "sha256": "0b1b83daee27d15582aed820ac0844229983a4a5b9e9e73a4602ff2f52ea0096"
+      "bytes": 4095,
+      "sha256": "3c68bdde526871fd542feb36b3b96f644174f84d1326d28fd99c2a1c453bd78b"
     },
     {
       "path": "src/screens/VehicleScreen.tsx",
