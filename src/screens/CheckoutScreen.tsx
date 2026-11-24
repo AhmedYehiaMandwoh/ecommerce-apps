@@ -50,7 +50,7 @@ export function CheckoutScreen({ c }: { c: any }) {
         {groups.map((g) => (
           <Card key={g.shopId} className="p-2 mb-1">
             <View className="flex-row items-center justify-end mb-1"><Text className="font-extrabold ml-2">{g.name}</Text><View className="w-8 h-8 rounded-lg bg-accent items-center justify-center"><Ico n="shop" size={18} color="#fff" /></View></View>
-            <View className="flex-row mb-1" style={{ gap: 6 }}>{g.items.slice(0, 4).map((i: any) => <Image key={i.offerId} source={img(i.image)} style={{ width: "23.5%", height: 32, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 10 }} />)}</View>
+            <View className="flex-row mb-1" style={{ gap: 6 }}>{g.items.slice(0, 4).map((i: any) => <Image key={i.offerId} source={img(i.image)} style={{ width: "23.5%", height: 34, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 10 }} />)}</View>
             <View className="flex-row items-center bg-brand-light rounded-xl px-2 py-1"><Text className="text-slate-400 text-xl">‹</Text><View className="flex-1 mx-2 items-end"><Text className="font-bold">خيارات التوصيل</Text><Text className="text-slate-500 text-xs">{quote ? "محسوب حسب المنطقة" : "تحدد بعد اختيار المنطقة"}</Text></View><Ico n="truck" size={26} /></View>
           </Card>
         ))}

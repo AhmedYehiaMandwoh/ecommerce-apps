@@ -13,7 +13,7 @@ export function TrackScreen({ c }: { c: any }) {
   return (
     <View className="bg-white flex-1" style={{ minHeight: 760 }}>
       <Header back onBack={back} title="تتبع الطلب" onCart={() => go("cart")} count={count} />
-      <View className="p-3" style={{ minHeight: 560 }}>
+      <View className="p-3" style={{ minHeight: 400 }}>
         <View><Image source={require("../../assets/ref/track-map.png")} style={{ width: "100%", height: 150, resizeMode: "cover", borderRadius: 16 }} /><Text className="absolute bottom-2 left-2 bg-white/90 text-slate-700 text-xs px-2 py-1 rounded-lg">رسم توضيحي ثابت، ليس تتبعًا مباشرًا</Text></View>
         <View className="flex-row items-center bg-brand-light rounded-2xl p-3 my-2">
           <View className="w-14 h-14 rounded-full bg-white items-center justify-center"><Ico n="truck" size={38} color="#0751e8" /></View>
@@ -36,9 +36,9 @@ export function TrackScreen({ c }: { c: any }) {
           <View className="flex-row mx-2">{o.items.slice(0, 3).map((i: any) => <Image key={i.id} source={img(i.offer?.product?.image)} style={{ width: 44, height: 44, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 8, marginRight: 3 }} />)}</View>
           <View className="flex-1 items-end"><Text className="font-extrabold">{o.shop.name}</Text><Text className="text-slate-500 text-xs">{o.items.length} قطع</Text></View>
         </View>
-        <View className="flex-row" style={{ gap: 10, position: "absolute", left: 12, right: 12, bottom: 12 }}>
-          <Pressable accessibilityRole="button" accessibilityLabel="تواصل مع الدعم 🎧" onPress={() => go("support")} className="flex-1 bg-white border-2 border-brand rounded-2xl items-center justify-center" style={{ height: 58 }}><Text className="text-brand font-extrabold text-base">تواصل مع الدعم 🎧</Text></Pressable>
-          <Pressable accessibilityRole="button" accessibilityLabel="تفاصيل الطلب" onPress={() => go("orderdetail")} className="flex-1 bg-accent rounded-2xl items-center justify-center" style={{ height: 58 }}><Text className="text-white font-extrabold text-base">تفاصيل الطلب</Text></Pressable>
+        <View className="flex-row" style={{ gap: 10, marginTop: 16, marginBottom: 8 }}>
+          <Pressable accessibilityRole="button" accessibilityLabel="تواصل مع الدعم 🎧" onPress={() => go("support")} className="flex-1 bg-white border-2 border-brand rounded-2xl items-center justify-center" style={{ height: 52 }}><Text className="text-brand font-extrabold text-base">تواصل مع الدعم 🎧</Text></Pressable>
+          <Pressable accessibilityRole="button" accessibilityLabel="تفاصيل الطلب" onPress={() => go("orderdetail")} className="flex-1 bg-accent rounded-2xl items-center justify-center" style={{ height: 52 }}><Text className="text-white font-extrabold text-base">تفاصيل الطلب</Text></Pressable>
         </View>
       </View>
     </View>
