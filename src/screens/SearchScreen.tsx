@@ -38,9 +38,11 @@ export function SearchScreen({ c }: { c: any }) {
             </Pressable>
           ))}
         </View>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} className="mt-2" style={{ flexGrow: 0 }}>
-          {["", ...categories].map((k: string) => <Chip key={k || "all"} title={k || "كل الأقسام"} active={category === k} onPress={() => { setCategory(k); load(k); }} />)}
-        </ScrollView>
+        {!!category && (
+          <Pressable accessibilityRole="button" accessibilityLabel="إلغاء قسم" onPress={() => { setCategory(""); load(""); }} className="self-end mt-2 flex-row items-center bg-white rounded-full px-3 h-8">
+            <Text className="text-brand-dark font-bold text-xs">{category}  ✕</Text>
+          </Pressable>
+        )}
         {!!open && (
           <View className="bg-white rounded-2xl mt-2 p-1">
             {pills.find((x) => x[0] === open)![2].map(([v, t]) => (

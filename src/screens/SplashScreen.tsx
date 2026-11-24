@@ -17,8 +17,11 @@ export function SplashScreen({ c }: { c: any }) {
         <Cta title="ابدأ الآن ‹" onPress={() => setScreen("home")} />
         <Cta title="تسجيل الدخول" outline onPress={() => go("phone")} />
       </View>
-      <Text className="text-white/90 text-xs mt-5">غيار .. طريق أفضل لعربيتك</Text>
-      <Text className="text-white/70 text-[11px] mt-1">نسخة تجريبية • الدفع والتوصيل غير مفعّلين</Text>
+      <View className="w-full bg-white mt-5">
+        <Image source={require("../../assets/ref/skyline.png")} style={{ width: "100%", height: 110, resizeMode: "cover" }} />
+        <Text className="text-center text-slate-600 text-xs">غيار .. طريق أفضل لعربيتك</Text>
+        <Text className="text-center text-slate-400 text-[11px] pb-2">نسخة تجريبية • الدفع والتوصيل غير مفعّلين</Text>
+      </View>
     </View>
   );
 }
