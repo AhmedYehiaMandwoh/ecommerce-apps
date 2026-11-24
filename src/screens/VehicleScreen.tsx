@@ -1,9 +1,10 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
-import { Cta, Header, Chip, Card, ErrorNote } from "../ui/kit";
+import { View, Text, Image, Pressable } from "react-native";
+import { Cta, Header, Card, ErrorNote } from "../ui/kit";
 
 export function VehicleScreen({ c }: { c: any }) {
   const { vehicleCatalog, vehicle, setVehicle, vehicles, api, run, personal, setNotice, back, go, count, error, notice } = c;
+  const [open, setOpen] = React.useState("");
   const fields: [keyof typeof vehicle, string, string, string][] = [
     ["make", "الماركة", "اختر الماركة", "🚘"], ["model", "الموديل", "اختر الموديل", "🚘"],
     ["year", "سنة الصنع", "اختر سنة الصنع", "📅"], ["engine", "المحرك", "اختر المحرك", "⚙"],
@@ -25,14 +26,30 @@ export function VehicleScreen({ c }: { c: any }) {
             ["📅 سنة الصنع", String(vehicle.year || ""), years.map(String), (v) => setVehicle({ ...vehicle, year: v }), "year"],
             ["⚙ المحرك", vehicle.engine, md ? md.engines : [], (v) => setVehicle({ ...vehicle, engine: v }), "engine"],
           ];
-          return rows.map(([label, val, opts, onPick, k]) => (
-            <View key={k} className="mb-3">
-              <Text className="text-right font-extrabold mb-1">{label}</Text>
-              <View className="flex-row-reverse flex-wrap">
-                {opts.length ? opts.map((o) => <Chip key={o} title={o} active={val === o} onPress={() => onPick(o)} />) : <Text className="text-slate-400 text-sm text-right">{k === "make" ? "لا توجد ماركات متاحة" : "اختر الحقل السابق أولًا"}</Text>}
+          return rows.map(([label, val, opts, onPick, k]) => {
+            const isOpen = open === k;
+            const placeholder = k === "make" ? "اختر الماركة" : k === "model" ? "اختر الموديل" : k === "year" ? "اختر سنة الصنع" : "اختر المحرك";
+            return (
+              <View key={k} className="mb-3">
+                <View className="flex-row-reverse items-center">
+                  <Text className="font-extrabold w-24 text-right">{label}</Text>
+                  <Pressable accessibilityRole="button" accessibilityLabel={`${placeholder}${val ? ": " + val : ""}`} onPress={() => setOpen(isOpen ? "" : k)} className="flex-1 flex-row items-center justify-between rounded-xl border border-slate-200 bg-white px-3 py-3 ml-3">
+                    <Text className="text-slate-400">{isOpen ? "▲" : "▼"}</Text>
+                    <Text className={val ? "text-slate-900 font-bold" : "text-slate-400"}>{val || placeholder}</Text>
+                  </Pressable>
+                </View>
+                {isOpen ? (
+                  <View className="mt-1 rounded-xl border border-slate-200 bg-white overflow-hidden">
+                    {opts.length ? opts.map((o) => (
+                      <Pressable key={o} accessibilityRole="button" accessibilityLabel={o} onPress={() => { onPick(o); setOpen(""); }} className={`px-4 py-3 border-b border-slate-100 ${val === o ? "bg-brand-light" : ""}`}>
+                        <Text className={`text-right ${val === o ? "font-extrabold text-brand" : "text-slate-700"}`}>{o}</Text>
+                      </Pressable>
+                    )) : <Text className="text-slate-400 text-sm text-right p-3">{k === "make" ? "لا توجد ماركات متاحة" : "اختر الحقل السابق أولًا"}</Text>}
+                  </View>
+                ) : null}
               </View>
-            </View>
-          ));
+            );
+          });
         })()}
         <Cta title="حفظ العربية" disabled={!vehicle.make || !vehicle.model || !vehicle.year || !vehicle.engine} onPress={() => run(async () => { await api("/vehicles", "POST", { ...vehicle, year: Number(vehicle.year) }); await personal(); setNotice("تم حفظ العربية. التوافق يحتاج مراجعة منفصلة."); })} />
         {vehicles.map((v: any) => <Card key={v.id} className="mt-3"><Text className="text-right font-bold">🚘 {v.make} {v.model} • {v.year} • {v.engine}</Text></Card>)}

@@ -26,7 +26,7 @@ await click('متابعة ‹');await p.waitForTimeout(1000);await snap('14-paym
 await click('مراجعة الطلب وتأكيده ‹');await p.waitForTimeout(3000);await snap('15-placed');
 await click('تتبع الطلب 🚚');await p.waitForTimeout(1500);await snap('17-track');
 await click('طلباتي');await p.waitForTimeout(1500);await snap('16-orders');
-await click('الرئيسية');await click('اختر عربيتك');await p.waitForTimeout(800);if(await p.getByText('اختر الحقل السابق أولًا').count()){await click('Toyota');await click('Corolla');await click('2020');await click('1.6L');await snap('04-vehicle')}else errs.push('vehicle selectors not shown');await click('حسابي');await click('المساعدة');await snap('18-support');
+await click('الرئيسية');await click('اختر عربيتك');await p.waitForTimeout(800);if(await p.getByRole('button',{name:'اختر الماركة'}).count()){await click('اختر الماركة');await click('Toyota');await click('اختر الموديل');await click('Corolla');await click('اختر سنة الصنع');await click('2020');await click('اختر المحرك');await click('1.6L');await snap('04-vehicle')}else{await snap('04-vehicle-fail');errs.push('vehicle selectors not shown')};await click('حسابي');await click('المساعدة');await snap('18-support');
 await b.close();
 if(errs.length){console.log('FAIL browser errors:',errs.slice(0,8));process.exit(1)}
 console.log('PASS mobile customer flow (phone login, browse, product, cart, address, checkout, cash payment, order placed, tracking, orders, support). No browser errors.');
