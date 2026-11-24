@@ -33,6 +33,36 @@
       "sha256": "891c44adba571733b76aa191133f5f848665c395532af11d456b710136fe1bb7"
     },
     {
+      "path": "assets/acct-avatar.png",
+      "bytes": 48181,
+      "sha256": "8a7a1448c275ee886f2558bd5cf3eebcaf970ca74d5e899965e40568c33e8ec8"
+    },
+    {
+      "path": "assets/acct-car.png",
+      "bytes": 19468,
+      "sha256": "bbd404abd30082565453826dad33881f30d1f50a871005124bd39a1927d0fae9"
+    },
+    {
+      "path": "assets/acct-gear.png",
+      "bytes": 20645,
+      "sha256": "436b1b9b3011e7d2c8df7047e5b51c8e0f70cf72d228c3768ceeac135f4f542b"
+    },
+    {
+      "path": "assets/acct-headset.png",
+      "bytes": 20888,
+      "sha256": "c9af67f586d9b3bc66274e0cbe2ffbd557050971cd167d10e67c0367e82165ba"
+    },
+    {
+      "path": "assets/acct-heart.png",
+      "bytes": 19805,
+      "sha256": "1f22a24c81a0ead9718352e77b2c15acdfe91178cc8b95865a295aae61751db6"
+    },
+    {
+      "path": "assets/acct-pin.png",
+      "bytes": 19687,
+      "sha256": "12ceccf929bf25fc8253f7a138b04a665d6bc3d52a61073058d88968eede370f"
+    },
+    {
       "path": "assets/braking-parts.png",
       "bytes": 101154,
       "sha256": "e07201355a1f161def052ebd5f5baf21d601f1061d410471ecf46ba6c652619e"
@@ -379,8 +409,8 @@
     },
     {
       "path": "src/screens/AddAddressScreen.tsx",
-      "bytes": 2432,
-      "sha256": "bb3cd5ad122ce3e1c4a0635f6e562c651ff239b3cc227af1370a59d666ee002a"
+      "bytes": 2474,
+      "sha256": "0308cd2639c0f61e31572561f20779cb8620d9cab26cde4f30d52c2c665fe6f4"
     },
     {
       "path": "src/screens/AddressesScreen.tsx",
@@ -464,8 +494,8 @@
     },
     {
       "path": "src/screens/SplashScreen.tsx",
-      "bytes": 1740,
-      "sha256": "368bc8c683687152c61d9a77ec20a69817a7be706c552ec86e1b7c148fde9fe9"
+      "bytes": 2371,
+      "sha256": "c8b5ccccba2629370f3a8178945738ae740f3d28e697117df20062f0326ac319"
     },
     {
       "path": "src/screens/SupportScreen.tsx",
@@ -499,8 +529,8 @@
     },
     {
       "path": "src/ui/kit.tsx",
-      "bytes": 6894,
-      "sha256": "fa71656e3ed8b131e94e1d53990b314733dfc408876a7d5d03e08bc31222e7bf"
+      "bytes": 7712,
+      "sha256": "c2a623917e38508f16a504948e2d1ae7207a4f8ec9c2c95805f7b587c230abe3"
     },
     {
       "path": "src/webfont.ts",

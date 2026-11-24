@@ -59,7 +59,13 @@ export function Card({ children, className = "", onPress }: { children: React.Re
   return onPress ? <Pressable accessibilityRole="button" onPress={onPress} className={cls}>{children}</Pressable> : <View className={cls}>{children}</View>;
 }
 
-export function Input({ label, icon, value, onChange, placeholder, numeric, secure, multiline }: { label?: string; icon?: string; value: string; onChange: (t: string) => void; placeholder?: string; numeric?: boolean; secure?: boolean; multiline?: boolean }) {
+export function Input({ label, icon, value, onChange, placeholder, numeric, secure, multiline, inline }: { inline?: boolean; label?: string; icon?: string; value: string; onChange: (t: string) => void; placeholder?: string; numeric?: boolean; secure?: boolean; multiline?: boolean }) {
+  if (inline) return (
+    <View className="flex-row-reverse items-center bg-white border border-slate-200 rounded-2xl px-3 mb-2" style={{ height: 50 }}>
+      <View className="flex-row-reverse items-center" style={{ maxWidth: "55%" }}>{icon && icons[icon] ? <View className="ml-2"><Ico n={icon} size={20} /></View> : icon ? <Text className="ml-2">{icon}</Text> : null}<Text className="text-right font-bold text-slate-900" numberOfLines={1}>{label}</Text></View>
+      <TextInput accessibilityLabel={label || placeholder} value={value} onChangeText={onChange} placeholder={placeholder} placeholderTextColor="#94a3b8" keyboardType={numeric ? "numeric" : "default"} secureTextEntry={secure} className="flex-1 mr-3 text-base" style={{ textAlign: "left", height: 48 } as any} />
+    </View>
+  );
   return (
     <View className="mb-3">
       {!!label && <View className="flex-row items-center mb-1">{icon && icons[icon] ? <View className="ml-2"><Ico n={icon} size={18} /></View> : null}<Text className="text-right font-bold text-slate-900">{icon && !icons[icon] ? icon + "  " : ""}{label}</Text></View>}
