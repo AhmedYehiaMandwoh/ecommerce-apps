@@ -394,8 +394,8 @@
     },
     {
       "path": "scripts/capture-matched.mjs",
-      "bytes": 4084,
-      "sha256": "6c27695eeaf28302b4b2941117a61a8dd90e7c14fb15e226e25a292766eefd13"
+      "bytes": 5003,
+      "sha256": "5a05520d230a6b3f5e980dde622cd6bb641fb4b3558c5133c274762fe7c5f6f1"
     },
     {
       "path": "scripts/mobile-test.mjs",

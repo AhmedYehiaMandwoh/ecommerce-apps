@@ -1,0 +1,43 @@
+name: Android APK (test build)
+on:
+  workflow_dispatch:
+    inputs:
+      api_url:
+        description: "Public https API base URL, e.g. https://host/api (empty = emulator default)"
+        required: false
+        default: ""
+      asset_url:
+        description: "Public https asset base URL"
+        required: false
+        default: ""
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      EXPO_PUBLIC_API_URL: ${{ inputs.api_url }}
+      EXPO_PUBLIC_ASSET_URL: ${{ inputs.asset_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - run: pnpm install --no-frozen-lockfile
+      - run: npx expo prebuild --platform android --no-install
+      - name: Build release APK (debug-signed, test only)
+        working-directory: android
+        run: |
+          sed -i 's/signingConfig signingConfigs.release/signingConfig signingConfigs.debug/' app/build.gradle || true
+          ./gradlew assembleRelease --no-daemon -Dorg.gradle.jvmargs=-Xmx3g
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ghiyar-test-apk
+          path: android/app/build/outputs/apk/release/*.apk
