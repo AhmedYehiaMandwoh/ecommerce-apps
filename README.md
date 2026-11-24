@@ -2,11 +2,11 @@
 
 Independent React Native/Expo customer source. No APK requested or supplied.
 
-1. npm ci
+1. pnpm install
 2. cp .env.example .env
 3. Set EXPO_PUBLIC_API_URL and EXPO_PUBLIC_ASSET_URL to the running dashboard repository API/web. Use reachable LAN endpoints for a physical device, not localhost. No secrets belong in public variables.
-4. npm run check
-5. npm run web or npm start
+4. pnpm check
+5. pnpm web (browser) or pnpm start (Expo)
 
 The dashboard repository contains NestJS/MySQL migrations, local database setup, server configuration and test seed. Phone static-test code is123456 only when enabled on the development API. Never use real customer data. Twilio is blank/disabled.
 
