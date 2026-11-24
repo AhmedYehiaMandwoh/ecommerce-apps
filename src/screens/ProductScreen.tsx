@@ -23,7 +23,7 @@ export function ProductScreen({ c }: { c: any }) {
           </Pressable>
         </View>
       </View>
-      <View>
+      <View style={{ overflow: "hidden", borderBottomLeftRadius: 28, borderBottomRightRadius: 28 }}>
         <Image source={img(selected.image)} style={{ width: "100%", height: 250, resizeMode: "contain", backgroundColor: "#f3f1ee" }} />
         <Pressable accessibilityRole="button" accessibilityLabel="حفظ / إزالة من المفضلة" onPress={() => favorite(selected)} className="absolute top-3 left-3 w-10 h-10 rounded-full bg-white items-center justify-center"><Text className="text-xl">{fav ? "❤" : "♡"}</Text></Pressable>
       </View>

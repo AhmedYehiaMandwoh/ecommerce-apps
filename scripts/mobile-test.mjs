@@ -7,6 +7,7 @@ const snap=async n=>{await p.waitForTimeout(1200);await p.screenshot({path:`${pr
 const btn=(t,o={})=>p.getByRole('button',{name:t,...o}).first();
 const click=async(t,o)=>{await btn(t,o).click({timeout:8000})};
 await p.goto((process.env.APP_URL||'http://127.0.0.1:8081'),{waitUntil:'networkidle',timeout:110000});await p.waitForTimeout(3000);
+const tab=async(n)=>{for(let i=0;i<5&&!(await btn(n,{exact:true}).count());i++){await click('رجوع');await p.waitForTimeout(500);}await click(n);};
 await snap('01-splash');
 await click('تسجيل الدخول');
 await p.getByLabel('رقم الموبايل').fill(phoneNo);await click('إرسال رمز التحقق ‹');await p.waitForTimeout(1500);
@@ -15,7 +16,7 @@ await click('فرامل');await p.waitForTimeout(1500);await snap('08-search');
 await btn('',{exact:false}).count();
 await p.locator('[role=button][aria-label="مجموعة ديسك وفرامل توضيحية"]').first().click();await p.waitForTimeout(1200);await snap('11-product');
 await click('أضف للسلة 🛒');await p.waitForTimeout(1200);await snap('12-cart');
-await click('المحلات');await snap('09-shops');
+await tab('المحلات');await snap('09-shops');
 await p.locator('[role=button]').filter({hasText:'قطع غيار وصيانة'}).first().click();await p.waitForTimeout(1500);await snap('10-shop');
 {const hit=await p.evaluate(()=>[...document.querySelectorAll('[role=button][aria-label^="أضف "]')].map(e=>{e.scrollIntoView({block:'center'});const r=e.getBoundingClientRect();const t=document.elementFromPoint(r.x+r.width/2,r.y+r.height/2);return {l:e.getAttribute('aria-label'),ok:!!t&&e.contains(t)}}));if(!hit.length)errs.push('shop page has no add buttons');for(const h of hit)if(!h.ok)errs.push('shop add button covered by card overlay: '+h.l);console.log('shop add-button hit-target check',hit.length,'buttons',hit.every(h=>h.ok)?'ok':'COVERED');}
 await click('حسابي');await click('عناويني');await p.waitForTimeout(1000);await snap('05-addresses-empty');
@@ -30,7 +31,7 @@ await p.locator('[role=button]').filter({hasText:'مدينة نصر'}).first().c
 await click('متابعة ‹');await p.waitForTimeout(1000);await snap('14-payment');
 await click('مراجعة الطلب وتأكيده ‹');await p.waitForTimeout(3000);await snap('15-placed');
 await click('تتبع الطلب 🚚');await p.waitForTimeout(1500);await snap('17-track');
-await click('طلباتي');await p.waitForTimeout(1500);await snap('16-orders');
+await click('رجوع');await p.waitForTimeout(600);await click('الرئيسية');await click('طلباتي');await p.waitForTimeout(1500);await snap('16-orders');
 await click('الرئيسية');await click('اختر عربيتك');await p.waitForTimeout(800);if(await p.getByRole('button',{name:'اختر الماركة'}).count()){await click('اختر الماركة');await click('Toyota');await click('اختر الموديل');await click('Corolla');await click('اختر سنة الصنع');await click('2020');await click('اختر المحرك');await click('1.6L');await snap('04-vehicle')}else{await snap('04-vehicle-fail');errs.push('vehicle selectors not shown')};await click('حسابي');await click('المساعدة');await snap('18-support');
 // Support ticket with a real image attachment through the UI (file chooser -> preview -> send -> shown on ticket).
 {const msg='اختبار مرفق صورة '+Date.now();await p.getByPlaceholder('اكتب رسالتك هنا...').fill(msg);
