@@ -419,8 +419,8 @@
     },
     {
       "path": "src/screens/CartScreen.tsx",
-      "bytes": 3414,
-      "sha256": "efb03fc50dec08807cdda4812142810e781e4d2ba2859ed66de1fe97138bfef6"
+      "bytes": 3577,
+      "sha256": "1af9afec563d6b80845de71a5ebbdcacaf40c77222b3f0d3f650cb7ff66e3984"
     },
     {
       "path": "src/screens/CheckoutScreen.tsx",
