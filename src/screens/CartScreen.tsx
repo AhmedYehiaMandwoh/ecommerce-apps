@@ -4,6 +4,18 @@ import { Cta, Header, Stepper, Card, Ico } from "../ui/kit";
 import { groupByShop, img } from "../ui/helpers";
 import { money } from "../shared";
 
+function Trash() {
+  const g = "#6b7280";
+  return (
+    <View style={{ width: 26, height: 28, alignItems: "center" }}>
+      <View style={{ width: 10, height: 4, borderWidth: 2, borderBottomWidth: 0, borderColor: g, borderTopLeftRadius: 3, borderTopRightRadius: 3 }} />
+      <View style={{ width: 24, height: 3, backgroundColor: g, borderRadius: 2 }} />
+      <View style={{ width: 18, height: 18, borderWidth: 2.5, borderTopWidth: 0, borderColor: g, borderBottomLeftRadius: 5, borderBottomRightRadius: 5, flexDirection: "row", justifyContent: "space-evenly", paddingTop: 3 }}>
+        <View style={{ width: 2, height: 9, backgroundColor: g, borderRadius: 1 }} /><View style={{ width: 2, height: 9, backgroundColor: g, borderRadius: 1 }} />
+      </View>
+    </View>
+  );
+}
 export function CartScreen({ c }: { c: any }) {
   const { cart, setCart, shops, subtotal, go, back, count, user, key } = c;
   const groups = groupByShop(cart, shops);
@@ -24,7 +36,7 @@ export function CartScreen({ c }: { c: any }) {
             </View>
             {g.items.map((i: any) => (
               <View key={i.offerId} className="flex-row items-center py-2">
-                <Pressable accessibilityRole="button" accessibilityLabel={"حذف " + i.title} onPress={() => del(i.offerId)} className="w-9 h-9 items-center justify-center"><Text className="text-slate-500 text-2xl">🗑</Text></Pressable>
+                <Pressable accessibilityRole="button" accessibilityLabel={"حذف " + i.title} onPress={() => del(i.offerId)} className="w-9 h-9 items-center justify-center"><Trash /></Pressable>
                 <Image source={img(i.image)} style={{ width: 112, height: 84, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 12, marginLeft: 4 }} />
                 <View className="flex-1 mx-2 items-end">
                   <Text className="font-extrabold text-right text-base">{i.title}</Text>
