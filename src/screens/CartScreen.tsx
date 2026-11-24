@@ -24,20 +24,20 @@ export function CartScreen({ c }: { c: any }) {
   return (
     <View className="bg-white flex-1" style={{ minHeight: 700 }}>
       <Header back onBack={back} onCart={() => {}} count={count} />
-      <View className="p-3">
-        <Text className="text-center font-extrabold text-lg mb-2">السلة</Text>
+      <View className="p-2">
+        <Text className="text-center font-extrabold text-lg mb-1">السلة</Text>
         {!cart.length && <Text className="text-center text-slate-500 my-10">السلة فاضية.</Text>}
         {groups.map((g) => (
-          <Card key={g.shopId} className="bg-slate-50">
+          <Card key={g.shopId} className="bg-slate-50 p-2 mb-2">
             <View className="flex-row items-center bg-slate-50 rounded-xl p-2 mb-1">
-              <View className="w-10 h-10 rounded-xl bg-slate-700 items-center justify-center"><Ico n="shop" size={24} color="#fff" /></View>
+              <View className="w-9 h-9 rounded-xl bg-slate-700 items-center justify-center"><Ico n="shop" size={24} color="#fff" /></View>
               <View className="flex-1 mx-2 items-end"><Text className="font-extrabold text-lg">{g.name}</Text><Text className="text-slate-500 text-sm">قطع غيار وصيانة</Text></View>
               <Text className="text-slate-700 text-3xl">›</Text>
             </View>
             {g.items.map((i: any) => (
-              <View key={i.offerId} className="flex-row items-center py-2">
+              <View key={i.offerId} className="flex-row items-center py-1">
                 <Pressable accessibilityRole="button" accessibilityLabel={"حذف " + i.title} onPress={() => del(i.offerId)} className="w-9 h-9 items-center justify-center"><Trash /></Pressable>
-                <Image source={img(i.image)} style={{ width: 112, height: 84, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 12, marginLeft: 4 }} />
+                <Image source={img(i.image)} style={{ width: 100, height: 68, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 12, marginLeft: 4 }} />
                 <View className="flex-1 mx-2 items-end">
                   <Text className="font-extrabold text-right text-base">{i.title}</Text>
                   <Text className="text-accent font-extrabold text-lg">{money(i.price)}</Text>

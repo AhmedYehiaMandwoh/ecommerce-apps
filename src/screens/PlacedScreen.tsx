@@ -9,7 +9,7 @@ export function PlacedScreen({ c }: { c: any }) {
   const groups = groupByShop(placedSnapshot, shops);
   return (
     <View className="bg-white flex-1" style={{ minHeight: 760 }}>
-      <Header title="تم استلام طلبك" tall />
+      <Header title="تم استلام طلبك" back onBack={() => setScreen("home")} />
       <View className="p-3">
         <View style={{ width: "100%", height: 190, overflow: "hidden" }}><Image source={require("../../assets/ref/confirm.png")} style={{ width: "100%", height: 200, resizeMode: "contain" }} /></View>
         <Text className="text-3xl font-extrabold text-center mt-2">تم استلام طلبك</Text>

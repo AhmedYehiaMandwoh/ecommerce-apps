@@ -14,7 +14,7 @@ export function CheckoutScreen({ c }: { c: any }) {
       <Header small back onBack={back} title="إتمام الطلب" onCart={() => go("cart")} count={count} />
       <View className="px-3 pt-2">
         <ErrorNote error={error} notice={notice} />
-        <Card className="bg-slate-50 p-2 mb-2">
+        <Card className="bg-slate-50 p-2 mb-1">
           <Pressable accessibilityRole="button" accessibilityLabel="اختر عنوان التوصيل" onPress={() => go("addresses")} className="flex-row items-center">
           <Text className="text-slate-400 text-2xl">‹</Text>
           <View className="flex-1 mx-3 items-end"><Text className="font-extrabold">اختر عنوان التوصيل</Text><Text className="text-slate-500 text-sm" numberOfLines={1}>{addr ? `${addr.label} - ${addr.city}` : "لم يتم اختيار عنوان"}</Text></View>
@@ -25,8 +25,8 @@ export function CheckoutScreen({ c }: { c: any }) {
           {deliveryAreas.map((a: any) => {
             const on = deliveryAreaId === a.id;
             return (
-              <Pressable key={a.id} accessibilityRole="button" accessibilityLabel={`${a.city} ${a.area}`} onPress={() => setDeliveryAreaId(a.id)} className={`flex-row items-center rounded-full px-3 py-2 border ${on ? "border-brand bg-brand-light" : "border-slate-200 bg-slate-50"}`}>
-                <Text className="font-bold text-brand ml-2">{money(a.fee)}</Text><Text className="font-bold text-sm">{a.city} • {a.area}</Text>
+              <Pressable key={a.id} accessibilityRole="button" accessibilityLabel={`${a.city} ${a.area}`} onPress={() => setDeliveryAreaId(a.id)} className={`flex-row items-center rounded-full px-3 py-1 border ${on ? "border-brand bg-brand-light" : "border-slate-200 bg-slate-50"}`}>
+                <Text className="font-bold text-brand ml-2">{money(a.fee)}</Text><Text className="font-bold text-xs">{a.city} • {a.area}</Text>
               </Pressable>
             );
           })}
