@@ -1,82 +1,38 @@
-import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TextInput,
-  Pressable,
-  Image,
-  Platform,
-  ActivityIndicator,
-  Alert,
-  KeyboardAvoidingView,
-} from "react-native";
-import * as LocalAuthentication from "expo-local-authentication";
-import { Btn, Field } from "../../components/Controls";
-import { API, BASE, imageUrl, money, statuses, storage } from "../shared";
-import { st } from "../styles";
+import React, { useState } from "react";
+import { View, Text, Image, Pressable } from "react-native";
+import { Cta } from "../ui/kit";
+import { img } from "../ui/helpers";
+import { statuses } from "../shared";
 
+const done = ["DELIVERED", "CANCELLED"];
 export function OrdersScreen({ c }: { c: any }) {
-  const { api, cancelReasons, go, key, lastPlacedOrder, login, orders, personal, returnForm, run, setCancelReasons, setLastPlacedOrder, setNotice, setReturn, shop, user } = c;
+  const { orders, user, go, setDetailId, personal, run } = c;
+  const [tab, setTab] = useState<"now" | "past">("now");
+  const list = orders.filter((o: any) => (tab === "now") === !done.includes(o.status));
+  const tone = (s: string) => s === "DELIVERED" ? "bg-green-100 text-green-800" : s === "SHIPPED" ? "bg-blue-100 text-blue-800" : s === "CANCELLED" ? "bg-red-100 text-red-800" : "bg-orange-100 text-orange-800";
   return (
-    <>
-              <>
-                {!!lastPlacedOrder&&<View style={[st.card,{alignItems:'center',paddingVertical:25}]}><View style={{backgroundColor:'#ff7010',borderRadius:50,width:72,height:72,alignItems:'center',justifyContent:'center'}}><Text style={{fontSize:44,color:'white'}}>✓</Text></View><Text style={[st.h2,{marginTop:15}]}>تم استلام طلبك</Text><Text style={{fontSize:20,color:'#ff7010',fontWeight:'800'}}>طلب تجريبي</Text><Text style={st.small}>رقم الطلب: {lastPlacedOrder.id.slice(0,8)}</Text><Text style={[st.warning,{textAlign:'center',marginVertical:12}]}>لا يوجد دفع ولا توصيل حقيقي. لا تحتاج لدفع أي مبلغ.</Text><Btn title="تابع الطلب" onPress={()=>setLastPlacedOrder(null)}/></View>}
-                <Text style={st.h2}>طلباتي</Text>
-                {!user ? (
-                  <Btn title="سجّل الدخول" onPress={() => go("login")} />
-                ) : (
-                  <>
-                    <Btn
-                      title="تحديث"
-                      alt
-                      onPress={() => run(() => personal())}
-                    />
-                    {!orders.length && (
-                      <Text style={st.card}>لسه مفيش طلبات.</Text>
-                    )}
-                    {orders.map((o:any) => (
-                      <View key={o.id} style={st.card}>
-                        <Text style={st.h3}>طلب #{o.id.slice(0, 8)}</Text>
-                        <Text style={st.link}>{statuses[o.status]}</Text>
-                        <Text style={st.price}>{money(o.total)}</Text>
-                        <Text style={st.small}>{o.shop.name} • طلب تجريبي</Text>
-                        {o.items.map((i: any) => (
-                          <View key={i.id} style={[st.row,{backgroundColor:'#f7f9fc',borderRadius:12,padding:8,marginVertical:6}]}>{i.offer?.product?.image&&<Image source={{uri:imageUrl(i.offer.product.image)}} style={{width:70,height:65,resizeMode:'contain',borderRadius:10}}/>}<View style={{flex:1}}><Text style={st.body}>{i.title} × {i.quantity}</Text><Text style={st.small}>{money(i.unitPrice*i.quantity)}</Text></View></View>
-                        ))}
-                        {o.settlementFrozen&&<Text style={st.warning}>حسابات الطلب مجمدة أثناء المراجعة</Text>}
-                        {o.status==='SHIPPED'&&!o.settlementFrozen&&<><Field label="سبب طلب الإلغاء" value={cancelReasons[o.id]||''} onChange={v=>setCancelReasons({...cancelReasons,[o.id]:v})}/><Btn title="طلب إلغاء من الإدارة" alt onPress={()=>run(async()=>{await api('/orders/'+o.id+'/cancellation-requests','POST',{reason:cancelReasons[o.id]||''});await personal();setNotice('تم إرسال طلب الإلغاء للمراجعة');})}/></>}
-                        {o.cancellationReviews?.map((r:any)=><Text key={r.id} style={st.small}>إلغاء: {r.state} • {r.decisionReason}</Text>)}
-                        {o.status==='DELIVERED'&&!o.settlementFrozen&&<><Text style={st.h3}>طلب إرجاع للمراجعة</Text><Text style={st.small}>لا قبول أو رد تلقائي. الإدارة تراجع كل طلب تجريبي.</Text>{o.items.map((i:any)=><Field key={i.id} label={'كمية إرجاع: '+i.title} value={String(returnForm(o).items[i.id]||0)} numeric onChange={v=>setReturn(o,{items:{...returnForm(o).items,[i.id]:Number(v)||0}})}/>)}<Field label="سبب الإرجاع" value={returnForm(o).reason} onChange={v=>setReturn(o,{reason:v})}/><Btn title="إرسال طلب إرجاع" alt onPress={()=>run(async()=>{const f=returnForm(o);await api('/orders/'+o.id+'/returns','POST',{reason:f.reason,items:Object.entries(f.items).filter(([id,q])=>Number(q)>0).map(([orderItemId,quantity])=>({orderItemId,quantity:Number(quantity)}))});await personal();setNotice('تم إرسال الإرجاع للمراجعة، لا رد أموال تلقائي');})}/></>}
-                        {o.returns?.map((r:any)=><View key={r.id}><Text style={st.small}>إرجاع: {r.state} • {r.decisionReason}</Text>{r.state==='APPROVED'&&<Text style={st.small}>رد معتمد: {money(r.refundAmount)} • {r.refundedAt?'إثبات الرد مسجل':'بانتظار إثبات الرد'}</Text>}</View>)}
-                        {o.events.map((e: any) => (
-                          <Text key={e.id} style={st.small}>
-                            ✓ {statuses[e.status]} •{" "}
-                            {new Date(e.createdAt).toLocaleDateString("ar-EG")}
-                          </Text>
-                        ))}
-                        {["PLACED","ACCEPTED","PREPARING"].includes(o.status) && !o.settlementFrozen && (
-                          <Btn
-                            title="إلغاء الطلب"
-                            alt
-                            onPress={() =>
-                              run(async () => {
-                                await api(
-                                  "/orders/" + o.id + "/status",
-                                  "PATCH",
-                                  { status: "CANCELLED" },
-                                );
-                                await personal();
-                              })
-                            }
-                          />
-                        )}
-                      </View>
-                    ))}
-                  </>
-                )}
-              </>
-    </>
+    <View className="bg-white flex-1">
+      <View className="bg-brand px-4 pt-3 pb-8"><Text className="text-white text-center text-xl font-extrabold mt-2">طلباتي</Text></View>
+      <View className="px-4 -mt-5">
+        <View className="flex-row bg-slate-100 rounded-full p-1">
+          {([["past", "السابقة"], ["now", "الحالية"]] as const).map(([k, t]) => (
+            <Pressable key={k} accessibilityRole="button" accessibilityLabel={t} onPress={() => setTab(k)} className={`flex-1 items-center py-3 rounded-full ${tab === k ? "bg-brand" : ""}`}><Text className={tab === k ? "text-white font-extrabold" : "text-slate-600 font-bold"}>{t}</Text></Pressable>
+          ))}
+        </View>
+        {!user && <Cta title="سجّل الدخول لمتابعة طلباتك" onPress={() => go("phone")} />}
+        {user && <Pressable accessibilityRole="button" accessibilityLabel="تحديث" onPress={() => run(() => personal())} className="items-center my-2"><Text className="text-brand text-xs">تحديث</Text></Pressable>}
+        {user && !list.length && <Text className="text-center text-slate-500 my-10">{tab === "now" ? "مفيش طلبات حالية." : "مفيش طلبات سابقة."}</Text>}
+        {list.map((o: any) => (
+          <View key={o.id} className="bg-white rounded-2xl border border-slate-200 p-3 mb-3">
+            <View className="flex-row items-center justify-between">
+              <Text className={`px-3 py-1 rounded-lg text-xs font-bold ${tone(o.status)}`}>{statuses[o.status]}</Text>
+              <View className="flex-row items-center"><View className="items-end ml-2"><Text className="font-extrabold">{o.shop.name}</Text><Text className="text-slate-500 text-xs">طلب تجريبي</Text><Text className="text-slate-500 text-xs">#{o.id.slice(0, 8)}</Text></View><View className="w-10 h-10 rounded-full bg-accent items-center justify-center"><Text className="text-white">🏪</Text></View></View>
+            </View>
+            <View className="flex-row justify-end my-2">{o.items.slice(0, 3).map((i: any) => <Image key={i.id} source={img(i.offer?.product?.image)} style={{ width: 64, height: 56, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 10, marginLeft: 4 }} />)}</View>
+            <Pressable accessibilityRole="button" accessibilityLabel="عرض التفاصيل" onPress={() => { setDetailId(o.id); go("orderdetail"); }}><Text className="text-brand font-bold text-right">‹ عرض التفاصيل</Text></Pressable>
+          </View>
+        ))}
+      </View>
+    </View>
   );
 }

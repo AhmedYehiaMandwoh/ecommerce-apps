@@ -1,13 +1,29 @@
-import { API, BASE, imageUrl, money, statuses, storage } from "./src/shared";
+import { SplashScreen } from "./src/screens/SplashScreen";
+import { Btn } from "./components/Controls";
 import { st } from "./src/styles";
-import { CatalogScreen } from "./src/screens/CatalogScreen";
+import { PhoneLoginScreen } from "./src/screens/PhoneLoginScreen";
+import { EmailLoginScreen } from "./src/screens/EmailLoginScreen";
+import { AccountScreen } from "./src/screens/AccountScreen";
+import { VehicleScreen } from "./src/screens/VehicleScreen";
+import { AddressesScreen } from "./src/screens/AddressesScreen";
+import { AddAddressScreen } from "./src/screens/AddAddressScreen";
+import { HomeScreen } from "./src/screens/HomeScreen";
+import { SearchScreen } from "./src/screens/SearchScreen";
+import { ShopsScreen } from "./src/screens/ShopsScreen";
+import { ShopScreen } from "./src/screens/ShopScreen";
 import { ProductScreen } from "./src/screens/ProductScreen";
-import { LoginScreen } from "./src/screens/LoginScreen";
 import { CartScreen } from "./src/screens/CartScreen";
+import { CheckoutScreen } from "./src/screens/CheckoutScreen";
+import { PaymentScreen } from "./src/screens/PaymentScreen";
+import { PlacedScreen } from "./src/screens/PlacedScreen";
 import { OrdersScreen } from "./src/screens/OrdersScreen";
-import { ProfileScreen } from "./src/screens/ProfileScreen";
-import {Btn,Field} from "./components/Controls";
-import { MarketplaceHome } from "./components/MarketplaceHome";
+import { OrderDetailScreen } from "./src/screens/OrderDetailScreen";
+import { TrackScreen } from "./src/screens/TrackScreen";
+import { SupportScreen } from "./src/screens/SupportScreen";
+import { SettingsScreen } from "./src/screens/SettingsScreen";
+import { FavoritesScreen } from "./src/screens/FavoritesScreen";
+import "./global.css";
+import { API, BASE, imageUrl, money, statuses, storage, egPhone } from "./src/shared";
 import React, { useState, useEffect } from "react";
 import {
   View,
@@ -28,7 +44,14 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as LocalAuthentication from "expo-local-authentication";
 import { StatusBar } from "expo-status-bar";
 export default function App() {
-  const [screen, setScreen] = useState("home");
+  const TABS=["home","shops","orders","account"];
+  const ALIAS:Record<string,string>={login:"phone",catalog:"search",profile:"account"};
+  const [stack, setStack] = useState<string[]>(["splash"]);
+  const screen = stack[stack.length-1];
+  const setScreen = (s:string)=>setStack([ALIAS[s]||s]);
+  const [detailId,setDetailId]=useState("");
+  const [placedSnapshot,setPlacedSnapshot]=useState<any[]>([]);
+  const [history,setHistory]=useState<string[]>([]);
   const [user, setUser] = useState<any>(null);
   const [token, setToken] = useState("");
   const [busy, setBusy] = useState(false);
@@ -68,7 +91,7 @@ export default function App() {
   const [hasDevice,setHasDevice]=useState(false);
   const protectedOptions={requireAuthentication:true,authenticationPrompt:'افتح جلسة غيار المحفوظة',keychainAccessible:SecureStore.WHEN_UNLOCKED_THIS_DEVICE_ONLY};
   async function acceptPhone(r:any){setToken(r.token);setUser(r.user);await personal(r.token);setScreen('home');}
-  async function phoneLogin(){await run(async()=>{if(!phoneAuth.challengeId){const r=await api('/auth/phone/start','POST',{phone:phoneAuth.phone,deviceLabel:Platform.OS+' غيار'});setPhoneAuth({...phoneAuth,challengeId:r.challengeId});setNotice(r.testMode?'اختبار فقط: كودك 123456، لم يتم إرسال SMS.':'أدخل كود التحقق');}else{const r=await api('/auth/phone/check','POST',{challengeId:phoneAuth.challengeId,code:phoneAuth.code,name:phoneAuth.name});await acceptPhone(r);if(Platform.OS!=='web')setPendingDevice(r);else{await storage.set(r.token);setNotice('جلسة المتصفح الحالية فقط. الدخول المحمي متاح على التطبيق الأصلي.');}setPhoneAuth({...phoneAuth,code:'',challengeId:''});}});}
+  async function phoneLogin(){await run(async()=>{if(!phoneAuth.challengeId){const r=await api('/auth/phone/start','POST',{phone:egPhone(phoneAuth.phone),deviceLabel:Platform.OS+' غيار'});setPhoneAuth({...phoneAuth,challengeId:r.challengeId});setNotice(r.testMode?'اختبار فقط: كودك 123456، لم يتم إرسال SMS.':'أدخل كود التحقق');}else{const r=await api('/auth/phone/check','POST',{challengeId:phoneAuth.challengeId,code:phoneAuth.code,name:phoneAuth.name});await acceptPhone(r);if(Platform.OS!=='web')setPendingDevice(r);else{await storage.set(r.token);setNotice('جلسة المتصفح الحالية فقط. الدخول المحمي متاح على التطبيق الأصلي.');}setPhoneAuth({...phoneAuth,code:'',challengeId:''});}});}
   async function enableDevice(){await run(async()=>{if(Platform.OS==='web'||!pendingDevice)return;if(!await LocalAuthentication.isEnrolledAsync())throw Error('فعّل قفل الجهاز أو البصمة أولًا. تقدر تكمل الجلسة الحالية بدون حفظ.');await SecureStore.setItemAsync('ghiyar-device',JSON.stringify({token:pendingDevice.deviceToken,id:pendingDevice.deviceId}),protectedOptions);await SecureStore.setItemAsync('ghiyar-device-present','yes');setHasDevice(true);setPendingDevice(null);setNotice('تم حفظ مفتاح الجلسة بشكل محمي على الجهاز. الاختبار الفعلي للبصمة أو رمز الجهاز مطلوب على جهاز حقيقي.');});}
   async function unlockDevice(){await run(async()=>{const unlocked=await LocalAuthentication.authenticateAsync({promptMessage:'افتح غيار',disableDeviceFallback:false,cancelLabel:'إلغاء'});if(!unlocked.success)throw Error('تم إلغاء فتح الجهاز');const saved=await SecureStore.getItemAsync('ghiyar-device',protectedOptions);if(!saved){setHasDevice(false);throw Error('الجلسة غير متاحة. تحقق برقم الموبايل مرة أخرى.');}const d=JSON.parse(saved);const r=await api('/auth/device/refresh','POST',{deviceToken:d.token});try{await SecureStore.setItemAsync('ghiyar-device',JSON.stringify({token:r.deviceToken,id:r.deviceId}),protectedOptions);}catch(e){await api('/auth/devices/'+r.deviceId,'DELETE',undefined,r.token);throw e;}await acceptPhone(r);});}
   const [register, setRegister] = useState(false);
@@ -165,11 +188,36 @@ export default function App() {
     })();
   }, []);
   function go(s: string) {
+    s = ALIAS[s] || s;
     setError("");
     setNotice("");
-    setScreen(s);
-    if (["orders", "profile", "checkout"].includes(s) && token)
+    setStack(TABS.includes(s) ? [s] : [...stack, s]);
+    if (["orders", "account", "checkout", "payment", "addresses", "vehicle", "support", "favorites", "track", "orderdetail"].includes(s) && token)
       run(() => personal());
+  }
+  function back() {
+    setError("");
+    setNotice("");
+    setStack(stack.length > 1 ? stack.slice(0, -1) : ["home"]);
+  }
+  function browse(q: string, cat: string, id?: string) {
+    setSearch(q); setCategory(cat); setShop(id || "");
+    if (q.trim()) setHistory([q.trim(), ...history.filter((x) => x !== q.trim())].slice(0, 5));
+    go(id ? "shop" : "search");
+    run(async () => {
+      const r = await api(`/products?search=${encodeURIComponent(q)}&category=${encodeURIComponent(cat)}&page=1${id ? "&shopId=" + encodeURIComponent(id) : ""}`);
+      setProducts(r.items); setPages(r.pages); setPage(1);
+    });
+  }
+  function addMany(p: any, o: any, n: number) {
+    const old = cart.find((i) => i.offerId === o.id);
+    const base = old ? old.quantity : 0;
+    const q = Math.min(o.stock, base + n);
+    if (q <= base) return;
+    const item = { offerId: o.id, shopId: o.shopId, title: p.title, image: p.image, price: o.price, stock: o.stock, quantity: q };
+    setCart(old ? cart.map((i) => (i.offerId === o.id ? item : i)) : [...cart, item]);
+    key.current = "";
+    setNotice("اتضاف للسلة");
   }
   function add(p: any, o: any) {
     const old = cart.find((i) => i.offerId === o.id);
@@ -226,84 +274,75 @@ export default function App() {
         deliveryAreaId,
         requestKey: key.current,
       });
+      setPlacedSnapshot(cart);
       setCart([]);
       setLastPlacedOrder(placed);
       key.current = "";
       await personal();
-      setScreen("orders");
+      setScreen("placed");
       setNotice("طلب تجريبي فقط. لا دفع ولا توصيل حقيقي.");
     });
   }
   const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
-  const ctx = { add, address, addressId, addresses, api, application, auth, busy, cancelReasons, cart, categories, category, deliveryAreaId, deliveryAreas, favorite, favorites, fitmentVehicle, go, hasDevice, join, key, lastPlacedOrder, load, login, order, orders, page, pages, personal, phoneAuth, phoneLogin, phoneMode, products, profileName, protectedOptions, quote, register, returnForm, reviewQuote, run, screen, search, selected, setAddress, setAddressId, setAuth, setCancelReasons, setCart, setCategory, setDeliveryAreaId, setFitmentVehicle, setHasDevice, setJoin, setLastPlacedOrder, setNotice, setPendingDevice, setPhoneAuth, setPhoneMode, setProfileName, setRegister, setReturn, setScreen, setSearch, setSelected, setSupport, setTickets, setToken, setUser, setVehicle, shop, shops, subtotal, support, tickets, unlockDevice, user, vehicle, vehicles };
+  const count = cart.reduce((a, i) => a + i.quantity, 0);
+  const ctx: any = { add, addMany, address, addressId, addresses, api, application, auth, back, browse, busy, cancelReasons, cart, categories, category, count, deliveryAreaId, deliveryAreas, detailId, error, favorite, favorites, fitmentVehicle, go, hasDevice, history, join, key, lastPlacedOrder, load, login, notice, order, orders, page, pages, personal, phoneAuth, phoneLogin, phoneMode, placedSnapshot, products, profileName, protectedOptions, quote, register, returnForm, reviewQuote, run, screen, search, selected, setAddress, setAddressId, setAuth, setCancelReasons, setCart, setCategory, setDeliveryAreaId, setDetailId, setFitmentVehicle, setHasDevice, setJoin, setLastPlacedOrder, setNotice, setPage, setPendingDevice, setPhoneAuth, setPhoneMode, setProducts, setProfileName, setRegister, setReturn, setScreen, setSearch, setSelected, setShop, setSupport, setTickets, setToken, setUser, setVehicle, shop, shops, subtotal, support, tickets, unlockDevice, user, vehicle, vehicles };
+  const NOTAB = ["splash", "phone", "emaillogin", "placed"];
+  const INLINE = ["checkout", "payment", "addresses", "addaddress", "vehicle", "support", "settings", "phone"];
+  const tabs: [string, string, any][] = [
+    ["home", "الرئيسية", require("./assets/home-icon.png")], ["shops", "المحلات", require("./assets/shops-icon.png")],
+    ["orders", "طلباتي", require("./assets/orders-icon.png")], ["account", "حسابي", require("./assets/profile-icon.png")],
+  ];
+  const active = ({ search: "shops", shop: "shops", product: "home", cart: "home", checkout: "home", payment: "home", addresses: "account", addaddress: "account", vehicle: "account", favorites: "account", settings: "account", support: "account", track: "orders", orderdetail: "orders" } as Record<string, string>)[screen] || screen;
+  const body = (
+    <>
+      {screen === "splash" && <SplashScreen c={ctx} />}
+      {screen === "phone" && <PhoneLoginScreen c={ctx} />}
+      {screen === "emaillogin" && <EmailLoginScreen c={ctx} />}
+      {screen === "account" && <AccountScreen c={ctx} />}
+      {screen === "vehicle" && <VehicleScreen c={ctx} />}
+      {screen === "addresses" && <AddressesScreen c={ctx} />}
+      {screen === "addaddress" && <AddAddressScreen c={ctx} />}
+      {screen === "home" && <HomeScreen c={ctx} />}
+      {screen === "search" && <SearchScreen c={ctx} />}
+      {screen === "shops" && <ShopsScreen c={ctx} />}
+      {screen === "shop" && <ShopScreen c={ctx} />}
+      {screen === "product" && <ProductScreen c={ctx} />}
+      {screen === "cart" && <CartScreen c={ctx} />}
+      {screen === "checkout" && <CheckoutScreen c={ctx} />}
+      {screen === "payment" && <PaymentScreen c={ctx} />}
+      {screen === "placed" && <PlacedScreen c={ctx} />}
+      {screen === "orders" && <OrdersScreen c={ctx} />}
+      {screen === "orderdetail" && <OrderDetailScreen c={ctx} />}
+      {screen === "track" && <TrackScreen c={ctx} />}
+      {screen === "support" && <SupportScreen c={ctx} />}
+      {screen === "settings" && <SettingsScreen c={ctx} />}
+      {screen === "favorites" && <FavoritesScreen c={ctx} />}
+    </>
+  );
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={st.safe}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#0751e8" }}>
         <StatusBar style="light" />
-        {screen !== "home" && <View style={{backgroundColor:'#0751e8',padding:14,flexDirection:'row-reverse',alignItems:'center',justifyContent:'space-between'}}><Image source={require('./assets/reference-logo.png')} style={{width:95,height:52,resizeMode:'contain'}}/><Text style={{color:'white',fontWeight:'800',fontSize:20}}>{({catalog:'المحلات والمنتجات',product:'تفاصيل المنتج',cart:'سلة المشتريات',checkout:'إتمام الطلب',orders:'طلباتي',profile:'حسابي',login:'أهلًا بيك'} as Record<string,string>)[screen]}</Text><Pressable accessibilityRole="button" accessibilityLabel={`السلة (${cart.reduce((s,i)=>s+i.quantity,0)})`} onPress={()=>go('cart')}><Image source={require('./assets/cart-icon.png')} style={{width:27,height:27,tintColor:'white'}}/><Text style={{color:'white',fontSize:11,textAlign:'center'}}>السلة ({cart.reduce((s,i)=>s+i.quantity,0)})</Text></Pressable></View>}
-        <KeyboardAvoidingView
-          style={{ flex: 1 }}
-          behavior={Platform.OS === "ios" ? "padding" : undefined}
-        >
-          <ScrollView
-            contentContainerStyle={screen === "home" ? {paddingBottom:10,backgroundColor:"white"} : st.content}
-            keyboardShouldPersistTaps="handled"
-          >
-            {!!error && (
-              <Text accessibilityRole="alert" style={st.error}>
-                {error}
-              </Text>
-            )}
-            {!!notice && <Text style={st.success}>{notice}</Text>}
+        <KeyboardAvoidingView style={{ flex: 1, backgroundColor: "#ffffff" }} behavior={Platform.OS === "ios" ? "padding" : undefined}>
+          <ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: "#ffffff", width: "100%", maxWidth: 804, alignSelf: "center" }} keyboardShouldPersistTaps="handled">
+            {!!error && !INLINE.includes(screen) && <Text accessibilityRole="alert" className="bg-red-50 text-red-700 p-3 text-right">{error}</Text>}
+            {!!notice && !INLINE.includes(screen) && <Text className="bg-green-50 text-green-800 p-3 text-right">{notice}</Text>}
             {busy && <ActivityIndicator color="#0757e9" />}
-            {screen === "home" && <MarketplaceHome shops={shops} count={cart.reduce((a,i)=>a+i.quantity,0)} navigate={go} browse={(q,c,id)=>{setSearch(q);setCategory(c);setShop(id||'');go('catalog');run(async()=>{const r=await api(`/products?search=${encodeURIComponent(q)}&category=${encodeURIComponent(c)}&page=1`);setProducts(r.items);setPages(r.pages);setPage(1);});}}/>}
-            {screen === "catalog" && <CatalogScreen c={ctx} />}
-            {screen === "product" && selected && <ProductScreen c={ctx} />}
-            {pendingDevice&&Platform.OS!=='web'&&<View style={st.card}><Text style={st.h3}>الدخول السريع على جهازك</Text><Text style={st.small}>اختياري. نحفظ مفتاحًا محميًا على الجهاز بدل إرسال كود كل مرة. تغيير البصمة أو انتهاء الجلسة أو إلغاؤها قد يطلب التحقق من جديد.</Text><Btn title="تفعيل الدخول المحمي" onPress={enableDevice}/><Btn title="مش دلوقتي" alt onPress={()=>setPendingDevice(null)}/></View>}
-            {screen === "login" && <LoginScreen c={ctx} />}
-            {(screen === "cart" || screen === "checkout") && <CartScreen c={ctx} />}
-            {screen === "orders" && <OrdersScreen c={ctx} />}
-            {screen === "profile" && <ProfileScreen c={ctx} />}
-            <Text style={[st.small, { textAlign: "center", margin: 25 }]}>
-              غيار • إصدار تطوير 0.1 • اسم وهوية مبدئية
-            </Text>
+            {pendingDevice&&Platform.OS!=='web'&&<View className="bg-white rounded-2xl p-3 m-3"><Text style={st.h3}>الدخول السريع على جهازك</Text><Text style={st.small}>اختياري. نحفظ مفتاحًا محميًا على الجهاز بدل إرسال كود كل مرة. تغيير البصمة أو انتهاء الجلسة أو إلغاؤها قد يطلب التحقق من جديد.</Text><Btn title="تفعيل الدخول المحمي" onPress={enableDevice}/><Btn title="مش دلوقتي" alt onPress={()=>setPendingDevice(null)}/></View>}
+            {body}
           </ScrollView>
         </KeyboardAvoidingView>
-        <View style={st.tabs}>
-          {[
-            ["home", "الرئيسية"],
-            ["catalog", "المحلات"],
-            ["orders", "طلباتي"],
-            ["profile", "حسابي"],
-          ].map(([s, t]) => (
-            <Pressable
-              key={s}
-              accessibilityRole="button"
-              onPress={() => go(s)}
-              style={[
-                st.tab,
-                screen === s && {
-                  borderBottomColor: "#ff710a",
-                  borderBottomWidth: 3,
-                },
-              ]}
-            >
-              {s !== 'cart' && <Image source={s==='home'?require('./assets/home-icon.png'):s==='catalog'?require('./assets/shops-icon.png'):s==='orders'?require('./assets/orders-icon.png'):require('./assets/profile-icon.png')} style={{width:23,height:23,marginBottom:3,tintColor:screen===s?'#ff710a':'#7f8999'}}/>}
-              <Text
-                style={{
-                  fontSize:12,
-                  color: screen === s ? "#ff710a" : "#71809a",
-                  fontWeight: "700",
-                }}
-              >
-                {t}
-              </Text>
-            </Pressable>
-          ))}
-        </View>
-
+        {!NOTAB.includes(screen) && (
+          <View className="flex-row-reverse bg-white border-t border-slate-200">
+            {tabs.map(([s, t, icon]) => (
+              <Pressable key={s} accessibilityRole="button" accessibilityLabel={t} onPress={() => go(s)} className={`flex-1 items-center py-2 ${active === s ? "border-b-[3px] border-accent" : ""}`}>
+                <Image source={icon} style={{ width: 23, height: 23, marginBottom: 3, tintColor: active === s ? "#ff710a" : "#7f8999" }} />
+                <Text className={`text-xs font-bold ${active === s ? "text-accent" : "text-slate-500"}`}>{t}</Text>
+              </Pressable>
+            ))}
+          </View>
+        )}
       </SafeAreaView>
     </SafeAreaProvider>
   );
 }
-

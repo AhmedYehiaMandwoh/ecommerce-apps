@@ -1,58 +1,68 @@
-import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TextInput,
-  Pressable,
-  Image,
-  Platform,
-  ActivityIndicator,
-  Alert,
-  KeyboardAvoidingView,
-} from "react-native";
-import * as LocalAuthentication from "expo-local-authentication";
-import { Btn, Field } from "../../components/Controls";
-import { API, BASE, imageUrl, money, statuses, storage } from "../shared";
-import { st } from "../styles";
+import React, { useState } from "react";
+import { View, Text, Image, Pressable } from "react-native";
+import { Cta, Stepper, Card, art } from "../ui/kit";
+import { img } from "../ui/helpers";
+import { money } from "../shared";
 
 export function ProductScreen({ c }: { c: any }) {
-  const { add, favorite, go, key, login, selected, shop, user } = c;
+  const { selected, addMany, favorite, favorites, go, back, count, user, vehicles } = c;
+  const [qty, setQty] = useState(1);
+  const [tab, setTab] = useState<"details" | "shop">("details");
+  if (!selected) return null;
+  const offer = selected.offers[0];
+  const fav = favorites.some((f: any) => f.id === selected.id);
   return (
-    <>
-              <>
-                <Btn title="رجوع للمنتجات" alt onPress={() => go("catalog")} />
-                <View style={st.card}>
-                  <Image
-                    source={{ uri: imageUrl(selected.image) }}
-                    style={{width:"100%",height:240,resizeMode:"contain",borderRadius:17,backgroundColor:'#f9f6f1'}}
-                  />
-                  <Text style={st.h2}>{selected.title}</Text>
-                  {selected.offers[0]&&<View><View style={[st.row,{justifyContent:'space-between'}]}><Text style={st.price}>{money(selected.offers[0].price)}</Text><Btn title={selected.offers[0].stock?'أضف للسلة':'غير متوفر'} disabled={!selected.offers[0].stock} onPress={()=>add(selected,selected.offers[0])}/></View><View style={{backgroundColor:'#edf4fc',padding:12,borderRadius:13,marginVertical:12}}><Text style={st.h3}>{selected.offers[0].shop.name}</Text><Text style={st.small}>قطع غيار وصيانة</Text></View></View>}
-                  <Text style={st.small}>
-                    {selected.brand} • {selected.partNumber}
-                  </Text>
-                  <Text style={st.body}>{selected.description}</Text>
-                  <Pressable accessibilityRole="button" onPress={()=>go(user?'profile':'login')} style={{backgroundColor:'#eaf3ff',borderRadius:15,padding:14,marginTop:15}}><Text style={{color:'#153e7e',fontWeight:'800',fontSize:17,textAlign:'right'}}>هل القطعة مناسبة لعربيتك؟</Text><Text style={[st.small,{fontSize:13,lineHeight:22}]}>راجع رقم القطعة والمحرك مع البائع. بيانات التوافق غير مؤكدة في النسخة التجريبية.</Text><Text style={{color:'#0757e9',textAlign:'center',fontWeight:'800',borderRadius:20,borderWidth:1,borderColor:'#0757e9',padding:9,marginTop:7}}>اختار عربيتك</Text></Pressable>
-                </View>
-                <Text style={st.h2}>عروض المحلات</Text>
-                <Btn title="حفظ / إزالة من المفضلة" alt onPress={()=>favorite(selected)}/>
-                {selected.offers.map((o: any) => (
-                  <View key={o.id} style={st.card}>
-                    <Text style={st.h3}>{o.shop.name}</Text>
-                    <Text style={st.small}>
-                      {o.shop.city} • المتاح {o.stock}
-                    </Text>
-                    <Text style={st.price}>{money(o.price)}</Text>
-                    <Btn
-                      title={o.stock ? "أضف للسلة" : "غير متوفر"}
-                      disabled={!o.stock}
-                      onPress={() => add(selected, o)}
-                    />
-                  </View>
-                ))}
-              </>
-    </>
+    <View className="bg-white flex-1">
+      <View className="bg-brand px-4 pt-3 pb-2">
+        <View className="flex-row items-center justify-between h-12">
+          <Pressable accessibilityRole="button" accessibilityLabel="رجوع" onPress={back} className="w-10"><Text className="text-white text-3xl">‹</Text></Pressable>
+          <Image source={art.logo} style={{ width: 92, height: 40, resizeMode: "contain" }} />
+          <Pressable accessibilityRole="button" accessibilityLabel="السلة" onPress={() => go("cart")} className="w-10 h-10 items-center justify-center">
+            <Image source={art.cart} style={{ width: 28, height: 28, resizeMode: "contain" }} />
+            {!!count && <View className="absolute top-0 right-0 bg-accent rounded-full min-w-[18px] h-[18px] items-center justify-center"><Text className="text-white text-[11px] font-bold">{count}</Text></View>}
+          </Pressable>
+        </View>
+      </View>
+      <View>
+        <Image source={img(selected.image)} style={{ width: "100%", height: 250, resizeMode: "contain", backgroundColor: "#f3f1ee" }} />
+        <Pressable accessibilityRole="button" accessibilityLabel="حفظ / إزالة من المفضلة" onPress={() => favorite(selected)} className="absolute top-3 left-3 w-10 h-10 rounded-full bg-white items-center justify-center"><Text className="text-xl">{fav ? "❤" : "♡"}</Text></Pressable>
+      </View>
+      <View className="px-4 pt-3">
+        <Text className="text-2xl font-extrabold text-right">{selected.title}</Text>
+        <Text className="text-slate-500 text-right">من {offer?.shop?.name} • {selected.brand} • {selected.partNumber}</Text>
+        {offer && <Text className="text-accent text-2xl font-extrabold text-right mt-1">{money(offer.price)}</Text>}
+        <View className="my-2 items-start"><Stepper value={qty} onMinus={() => setQty(Math.max(1, qty - 1))} onPlus={() => setQty(Math.min(offer?.stock || 1, qty + 1))} /></View>
+        <Card className="flex-row items-center" onPress={() => offer && go("shops")}>
+          <Text className="text-slate-400 text-2xl">‹</Text>
+          <View className="flex-1 mx-3 items-end"><Text className="font-extrabold">{offer?.shop?.name}</Text><Text className="text-slate-500 text-sm">قطع غيار وصيانة • {offer?.shop?.city}</Text></View>
+          <View className="w-11 h-11 rounded-full bg-slate-700 items-center justify-center"><Text className="text-white">🏪</Text></View>
+        </Card>
+        <Card className="bg-brand-light border-0">
+          <Text className="font-extrabold text-base text-right">هل القطعة مناسبة لعربيتك؟</Text>
+          <Text className="text-slate-600 text-sm text-right">راجع رقم القطعة مع البائع</Text>
+          <Pressable accessibilityRole="button" accessibilityLabel="اختر عربيتك" onPress={() => go(user ? "vehicle" : "phone")} className="bg-white border border-brand rounded-xl py-3 mt-3 items-center"><Text className="text-brand font-extrabold">🚘 {vehicles.length ? "غيّر عربيتك" : "اختر عربيتك"}</Text></Pressable>
+        </Card>
+        <Card className="flex-row items-center justify-between"><Text className="font-bold">جديد</Text><Text className="text-slate-500">حالة القطعة ⚙</Text></Card>
+        <View className="flex-row border-b border-slate-200">
+          {([["shop", "المتجر"], ["details", "التفاصيل"]] as const).map(([k, t]) => (
+            <Pressable key={k} accessibilityRole="button" accessibilityLabel={t} onPress={() => setTab(k)} className={`flex-1 items-center py-3 ${tab === k ? "border-b-4 border-brand" : ""}`}><Text className={tab === k ? "text-brand font-extrabold" : "text-slate-500 font-bold"}>{t}</Text></Pressable>
+          ))}
+        </View>
+        {tab === "details" ? (
+          <Text className="text-right text-slate-700 leading-7 my-3">{selected.description}</Text>
+        ) : (
+          <View className="my-3">
+            {selected.offers.map((o: any) => (
+              <Card key={o.id} className="flex-row items-center justify-between">
+                <Pressable accessibilityRole="button" accessibilityLabel={"أضف من " + o.shop.name} disabled={!o.stock} onPress={() => addMany(selected, o, qty)} className={`px-4 py-2 rounded-xl bg-accent ${o.stock ? "" : "opacity-40"}`}><Text className="text-white font-bold">{o.stock ? "أضف" : "غير متوفر"}</Text></Pressable>
+                <View className="items-end"><Text className="font-extrabold">{o.shop.name}</Text><Text className="text-slate-500 text-xs">{o.shop.city} • المتاح {o.stock}</Text><Text className="text-accent font-bold">{money(o.price)}</Text></View>
+              </Card>
+            ))}
+          </View>
+        )}
+        <Cta title={offer?.stock ? "أضف للسلة 🛒" : "غير متوفر"} disabled={!offer?.stock} onPress={() => { addMany(selected, offer, qty); go("cart"); }} />
+        <View className="h-6" />
+      </View>
+    </View>
   );
 }

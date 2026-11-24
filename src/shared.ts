@@ -27,3 +27,9 @@ export const storage = {
       : SecureStore.deleteItemAsync("token"),
 };
 
+export const egPhone = (raw: string) => {
+  const t = raw.trim();
+  if (t.startsWith("+")) return "+" + t.replace(/\D/g, "");
+  const d = t.replace(/\D/g, "").replace(/^0+/, "").replace(/^20/, "");
+  return "+20" + d;
+};

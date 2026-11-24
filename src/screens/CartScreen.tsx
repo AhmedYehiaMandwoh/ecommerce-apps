@@ -1,124 +1,49 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TextInput,
-  Pressable,
-  Image,
-  Platform,
-  ActivityIndicator,
-  Alert,
-  KeyboardAvoidingView,
-} from "react-native";
-import * as LocalAuthentication from "expo-local-authentication";
-import { Btn, Field } from "../../components/Controls";
-import { API, BASE, imageUrl, money, statuses, storage } from "../shared";
-import { st } from "../styles";
+import { View, Text, Image, Pressable } from "react-native";
+import { Cta, Header, Stepper, Card } from "../ui/kit";
+import { groupByShop, img } from "../ui/helpers";
+import { money } from "../shared";
 
 export function CartScreen({ c }: { c: any }) {
-  const { addressId, addresses, busy, cart, deliveryAreaId, deliveryAreas, go, key, login, order, quote, reviewQuote, screen, setAddressId, setCart, setDeliveryAreaId, shops, subtotal, user } = c;
+  const { cart, setCart, shops, subtotal, go, back, count, user, key } = c;
+  const groups = groupByShop(cart, shops);
+  const upd = (offerId: string, d: number) => { key.current = ""; setCart(cart.map((i: any) => i.offerId === offerId ? { ...i, quantity: Math.max(1, Math.min(i.stock, i.quantity + d)) } : i)); };
+  const del = (offerId: string) => { key.current = ""; setCart(cart.filter((i: any) => i.offerId !== offerId)); };
   return (
-    <>
-              <>
-                <Text style={st.h2}>
-                  {screen === "cart" ? "سلة المشتريات" : "إتمام الطلب التجريبي"}
-                </Text>
-                {!cart.length ? (
-                  <View style={st.card}>
-                    <Text style={st.body}>السلة فاضية</Text>
-                    <Btn title="اختار قطعك" onPress={() => go("home")} />
-                  </View>
-                ) : (
-                  <>
-                    <View style={{backgroundColor:'#eaf3ff',borderRadius:15,padding:14,marginBottom:12}}><Text style={st.h3}>{shops.find((s:any)=>s.id===cart[0]?.shopId)?.name || 'منتجات من محل واحد'}</Text><Text style={st.small}>راجع رقم القطعة والتوافق مع البائع</Text></View>
-                    {cart.map((i:any) => (
-                      <View style={st.card} key={i.offerId}>
-                        <View style={st.row}>
-                          <Image
-                            source={{ uri: imageUrl(i.image) }}
-                            style={{
-                              width: 122,
-                              height: 122,
-                              backgroundColor: '#f7f4f0',
-                              borderRadius: 12,
-                              resizeMode: "contain",
-                            }}
-                          />
-                          <View style={{ flex: 1 }}>
-                            <Text style={st.h3}>{i.title}</Text>
-                            <Text style={st.price}>{money(i.price * i.quantity)}</Text>
-                            <View style={{flexDirection:'row',borderWidth:1,borderColor:'#d5e2f1',borderRadius:10,alignItems:'center',justifyContent:'space-between',marginTop:12}}><Pressable accessibilityRole="button" accessibilityLabel="تقليل الكمية" disabled={i.quantity<=1} style={{padding:10}} onPress={()=>{setCart(cart.map((x:any)=>x.offerId===i.offerId?{...x,quantity:Math.max(1,x.quantity-1)}:x));key.current='';}}><Text style={{fontSize:22,color:'#173655'}}>−</Text></Pressable><Text>{i.quantity}</Text><Pressable accessibilityRole="button" accessibilityLabel="زيادة الكمية" disabled={i.quantity>=Math.min(i.stock,100)} style={{padding:10}} onPress={()=>{setCart(cart.map((x:any)=>x.offerId===i.offerId?{...x,quantity:Math.min(x.quantity+1,x.stock,100)}:x));key.current='';}}><Text style={{fontSize:22,color:'#173655'}}>+</Text></Pressable></View>
-                          </View>
-                        </View>
-                        <View style={[st.row,{justifyContent:'flex-end'}]}>
-                          <Btn
-                            title="حذف"
-                            alt
-                            onPress={() => {
-                              setCart(
-                                cart.filter((x:any) => x.offerId !== i.offerId),
-                              );
-                              key.current = "";
-                            }}
-                          />
-                        </View>
-                      </View>
-                    ))}
-                    <View style={st.card}>
-                      <Text style={st.body}>المنتجات: {money(subtotal)}</Text>
-                      <Text style={st.body}>{quote?'رسوم منطقة التوصيل':'اختار المنطقة لمعرفة الشحن'}: {quote?money(quote.delivery):'غير محدد'}</Text>
-                      <Text style={st.price}>
-                        الإجمالي التقديري: {money(quote?.total??subtotal)}
-                      </Text>
-                      <Text style={st.warning}>
-                        السعر والمخزون يُراجعان عند التأكيد. لا تحصيل ولا توصيل
-                        حقيقي.
-                      </Text>
-                      {screen === "checkout" ? (
-                        <>
-                          <Text style={st.h3}>اختار عنوانك</Text>
-                          {addresses.map((a:any) => (
-                            <Pressable
-                              key={a.id}
-                              onPress={() => setAddressId(a.id)}
-                              style={[
-                                st.card,
-                                {
-                                  borderWidth: 1,
-                                  borderColor:
-                                    addressId === a.id ? "#0757e9" : "#e0e8f2",
-                                },
-                              ]}
-                            >
-                              <Text style={st.body}>
-                                {a.label} • {a.city} • {a.details}
-                              </Text>
-                            </Pressable>
-                          ))}
-                          <Text style={st.h3}>منطقة التوصيل</Text>{deliveryAreas.map((a:any)=><Pressable accessibilityRole="button" key={a.id} onPress={()=>setDeliveryAreaId(a.id)} style={[st.card,{borderWidth:1,borderColor:deliveryAreaId===a.id?'#0757e9':'#e0e8f2'}]}><Text style={st.body}>{a.city} • {a.area} • {money(a.fee)}</Text></Pressable>)}<Btn title="راجع التكلفة النهائية" alt disabled={!addressId||!deliveryAreaId||busy} onPress={reviewQuote}/>{quote&&<View><Text style={st.h3}>الإجمالي النهائي: {money(quote.total)}</Text>{quote.groups.map((g:any)=><Text style={st.small} key={g.shopId}>{shops.find((s:any)=>s.id===g.shopId)?.name||'محل'}: منتجات {money(g.subtotal)} + شحن {money(g.delivery)} = {money(g.total)}</Text>)}</View>}
-                          <Btn
-                            title="إضافة عنوان"
-                            alt
-                            onPress={() => go("profile")}
-                          />
-                          <Btn
-                            title="تأكيد طلب تجريبي"
-                            disabled={!addressId || !quote || user?.role !== "CUSTOMER"}
-                            onPress={order}
-                          />
-                        </>
-                      ) : (
-                        <Btn
-                          title={user ? "إتمام الطلب" : "سجّل الدخول للمتابعة"}
-                          onPress={() => go(user ? "checkout" : "login")}
-                        />
-                      )}
-                    </View>
-                  </>
-                )}
-              </>
-    </>
+    <View className="bg-white flex-1" style={{ minHeight: 700 }}>
+      <Header back onBack={back} onCart={() => {}} count={count} />
+      <View className="p-3">
+        <Text className="text-center font-extrabold text-lg mb-2">السلة</Text>
+        {!cart.length && <Text className="text-center text-slate-500 my-10">السلة فاضية.</Text>}
+        {groups.map((g) => (
+          <Card key={g.shopId} className="bg-slate-50">
+            <View className="flex-row items-center bg-slate-100 rounded-xl p-2 mb-2">
+              <Text className="text-slate-400 text-xl">‹</Text>
+              <View className="flex-1 mx-2 items-end"><Text className="font-extrabold">{g.name}</Text><Text className="text-slate-500 text-xs">قطع غيار وصيانة</Text></View>
+              <View className="w-9 h-9 rounded-full bg-slate-700 items-center justify-center"><Text className="text-white">🏪</Text></View>
+            </View>
+            {g.items.map((i: any) => (
+              <View key={i.offerId} className="flex-row items-center py-2">
+                <Pressable accessibilityRole="button" accessibilityLabel={"حذف " + i.title} onPress={() => del(i.offerId)} className="w-9 h-9 items-center justify-center"><Text className="text-slate-400 text-xl">🗑</Text></Pressable>
+                <View className="flex-1 mx-2 items-end">
+                  <Text className="font-bold text-right">{i.title}</Text>
+                  <Text className="text-accent font-extrabold">{money(i.price)}</Text>
+                  <Stepper value={i.quantity} onMinus={() => upd(i.offerId, -1)} onPlus={() => upd(i.offerId, 1)} />
+                </View>
+                <Image source={img(i.image)} style={{ width: 92, height: 76, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 12 }} />
+              </View>
+            ))}
+          </Card>
+        ))}
+        {!!cart.length && (
+          <>
+            <Card><View className="flex-row justify-between"><Text className="text-xl font-extrabold">{money(subtotal)}</Text><Text className="text-slate-600">إجمالي المنتجات</Text></View>
+              <View className="flex-row justify-between mt-2"><Text className="font-bold text-slate-700">يحدد عند إتمام الطلب 🚚</Text><Text className="text-slate-600">مصاريف التوصيل</Text></View></Card>
+            {groups.length > 1 && <Text className="bg-amber-50 text-amber-900 rounded-xl p-3 text-right mb-2">ⓘ قد تصل منتجات كل محل في شحنة منفصلة.</Text>}
+            <Cta title="متابعة الطلب" onPress={() => go(user ? "checkout" : "phone")} />
+          </>
+        )}
+      </View>
+    </View>
   );
 }
