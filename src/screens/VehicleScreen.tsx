@@ -12,7 +12,7 @@ export function VehicleScreen({ c }: { c: any }) {
   return (
     <View className="bg-white flex-1" style={{ minHeight: 700 }}>
       <Header back onBack={back} title="اختار عربيتك" subtitle="راجع بيانات عربيتك عشان تختار القطعة المناسبة." onCart={() => go("cart")} count={count} tall />
-      <View style={{ backgroundColor: "#0751e8", marginTop: -14, paddingTop: 14 }}><Image source={require("../../assets/ref/car.png")} style={{ width: "100%", height: 205, resizeMode: "contain" }} /></View>
+      <View style={{ backgroundColor: "#0751e8", marginTop: -14, paddingTop: 14 }}><Image source={require("../../assets/ref/car-full.png")} style={{ width: "100%", height: 176, resizeMode: "contain" }} /></View>
       <View className="p-4 bg-white" style={{ marginTop: -22, borderTopLeftRadius: 28, borderTopRightRadius: 28 }}>
         <ErrorNote error={error} notice={notice} />
         {(() => {
@@ -30,10 +30,10 @@ export function VehicleScreen({ c }: { c: any }) {
             const isOpen = open === k;
             const placeholder = k === "make" ? "اختر الماركة" : k === "model" ? "اختر الموديل" : k === "year" ? "اختر سنة الصنع" : "اختر المحرك";
             return (
-              <View key={k} className="mb-2">
+              <View key={k} className="mb-2.5">
                 <View className="flex-row-reverse items-center">
-                  <View className="flex-row-reverse items-center justify-start rounded-2xl" style={{ width: 142, backgroundColor: "#eef3fb", paddingHorizontal: 10, height: 52 }}><Ico n={k === "year" ? "v-cal" : k === "engine" ? "v-engine" : "v-car"} size={26} /><Text className="font-extrabold mr-2 text-base">{label}</Text></View>
-                  <Pressable accessibilityRole="button" accessibilityLabel={`${placeholder}${val ? ": " + val : ""}`} onPress={() => setOpen(isOpen ? "" : k)} className="flex-1 flex-row items-center justify-between rounded-2xl border border-slate-200 bg-white px-3 ml-2" style={{ height: 52, shadowColor: "#0f172a", shadowOpacity: 0.06, shadowRadius: 6, shadowOffset: { width: 0, height: 2 } }}>
+                  <View className="flex-row-reverse items-center justify-start rounded-2xl" style={{ width: 142, backgroundColor: "#eef3fb", paddingHorizontal: 10, height: 54 }}><Ico n={k === "year" ? "v-cal" : k === "engine" ? "v-engine" : "v-car"} size={26} /><Text className="font-extrabold mr-2 text-base">{label}</Text></View>
+                  <Pressable accessibilityRole="button" accessibilityLabel={`${placeholder}${val ? ": " + val : ""}`} onPress={() => setOpen(isOpen ? "" : k)} className="flex-1 flex-row items-center justify-between rounded-2xl border border-slate-200 bg-white px-3 ml-2" style={{ height: 54, shadowColor: "#0f172a", shadowOpacity: 0.06, shadowRadius: 6, shadowOffset: { width: 0, height: 2 } }}>
                     <Text className="text-slate-400">{isOpen ? "▲" : "▼"}</Text>
                     <Text className={val ? "text-slate-900 font-bold flex-1 text-right text-base" : "text-slate-400 flex-1 text-right text-base"}>{val || placeholder}</Text>
                   </Pressable>
