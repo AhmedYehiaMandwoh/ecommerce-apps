@@ -8,20 +8,20 @@ export const art = {
   store: require("../../assets/store-white.png"),
 };
 
-export function Cta({ title, onPress, disabled, outline, soft, testID, chevron, icon }: { chevron?: boolean; title: string; onPress: () => void; disabled?: boolean; outline?: boolean; soft?: boolean; testID?: string; icon?: string }) {
+export function Cta({ title, onPress, disabled, outline, soft, testID, chevron, icon, chevronSide }: { chevron?: boolean; title: string; onPress: () => void; disabled?: boolean; outline?: boolean; soft?: boolean; testID?: string; icon?: string; chevronSide?: "left" | "right" }) {
   const base = "rounded-2xl py-4 px-5 items-center justify-center mt-3";
   const tone = outline ? "bg-white border-2 border-brand" : soft ? "bg-brand-light" : "bg-accent";
   const text = outline || soft ? "text-brand font-extrabold text-lg" : "text-white font-extrabold text-lg";
   return (
     <Pressable testID={testID} accessibilityRole="button" accessibilityLabel={title} disabled={disabled} onPress={onPress} className={`${base} ${tone} ${disabled ? "opacity-50" : ""}`}>
-      <View style={{ flexDirection: "row", alignItems: "center" }}>{!!icon && <View style={{ marginRight: 8 }}><Ico n={icon} size={24} color={outline || soft ? "#0751e8" : "#fff"} /></View>}<Text className={text}>{chevron ? title.replace(/\s*‹$/, "") : title}</Text></View>
-      {chevron && <View style={{ position: "absolute", right: 16, top: 0, bottom: 0, justifyContent: "center" }}><Text className="text-white font-extrabold" style={{ fontSize: 34, lineHeight: 38 }}>›</Text></View>}
+      <View style={{ flexDirection: "row", alignItems: "center" }}>{!!icon && <View style={{ marginRight: 8 }}><Ico n={icon} size={24} color={outline || soft ? "#0751e8" : "#fff"} /></View>}<Text className={text}>{title.replace(/\s*‹$/, "")}</Text></View>
+      {(chevron || /‹\s*$/.test(title)) && <View style={{ position: "absolute", [chevronSide === "right" ? "right" : "left"]: 16, top: 0, bottom: 0, justifyContent: "center" }}><Ico n="chev" size={22} color="#fff" /></View>}
     </Pressable>
   );
 }
 
 export const icons: Record<string, any> = {
-  search: require("../../assets/icons/search.png"), home: require("../../assets/icons/home.png"), shop: require("../../assets/icons/shop.png"), truck: require("../../assets/icons/truck.png"), car: require("../../assets/icons/car.png"),
+  chev: require("../../assets/icons/chev.png"), search: require("../../assets/icons/search.png"), home: require("../../assets/icons/home.png"), shop: require("../../assets/icons/shop.png"), truck: require("../../assets/icons/truck.png"), car: require("../../assets/icons/car.png"),
   ticket: require("../../assets/icons/ticket.png"), pin: require("../../assets/icons/pin.png"),
   "f-pin": require("../../assets/icons/f-pin.png"), "f-map": require("../../assets/icons/f-map.png"), "f-road": require("../../assets/icons/f-road.png"),
   "send": require("../../assets/icons/send.png"), "f-doc": require("../../assets/icons/f-doc.png"), "f-landmark": require("../../assets/icons/f-landmark.png"),

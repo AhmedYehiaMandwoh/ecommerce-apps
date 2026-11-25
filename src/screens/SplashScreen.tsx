@@ -24,7 +24,7 @@ export function SplashScreen({ c }: { c: any }) {
         {[0, 1, 2, 3].map((n) => <View key={n} className={`w-2 h-2 rounded-full mx-1 ${n === 0 ? "bg-brand" : "bg-slate-300"}`} />)}
       </View>
       <View className="w-full px-6 mt-0" style={{ marginTop: -4 }}>
-        <Cta chevron title="ابدأ الآن ‹" onPress={() => setScreen("home")} />
+        <Cta chevron chevronSide="right" title="ابدأ الآن ‹" onPress={() => setScreen("home")} />
         <Cta title="تسجيل الدخول" outline onPress={() => go("phone")} />
       </View>
       <View className="w-full bg-white mt-3">
