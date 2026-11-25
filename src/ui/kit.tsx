@@ -15,7 +15,7 @@ export function Cta({ title, onPress, disabled, outline, soft, testID, chevron, 
   return (
     <Pressable testID={testID} accessibilityRole="button" accessibilityLabel={title} disabled={disabled} onPress={onPress} className={`${base} ${tone} ${disabled ? "opacity-50" : ""}`}>
       <View style={{ flexDirection: "row", alignItems: "center" }}>{!!icon && <View style={{ marginRight: 8 }}><Ico n={icon} size={24} color={outline || soft ? "#0751e8" : "#fff"} /></View>}<Text className={text}>{title.replace(/\s*‹$/, "")}</Text></View>
-      {(chevron || /‹\s*$/.test(title)) && <View style={{ position: "absolute", [chevronSide === "right" ? "right" : "left"]: 16, top: 0, bottom: 0, justifyContent: "center" }}><Ico n="chev" size={22} color="#fff" /></View>}
+      {(chevron || /‹\s*$/.test(title)) && <View style={{ position: "absolute", [chevronSide === "right" ? "right" : "left"]: 16, top: 0, bottom: 0, justifyContent: "center" }}><View style={chevronSide === "right" ? { transform: [{ scaleX: -1 }] } : undefined}><Ico n="chev" size={22} color="#fff" /></View></View>}
     </Pressable>
   );
 }
