@@ -1,4 +1,4 @@
-import { t, cx } from "../i18n";
+import { t, cx, isEn } from "../i18n";
 import React, { useState } from "react";
 import { View, Text, Image, Pressable, TextInput, ScrollView } from "react-native";
 import { Chip } from "../ui/kit";
@@ -60,7 +60,7 @@ export function SearchScreen({ c }: { c: any }) {
         </View>
       )}
       <View className={cx("px-4 pt-3")}>
-        <Text className={cx("text-right text-slate-600 text-base font-semibold mb-2")}>{list.length}  {t('نتيجة')}</Text>
+        <Text className={cx("text-right text-slate-600 text-base font-semibold mb-2")}>{list.length}  {isEn && list.length !== 1 ? t('نتائج') : t('نتيجة')}</Text>
         {list.map((p: any) => {
           const offers = p.offers.filter((o: any) => !shop || o.shopId === shop);
           const best = offers.reduce((a: any, o: any) => (o.price < a.price ? o : a), offers[0]);
