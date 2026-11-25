@@ -356,9 +356,9 @@ export default function App() {
               const pdf: Record<string, [any, number, number]> = { account: [require("./assets/pdf/nav-account.png"), 19, 21], orders: [require("./assets/pdf/nav-orders.png"), 18.3, 20.7], shops: [require("./assets/pdf/nav-shops.png"), 23.3, 20.7], home: [require("./assets/pdf/nav-home-on.png"), 23.7, 21.1] };
               const [src, w, h] = s === "home" && !on ? [icon, 26, 26] : pdf[s];
               return (
-              <Pressable key={s} accessibilityRole="button" accessibilityLabel={t} onPress={() => go(s)} className={cx("flex-1 items-center")} style={{ paddingTop: 13, paddingBottom: 10 }}>
+              <Pressable key={s} accessibilityRole="button" accessibilityLabel={t} onPress={() => go(s)} className={cx("flex-1 items-center")} style={{ paddingTop: 7, paddingBottom: 10 }}>
                 <View style={{ height: 26, justifyContent: "center" }}><Image source={src} style={{ width: w, height: h, ...(s === "home" && !on ? { tintColor: "#5a5a63" } : on && s !== "home" ? { tintColor: "#ff640f" } : {}) }} /></View>
-                <Text className={cx(`font-bold ${on ? "text-accent" : "text-slate-600"}`)} style={{ fontSize: 12.5, lineHeight: 17, marginTop: -1 }}>{t}</Text>
+                <Text className={cx(`font-bold ${on ? "text-accent" : "text-slate-600"}`)} style={{ fontSize: 12.5, lineHeight: 17, marginTop: 0 }}>{t}</Text>
               </Pressable>
             ); })}
           </View>
