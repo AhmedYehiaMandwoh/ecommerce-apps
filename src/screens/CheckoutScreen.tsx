@@ -8,6 +8,7 @@ export function CheckoutScreen({ c }: { c: any }) {
   const { discountCode, setDiscountCode, cart, shops, subtotal, addresses, addressId, deliveryAreas, deliveryAreaId, setDeliveryAreaId, quote, reviewQuote, go, back, count, busy, error, notice } = c;
   const addr = addresses.find((a: any) => a.id === addressId);
   const groups = groupByShop(cart, shops);
+  const selArea = deliveryAreas.find((x: any) => x.id === deliveryAreaId);
   const [codeOpen, setCodeOpen] = React.useState(false);
   const [areaOpen, setAreaOpen] = React.useState(false);
   return (
@@ -18,7 +19,7 @@ export function CheckoutScreen({ c }: { c: any }) {
         <Card className="bg-slate-50 p-1.5 mb-1">
           <Pressable accessibilityRole="button" accessibilityLabel="اختر عنوان التوصيل" onPress={() => go("addresses")} className="flex-row items-center">
           <Text className="text-slate-400 text-2xl">‹</Text>
-          <View className="flex-1 mx-3 items-end"><Text className="font-extrabold">اختر عنوان التوصيل</Text><Text className="text-slate-500 text-sm" numberOfLines={1}>{addr ? `${addr.label} - ${addr.city}` : "لم يتم اختيار عنوان"}</Text></View>
+          <View className="flex-1 mx-3 items-end"><Text className="font-extrabold">اختر عنوان التوصيل</Text><Text className="text-slate-500 text-sm" numberOfLines={1}>{addr ? `${addr.label} - ${selArea ? `${selArea.area}، ${selArea.city}` : addr.city}` : "لم يتم اختيار عنوان"}</Text></View>
           <Ico n="pin" size={26} color="#0751e8" />
           </Pressable>
         {(() => {
@@ -50,7 +51,7 @@ export function CheckoutScreen({ c }: { c: any }) {
         {groups.map((g) => (
           <Card key={g.shopId} className="p-1.5 mb-1">
             <View className="flex-row items-center justify-end mb-0.5"><Text className="font-extrabold ml-2">{g.name}</Text><View className="w-8 h-8 rounded-lg bg-accent items-center justify-center"><Ico n="shop" size={18} color="#fff" /></View></View>
-            <View className="flex-row mb-0.5" style={{ gap: 6 }}>{g.items.slice(0, 4).map((i: any) => <Image key={i.offerId} source={thumb(i.image)} style={{ width: "23.5%", height: 58, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 8 }} />)}</View>
+            <View className="flex-row mb-0.5" style={{ gap: 6 }}>{g.items.slice(0, 4).map((i: any) => <Image key={i.offerId} source={thumb(i.image)} style={{ width: "23.5%", height: 52, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 8 }} />)}</View>
             <View className="flex-row items-center bg-brand-light rounded-xl px-2 py-1"><Text className="text-slate-400 text-xl">‹</Text><View className="flex-1 mx-2 items-end"><Text className="font-bold">خيارات التوصيل</Text><Text className="text-slate-500 text-xs">{quote ? "محسوب حسب المنطقة" : "تحدد بعد اختيار المنطقة"}</Text></View><Ico n="truck" size={26} /></View>
           </Card>
         ))}

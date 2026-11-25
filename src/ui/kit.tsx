@@ -24,7 +24,7 @@ export const icons: Record<string, any> = {
   shop: require("../../assets/icons/shop.png"), truck: require("../../assets/icons/truck.png"), car: require("../../assets/icons/car.png"),
   ticket: require("../../assets/icons/ticket.png"), pin: require("../../assets/icons/pin.png"),
   "f-pin": require("../../assets/icons/f-pin.png"), "f-map": require("../../assets/icons/f-map.png"), "f-road": require("../../assets/icons/f-road.png"),
-  "f-doc": require("../../assets/icons/f-doc.png"), "f-landmark": require("../../assets/icons/f-landmark.png"),
+  "send": require("../../assets/icons/send.png"), "f-doc": require("../../assets/icons/f-doc.png"), "f-landmark": require("../../assets/icons/f-landmark.png"),
   "v-car": require("../../assets/icons/v-car.png"), "v-cal": require("../../assets/icons/v-cal.png"), "v-engine": require("../../assets/icons/v-engine.png"),
 };
 // Icons are cropped from the supplied PDF and used as tintable masks.
