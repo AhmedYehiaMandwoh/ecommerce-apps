@@ -50,9 +50,9 @@ export function CheckoutScreen({ c }: { c: any }) {
         <Text className="font-extrabold text-right mb-1">المنتجات حسب كل محل</Text>
         {groups.map((g) => (
           <Card key={g.shopId} className="p-1.5 mb-1">
-            <View className="flex-row items-center justify-end mb-0.5"><Text className="font-extrabold ml-2">{g.name}</Text><View className="w-8 h-8 rounded-lg bg-accent items-center justify-center"><Ico n="shop" size={18} color="#fff" /></View></View>
-            <View className="flex-row mb-0.5" style={{ gap: 6 }}>{g.items.slice(0, 4).map((i: any) => <Image key={i.offerId} source={thumb(i.image)} style={{ width: "23.5%", height: 52, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 8 }} />)}</View>
-            <View className="flex-row items-center bg-brand-light rounded-xl px-2 py-1"><Text className="text-slate-400 text-xl">‹</Text><View className="flex-1 mx-2 items-end"><Text className="font-bold">خيارات التوصيل</Text><Text className="text-slate-500 text-xs">{quote ? "محسوب حسب المنطقة" : "تحدد بعد اختيار المنطقة"}</Text></View><Ico n="truck" size={26} /></View>
+            <View className="flex-row items-center justify-end mb-0.5"><Text className="font-extrabold ml-2">{g.name}</Text><View className="w-7 h-7 rounded-lg bg-accent items-center justify-center"><Ico n="shop" size={16} color="#fff" /></View></View>
+            <View className="flex-row mb-0.5" style={{ gap: 6 }}>{g.items.slice(0, 4).map((i: any) => <Image key={i.offerId} source={thumb(i.image)} style={{ width: "23.5%", height: 38, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 8 }} />)}</View>
+            <View className="flex-row items-center bg-brand-light rounded-xl px-2" style={{ paddingVertical: 0 }}><Text className="text-slate-400 text-xl">‹</Text><View className="flex-1 mx-2 items-end"><Text className="font-bold">خيارات التوصيل</Text><Text className="text-slate-500 text-xs">{quote ? "محسوب حسب المنطقة" : "تحدد بعد اختيار المنطقة"}</Text></View><Ico n="truck" size={22} /></View>
           </Card>
         ))}
         <Card className="bg-slate-50 p-1.5 mb-1">

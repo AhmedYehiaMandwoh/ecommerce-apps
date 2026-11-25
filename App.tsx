@@ -289,7 +289,6 @@ export default function App() {
       key.current = "";
       await personal();
       setScreen("placed");
-      setNotice("طلب تجريبي فقط. لا دفع ولا توصيل حقيقي.");
     });
   }
   const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
