@@ -28,7 +28,7 @@ export function SearchScreen({ c }: { c: any }) {
         </View>
         <View className={cx("bg-white rounded-full h-12 mt-2 px-4 flex-row items-center")}>
           <Pressable accessibilityRole="button" accessibilityLabel={t('مسح')} onPress={() => { setSearch(""); browse("", category, shop); }}><Text className={cx("text-slate-500 text-lg ml-2")}>✕</Text></Pressable>
-          <TextInput accessibilityLabel={t('البحث في المنتجات')} value={search} onChangeText={setSearch} onSubmitEditing={() => load(category)} placeholder={t('ابحث باسم القطعة أو رقمها')} placeholderTextColor="#94a3b8" className={cx("flex-1 text-right text-lg")} />
+          <TextInput style={{ minWidth: 0, paddingEnd: 8 }} accessibilityLabel={t('البحث في المنتجات')} value={search} onChangeText={setSearch} onSubmitEditing={() => load(category)} placeholder={t('ابحث باسم القطعة أو رقمها')} placeholderTextColor="#94a3b8" className={cx("flex-1 text-right text-lg")} />
           <Pressable accessibilityRole="button" accessibilityLabel={t('بحث')} onPress={() => load(category)}><Text className={cx("text-lg ml-2")}>🔍</Text></Pressable>
         </View>
         <View className={cx("flex-row-reverse mt-2 justify-between")}>

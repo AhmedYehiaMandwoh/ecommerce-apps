@@ -1,4 +1,4 @@
-import { t, cx } from "../i18n";
+import { t, cx, isEn } from "../i18n";
 import React, { useState } from "react";
 import { View, Text, Image, Pressable, TextInput } from "react-native";
 import { shopCover } from "../ui/helpers";
@@ -17,7 +17,7 @@ export function ShopsScreen({ c }: { c: any }) {
           <View className={cx("w-10")} />
         </View>
         <View className={cx("bg-white rounded-full h-12 mt-2 px-4 flex-row items-center")}>
-          <TextInput accessibilityLabel={t('ابحث باسم المحل')} value={q} onChangeText={setQ} placeholder={t('ابحث باسم المحل')} placeholderTextColor="#94a3b8" className={cx("flex-1 text-right text-base")} />
+          <TextInput style={{ minWidth: 0, paddingEnd: 8 }} accessibilityLabel={t('ابحث باسم المحل')} value={q} onChangeText={setQ} placeholder={t('ابحث باسم المحل')} placeholderTextColor="#94a3b8" className={cx("flex-1 text-right text-base")} />
           <Text className={cx("text-lg ml-2")}>🔍</Text>
         </View>
         <View className={cx("flex-row-reverse mt-3")}>
@@ -31,10 +31,10 @@ export function ShopsScreen({ c }: { c: any }) {
               <Image source={shopCover(s, n).source} style={{ width: "100%", height: 96, resizeMode: "cover" }} />
               {shopCover(s, n).demo && <View className={cx("absolute bottom-1 left-2 bg-slate-900/80 rounded px-2")}><Text className={cx("text-white text-[11px]")}>{t('صورة تجريبية')}</Text></View>}
             </View>
-            <View className={cx("flex-row items-center px-3 py-1")}>
+            <View className="items-center px-3 py-1" style={{ flexDirection: "row" }}>
               <View className={cx("w-11 h-11 rounded-full bg-accent items-center justify-center")}><Ico n="shop" size={30} color="#fff" /></View>
               <View className={cx("flex-1 mx-3 items-start")}><Text className={cx("font-extrabold text-lg")}>{s.name}</Text><Text className={cx("text-slate-500 text-sm")}>{s.description || t('قطع غيار وصيانة')} • {s.city}{s.district ? " • " + s.district : ""}</Text></View>
-              <Text className={cx("text-slate-500 text-3xl")}>›</Text>
+              <Text className={cx("text-slate-500 text-3xl")}>{isEn ? "›" : "‹"}</Text>
             </View>
           </Pressable>
         ))}
