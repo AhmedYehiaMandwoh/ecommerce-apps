@@ -29,7 +29,7 @@ export function OrdersScreen({ c }: { c: any }) {
               <Text className={`px-3 py-1 rounded-lg text-xs font-bold ${tone(o.status)}`}>{statuses[o.status]}</Text>
               <View className="flex-row items-center"><View className="items-end ml-2"><Text className="font-extrabold">{o.shop.name}</Text><Text className="text-slate-500 text-xs">طلب تجريبي</Text><Text className="text-slate-500 text-xs">#{o.id.slice(0, 8)}</Text></View><View className="w-12 h-12 rounded-full bg-accent items-center justify-center"><Ico n="shop" size={26} color="#fff" /></View></View>
             </View>
-            <View className="flex-row justify-start my-1">{o.items.slice(0, 3).map((i: any) => <Image key={i.id} source={thumb(i.offer?.product?.image)} style={{ width: 60, height: 50, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 10, marginLeft: 4 }} />)}</View>
+            <View className="flex-row justify-start my-1">{o.items.slice(0, 3).map((i: any) => <Image key={i.id} source={thumb(i.offer?.product?.image)} style={{ width: 68, height: 68, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 10, marginLeft: 4 }} />)}</View>
             <Pressable accessibilityRole="button" accessibilityLabel="عرض التفاصيل" onPress={() => { setDetailId(o.id); go("orderdetail"); }}><Text className="text-brand font-bold text-left">‹ عرض التفاصيل</Text></Pressable>
           </View>
         ))}
