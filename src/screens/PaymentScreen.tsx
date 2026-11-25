@@ -1,4 +1,4 @@
-import { t, cx } from "../i18n";
+import { t, cx, isEn } from "../i18n";
 import React from "react";
 import { View, Text, Image, Pressable } from "react-native";
 import { Cta, Header, Card, ErrorNote, Ico } from "../ui/kit";
@@ -13,7 +13,7 @@ export function PaymentScreen({ c }: { c: any }) {
       <View className={cx("p-3")}>
         <ErrorNote error={error} notice={notice} />
         <Card className={cx("flex-row items-center bg-brand-light p-3")} onPress={() => go("addresses")}>
-          <Text className={cx("text-slate-400 text-2xl")}>‹</Text>
+          <Text className={cx("text-slate-400 text-2xl")}>{isEn ? "›" : "‹"}</Text>
           <View className={cx("flex-1 mx-3 items-end")}><Text className={cx("font-extrabold text-lg")}>{t('عنوان التوصيل')}</Text><Text className={cx("text-slate-500 text-base")} numberOfLines={1}>{addr ? `${addr.label} - ${addr.city}` : "-"}</Text></View>
           <Ico n="pin" size={26} color="#0751e8" />
         </Card>

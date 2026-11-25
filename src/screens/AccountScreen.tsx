@@ -1,4 +1,4 @@
-import { t, cx } from "../i18n";
+import { t, cx, isEn } from "../i18n";
 import React from "react";
 import { View, Text, Pressable, Image } from "react-native";
 import { Cta } from "../ui/kit";
@@ -30,7 +30,7 @@ export function AccountScreen({ c }: { c: any }) {
       </View>
       {rows.map(([s, t, sub, icon, bg]) => (
         <Pressable key={s} accessibilityRole="button" accessibilityLabel={t} onPress={() => go(user || s === "support" ? s : "phone")} className={cx("flex-row items-center bg-slate-50 rounded-2xl p-3 mb-3 border border-slate-100")}>
-          <Text className={cx("text-slate-500 text-2xl ml-2")}>‹</Text>
+          <Text className={cx("text-slate-500 text-2xl ml-2")}>{isEn ? "›" : "‹"}</Text>
           <View className={cx("flex-1 mr-3 items-end")}><Text className={cx("font-extrabold text-base")}>{t}</Text><Text className={cx("text-slate-500 text-sm")}>{sub}</Text></View>
           <Image accessibilityElementsHidden source={acctImg[icon]} style={{ width: 48, height: 48 }} />
         </Pressable>

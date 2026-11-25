@@ -1,4 +1,4 @@
-import { t, cx } from "../i18n";
+import { t, cx, isEn } from "../i18n";
 import React from "react";
 import { View, Text, Image, Pressable } from "react-native";
 import { Cta, Header, Ico } from "../ui/kit";
@@ -35,7 +35,7 @@ export function TrackScreen({ c }: { c: any }) {
         </View>
         <Text className={cx("font-extrabold text-right mb-2")}>{t('محتويات الطلب')}</Text>
         <View className={cx("flex-row items-center bg-white border border-slate-200 rounded-xl p-2 mb-2")}>
-          <Text className={cx("text-slate-400 text-xl")}>‹</Text>
+          <Text className={cx("text-slate-400 text-xl")}>{isEn ? "›" : "‹"}</Text>
           <View className={cx("flex-row mx-2")}>{o.items.slice(0, 3).map((i: any) => <Image key={i.id} source={thumb(i.offer?.product?.image)} style={{ width: 52, height: 52, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 8, marginRight: 3 }} />)}</View>
           <View className={cx("flex-1 items-end")}><Text className={cx("font-extrabold")}>{o.shop.name}</Text><Text className={cx("text-slate-500 text-xs")}>{o.items.length}  {t('قطع')}</Text></View>
         </View>
