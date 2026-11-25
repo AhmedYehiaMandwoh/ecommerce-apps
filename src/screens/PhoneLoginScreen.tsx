@@ -15,7 +15,7 @@ export function PhoneLoginScreen({ c }: { c: any }) {
         </View>
         <Text className="text-3xl font-extrabold text-brand-dark text-center">{step2 ? "كود التحقق" : "رقم موبايلك"}</Text>
         <Text className="text-slate-500 text-center mt-1">{step2 ? "اكتب الكود اللي وصلك" : "هنرسل لك رمز التحقق على موبايلك"}</Text>
-        <Image source={require("../../assets/ref/phone-hero.png")} style={{ width: "100%", height: 166, resizeMode: "contain", marginVertical: 2 }} />
+        <Image source={require("../../assets/ref/phone-hero.png")} style={{ width: "100%", height: 184, resizeMode: "contain", marginVertical: 2 }} />
         <View className="w-full">
           <ErrorNote error={error} notice={notice} />
           {!step2 ? (

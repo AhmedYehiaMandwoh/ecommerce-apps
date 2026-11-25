@@ -11,7 +11,7 @@ export function PlacedScreen({ c }: { c: any }) {
     <View className="bg-white flex-1" style={{ minHeight: 760 }}>
       <Header title="تم استلام طلبك" back onBack={() => setScreen("home")} />
       <View className="p-3">
-        <View style={{ width: "100%", height: 170, overflow: "hidden" }}><Image source={require("../../assets/ref/confirm.png")} style={{ width: "100%", height: 180, resizeMode: "contain" }} /></View>
+        <View style={{ width: "100%", height: 200, overflow: "hidden" }}><Image source={require("../../assets/ref/confirm.png")} style={{ width: "100%", height: 205, resizeMode: "contain" }} /></View>
         <Text className="text-2xl font-extrabold text-center mt-1">تم استلام طلبك</Text>
         <Text className="text-accent text-lg font-extrabold text-center">طلب تجريبي</Text>
         <Text className="text-center text-slate-600 mt-1">رقم الطلب: {(() => { const mine = orders.filter((x: any) => x.checkoutId === lastPlacedOrder.id); return mine.length ? mine.map((x: any) => x.id.slice(0, 8)).join(" ، ") : lastPlacedOrder.id.slice(0, 8); })()}</Text>
