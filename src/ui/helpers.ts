@@ -18,3 +18,15 @@ export const thumb = (p?: string) => {
   const m = p.match(/\/assets\/([a-z-]+)\.png$/);
   return img(m && SQ.includes(m[1]) ? p.replace(/\.png$/, "-sq.png") : p);
 };
+
+// Real uploaded shop photos when the shop has them, otherwise the bundled demo art. `demo` marks photos uploaded in a non-production build.
+export const shopCover = (s: any, n: number) => {
+  const list: any[] = s?.photos || [];
+  const c = list.find((x) => x.role === "COVER") || list[0];
+  return c ? { source: img(c.url)!, demo: !!c.demo, real: true } : { source: shopPhoto(n), demo: false, real: false };
+};
+export const shopGallery = (s: any) => {
+  const list: any[] = s?.photos || [];
+  const c = list.find((x) => x.role === "COVER") || list[0];
+  return list.filter((x) => x !== c);
+};
