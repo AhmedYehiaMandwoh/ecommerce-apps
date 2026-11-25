@@ -11,8 +11,8 @@ export function SplashScreen({ c }: { c: any }) {
         <Text className="text-white font-extrabold text-center mt-3 px-8" style={{ fontSize: 40, lineHeight: 50 }}>كل اللي عربيتك{"\n"}محتاجاه.</Text>
         <Text className="text-white text-base text-center mt-2">من محلات كتير .. في <Text className="font-extrabold">مكان واحد</Text></Text>
       </View>
-      <View className="w-full" style={{ height: 244 }}>
-        <Image source={require("../../assets/ref/onboard-hero.png")} style={{ width: "100%", height: 244, resizeMode: "cover" }} />
+      <View className="w-full" style={{ height: 224 }}>
+        <Image source={require("../../assets/ref/onboard-hero.png")} style={{ width: "100%", height: 224, resizeMode: "cover" }} />
         <View pointerEvents="none" style={{ position: "absolute", left: 0, right: 0, top: 0 }}>
           {Array.from({ length: 10 }, (_, i) => <View key={i} style={{ height: 6, backgroundColor: "#0751e8", opacity: 1 - i / 10 }} />)}
         </View>
