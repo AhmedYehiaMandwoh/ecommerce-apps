@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { View, Text, Image, Pressable, TextInput } from "react-native";
 import { art, Ico } from "../ui/kit";
 
+const BRAND = "#0751e8";
 const cats: [string, any][] = [
   ['فرامل', require("../../assets/category-brakes.png")], ['زيوت', require("../../assets/category-oil.png")], ['فلاتر', require("../../assets/category-filter.png")],
   ['تعليق', require("../../assets/category-suspension.png")], ['كهرباء', require("../../assets/category-electric.png")], ['إكسسوارات', require("../../assets/category-accessory.png")],
@@ -36,7 +37,7 @@ export function HomeScreen({ c }: { c: any }) {
           <Text className={cx("text-slate-900 text-2xl font-bold")}>{"\u200e›"}</Text>
           </Pressable>
         <View className={cx("flex-row items-center justify-between mt-3 mb-2")}>
-          <Pressable accessibilityRole="button" onPress={() => browse("", "")}><Text className={cx("text-brand text-base font-bold")}>{isEn ? t('‹ عرض الكل') : 'عرض الكل \u200e‹'}</Text></Pressable>
+          <Pressable accessibilityRole="button" accessibilityLabel={t('عرض الكل')} onPress={() => browse("", "")} style={{ flexDirection: isEn ? "row-reverse" : "row", alignItems: "center" }}><View style={{ width: 9, height: 9, marginHorizontal: 5, borderColor: BRAND, transform: [{ rotate: "45deg" }], ...(isEn ? { borderRightWidth: 2.5, borderTopWidth: 2.5 } : { borderLeftWidth: 2.5, borderBottomWidth: 2.5 }) }} /><Text className={cx("text-brand text-base font-bold")}>{isEn ? t('عرض الكل') : 'عرض الكل'}</Text></Pressable>
           <Text className={cx("font-extrabold text-lg")}>{t('تصفح الأقسام')}</Text>
         </View>
         <View className={cx("flex-row-reverse flex-wrap justify-between")}>
