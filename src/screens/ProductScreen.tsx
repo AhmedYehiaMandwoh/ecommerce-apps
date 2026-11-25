@@ -41,10 +41,10 @@ export function ProductScreen({ c }: { c: any }) {
           <View className={cx("w-11 h-11 rounded-full bg-slate-700 items-center justify-center")}><Ico n="shop" size={24} color="#fff" /></View>
         </Card>
         <Card className={cx("bg-brand-light border-brand-light p-2 mb-2")}>
-          <View className={cx("flex-row items-center")}>
-            <Chev dir={isEn ? "right" : "left"} color="#0751e8" size={10} />
-            <View className={cx("flex-1 mx-3")}><Text className={cx("font-extrabold text-base text-right")}>{t('هل القطعة مناسبة لعربيتك؟')}</Text><Text className={cx("text-slate-600 text-sm text-right")}>{t('راجع رقم القطعة مع البائع')}</Text></View>
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
             <Ico n="car" size={36} />
+            <View className={cx("flex-1 mx-3")}><Text className={cx("font-extrabold text-base")} style={{ textAlign: isEn ? "left" : "right" }}>{t('هل القطعة مناسبة لعربيتك؟')}</Text><Text className={cx("text-slate-600 text-sm")} style={{ textAlign: isEn ? "left" : "right" }}>{t('راجع رقم القطعة مع البائع')}</Text></View>
+            <Chev dir="right" color="#0751e8" size={10} />
           </View>
           <Pressable accessibilityRole="button" accessibilityLabel={t('اختر عربيتك')} onPress={() => go(user ? "vehicle" : "phone")} className={cx("bg-white border border-brand rounded-xl py-2 mt-2 items-center")}><View className={cx("flex-row items-center")}><Ico n="car" size={22} color="#0751e8" /><Text className={cx("text-brand font-extrabold mr-2")}>{vehicles.length ? t('غيّر عربيتك') : t('اختر عربيتك')}</Text></View></Pressable>
         </Card>
