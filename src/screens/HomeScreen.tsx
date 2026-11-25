@@ -1,4 +1,4 @@
-import { t, cx } from "../i18n";
+import { t, cx, isEn } from "../i18n";
 import React, { useState } from "react";
 import { View, Text, Image, Pressable, TextInput } from "react-native";
 import { art, Ico } from "../ui/kit";
@@ -22,21 +22,21 @@ export function HomeScreen({ c }: { c: any }) {
             {!!count && <View className={cx("absolute top-0 right-0 bg-accent rounded-full min-w-[18px] h-[18px] items-center justify-center")}><Text className={cx("text-white text-[11px] font-bold")}>{count}</Text></View>}
           </Pressable>
         </View>
-        <Text className={cx("text-white text-3xl font-extrabold text-center mt-2")}>{t('بتدور على إيه؟')}</Text>
-        <View className={cx("bg-white rounded-full h-12 mt-3 px-4 flex-row items-center")}>
+        <Text className={cx("text-white text-2xl font-extrabold text-center mt-2")}>{t('بتدور على إيه؟')}</Text>
+        <View className={cx("bg-white rounded-full h-10 mt-2 px-4 flex-row items-center")}>
           <Pressable accessibilityRole="button" accessibilityLabel={t('بحث')} onPress={() => browse(q, "")}><Ico n="search" size={22} color="#0b2a5b" /></Pressable>
           <TextInput accessibilityLabel={t('البحث')} value={q} onChangeText={setQ} onSubmitEditing={() => browse(q, "")} placeholder={t('ابحث باسم القطعة أو رقمها')} placeholderTextColor="#94a3b8" className={cx("flex-1 text-right text-base")} />
         </View>
       </View>
       <View className={cx("px-4 pt-4")}>
-        <Pressable accessibilityRole="button" accessibilityLabel={t('اختر عربيتك')} onPress={() => go("vehicle")} className={cx("flex-row items-center bg-brand-light rounded-2xl p-3")}>
+        <Pressable accessibilityRole="button" accessibilityLabel={t('اختر عربيتك')} onPress={() => go("vehicle")} className={cx("flex-row items-center bg-brand-light rounded-2xl p-3")} style={isEn ? { flexDirection: "row" } : undefined}>
           <Image source={art.car} style={{ width: 44, height: 30, resizeMode: "contain" }} />
           <View style={{ width: 1, height: 30, backgroundColor: "#cbd5e1", marginLeft: 12 }} />
           <View className={cx("flex-1 mr-3 ml-3 items-end")}><Text className={cx("font-extrabold text-base text-slate-900")}>{t('اختر عربيتك')}</Text><Text className={cx("text-slate-500 text-xs")}>{t('عشان نعرض لك القطع المناسبة')}</Text></View>
-          <Text className={cx("text-slate-900 text-2xl font-bold")}>›</Text>
+          <Text className={cx("text-slate-900 text-2xl font-bold")}>{"\u200e›"}</Text>
           </Pressable>
         <View className={cx("flex-row items-center justify-between mt-3 mb-2")}>
-          <Pressable accessibilityRole="button" onPress={() => browse("", "")}><Text className={cx("text-brand text-base font-bold")}>{t('‹ عرض الكل')}</Text></Pressable>
+          <Pressable accessibilityRole="button" onPress={() => browse("", "")}><Text className={cx("text-brand text-base font-bold")}>{isEn ? t('‹ عرض الكل') : 'عرض الكل \u200e‹'}</Text></Pressable>
           <Text className={cx("font-extrabold text-lg")}>{t('تصفح الأقسام')}</Text>
         </View>
         <View className={cx("flex-row-reverse flex-wrap justify-between")}>
