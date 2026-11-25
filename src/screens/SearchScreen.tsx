@@ -1,7 +1,7 @@
 import { t, cx, isEn } from "../i18n";
 import React, { useState } from "react";
 import { View, Text, Image, Pressable, TextInput, ScrollView } from "react-native";
-import { Chip } from "../ui/kit";
+import { Chip, Chev } from "../ui/kit";
 import { img } from "../ui/helpers";
 import { money } from "../shared";
 
@@ -22,7 +22,7 @@ export function SearchScreen({ c }: { c: any }) {
     <View className={cx("bg-white flex-1")}>
       <View className={cx("bg-brand px-4 pt-3 pb-3")}>
         <View className={cx("flex-row items-center justify-between h-10")}>
-          <Pressable accessibilityRole="button" accessibilityLabel={t('رجوع')} onPress={back} className={cx("w-10")}><Text className={cx("text-white text-3xl")}>‹</Text></Pressable>
+          <Pressable accessibilityRole="button" accessibilityLabel={t('رجوع')} onPress={back} className={cx("w-10")}><Chev dir="left" color="#fff" size={13} /></Pressable>
           <Text className={cx("text-white text-2xl font-extrabold")}>{shop ? shops.find((s: any) => s.id === shop)?.name || t('المحل') : t('نتائج البحث')}</Text>
           <View className={cx("w-10")} />
         </View>

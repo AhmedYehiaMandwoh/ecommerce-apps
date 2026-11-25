@@ -1,7 +1,7 @@
 import { t, cx, isEn } from "../i18n";
 import React, { useState } from "react";
 import { View, Text, Image, Pressable } from "react-native";
-import { Cta, Stepper, Card, art, Ico } from "../ui/kit";
+import { Cta, Stepper, Card, art, Ico, Chev } from "../ui/kit";
 import { img } from "../ui/helpers";
 import { money } from "../shared";
 
@@ -16,7 +16,7 @@ export function ProductScreen({ c }: { c: any }) {
     <View className={cx("bg-white flex-1")}>
       <View className={cx("bg-brand px-4 pt-3 pb-2")}>
         <View className={cx("flex-row items-center justify-between h-12")}>
-          <Pressable accessibilityRole="button" accessibilityLabel={t('رجوع')} onPress={back} className={cx("w-10")}><Text className={cx("text-white text-3xl")}>{isEn ? "›" : "‹"}</Text></Pressable>
+          <Pressable accessibilityRole="button" accessibilityLabel={t('رجوع')} onPress={back} className={cx("w-10")}><Chev dir="left" color="#fff" size={13} /></Pressable>
           <Image source={art.logo} style={{ width: 92, height: 40, resizeMode: "contain" }} />
           <Pressable accessibilityRole="button" accessibilityLabel={t('السلة')} onPress={() => go("cart")} className={cx("w-10 h-10 items-center justify-center")}>
             <Image source={art.cart} style={{ width: 28, height: 28, resizeMode: "contain" }} />
@@ -36,13 +36,13 @@ export function ProductScreen({ c }: { c: any }) {
           {offer && <Text className={cx("text-accent text-2xl font-extrabold text-right")}>{money(offer.price)}</Text>}
         </View>
         <Card className={cx("flex-row items-center p-2 mb-2")} onPress={() => offer && go("shops")}>
-          <Text className={cx("text-slate-400 text-2xl")}>{isEn ? "›" : "‹"}</Text>
+          <Chev dir={isEn ? "right" : "left"} color="#94a3b8" size={10} />
           <View className={cx("flex-1 mx-3 items-end")}><Text className={cx("font-extrabold")}>{offer?.shop?.name}</Text><Text className={cx("text-slate-500 text-sm")}>{t('قطع غيار وصيانة •')} {offer?.shop?.city}</Text></View>
           <View className={cx("w-11 h-11 rounded-full bg-slate-700 items-center justify-center")}><Ico n="shop" size={24} color="#fff" /></View>
         </Card>
         <Card className={cx("bg-brand-light border-brand-light p-2 mb-2")}>
           <View className={cx("flex-row items-center")}>
-            <Text className={cx("text-brand text-2xl")}>{isEn ? "›" : "‹"}</Text>
+            <Chev dir={isEn ? "right" : "left"} color="#0751e8" size={10} />
             <View className={cx("flex-1 mx-3")}><Text className={cx("font-extrabold text-base text-right")}>{t('هل القطعة مناسبة لعربيتك؟')}</Text><Text className={cx("text-slate-600 text-sm text-right")}>{t('راجع رقم القطعة مع البائع')}</Text></View>
             <Ico n="car" size={36} />
           </View>

@@ -1,7 +1,7 @@
 import { t, cx } from "../i18n";
 import React from "react";
 import { View, Text, Image, Pressable, ScrollView, TextInput } from "react-native";
-import { Chip, art, Ico } from "../ui/kit";
+import { Chip, art, Ico, Chev } from "../ui/kit";
 import { img, shopCover, shopGallery } from "../ui/helpers";
 import { money } from "../shared";
 
@@ -14,7 +14,7 @@ export function ShopScreen({ c }: { c: any }) {
     <View className={cx("bg-white flex-1")}>
       <View className={cx("bg-brand px-4 pt-3 pb-3")}>
         <View className={cx("flex-row items-center justify-between h-12")}>
-          <Pressable accessibilityRole="button" accessibilityLabel={t('رجوع')} onPress={back} className={cx("w-10")}><Text className={cx("text-white text-3xl")}>‹</Text></Pressable>
+          <Pressable accessibilityRole="button" accessibilityLabel={t('رجوع')} onPress={back} className={cx("w-10")}><Chev dir="left" color="#fff" size={13} /></Pressable>
           <Image source={art.logo} style={{ width: 92, height: 40, resizeMode: "contain" }} />
           <Pressable accessibilityRole="button" accessibilityLabel={t('السلة')} onPress={() => go("cart")} className={cx("w-10 h-10 items-center justify-center")}>
             <Image source={art.cart} style={{ width: 28, height: 28, resizeMode: "contain" }} />

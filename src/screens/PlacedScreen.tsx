@@ -1,7 +1,7 @@
 import { t, cx, isEn } from "../i18n";
 import React from "react";
 import { View, Text, Image, Pressable } from "react-native";
-import { Cta, Header, Ico } from "../ui/kit";
+import { Cta, Header, Ico, Chev } from "../ui/kit";
 import { groupByShop, img , thumb} from "../ui/helpers";
 
 export function PlacedScreen({ c }: { c: any }) {
@@ -20,7 +20,7 @@ export function PlacedScreen({ c }: { c: any }) {
         <Text className={cx("font-extrabold text-right text-lg mb-1")}>{t('المنتجات من محلات مختلفة')}</Text>
         {groups.map((g) => (
           <Pressable key={g.shopId} accessibilityRole="button" accessibilityLabel={t('تتبع طلب {0}', g.name)} onPress={() => { const o = orders.find((x: any) => x.checkoutId === lastPlacedOrder.id && x.shopId === g.shopId); if (o) { setDetailId(o.id); go("track"); } }} className={cx("flex-row items-center bg-white border border-slate-200 rounded-xl p-1.5 mb-1.5")}>
-            <Text className={cx("text-slate-400 text-xl")}>{isEn ? "›" : "‹"}</Text>
+            <Chev dir={isEn ? "right" : "left"} color="#94a3b8" size={9} />
             <View className={cx("flex-row mx-2")}>{g.items.slice(0, 3).map((i: any) => <Image key={i.offerId} source={thumb(i.image)} style={{ width: 54, height: 42, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 8, marginRight: 3 }} />)}</View>
             <View className={cx("flex-1 min-w-0 items-end")}><Text className={cx("font-extrabold text-base text-right")} numberOfLines={1} accessibilityLabel={g.name}>{g.name}</Text><Text className={cx("text-slate-500 text-xs")}>{g.items.reduce((a: number, i: any) => a + i.quantity, 0)}  {t('منتجات')}</Text></View>
             <View className={cx("w-9 h-9 rounded-full bg-accent items-center justify-center mr-1")}><Ico n="shop" size={20} color="#fff" /></View>

@@ -39,7 +39,7 @@ export function Header({ title, subtitle, back, onBack, count, onCart, tall, sma
       <View className={cx("flex-row items-center justify-between h-12")}>
         {back ? (
           <Pressable accessibilityRole="button" accessibilityLabel={t('رجوع')} onPress={onBack} className={cx("w-10 h-10 items-center justify-center")}>
-            <Text className={cx("text-white text-3xl")}>‹</Text>
+            <Chev dir="left" color="#fff" size={13} />
           </Pressable>
         ) : <View className={cx("w-10")} />}
         <Image source={art.logo} style={{ width: 92, height: 40, resizeMode: "contain" }} />
@@ -101,4 +101,10 @@ export function ErrorNote({ error, notice }: { error?: string; notice?: string }
       {!!notice && <Text className={cx("bg-green-50 text-green-800 rounded-xl p-3 mb-3 text-right")}>{notice}</Text>}
     </>
   );
+}
+
+// Direction-invariant chevron drawn with borders, so RTL bidi mirroring can never flip it.
+export function Chev({ dir, color, size = 10 }: { dir: "left" | "right"; color: string; size?: number }) {
+  const w = 2.5;
+  return <View style={{ width: size, height: size, marginHorizontal: 5, borderColor: color, transform: [{ rotate: "45deg" }], ...(dir === "left" ? { borderLeftWidth: w, borderBottomWidth: w } : { borderRightWidth: w, borderTopWidth: w }) }} />;
 }

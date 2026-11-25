@@ -1,7 +1,7 @@
 import { t, cx, isEn } from "../i18n";
 import React from "react";
 import { View, Text, Image, Pressable } from "react-native";
-import { Cta, Header, Ico } from "../ui/kit";
+import { Cta, Header, Ico, Chev } from "../ui/kit";
 import { img , thumb} from "../ui/helpers";
 import { statuses } from "../shared";
 
@@ -35,9 +35,9 @@ export function TrackScreen({ c }: { c: any }) {
         </View>
         <Text className={cx("font-extrabold text-right mb-2")}>{t('محتويات الطلب')}</Text>
         <View className={cx("flex-row items-center bg-white border border-slate-200 rounded-xl p-2 mb-2")}>
-          <Text className={cx("text-slate-400 text-xl")}>{isEn ? "›" : "‹"}</Text>
+          <Chev dir={isEn ? "right" : "left"} color="#94a3b8" size={9} />
           <View className={cx("flex-row mx-2")}>{o.items.slice(0, 3).map((i: any) => <Image key={i.id} source={thumb(i.offer?.product?.image)} style={{ width: 52, height: 52, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 8, marginRight: 3 }} />)}</View>
-          <View className={cx("flex-1 items-end")}><Text className={cx("font-extrabold")}>{o.shop.name}</Text><Text className={cx("text-slate-500 text-xs")}>{o.items.length}  {t('قطع')}</Text></View>
+          <View className={cx("flex-1 items-end")}><Text className={cx("font-extrabold")}>{o.shop.name}</Text><Text className={cx("text-slate-500 text-xs")}>{o.items.length}  {isEn && o.items.length === 1 ? 'part' : t('قطع')}</Text></View>
         </View>
         <View className={cx("flex-row")} style={{ gap: 10, marginTop: 16, marginBottom: 8 }}>
           <Pressable accessibilityRole="button" accessibilityLabel={t('تواصل مع الدعم 🎧')} onPress={() => go("support")} className={cx("flex-1 bg-white border-2 border-brand rounded-2xl items-center justify-center")} style={{ height: 52 }}><Text className={cx("text-brand font-extrabold text-base")}>{t('تواصل مع الدعم 🎧')}</Text></Pressable>

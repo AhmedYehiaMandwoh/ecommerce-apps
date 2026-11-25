@@ -1,7 +1,7 @@
 import { t, cx } from "../i18n";
 import React from "react";
 import { View, Text, Image, Pressable } from "react-native";
-import { Cta, Header, Stepper, Card, Ico } from "../ui/kit";
+import { Cta, Header, Stepper, Card, Ico, Chev } from "../ui/kit";
 import { groupByShop, img } from "../ui/helpers";
 import { money } from "../shared";
 
@@ -33,7 +33,7 @@ export function CartScreen({ c }: { c: any }) {
             <View className={cx("flex-row items-center bg-slate-50 rounded-xl p-2 mb-1")}>
               <View className={cx("w-9 h-9 rounded-xl bg-slate-700 items-center justify-center")}><Ico n="shop" size={24} color="#fff" /></View>
               <View className={cx("flex-1 mx-2 items-end")}><Text className={cx("font-extrabold text-lg")}>{g.name}</Text><Text className={cx("text-slate-500 text-sm")}>{t('قطع غيار وصيانة')}</Text></View>
-              <Text className={cx("text-slate-700 text-3xl")}>›</Text>
+              <Chev dir="right" color="#334155" size={12} />
             </View>
             {g.items.map((i: any) => (
               <View key={i.offerId} className={cx("flex-row items-center py-1")}>

@@ -2,7 +2,7 @@ import { t, cx, isEn, ENDITEMS } from "../i18n";
 import React, { useState } from "react";
 import { View, Text, Image, Pressable, TextInput } from "react-native";
 import { shopCover } from "../ui/helpers";
-import { Ico } from "../ui/kit";
+import { Ico, Chev } from "../ui/kit";
 
 export function ShopsScreen({ c }: { c: any }) {
   const { shops, browse, back } = c;
@@ -12,7 +12,7 @@ export function ShopsScreen({ c }: { c: any }) {
     <View className={cx("bg-white flex-1")}>
       <View className={cx("bg-brand px-4 pt-3 pb-3")}>
         <View className={cx("flex-row items-center justify-between h-10")}>
-          <Pressable accessibilityRole="button" accessibilityLabel={t('رجوع')} onPress={back} className={cx("w-10")}><Text className={cx("text-white text-3xl")}>‹</Text></Pressable>
+          <Pressable accessibilityRole="button" accessibilityLabel={t('رجوع')} onPress={back} className={cx("w-10")}><Chev dir="left" color="#fff" size={13} /></Pressable>
           <Text className={cx("text-white text-2xl font-extrabold")}>{t('المحلات')}</Text>
           <View className={cx("w-10")} />
         </View>
@@ -34,7 +34,7 @@ export function ShopsScreen({ c }: { c: any }) {
             <View className="items-center px-3 py-1" style={{ flexDirection: "row" }}>
               <View className={cx("w-11 h-11 rounded-full bg-accent items-center justify-center")}><Ico n="shop" size={30} color="#fff" /></View>
               <View className={cx("flex-1 mx-3")} style={{ alignItems: ENDITEMS }}><Text className={cx("font-extrabold text-lg")}>{s.name}</Text><Text className={cx("text-slate-500 text-sm")}>{s.description || t('قطع غيار وصيانة')} • {s.city}{s.district ? " • " + s.district : ""}</Text></View>
-              <Text className={cx("text-slate-500 text-3xl")}>{isEn ? "›" : "‹"}</Text>
+              <Chev dir={isEn ? "right" : "left"} color="#64748b" size={10} />
             </View>
           </Pressable>
         ))}
