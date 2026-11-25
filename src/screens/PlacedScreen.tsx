@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image, Pressable } from "react-native";
 import { Cta, Header, Ico } from "../ui/kit";
-import { groupByShop, img } from "../ui/helpers";
+import { groupByShop, img , thumb} from "../ui/helpers";
 
 export function PlacedScreen({ c }: { c: any }) {
   const { lastPlacedOrder, placedSnapshot, shops, setScreen, go, orders, setDetailId } = c;
@@ -20,7 +20,7 @@ export function PlacedScreen({ c }: { c: any }) {
         {groups.map((g) => (
           <View key={g.shopId} className="flex-row items-center bg-white border border-slate-200 rounded-xl p-1.5 mb-1.5">
             <Text className="text-slate-400 text-xl">‹</Text>
-            <View className="flex-row mx-2">{g.items.slice(0, 3).map((i: any) => <Image key={i.offerId} source={img(i.image)} style={{ width: 52, height: 44, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 8, marginRight: 3 }} />)}</View>
+            <View className="flex-row mx-2">{g.items.slice(0, 3).map((i: any) => <Image key={i.offerId} source={thumb(i.image)} style={{ width: 52, height: 44, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 8, marginRight: 3 }} />)}</View>
             <View className="flex-1 items-end"><Text className="font-extrabold text-lg">{g.name}</Text><Text className="text-slate-500 text-xs">{g.items.reduce((a: number, i: any) => a + i.quantity, 0)} منتجات</Text></View>
             <View className="w-9 h-9 rounded-full bg-accent items-center justify-center mr-1"><Ico n="shop" size={20} color="#fff" /></View>
           </View>

@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image, Pressable } from "react-native";
 import { Cta, Header, Ico } from "../ui/kit";
-import { img } from "../ui/helpers";
+import { img , thumb} from "../ui/helpers";
 import { statuses } from "../shared";
 
 const steps = [["PLACED", "تم الطلب"], ["PREPARING", "جار التجهيز"], ["SHIPPED", "خرج للتوصيل"], ["DELIVERED", "تم التسليم"]];
@@ -33,7 +33,7 @@ export function TrackScreen({ c }: { c: any }) {
         <Text className="font-extrabold text-right mb-2">محتويات الطلب</Text>
         <View className="flex-row items-center bg-white border border-slate-200 rounded-xl p-2 mb-2">
           <Text className="text-slate-400 text-xl">‹</Text>
-          <View className="flex-row mx-2">{o.items.slice(0, 3).map((i: any) => <Image key={i.id} source={img(i.offer?.product?.image)} style={{ width: 44, height: 44, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 8, marginRight: 3 }} />)}</View>
+          <View className="flex-row mx-2">{o.items.slice(0, 3).map((i: any) => <Image key={i.id} source={thumb(i.offer?.product?.image)} style={{ width: 44, height: 44, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 8, marginRight: 3 }} />)}</View>
           <View className="flex-1 items-end"><Text className="font-extrabold">{o.shop.name}</Text><Text className="text-slate-500 text-xs">{o.items.length} قطع</Text></View>
         </View>
         <View className="flex-row" style={{ gap: 10, marginTop: 16, marginBottom: 8 }}>
