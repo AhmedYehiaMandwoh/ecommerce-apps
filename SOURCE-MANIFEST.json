@@ -463,6 +463,11 @@
       "sha256": "397e07c711dd4541de4e7c89a85aae71de3d1c9231eb23612f57b10d9402c68e"
     },
     {
+      "path": "scripts/en-check.mjs",
+      "bytes": 2745,
+      "sha256": "90f0faa8c81ec14f633fb9cb59df68e8a2a977dede5d6e8b7cc60847bf478413"
+    },
+    {
       "path": "scripts/filled-04-06.mjs",
       "bytes": 2915,
       "sha256": "4a8b5c2d04aa1bc1c66441dcfbddec8e268a1e88188c948c14edd01dc3f7f8a1"
@@ -491,6 +496,16 @@
       "path": "scripts/orders-shot.mjs",
       "bytes": 1206,
       "sha256": "c0484bc643b9e8e18346fdcae8a500eaeda5489f6f1740fa62c433057d086f16"
+    },
+    {
+      "path": "src/i18n.ts",
+      "bytes": 2849,
+      "sha256": "7331689f790c2098ab9504a4bbcf30df232b3b4225839d56cf8b19cd3f838dbe"
+    },
+    {
+      "path": "src/locale-en.json",
+      "bytes": 18746,
+      "sha256": "941515d9af3239c0260409cdeb43bccddeac95d960b45d88389835234703b0f3"
     },
     {
       "path": "src/nativefont.ts",
@@ -534,13 +549,13 @@
     },
     {
       "path": "src/screens/HomeScreen.tsx",
-      "bytes": 5323,
-      "sha256": "45f21d4a1cadd18e3994c8e73ae5428a57c35b8da5280b1f79920649fb8755c1"
+      "bytes": 5311,
+      "sha256": "02aa41a399fde46b71f2ae88833d2850dd4112ab01b772729ef923590a62e861"
     },
     {
       "path": "src/screens/OrderDetailScreen.tsx",
-      "bytes": 5728,
-      "sha256": "8e747b9ea64c298be500682506db09f478dc63a61def0035b3637805d741ef0e"
+      "bytes": 5751,
+      "sha256": "938087e67511829fa6794766a1e2e0cd10fe5f334c3a08c2474aaec821eb77ed"
     },
     {
       "path": "src/screens/OrdersScreen.tsx",
@@ -569,8 +584,8 @@
     },
     {
       "path": "src/screens/SearchScreen.tsx",
-      "bytes": 8554,
-      "sha256": "d4baad5d1d1d55bd4aaadf9fa47aca8f8aae37397716752d17ed9e360d22d348"
+      "bytes": 8557,
+      "sha256": "0d5360089cc0bc241fe6ab7de073c692484a3e165b9028858d8769b85e2436fd"
     },
     {
       "path": "src/screens/SettingsScreen.tsx",
@@ -609,13 +624,18 @@
     },
     {
       "path": "src/shared.ts",
-      "bytes": 1413,
-      "sha256": "4f1c10a502adb98756cd605fd173a52e5b2adc54836fa070f105b6488e7d9f17"
+      "bytes": 1436,
+      "sha256": "d3aa3cf1416c87bc14b3c678a08b05e9d81a08bf46c00bbe2f80c6f6f03056cd"
     },
     {
       "path": "src/styles.ts",
       "bytes": 5278,
       "sha256": "f0004aff3487ba602354bb811c2f0eb78c06b2cd4e3b93a6dc81bfa0731f4997"
+    },
+    {
+      "path": "src/tw-safelist.ts",
+      "bytes": 276,
+      "sha256": "7bc100682b2fab2f506b543cda84d4031fbbbdf4421331f9858bdafcc9f9a16e"
     },
     {
       "path": "src/ui/helpers.ts",

@@ -4,8 +4,8 @@ import { View, Text, Image, Pressable, TextInput } from "react-native";
 import { art, Ico } from "../ui/kit";
 
 const cats: [string, any][] = [
-  [t('فرامل'), require("../../assets/category-brakes.png")], [t('زيوت'), require("../../assets/category-oil.png")], [t('فلاتر'), require("../../assets/category-filter.png")],
-  [t('تعليق'), require("../../assets/category-suspension.png")], [t('كهرباء'), require("../../assets/category-electric.png")], [t('إكسسوارات'), require("../../assets/category-accessory.png")],
+  ['فرامل', require("../../assets/category-brakes.png")], ['زيوت', require("../../assets/category-oil.png")], ['فلاتر', require("../../assets/category-filter.png")],
+  ['تعليق', require("../../assets/category-suspension.png")], ['كهرباء', require("../../assets/category-electric.png")], ['إكسسوارات', require("../../assets/category-accessory.png")],
 ];
 export function HomeScreen({ c }: { c: any }) {
   const { go, count, browse, search, history } = c;
@@ -41,9 +41,9 @@ export function HomeScreen({ c }: { c: any }) {
         </View>
         <View className={cx("flex-row-reverse flex-wrap justify-between")}>
           {cats.map(([label, image]) => (
-            <Pressable key={label} accessibilityRole="button" accessibilityLabel={label} onPress={() => browse("", label)} className={cx("w-[31%] mb-2 items-center bg-orange-50 rounded-2xl overflow-hidden")}>
+            <Pressable key={label} accessibilityRole="button" accessibilityLabel={t(label)} onPress={() => browse("", label)} className={cx("w-[31%] mb-2 items-center bg-orange-50 rounded-2xl overflow-hidden")}>
               <Image source={image} style={{ width: "100%", height: 80, resizeMode: "cover" }} />
-              <Text className={cx("font-bold text-sm my-1")}>{label}</Text>
+              <Text className={cx("font-bold text-sm my-1")}>{t(label)}</Text>
             </Pressable>
           ))}
         </View>

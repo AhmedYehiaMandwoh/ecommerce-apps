@@ -36,7 +36,11 @@ const FLIP: Record<string, string> = { "flex-row-reverse": "flex-row", "text-rig
 // Mirror direction-bound class names for LTR. Arabic (RTL) is returned unchanged.
 export function cx(c?: string): string | undefined {
   if (!isEn || !c) return c;
-  return c.split(/\s+/).map((k) => {
+  const tk = c.split(/\s+/);
+  // Plain flex-row content rows with justify-between were laid out for RTL (first child on the left): reverse them.
+  const swapRow = tk.includes("flex-row") && tk.includes("justify-between") && !tk.some((k) => /^h-(10|12|14)$/.test(k));
+  return tk.map((k) => {
+    if (k === "flex-row" && swapRow) return "flex-row-reverse";
     if (FLIP[k]) return FLIP[k];
     const m = k.match(/^(ml|mr|pl|pr|left|right)-(.+)$/);
     if (m) { const o: any = { ml: "mr", mr: "ml", pl: "pr", pr: "pl", left: "right", right: "left" }; return o[m[1]] + "-" + m[2]; }

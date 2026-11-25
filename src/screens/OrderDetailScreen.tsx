@@ -1,4 +1,4 @@
-import { t } from "../i18n";
+import { t, isEn } from "../i18n";
 import React from "react";
 import {
   View,
@@ -53,7 +53,7 @@ export function OrderDetailScreen({ c }: { c: any }) {
                         {o.events.map((e: any) => (
                           <Text key={e.id} style={st.small}>
                             ✓ {statuses[e.status]} •{" "}
-                            {new Date(e.createdAt).toLocaleDateString("ar-EG")}
+                            {new Date(e.createdAt).toLocaleDateString(isEn ? "en-GB" : "ar-EG")}
                           </Text>
                         ))}
                         {["PLACED","ACCEPTED","PREPARING"].includes(o.status) && !o.settlementFrozen && (

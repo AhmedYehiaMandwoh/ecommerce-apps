@@ -1,10 +1,10 @@
-import { t } from "./i18n";
+import { t, isEn } from "./i18n";
 import { Platform } from "react-native";
 import * as SecureStore from "expo-secure-store";
 export const API = process.env.EXPO_PUBLIC_API_URL || "http://10.0.2.2:4000/api";
 export const BASE = process.env.EXPO_PUBLIC_ASSET_URL || "http://10.0.2.2:3000";
 export const imageUrl=(path:string)=>path.startsWith('/api/media/')?API.replace(/\/api$/,'')+path:BASE+path;
-export const money = (v: number) => t('{0} ج.م', (v / 100).toLocaleString("ar-EG"));
+export const money = (v: number) => t('{0} ج.م', (v / 100).toLocaleString(isEn ? "en-US" : "ar-EG"));
 export const statuses: Record<string, string> = {
   PLACED: t('تم الطلب'),
   ACCEPTED: t('مقبول'),

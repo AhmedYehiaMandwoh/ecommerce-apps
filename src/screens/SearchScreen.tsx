@@ -41,7 +41,7 @@ export function SearchScreen({ c }: { c: any }) {
         </View>
         {!!category && (
           <Pressable accessibilityRole="button" accessibilityLabel={t('إلغاء قسم')} onPress={() => { setCategory(""); load(""); }} className={cx("self-end mt-2 flex-row items-center bg-white rounded-full px-3 h-8")}>
-            <Text className={cx("text-brand-dark font-bold text-xs")}>{category}  ✕</Text>
+            <Text className={cx("text-brand-dark font-bold text-xs")}>{t(category)}  ✕</Text>
           </Pressable>
         )}
         {!!open && (
