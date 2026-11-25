@@ -14,7 +14,7 @@ export function HomeScreen({ c }: { c: any }) {
   const recent = history.slice(0, 2);
   return (
     <View className={cx("bg-white flex-1")}>
-      <View className={cx("bg-brand px-4 pt-3 pb-4")} style={{ borderBottomLeftRadius: 28, borderBottomRightRadius: 28 }}>
+      <View className={cx("bg-brand px-4 pt-3 pb-5")} style={{ borderBottomLeftRadius: 28, borderBottomRightRadius: 28 }}>
         <View className={cx("flex-row items-center justify-between h-12")}>
           <Pressable accessibilityRole="button" accessibilityLabel={t('عنوان التوصيل')} onPress={() => go("addresses")}><View className={cx("flex-row items-center")}><Ico n="pin" size={16} color="#fff" /><Text className={cx("text-white text-xs font-bold ml-1")}>{t('حدد موقع التوصيل ⌄')}</Text></View></Pressable>
           <Image source={art.logo} style={{ width: 96, height: 42, resizeMode: "contain" }} />
@@ -23,8 +23,8 @@ export function HomeScreen({ c }: { c: any }) {
             {!!count && <View className={cx("absolute top-0 right-0 bg-accent rounded-full min-w-[18px] h-[18px] items-center justify-center")}><Text className={cx("text-white text-[11px] font-bold")}>{count}</Text></View>}
           </Pressable>
         </View>
-        <Text className={cx("text-white text-2xl font-extrabold text-center mt-2")}>{t('بتدور على إيه؟')}</Text>
-        <View className={cx("bg-white rounded-full h-10 mt-2 px-4 flex-row items-center")}>
+        <Text className={cx("text-white font-extrabold text-center mt-2")} style={{ fontSize: 30, lineHeight: 42 }}>{t('بتدور على إيه؟')}</Text>
+        <View className={cx("bg-white rounded-full h-11 mt-2 px-4 flex-row items-center")}>
           <Pressable accessibilityRole="button" accessibilityLabel={t('بحث')} onPress={() => browse(q, "")}><Ico n="search" size={22} color="#0b2a5b" /></Pressable>
           <TextInput accessibilityLabel={t('البحث')} value={q} onChangeText={setQ} onSubmitEditing={() => browse(q, "")} placeholder={t('ابحث باسم القطعة أو رقمها')} placeholderTextColor="#94a3b8" className={cx("flex-1 text-right text-base")} />
         </View>
@@ -43,7 +43,7 @@ export function HomeScreen({ c }: { c: any }) {
         <View className={cx("flex-row-reverse flex-wrap justify-between")}>
           {cats.map(([label, image]) => (
             <Pressable key={label} accessibilityRole="button" accessibilityLabel={t(label)} onPress={() => browse("", label)} className={cx("w-[31%] mb-2 items-center bg-orange-50 rounded-2xl overflow-hidden")}>
-              <Image source={image} style={{ width: "100%", height: 80, resizeMode: "cover" }} />
+              <Image source={image} style={{ width: "100%", height: 104, resizeMode: "cover" }} />
               <Text className={cx("font-bold text-sm my-1")}>{t(label)}</Text>
             </Pressable>
           ))}
