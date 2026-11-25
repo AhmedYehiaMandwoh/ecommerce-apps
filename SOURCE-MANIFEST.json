@@ -435,7 +435,7 @@
     {
       "path": "src/screens/CheckoutScreen.tsx",
       "bytes": 6326,
-      "sha256": "cb1522eb03a9fed31bca3665c3a8ed01fde3efbe678f3d74de7caa19500887e2"
+      "sha256": "f37cf7f334c6763da138e274b6a56c387e1e1c0f9c55a428ac63a7e962e17f13"
     },
     {
       "path": "src/screens/EmailLoginScreen.tsx",
