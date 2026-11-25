@@ -504,8 +504,8 @@
     },
     {
       "path": "src/screens/SplashScreen.tsx",
-      "bytes": 2406,
-      "sha256": "18824a3e3090a783e313e53abb0bc194de200ade170cfe1ea500ca711a94c8d4"
+      "bytes": 2405,
+      "sha256": "ab6dd59a2a4545cda8560751b8783358f83f92f878eca99aea39c75557069bf6"
     },
     {
       "path": "src/screens/SupportScreen.tsx",
