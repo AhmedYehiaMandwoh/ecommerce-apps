@@ -1,4 +1,5 @@
-import { t, cx } from "./src/i18n";
+import { t, cx, isEn } from "./src/i18n";
+import apiAr from "./src/api-ar.json";
 import { SplashScreen } from "./src/screens/SplashScreen";
 import { Btn } from "./components/Controls";
 import { st } from "./src/styles";
@@ -144,7 +145,7 @@ export default function App() {
       );
     return data;
   }
-  const arabicError = (m: string) => ({ 'Delivery area does not serve this address city': t('منطقة التوصيل المختارة لا تخدم مدينة هذا العنوان. اختر منطقة من نفس المدينة.'), 'Discount code invalid or expired': t('كود الخصم غير صحيح أو منتهي.'), 'Insufficient stock': t('الكمية المطلوبة غير متوفرة.'), 'Basket total changed, review a fresh quote': t('تغير إجمالي السلة. راجع التكلفة مرة أخرى.'), 'Choose your address': t('اختر عنوان التوصيل.') } as Record<string, string>)[m] || m;
+  const arabicError = (m: string) => ({ 'Delivery area does not serve this address city': t('منطقة التوصيل المختارة لا تخدم مدينة هذا العنوان. اختر منطقة من نفس المدينة.'), 'Discount code invalid or expired': t('كود الخصم غير صحيح أو منتهي.'), 'Insufficient stock': t('الكمية المطلوبة غير متوفرة.'), 'Basket total changed, review a fresh quote': t('تغير إجمالي السلة. راجع التكلفة مرة أخرى.'), 'Choose your address': t('اختر عنوان التوصيل.') } as Record<string, string>)[m] || (isEn ? m : ((apiAr as Record<string, string>)[m] ?? m));
   async function run(fn: () => Promise<void>) {
     if (busy) return;
     setBusy(true);
