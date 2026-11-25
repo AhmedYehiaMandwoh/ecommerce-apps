@@ -19,21 +19,21 @@ export function SearchScreen({ c }: { c: any }) {
   ];
   return (
     <View className="bg-white flex-1">
-      <View className="bg-brand px-4 pt-3 pb-4">
+      <View className="bg-brand px-4 pt-3 pb-3">
         <View className="flex-row items-center justify-between h-10">
           <Pressable accessibilityRole="button" accessibilityLabel="رجوع" onPress={back} className="w-10"><Text className="text-white text-3xl">‹</Text></Pressable>
           <Text className="text-white text-2xl font-extrabold">{shop ? shops.find((s: any) => s.id === shop)?.name || "المحل" : "نتائج البحث"}</Text>
           <View className="w-10" />
         </View>
-        <View className="bg-white rounded-full h-14 mt-2 px-4 flex-row items-center">
+        <View className="bg-white rounded-full h-12 mt-2 px-4 flex-row items-center">
           <Pressable accessibilityRole="button" accessibilityLabel="مسح" onPress={() => { setSearch(""); browse("", category, shop); }}><Text className="text-slate-500 text-lg ml-2">✕</Text></Pressable>
           <TextInput accessibilityLabel="البحث في المنتجات" value={search} onChangeText={setSearch} onSubmitEditing={() => load(category)} placeholder="ابحث باسم القطعة أو رقمها" placeholderTextColor="#94a3b8" className="flex-1 text-right text-lg" />
           <Pressable accessibilityRole="button" accessibilityLabel="بحث" onPress={() => load(category)}><Text className="text-lg ml-2">🔍</Text></Pressable>
         </View>
-        <View className="flex-row-reverse mt-3 justify-between">
+        <View className="flex-row-reverse mt-2 justify-between">
           {pills.map(([k, label, opts, set]) => (
-            <Pressable key={k} accessibilityRole="button" accessibilityLabel={"فلتر " + label} onPress={() => setOpen(open === k ? "" : k)} className="flex-row items-center justify-center bg-white rounded-full px-4 h-12" style={{ width: "32%" }}>
-              <Text className="text-brand-dark font-bold text-base" numberOfLines={1}>{label}</Text>
+            <Pressable key={k} accessibilityRole="button" accessibilityLabel={"فلتر " + label} onPress={() => setOpen(open === k ? "" : k)} className="flex-row items-center justify-center bg-white rounded-full px-3 h-9" style={{ width: "32%" }}>
+              <Text className="text-brand-dark font-bold text-sm" numberOfLines={1}>{label}</Text>
               <Text className="text-brand-dark mr-1">⌄</Text>
             </Pressable>
           ))}

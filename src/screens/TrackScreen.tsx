@@ -21,10 +21,11 @@ export function TrackScreen({ c }: { c: any }) {
         </View>
         <View className="mb-4" style={{ paddingTop: 2 }}>
           <View style={{ position: "absolute", top: 13, left: "12%", right: "12%", height: 3, backgroundColor: "#cbd5e1" }} />
+          <View style={{ position: "absolute", top: 13, right: "12%", width: `${(Math.max(0, idx) / 3) * 76}%`, height: 3, backgroundColor: "#0b3fb8" }} />
           <View className="flex-row-reverse justify-between">
           {steps.map(([k, t], n) => (
             <View key={k} className="items-center flex-1">
-              <View className={`w-8 h-8 rounded-full items-center justify-center ${n <= idx ? "bg-brand" : "bg-slate-300"}`}><Text className="text-white text-sm">{n <= idx ? "✓" : ""}</Text></View>
+              <View className={`w-7 h-7 rounded-full items-center justify-center ${n <= idx ? "bg-brand" : "bg-slate-300"}`}><Text className="text-white text-sm">{n <= idx ? "✓" : ""}</Text></View>
               <Text className={`text-xs mt-1 text-center ${n <= idx ? "font-bold" : ""}`}>{t}</Text>
             </View>
           ))}
