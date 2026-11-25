@@ -12,7 +12,7 @@ export function VehicleScreen({ c }: { c: any }) {
   return (
     <View className="bg-white flex-1" style={{ minHeight: 700 }}>
       <Header back onBack={back} title="اختار عربيتك" subtitle="راجع بيانات عربيتك عشان تختار القطعة المناسبة." onCart={() => go("cart")} count={count} tall />
-      <View style={{ backgroundColor: "#0751e8", marginTop: -14, paddingTop: 14 }}><Image source={require("../../assets/ref/car-full.png")} style={{ width: "100%", height: 176, resizeMode: "contain" }} /></View>
+      <View style={{ backgroundColor: "#0751e8", marginTop: -14, paddingTop: 14, paddingBottom: 22 }}><Image source={require("../../assets/ref/car-full.png")} style={{ width: "100%", height: 160, resizeMode: "contain" }} /></View>
       <View className="p-4 bg-white" style={{ marginTop: -22, borderTopLeftRadius: 28, borderTopRightRadius: 28 }}>
         <ErrorNote error={error} notice={notice} />
         {(() => {

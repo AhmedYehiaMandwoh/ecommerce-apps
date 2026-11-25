@@ -14,8 +14,8 @@
     },
     {
       "path": "App.tsx",
-      "bytes": 22391,
-      "sha256": "454eadb273aefb4427eac47ca552479686373572060ea393ae749c42d8cc1a1b"
+      "bytes": 22301,
+      "sha256": "833beaa1146db49dee9f06948b2af2b2e45733ae57343b694e36c99fcdb5e92f"
     },
     {
       "path": "HANDOVER.md",
@@ -133,6 +133,11 @@
       "sha256": "4b4418cb650293813addab2cb4c5553adb638cc37dcd507deb909d63ef96d8e6"
     },
     {
+      "path": "assets/icons/chev.png",
+      "bytes": 1511,
+      "sha256": "3551eaa431e946476ca65a0399fd1c854fb1df814811ac1d16f97d99d644b3d4"
+    },
+    {
       "path": "assets/icons/f-doc.png",
       "bytes": 4096,
       "sha256": "0f418919e368b384425121e35267d68da8665a01cd3a74fb79468b3eaa1c4da2"
@@ -158,6 +163,11 @@
       "sha256": "452934c8c03890d3dd24e3c3d4d0a5d466081acefa134b76c2d71a21d182174c"
     },
     {
+      "path": "assets/icons/home.png",
+      "bytes": 1484,
+      "sha256": "b574d40a150c5dbf444e8508bf55277266220bf9d30a0b04ed875f7049619acc"
+    },
+    {
       "path": "assets/icons/pin.png",
       "bytes": 5147,
       "sha256": "36101326540db2f291fe6ef987b73883996ba332c4078656e40c4989dc4b8236"
@@ -176,6 +186,16 @@
       "path": "assets/icons/s-warn.png",
       "bytes": 12158,
       "sha256": "8351e8c8808d45824b26edc2cd31cb7c04667136793c53d4f529bd82c19df8d8"
+    },
+    {
+      "path": "assets/icons/search.png",
+      "bytes": 2515,
+      "sha256": "c27bd8a02af57026ec083f3e8d947d2a94e5c4b7310623408d49f56e0f789848"
+    },
+    {
+      "path": "assets/icons/send.png",
+      "bytes": 1634,
+      "sha256": "86590b825daf374b253dbc95d791bb0da226fc502419035593a0653234311629"
     },
     {
       "path": "assets/icons/shop.png",
@@ -231,6 +251,11 @@
       "path": "assets/ref/building.png",
       "bytes": 14369,
       "sha256": "2ec5d38ece43af30c6a59fcf6cf68cc267757441eec3fb4aa764073926a363bc"
+    },
+    {
+      "path": "assets/ref/car-full.png",
+      "bytes": 420984,
+      "sha256": "70c9f1dcc20ebdb825d48fecc24054a56a3ef96b6b588c0a25c88b529e328d1b"
     },
     {
       "path": "assets/ref/car.png",
@@ -428,9 +453,39 @@
       "sha256": "39f0f42a2bbfd68db3de5b8cab120cee53047a603fcb0d87a34b335c67569115"
     },
     {
+      "path": "scripts/checkout-final-shot.mjs",
+      "bytes": 3793,
+      "sha256": "dee86a70c31fa3609813ab23674b28c068ff1b94729f746dae0424aa449be6ee"
+    },
+    {
+      "path": "scripts/clearance-check.mjs",
+      "bytes": 3700,
+      "sha256": "397e07c711dd4541de4e7c89a85aae71de3d1c9231eb23612f57b10d9402c68e"
+    },
+    {
+      "path": "scripts/home-shot.mjs",
+      "bytes": 1474,
+      "sha256": "58e82a42783f9b187cf487e3f6e426f33d83ea075453a734c832a4aa40b926c7"
+    },
+    {
       "path": "scripts/mobile-test.mjs",
-      "bytes": 7363,
-      "sha256": "78f5293c54adf11a60f2cb17c2fcaa86e053854be36795f967bb5d6e12dec99a"
+      "bytes": 8494,
+      "sha256": "e50e0b170c7fd05f78d617d348ff973ed157e4d5f9229dbd2f4f3c44f3ac8294"
+    },
+    {
+      "path": "scripts/multishop-track-test.mjs",
+      "bytes": 7121,
+      "sha256": "f1c2d7a1827d8392ddfb62596a8cf4abf39609f568fc8f646b703051c54be41b"
+    },
+    {
+      "path": "scripts/orders-clear.mjs",
+      "bytes": 1647,
+      "sha256": "b6fa15e2a57182d32b27e51ac7c9e706078eac1040bffc35b57d52b539b2073f"
+    },
+    {
+      "path": "scripts/orders-shot.mjs",
+      "bytes": 1206,
+      "sha256": "c0484bc643b9e8e18346fdcae8a500eaeda5489f6f1740fa62c433057d086f16"
     },
     {
       "path": "src/nativefont.ts",
@@ -444,8 +499,8 @@
     },
     {
       "path": "src/screens/AddAddressScreen.tsx",
-      "bytes": 2479,
-      "sha256": "b35f9d3f6dfef3902e963344dd7e16a3e0a13b1e67807457cda1fc214c80ba6a"
+      "bytes": 2485,
+      "sha256": "cc8165f56f65c2d6344197a83e68e47e2fd762014fe2de5cf0eeed95977542d6"
     },
     {
       "path": "src/screens/AddressesScreen.tsx",
@@ -459,8 +514,8 @@
     },
     {
       "path": "src/screens/CheckoutScreen.tsx",
-      "bytes": 6326,
-      "sha256": "008147e6ddacf2ac030f96d9b228019a70ff14fa1505cbf3c8607d8f2d252e75"
+      "bytes": 6475,
+      "sha256": "7fdb42bdafd5d4965e02940e6c347f76dd40bfd0ac10091345dd189f7fa3849d"
     },
     {
       "path": "src/screens/EmailLoginScreen.tsx",
@@ -474,8 +529,8 @@
     },
     {
       "path": "src/screens/HomeScreen.tsx",
-      "bytes": 4796,
-      "sha256": "923993ecb0a686500841179687dc4c81ffbad9523f951a940345d6718dabd7c7"
+      "bytes": 4999,
+      "sha256": "2a8d115293833e19a8de77e6c1b8c0d820413f1f912bea8dd562310f64f24356"
     },
     {
       "path": "src/screens/OrderDetailScreen.tsx",
@@ -484,8 +539,8 @@
     },
     {
       "path": "src/screens/OrdersScreen.tsx",
-      "bytes": 3418,
-      "sha256": "cbf33ec6fbe9e94dfb291adaf092a99aa55c855f38dd331c3034c602bf40d05d"
+      "bytes": 3958,
+      "sha256": "afda357848bf75bfd47949bc04fe0830fe8ca8ac495989c2d20d183de2cb6134"
     },
     {
       "path": "src/screens/PaymentScreen.tsx",
@@ -494,13 +549,13 @@
     },
     {
       "path": "src/screens/PhoneLoginScreen.tsx",
-      "bytes": 3836,
-      "sha256": "d2461453aa79a299f1d3485bc50c23543e678539b9f51d44729185c67a3f1ad1"
+      "bytes": 3793,
+      "sha256": "1e97016f7c667602d21f53136afd4de59e84316b6a9eb42ae3ecf43a5f0f6d55"
     },
     {
       "path": "src/screens/PlacedScreen.tsx",
-      "bytes": 2857,
-      "sha256": "d40589640a77e310c761cfa6930e6d658b1bf66686bfc21d4fecf299ec46fcba"
+      "bytes": 3324,
+      "sha256": "fedbc0458bb9a6dde5219effc6e8631413688f55eb6bc79f7e52327e8e8e699a"
     },
     {
       "path": "src/screens/ProductScreen.tsx",
@@ -529,23 +584,23 @@
     },
     {
       "path": "src/screens/SplashScreen.tsx",
-      "bytes": 2405,
-      "sha256": "ab6dd59a2a4545cda8560751b8783358f83f92f878eca99aea39c75557069bf6"
+      "bytes": 2425,
+      "sha256": "40c5a79bed7e8169abd35ef221283872d961fa86b680035d0961bdcfccb029a4"
     },
     {
       "path": "src/screens/SupportScreen.tsx",
-      "bytes": 5875,
-      "sha256": "798a9390384071c6eb49da50ceb180e9e0c3359d075dc4140cb569a131eccaff"
+      "bytes": 6997,
+      "sha256": "13b217787cfb1a81ce2e53df6d331cb6b3ba7c36cdabf78b6a65522f608f8ba0"
     },
     {
       "path": "src/screens/TrackScreen.tsx",
-      "bytes": 4313,
-      "sha256": "2ecdf8761929337aa1bc9cf3c876e905bb06aedc94689c6829424a00e22f9049"
+      "bytes": 4456,
+      "sha256": "bd85797be61f62b029fc70f57e075d8a3c672bbac63d83f3f4c6356de3ee5e2a"
     },
     {
       "path": "src/screens/VehicleScreen.tsx",
-      "bytes": 4990,
-      "sha256": "29ef16400120b3ef2e6d42701778eae20b6f1ffe90867ea4b9fcd9631a04d3eb"
+      "bytes": 5312,
+      "sha256": "c3c2dd891dd676be05baf62eaa250049944956f8a7f2d9c8189be6454713a5d2"
     },
     {
       "path": "src/shared.ts",
@@ -564,8 +619,8 @@
     },
     {
       "path": "src/ui/kit.tsx",
-      "bytes": 8109,
-      "sha256": "6e6729fdb3321d4d8353bd419a85344344a4f43ff25e327602d7f5f093ea119b"
+      "bytes": 8828,
+      "sha256": "9fbc3057f8ed1207a0d2f246e6043836a2582353c76ba9cfa89f5ae53d6e3539"
     },
     {
       "path": "src/webfont.ts",
