@@ -24,14 +24,16 @@ export function ProductScreen({ c }: { c: any }) {
         </View>
       </View>
       <View style={{ overflow: "hidden", borderBottomLeftRadius: 28, borderBottomRightRadius: 28 }}>
-        <Image source={img(selected.image)} style={{ width: "100%", height: 250, resizeMode: "contain", backgroundColor: "#f3f1ee" }} />
+        <Image source={img(selected.image)} style={{ width: "100%", height: 190, resizeMode: "cover", backgroundColor: "#f3f1ee" }} />
         <Pressable accessibilityRole="button" accessibilityLabel="حفظ / إزالة من المفضلة" onPress={() => favorite(selected)} className="absolute top-3 left-3 w-10 h-10 rounded-full bg-white items-center justify-center"><Text className="text-xl">{fav ? "❤" : "♡"}</Text></Pressable>
       </View>
       <View className="px-4 pt-3">
-        <Text className="text-2xl font-extrabold text-right">{selected.title}</Text>
-        <Text className="text-slate-500 text-right">من {offer?.shop?.name} • {selected.brand} • {selected.partNumber}</Text>
-        {offer && <Text className="text-accent text-2xl font-extrabold text-right mt-1">{money(offer.price)}</Text>}
-        <View className="my-2 items-start"><Stepper value={qty} onMinus={() => setQty(Math.max(1, qty - 1))} onPlus={() => setQty(Math.min(offer?.stock || 1, qty + 1))} /></View>
+        <Text className="text-xl font-extrabold text-right" numberOfLines={2}>{selected.title}</Text>
+        <Text className="text-slate-500 text-right">من {offer?.shop?.name}</Text>
+        <View className="flex-row items-center justify-between my-1">
+          <Stepper value={qty} onMinus={() => setQty(Math.max(1, qty - 1))} onPlus={() => setQty(Math.min(offer?.stock || 1, qty + 1))} />
+          {offer && <Text className="text-accent text-2xl font-extrabold text-right">{money(offer.price)}</Text>}
+        </View>
         <Card className="flex-row items-center" onPress={() => offer && go("shops")}>
           <Text className="text-slate-400 text-2xl">‹</Text>
           <View className="flex-1 mx-3 items-end"><Text className="font-extrabold">{offer?.shop?.name}</Text><Text className="text-slate-500 text-sm">قطع غيار وصيانة • {offer?.shop?.city}</Text></View>
@@ -52,7 +54,7 @@ export function ProductScreen({ c }: { c: any }) {
           ))}
         </View>
         {tab === "details" ? (
-          <Text className="text-right text-slate-700 leading-7 my-3">{selected.description}</Text>
+          <View><Text className="text-right text-slate-500 mt-2">{selected.brand} • {selected.partNumber}</Text><Text className="text-right text-slate-700 leading-7 my-2">{selected.description}</Text></View>
         ) : (
           <View className="my-3">
             {selected.offers.map((o: any) => (

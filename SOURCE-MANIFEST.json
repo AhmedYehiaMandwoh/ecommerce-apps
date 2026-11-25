@@ -469,8 +469,8 @@
     },
     {
       "path": "src/screens/PhoneLoginScreen.tsx",
-      "bytes": 3343,
-      "sha256": "b3ab2dd6543de14f31ef3f6fa4936246d26d52c759cee063e06a5f2faf9c9cb9"
+      "bytes": 3836,
+      "sha256": "d2461453aa79a299f1d3485bc50c23543e678539b9f51d44729185c67a3f1ad1"
     },
     {
       "path": "src/screens/PlacedScreen.tsx",
@@ -479,8 +479,8 @@
     },
     {
       "path": "src/screens/ProductScreen.tsx",
-      "bytes": 5874,
-      "sha256": "08804294106acf99de54894379ce81a5afc643078e5e4e504e1389951ebe419e"
+      "bytes": 5996,
+      "sha256": "6f4e2c66e412bc92d6d1d57bc05a8c51790de644181d8ba70c79c88c522c98bd"
     },
     {
       "path": "src/screens/SearchScreen.tsx",
@@ -509,8 +509,8 @@
     },
     {
       "path": "src/screens/SupportScreen.tsx",
-      "bytes": 4908,
-      "sha256": "80580ce6a3266d33890ab99027bca7653c91915e487f29e72faa095d276793d8"
+      "bytes": 5868,
+      "sha256": "77da2bc722a13bcfab63e771c988a48fccb30d2178a275555ae75000b8c4b4d5"
     },
     {
       "path": "src/screens/TrackScreen.tsx",

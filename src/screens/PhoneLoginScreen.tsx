@@ -7,18 +7,22 @@ export function PhoneLoginScreen({ c }: { c: any }) {
   const step2 = !!phoneAuth.challengeId;
   return (
     <View className="bg-white flex-1" style={{ minHeight: 760 }}>
-      <View className="bg-brand" style={{ paddingBottom: 14 }}><Header back onBack={back} /></View>
-      <View className="px-5 pt-5 items-center bg-white" style={{ borderTopLeftRadius: 32, borderTopRightRadius: 32, marginTop: -14 }}>
+      <View className="bg-brand" style={{ height: 30 }} />
+      <View className="px-5 pt-2 items-center bg-white" style={{ borderTopLeftRadius: 32, borderTopRightRadius: 32, marginTop: -14 }}>
+        <View className="w-full flex-row items-center justify-center" style={{ height: 64 }}>
+          <Pressable accessibilityRole="button" accessibilityLabel="رجوع" onPress={back} style={{ position: "absolute", left: 0, top: 0, bottom: 0, justifyContent: "center", zIndex: 5 }}><Text className="text-brand text-3xl">‹</Text></Pressable>
+          <Image source={require("../../assets/ref/logo-blue.png")} style={{ width: 92, height: 46, resizeMode: "contain" }} />
+        </View>
         <Text className="text-3xl font-extrabold text-brand-dark text-center">{step2 ? "كود التحقق" : "رقم موبايلك"}</Text>
         <Text className="text-slate-500 text-center mt-1">{step2 ? "اكتب الكود اللي وصلك" : "هنرسل لك رمز التحقق على موبايلك"}</Text>
-        <Image source={require("../../assets/ref/phone-hero.png")} style={{ width: "100%", height: 250, resizeMode: "contain", marginVertical: 12 }} />
+        <Image source={require("../../assets/ref/phone-hero.png")} style={{ width: "100%", height: 215, resizeMode: "contain", marginVertical: 6 }} />
         <View className="w-full">
           <ErrorNote error={error} notice={notice} />
           {!step2 ? (
             <View className="flex-row items-center border border-slate-200 rounded-2xl h-16 px-3 bg-white mb-3">
-              <TextInput accessibilityLabel="رقم الموبايل" value={phoneAuth.phone} onChangeText={(phone) => setPhoneAuth({ ...phoneAuth, phone })} placeholder="ادخل رقم الموبايل" placeholderTextColor="#94a3b8" keyboardType="phone-pad" className="flex-1 text-right text-base" />
+              <Text className="font-bold" numberOfLines={1} style={{ flexShrink: 0 }}>⌄  🇪🇬 مصر +20</Text>
               <View className="w-px h-6 bg-slate-200 mx-3" />
-              <Text className="font-bold">🇪🇬 مصر +20 ⌄</Text>
+              <TextInput accessibilityLabel="رقم الموبايل" value={phoneAuth.phone} onChangeText={(phone) => setPhoneAuth({ ...phoneAuth, phone })} placeholder="ادخل رقم الموبايل" placeholderTextColor="#94a3b8" keyboardType="phone-pad" className="flex-1 text-right text-base" />
             </View>
           ) : (
             <>

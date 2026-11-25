@@ -3,12 +3,13 @@ import { View, Text, Image, Pressable } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { Cta, Header, Input, Chip, ErrorNote } from "../ui/kit";
 
-const kinds: [string, string, string][] = [["مشكلة في الطلب", "⚠", "bg-red-50"], ["استبدال أو إرجاع", "🔁", "bg-blue-50"], ["سؤال عن قطعة", "💬", "bg-orange-50"]];
+const kinds: [string, any, string][] = [["مشكلة في الطلب", require("../../assets/icons/s-warn.png"), "#fcf1eb"], ["استبدال أو إرجاع", require("../../assets/icons/s-swap.png"), "#ecf5fe"], ["سؤال عن قطعة", require("../../assets/icons/s-chat.png"), "#faf5f1"]];
 export function SupportScreen({ c }: { c: any }) {
   const { support, setSupport, orders, api, run, setTickets, tickets, setNotice, back, go, count, user, error, notice } = c;
   const [kind, setKind] = useState("");
   const [orderId, setOrderId] = useState("");
   const [photo, setPhoto] = useState("");
+  const [orderOpen, setOrderOpen] = useState(false);
   const pick = async () => {
     const r = await ImagePicker.launchImageLibraryAsync({ mediaTypes: ["images"], base64: true, quality: 0.5, allowsEditing: false });
     if (r.canceled || !r.assets?.[0]?.base64) return;
@@ -28,21 +29,25 @@ export function SupportScreen({ c }: { c: any }) {
       <View className="px-3 pt-1">
         <Text className="text-center font-extrabold text-lg">المساعدة</Text>
         <ErrorNote error={error} notice={notice} />
-        <View className="flex-row bg-brand-light rounded-2xl p-2 items-center">
-          <View className="flex-1 items-end"><Text className="text-2xl font-extrabold text-right">نحن هنا لمساعدتك</Text><Text className="text-slate-500 text-sm text-right">اختر نوع المشكلة وسيتم الرد عليك قريبًا.</Text></View>
-          <Image source={require("../../assets/ref/agent.png")} style={{ width: 64, height: 76, resizeMode: "contain" }} />
+        <View className="flex-row rounded-2xl overflow-hidden items-center" style={{ backgroundColor: "#f4f8fd", height: 126 }}>
+          <Image source={require("../../assets/ref/support-hero.png")} style={{ width: "52%", height: 126, resizeMode: "cover" }} />
+          <View className="flex-1 items-end px-3"><Text className="font-extrabold text-right text-brand" style={{ fontSize: 26, lineHeight: 32 }}>نحن هنا{"\n"}لمساعدتك</Text><Text className="text-slate-500 text-right mt-1">اختر نوع المشكلة{"\n"}وسيتم الرد عليك قريبًا</Text></View>
         </View>
-        <View className="flex-row-reverse justify-between my-2">
+        <View className="flex-row-reverse justify-between my-3">
           {kinds.map(([t, icon, bg]) => (
-            <Pressable key={t} accessibilityRole="button" accessibilityLabel={t} onPress={() => setKind(t)} className={`w-[31%] rounded-2xl items-center py-1 px-1 border-2 ${bg} ${kind === t ? "border-accent" : "border-transparent"}`}><Text className="text-2xl">{icon}</Text><Text className="font-bold text-xs text-center mt-1">{t}</Text></Pressable>
+            <Pressable key={t} accessibilityRole="button" accessibilityLabel={t} onPress={() => setKind(t)} className={`w-[31.5%] rounded-2xl items-center justify-center border-2 ${kind === t ? "border-accent" : "border-transparent"}`} style={{ backgroundColor: bg, height: 100 }}><Image source={icon} style={{ width: 48, height: 48, resizeMode: "contain" }} /><Text className="font-bold text-xs text-center mt-1">{t}</Text><Text className="text-accent text-lg">›</Text></Pressable>
           ))}
         </View>
         {!!user && !!orders.length && (<>
-          <Text className="font-extrabold text-right">اختر الطلب</Text>
-          <View className="flex-row-reverse flex-wrap mb-2">{orders.slice(0, 6).map((o: any) => <Chip key={o.id} title={"#" + o.id.slice(0, 8)} active={orderId === o.id} onPress={() => setOrderId(orderId === o.id ? "" : o.id)} />)}</View>
+          <Text className="font-extrabold text-right text-base mb-1">اختر الطلب</Text>
+          <Pressable accessibilityRole="button" accessibilityLabel="اختر الطلب" onPress={() => setOrderOpen(!orderOpen)} className="flex-row-reverse items-center justify-between border border-slate-300 rounded-xl px-3 mb-2" style={{ height: 52 }}>
+            <Text className={orderId ? "text-slate-900 font-bold" : "text-slate-400"}>{orderId ? "#" + orderId.slice(0, 8) : "اختر الطلب"}</Text>
+            <Text className="text-slate-500">{orderOpen ? "⌃" : "⌄"}</Text>
+          </Pressable>
+          {orderOpen && <View className="flex-row-reverse flex-wrap mb-2">{orders.slice(0, 6).map((o: any) => <Chip key={o.id} title={"#" + o.id.slice(0, 8)} active={orderId === o.id} onPress={() => { setOrderId(orderId === o.id ? "" : o.id); setOrderOpen(false); }} />)}</View>}
         </>)}
         <Input label="اكتب رسالتك" icon="✏" multiline value={support.message} onChange={(message) => setSupport({ ...support, message })} placeholder="اكتب رسالتك هنا..." />
-        <Pressable accessibilityRole="button" accessibilityLabel="أضف صورة" onPress={pick} className="border border-dashed border-slate-300 rounded-xl p-3 mb-2"><Text className="text-right text-slate-600">{photo ? "📎 تم اختيار صورة • اضغط للتغيير" : "📎 أضف صورة"}</Text></Pressable>
+        <Pressable accessibilityRole="button" accessibilityLabel="أضف صورة" onPress={pick} className="border border-dashed border-slate-300 rounded-xl p-2 mb-1"><Text className="text-right text-slate-600">{photo ? "📎 تم اختيار صورة • اضغط للتغيير" : "📎 أضف صورة"}</Text></Pressable>
         {!!photo && <Image source={{ uri: photo }} style={{ width: 90, height: 90, borderRadius: 10, marginBottom: 8, alignSelf: "flex-end" }} />}
         <Cta title="إرسال الطلب ➤" disabled={!user || !support.message} onPress={send} />
         {!user && <Text className="text-center text-slate-500 text-xs mt-2">سجّل الدخول عشان تبعت رسالة.</Text>}
