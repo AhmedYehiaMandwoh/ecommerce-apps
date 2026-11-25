@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, Image, Pressable } from "react-native";
 import { Cta, Header, Ico } from "../ui/kit";
 import { img , thumb} from "../ui/helpers";
@@ -8,6 +8,7 @@ const done = ["DELIVERED", "CANCELLED"];
 export function OrdersScreen({ c }: { c: any }) {
   const { orders, user, go, setDetailId, personal, run, back, count } = c;
   const [tab, setTab] = useState<"now" | "past">("now");
+  useEffect(() => { if (user) run(() => personal()); }, []);
   const list = orders.filter((o: any) => (tab === "now") === !done.includes(o.status));
   const tone = (s: string) => s === "DELIVERED" ? "bg-green-100 text-green-800" : s === "SHIPPED" ? "bg-blue-100 text-blue-800" : s === "CANCELLED" ? "bg-red-100 text-red-800" : "bg-orange-100 text-orange-800";
   return (
@@ -17,19 +18,18 @@ export function OrdersScreen({ c }: { c: any }) {
       <View className="px-4 mt-1">
         <View className="flex-row bg-slate-100 rounded-full p-1">
           {([["past", "السابقة"], ["now", "الحالية"]] as const).map(([k, t]) => (
-            <Pressable key={k} accessibilityRole="button" accessibilityLabel={t} onPress={() => setTab(k)} className={`flex-1 items-center py-1.5 rounded-full ${tab === k ? "bg-brand" : ""}`}><Text className={tab === k ? "text-white font-extrabold" : "text-slate-600 font-bold"}>{t}</Text></Pressable>
+            <Pressable key={k} accessibilityRole="button" accessibilityLabel={t} onPress={() => setTab(k)} className={`flex-1 items-center py-1 rounded-full ${tab === k ? "bg-brand" : ""}`}><Text className={tab === k ? "text-white font-extrabold" : "text-slate-600 font-bold"}>{t}</Text></Pressable>
           ))}
         </View>
         {!user && <Cta title="سجّل الدخول لمتابعة طلباتك" onPress={() => go("phone")} />}
-        {user && <Pressable accessibilityRole="button" accessibilityLabel="تحديث" onPress={() => run(() => personal())} className="items-center" style={{ marginVertical: 0 }}><Text className="text-brand text-xs">تحديث</Text></Pressable>}
-        {user && !list.length && <Text className="text-center text-slate-500 my-10">{tab === "now" ? "مفيش طلبات حالية." : "مفيش طلبات سابقة."}</Text>}
+                {user && !list.length && <Text className="text-center text-slate-500 my-10">{tab === "now" ? "مفيش طلبات حالية." : "مفيش طلبات سابقة."}</Text>}
         {list.map((o: any) => (
-          <View key={o.id} className="bg-white rounded-2xl border border-slate-200 px-2 pt-1.5 pb-1 mb-2">
+          <View key={o.id} className="bg-white rounded-2xl px-2.5 pt-2 pb-1.5 mb-2.5" style={{ borderWidth: 1, borderColor: "#eef2f7", shadowColor: "#0f172a", shadowOpacity: 0.06, shadowRadius: 8, shadowOffset: { width: 0, height: 2 }, elevation: 2 }}>
             <View className="flex-row items-center justify-between">
-              <Text className={`px-3 py-1 rounded-lg text-xs font-bold ${tone(o.status)}`}>{statuses[o.status]}</Text>
-              <View className="flex-row items-center"><View className="items-end ml-2"><Text className="font-extrabold">{o.shop.name}</Text><Text className="text-slate-500 text-xs">طلب تجريبي • {o.id.slice(0, 8)}</Text></View><View className="w-12 h-12 rounded-full bg-accent items-center justify-center"><Ico n="shop" size={26} color="#fff" /></View></View>
+              <Text numberOfLines={1} className={`px-3 py-1 rounded-lg text-xs font-bold ${tone(o.status)}`} style={{ flexShrink: 0 }}>{statuses[o.status]}</Text>
+              <View className="flex-row items-center flex-1 justify-end min-w-0"><View className="items-end ml-2 flex-1 min-w-0"><Text numberOfLines={1} className="font-extrabold text-base">{o.shop.name}</Text><Text className="text-slate-500 text-sm">طلب تجريبي • {o.id.slice(0, 8)}</Text></View><View className="w-12 h-12 rounded-full bg-accent items-center justify-center"><Ico n="shop" size={26} color="#fff" /></View></View>
             </View>
-            <View className="flex-row justify-start my-1">{o.items.slice(0, 3).map((i: any) => <Image key={i.id} source={thumb(i.offer?.product?.image)} style={{ width: 64, height: 60, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 10, marginLeft: 4 }} />)}</View>
+            <View className="flex-row justify-start my-1">{o.items.slice(0, 2).map((i: any) => <Image key={i.id} source={thumb(i.offer?.product?.image)} style={{ width: 84, height: 58, resizeMode: "contain", backgroundColor: "#f8fafc", borderRadius: 8, marginLeft: 6 }} />)}{o.items.length > 2 && <View style={{ width: 52, height: 58, borderRadius: 8, backgroundColor: "#f1f5f9", alignItems: "center", justifyContent: "center", marginLeft: 6 }}><Text className="text-slate-600 font-extrabold">+{o.items.length - 2}</Text></View>}</View>
             <Pressable accessibilityRole="button" accessibilityLabel="عرض التفاصيل" onPress={() => { setDetailId(o.id); go("orderdetail"); }}><Text className="text-brand font-bold text-left">‹ عرض التفاصيل</Text></Pressable>
           </View>
         ))}
