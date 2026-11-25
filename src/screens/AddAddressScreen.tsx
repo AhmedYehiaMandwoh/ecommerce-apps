@@ -14,7 +14,7 @@ export function AddAddressScreen({ c }: { c: any }) {
   });
   return (
     <View className="bg-white flex-1" style={{ minHeight: 700 }}>
-      <Header back onBack={back} title="أضف عنوان" subtitle="أدخل بيانات العنوان بالكامل" onCart={() => go("cart")} count={count} />
+      <Header back onBack={back} title="أضف عنوان" subtitle="أدخل بيانات العنوان بالكامل" onCart={() => go("cart")} count={count} tall />
       <Image source={require("../../assets/ref/map-small.png")} style={{ width: "100%", height: 124, resizeMode: "cover" }} />
       <View className="px-4 pt-3 pb-2 -mt-3 bg-white rounded-t-3xl">
         <ErrorNote error={error} notice={notice} />
