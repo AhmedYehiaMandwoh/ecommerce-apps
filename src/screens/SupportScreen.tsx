@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Image, Pressable } from "react-native";
+import { View, Text, Image, Pressable, TextInput } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { Cta, Header, Input, Chip, ErrorNote, Ico } from "../ui/kit";
 
@@ -46,10 +46,10 @@ export function SupportScreen({ c }: { c: any }) {
           </Pressable>
           {orderOpen && <View className="flex-row-reverse flex-wrap mb-2">{orders.slice(0, 6).map((o: any) => <Chip key={o.id} title={"#" + o.id.slice(0, 8)} active={orderId === o.id} onPress={() => { setOrderId(orderId === o.id ? "" : o.id); setOrderOpen(false); }} />)}</View>}
         </>)}
-        <Input compact label="اكتب رسالتك" icon="✏" multiline value={support.message} onChange={(message) => setSupport({ ...support, message })} placeholder="اكتب رسالتك هنا..." />
+        <View className="mb-2"><Text className="text-right font-bold text-slate-900 mb-1">اكتب رسالتك</Text><View style={{ position: "relative" }}><TextInput accessibilityLabel="اكتب رسالتك" value={support.message} onChangeText={(message: string) => setSupport({ ...support, message })} placeholder="اكتب رسالتك هنا..." placeholderTextColor="#94a3b8" multiline textAlign="right" className="border border-slate-300 rounded-xl px-3 py-2 text-base text-right" style={{ minHeight: 56, paddingRight: 36 }} /><Text pointerEvents="none" style={{ position: "absolute", right: 12, top: 8, fontSize: 18, color: "#0b2a5b" }}>✎</Text></View></View>
         <Pressable accessibilityRole="button" accessibilityLabel="أضف صورة" onPress={pick} className="border border-dashed border-slate-300 rounded-xl p-2 mb-1"><Text className="text-right text-slate-600">{photo ? "📎 تم اختيار صورة • اضغط للتغيير" : "📎 أضف صورة"}</Text></Pressable>
         {!!photo && <Image source={{ uri: photo }} style={{ width: 90, height: 90, borderRadius: 10, marginBottom: 8, alignSelf: "flex-end" }} />}
-        <Cta title="إرسال الطلب ➤" disabled={!user || !support.message} onPress={send} />
+        <Pressable accessibilityRole="button" accessibilityLabel="إرسال الطلب" disabled={!user || !support.message} onPress={send} className={`rounded-2xl py-3 px-5 items-center justify-center mt-3 bg-accent ${!user || !support.message ? "opacity-50" : ""}`} style={{ flexDirection: "row-reverse", justifyContent: "center" }}><Text className="text-white font-extrabold text-lg">إرسال الطلب</Text><Text className="text-white font-extrabold text-lg" style={{ marginRight: 8, transform: [{ scaleX: -1 }] }}>➤</Text></Pressable>
         {!user && <Text className="text-center text-slate-500 text-xs mt-2">سجّل الدخول عشان تبعت رسالة.</Text>}
         {tickets.map((t: any) => (
           <View key={t.id} className="bg-slate-50 rounded-xl p-3 mt-3"><Text className="text-right font-bold">{t.subject} • {t.state}</Text><Text className="text-right text-slate-600 text-sm">{t.message}</Text>{!!t.attachment && <Image source={{ uri: t.attachment }} style={{ width: 90, height: 90, borderRadius: 10, marginTop: 6, alignSelf: 'flex-end' }} />}{!!t.reply && <Text className="text-right text-brand text-sm mt-1">رد الدعم: {t.reply}</Text>}</View>
