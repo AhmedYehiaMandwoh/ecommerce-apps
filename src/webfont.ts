@@ -1,15 +1,17 @@
 import { Platform } from "react-native";
 import { Asset } from "expo-asset";
 
-// Bundles Noto Kufi Arabic (SIL OFL) so Arabic text does not depend on fonts installed on the viewing device.
+// Bundles Cairo (SIL OFL, matches the design PDF) so Arabic text does not depend on fonts installed on the viewing device.
 export function installWebFont() {
   if (Platform.OS !== "web" || typeof document === "undefined" || document.getElementById("ghiyar-font")) return;
-  const reg = Asset.fromModule(require("../assets/fonts/NotoKufiArabic-Regular.ttf")).uri;
-  const bold = Asset.fromModule(require("../assets/fonts/NotoKufiArabic-Bold.ttf")).uri;
+  const u = (m: any) => Asset.fromModule(m).uri;
+  const faces: [number, string][] = [
+    [400, u(require("../assets/fonts/Cairo-Regular.ttf"))], [600, u(require("../assets/fonts/Cairo-SemiBold.ttf"))], [700, u(require("../assets/fonts/Cairo-Bold.ttf"))],
+    [800, u(require("../assets/fonts/Cairo-ExtraBold.ttf"))], [900, u(require("../assets/fonts/Cairo-Black.ttf"))],
+  ];
   const style = document.createElement("style");
   style.id = "ghiyar-font";
-  style.textContent = `@font-face{font-family:"Ghiyar Kufi";font-weight:400;src:url("${reg}") format("truetype");font-display:swap}` +
-    `@font-face{font-family:"Ghiyar Kufi";font-weight:500 900;src:url("${bold}") format("truetype");font-display:swap}` +
-    `body *,body{font-family:"Ghiyar Kufi","Noto Kufi Arabic",system-ui,sans-serif !important}`;
+  style.textContent = faces.map(([w, uri]) => `@font-face{font-family:"Ghiyar Kufi";font-weight:${w};src:url("${uri}") format("truetype");font-display:swap}`).join("") +
+    `body *,body{font-family:"Ghiyar Kufi","Cairo","Noto Kufi Arabic",system-ui,sans-serif !important}`;
   document.head.appendChild(style);
 }

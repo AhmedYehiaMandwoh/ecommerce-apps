@@ -351,12 +351,16 @@ export default function App() {
         )}
         {!NOTAB.includes(screen) && (
           <View className={cx("flex-row-reverse bg-white border-t border-slate-200")}>
-            {tabs.map(([s, t, icon]) => (
-              <Pressable key={s} accessibilityRole="button" accessibilityLabel={t} onPress={() => go(s)} className={cx("flex-1 items-center")} style={{ paddingTop: 5, paddingBottom: 5 }}>
-                <Image source={icon} style={{ width: 28, height: 28, marginBottom: 1, tintColor: active === s ? "#ff710a" : "#64748b" }} />
-                <Text className={cx(`font-bold ${active === s ? "text-accent" : "text-slate-500"}`)} style={{ fontSize: 12.5, lineHeight: 16 }}>{t}</Text>
+            {tabs.map(([s, t, icon]) => {
+              const on = active === s;
+              const pdf: Record<string, [any, number, number]> = { account: [require("./assets/pdf/nav-account.png"), 19, 21], orders: [require("./assets/pdf/nav-orders.png"), 18.3, 20.7], shops: [require("./assets/pdf/nav-shops.png"), 23.3, 20.7], home: [require("./assets/pdf/nav-home-on.png"), 23.7, 21.1] };
+              const [src, w, h] = s === "home" && !on ? [icon, 26, 26] : pdf[s];
+              return (
+              <Pressable key={s} accessibilityRole="button" accessibilityLabel={t} onPress={() => go(s)} className={cx("flex-1 items-center")} style={{ paddingTop: 11, paddingBottom: 10 }}>
+                <View style={{ height: 26, justifyContent: "center" }}><Image source={src} style={{ width: w, height: h, ...(s === "home" && !on ? { tintColor: "#5a5a63" } : on && s !== "home" ? { tintColor: "#ff640f" } : {}) }} /></View>
+                <Text className={cx(`font-bold ${on ? "text-accent" : "text-slate-600"}`)} style={{ fontSize: 12.5, lineHeight: 17, marginTop: -1 }}>{t}</Text>
               </Pressable>
-            ))}
+            ); })}
           </View>
         )}
       </SafeAreaView>
