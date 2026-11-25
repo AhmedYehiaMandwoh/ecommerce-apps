@@ -1,3 +1,4 @@
+import { t, cx } from "./src/i18n";
 import { SplashScreen } from "./src/screens/SplashScreen";
 import { Btn } from "./components/Controls";
 import { st } from "./src/styles";
@@ -74,7 +75,7 @@ export default function App() {
   const [tickets,setTickets]=useState<any[]>([]);
   const [profileName,setProfileName]=useState('');
   const [support,setSupport]=useState({subject:'',message:''});
-  async function favorite(p:any){if(!user){go('login');return;}await run(async()=>{const saved=await api('/favorites');await api('/favorites/'+p.id,saved.some((f:any)=>f.id===p.id)?'DELETE':'POST');setFavorites(await api('/favorites'));setNotice('تم تحديث المفضلة');});}
+  async function favorite(p:any){if(!user){go('login');return;}await run(async()=>{const saved=await api('/favorites');await api('/favorites/'+p.id,saved.some((f:any)=>f.id===p.id)?'DELETE':'POST');setFavorites(await api('/favorites'));setNotice(t('تم تحديث المفضلة'));});}
   const [returnForms,setReturnForms]=useState<Record<string,any>>({});
   const [cancelReasons,setCancelReasons]=useState<Record<string,string>>({});
   const [join,setJoin]=useState({name:'',city:'',address:'',phone:'',details:''});
@@ -93,15 +94,15 @@ export default function App() {
   const [phoneAuth,setPhoneAuth]=useState({phone:'',name:'',code:'',challengeId:''});
   const [pendingDevice,setPendingDevice]=useState<any>(null);
   const [hasDevice,setHasDevice]=useState(false);
-  const protectedOptions={requireAuthentication:true,authenticationPrompt:'افتح جلسة غيار المحفوظة',keychainAccessible:SecureStore.WHEN_UNLOCKED_THIS_DEVICE_ONLY};
+  const protectedOptions={requireAuthentication:true,authenticationPrompt:t('افتح جلسة غيار المحفوظة'),keychainAccessible:SecureStore.WHEN_UNLOCKED_THIS_DEVICE_ONLY};
   async function acceptPhone(r:any){setToken(r.token);setUser(r.user);await personal(r.token);setScreen('home');}
-  async function phoneLogin(){await run(async()=>{if(!phoneAuth.challengeId){const r=await api('/auth/phone/start','POST',{phone:egPhone(phoneAuth.phone),deviceLabel:Platform.OS+' غيار'});setPhoneAuth({...phoneAuth,challengeId:r.challengeId});setNotice(r.testMode?'اختبار فقط: كودك 123456، لم يتم إرسال SMS.':'أدخل كود التحقق');}else{const r=await api('/auth/phone/check','POST',{challengeId:phoneAuth.challengeId,code:phoneAuth.code,name:phoneAuth.name});await acceptPhone(r);if(Platform.OS!=='web')setPendingDevice(r);else{await storage.set(r.token);setNotice('جلسة المتصفح الحالية فقط. الدخول المحمي متاح على التطبيق الأصلي.');}setPhoneAuth({...phoneAuth,code:'',challengeId:''});}});}
-  async function enableDevice(){await run(async()=>{if(Platform.OS==='web'||!pendingDevice)return;if(!await LocalAuthentication.isEnrolledAsync())throw Error('فعّل قفل الجهاز أو البصمة أولًا. تقدر تكمل الجلسة الحالية بدون حفظ.');await SecureStore.setItemAsync('ghiyar-device',JSON.stringify({token:pendingDevice.deviceToken,id:pendingDevice.deviceId}),protectedOptions);await SecureStore.setItemAsync('ghiyar-device-present','yes');setHasDevice(true);setPendingDevice(null);setNotice('تم حفظ مفتاح الجلسة بشكل محمي على الجهاز. الاختبار الفعلي للبصمة أو رمز الجهاز مطلوب على جهاز حقيقي.');});}
-  async function unlockDevice(){await run(async()=>{const unlocked=await LocalAuthentication.authenticateAsync({promptMessage:'افتح غيار',disableDeviceFallback:false,cancelLabel:'إلغاء'});if(!unlocked.success)throw Error('تم إلغاء فتح الجهاز');const saved=await SecureStore.getItemAsync('ghiyar-device',protectedOptions);if(!saved){setHasDevice(false);throw Error('الجلسة غير متاحة. تحقق برقم الموبايل مرة أخرى.');}const d=JSON.parse(saved);const r=await api('/auth/device/refresh','POST',{deviceToken:d.token});try{await SecureStore.setItemAsync('ghiyar-device',JSON.stringify({token:r.deviceToken,id:r.deviceId}),protectedOptions);}catch(e){await api('/auth/devices/'+r.deviceId,'DELETE',undefined,r.token);throw e;}await acceptPhone(r);});}
+  async function phoneLogin(){await run(async()=>{if(!phoneAuth.challengeId){const r=await api('/auth/phone/start','POST',{phone:egPhone(phoneAuth.phone),deviceLabel:Platform.OS+t(' غيار')});setPhoneAuth({...phoneAuth,challengeId:r.challengeId});setNotice(r.testMode?t('اختبار فقط: كودك 123456، لم يتم إرسال SMS.'):t('أدخل كود التحقق'));}else{const r=await api('/auth/phone/check','POST',{challengeId:phoneAuth.challengeId,code:phoneAuth.code,name:phoneAuth.name});await acceptPhone(r);if(Platform.OS!=='web')setPendingDevice(r);else{await storage.set(r.token);setNotice(t('جلسة المتصفح الحالية فقط. الدخول المحمي متاح على التطبيق الأصلي.'));}setPhoneAuth({...phoneAuth,code:'',challengeId:''});}});}
+  async function enableDevice(){await run(async()=>{if(Platform.OS==='web'||!pendingDevice)return;if(!await LocalAuthentication.isEnrolledAsync())throw Error(t('فعّل قفل الجهاز أو البصمة أولًا. تقدر تكمل الجلسة الحالية بدون حفظ.'));await SecureStore.setItemAsync('ghiyar-device',JSON.stringify({token:pendingDevice.deviceToken,id:pendingDevice.deviceId}),protectedOptions);await SecureStore.setItemAsync('ghiyar-device-present','yes');setHasDevice(true);setPendingDevice(null);setNotice(t('تم حفظ مفتاح الجلسة بشكل محمي على الجهاز. الاختبار الفعلي للبصمة أو رمز الجهاز مطلوب على جهاز حقيقي.'));});}
+  async function unlockDevice(){await run(async()=>{const unlocked=await LocalAuthentication.authenticateAsync({promptMessage:t('افتح غيار'),disableDeviceFallback:false,cancelLabel:t('إلغاء')});if(!unlocked.success)throw Error(t('تم إلغاء فتح الجهاز'));const saved=await SecureStore.getItemAsync('ghiyar-device',protectedOptions);if(!saved){setHasDevice(false);throw Error(t('الجلسة غير متاحة. تحقق برقم الموبايل مرة أخرى.'));}const d=JSON.parse(saved);const r=await api('/auth/device/refresh','POST',{deviceToken:d.token});try{await SecureStore.setItemAsync('ghiyar-device',JSON.stringify({token:r.deviceToken,id:r.deviceId}),protectedOptions);}catch(e){await api('/auth/devices/'+r.deviceId,'DELETE',undefined,r.token);throw e;}await acceptPhone(r);});}
   const [register, setRegister] = useState(false);
   const [auth, setAuth] = useState({ name: "", email: "", password: "" });
   const [address, setAddress] = useState({
-    label: "المنزل",
+    label: t('المنزل'),
     city: "",
     details: "",
     phone: "",
@@ -123,27 +124,27 @@ export default function App() {
   useEffect(()=>{api('/vehicle-catalog').then(setVehicleCatalog).catch(()=>{});},[]);
   useEffect(()=>{setQuote(null);key.current='';},[addressId,deliveryAreaId,JSON.stringify(cart.map(i=>[i.offerId,i.quantity])),discountCode]);
   async function reviewQuote(){await run(async()=>{setQuote(await api('/orders/quote','POST',{items:cart.map(i=>({offerId:i.offerId,quantity:i.quantity})),addressId,deliveryAreaId,...(discountCode.trim()?{discountCode:discountCode.trim()}:{})}));});}
-  async function api(path: string, method = "GET", body?: any, t = token) {
+  async function api(path: string, method = "GET", body?: any, tk = token) {
     const res = await fetch(API + path, {
       method,
       headers: {
         "Content-Type": "application/json",
-        ...(t ? { Authorization: `Bearer ${t}` } : {}),
+        ...(tk ? { Authorization: `Bearer ${tk}` } : {}),
       },
       body: body ? JSON.stringify(body) : undefined,
     });
     const text=await res.text();
     const data = text?JSON.parse(text):null;
-    if(res.status===401&&t){setToken('');setUser(null);await storage.clear();}
+    if(res.status===401&&tk){setToken('');setUser(null);await storage.clear();}
     if (!res.ok)
       throw Error(
         Array.isArray(data.message)
-          ? data.message.join("، ")
-          : data?.message || "تعذر إتمام العملية",
+          ? data.message.join(t('، '))
+          : data?.message || t('تعذر إتمام العملية'),
       );
     return data;
   }
-  const arabicError = (m: string) => ({ 'Delivery area does not serve this address city': 'منطقة التوصيل المختارة لا تخدم مدينة هذا العنوان. اختر منطقة من نفس المدينة.', 'Discount code invalid or expired': 'كود الخصم غير صحيح أو منتهي.', 'Insufficient stock': 'الكمية المطلوبة غير متوفرة.', 'Basket total changed, review a fresh quote': 'تغير إجمالي السلة. راجع التكلفة مرة أخرى.', 'Choose your address': 'اختر عنوان التوصيل.' } as Record<string, string>)[m] || m;
+  const arabicError = (m: string) => ({ 'Delivery area does not serve this address city': t('منطقة التوصيل المختارة لا تخدم مدينة هذا العنوان. اختر منطقة من نفس المدينة.'), 'Discount code invalid or expired': t('كود الخصم غير صحيح أو منتهي.'), 'Insufficient stock': t('الكمية المطلوبة غير متوفرة.'), 'Basket total changed, review a fresh quote': t('تغير إجمالي السلة. راجع التكلفة مرة أخرى.'), 'Choose your address': t('اختر عنوان التوصيل.') } as Record<string, string>)[m] || m;
   async function run(fn: () => Promise<void>) {
     if (busy) return;
     setBusy(true);
@@ -154,7 +155,7 @@ export default function App() {
     } catch (e: any) {
       setError(
         e.message === "Failed to fetch"
-          ? "تعذر الاتصال بالخادم. راجع عنوان API واتصال الشبكة."
+          ? t('تعذر الاتصال بالخادم. راجع عنوان API واتصال الشبكة.')
           : arabicError(e.message),
       );
     } finally {
@@ -225,7 +226,7 @@ export default function App() {
     const item = { offerId: o.id, shopId: o.shopId, title: p.title, image: p.image, price: o.price, stock: o.stock, quantity: q };
     setCart(old ? cart.map((i) => (i.offerId === o.id ? item : i)) : [...cart, item]);
     key.current = "";
-    setNotice("اتضاف للسلة");
+    setNotice(t('اتضاف للسلة'));
   }
   function add(p: any, o: any) {
     const old = cart.find((i) => i.offerId === o.id);
@@ -249,7 +250,7 @@ export default function App() {
           ],
     );
     key.current = "";
-    setNotice("اتضاف للسلة");
+    setNotice(t('اتضاف للسلة'));
   }
   async function login() {
     await run(async () => {
@@ -267,9 +268,9 @@ export default function App() {
     });
   }
   async function order() {
-    if(!quote){setError('راجع منطقة التوصيل والتكلفة أولًا');return;}
+    if(!quote){setError(t('راجع منطقة التوصيل والتكلفة أولًا'));return;}
     if (!addressId) {
-      setError("اختار عنوان التوصيل");
+      setError(t('اختار عنوان التوصيل'));
       return;
     }
     await run(async () => {
@@ -297,8 +298,8 @@ export default function App() {
   const NOTAB = ["splash", "phone", "emaillogin", "placed", "product", "cart", "checkout"];
   const INLINE = ["checkout", "payment", "addresses", "addaddress", "vehicle", "support", "settings", "phone"];
   const tabs: [string, string, any][] = [
-    ["home", "الرئيسية", require("./assets/home-icon.png")], ["shops", "المحلات", require("./assets/shops-icon.png")],
-    ["orders", "طلباتي", require("./assets/orders-icon.png")], ["account", "حسابي", require("./assets/profile-icon.png")],
+    ["home", t('الرئيسية'), require("./assets/home-icon.png")], ["shops", t('المحلات'), require("./assets/shops-icon.png")],
+    ["orders", t('طلباتي'), require("./assets/orders-icon.png")], ["account", t('حسابي'), require("./assets/profile-icon.png")],
   ];
   const active = ({ search: "shops", shop: "shops", product: "home", cart: "home", checkout: "home", payment: "home", addresses: "home", addaddress: "home", vehicle: "home", favorites: "account", settings: "account", support: "orders", track: "orders", orderdetail: "orders" } as Record<string, string>)[screen] || screen;
   const body = (
@@ -332,27 +333,27 @@ export default function App() {
       <SafeAreaView style={{ flex: 1, backgroundColor: "#0751e8" }}>
         <StatusBar style="light" />
         <View pointerEvents="none" style={{ position: "absolute", top: 8, left: 8, right: 8, zIndex: 50 }}>
-          {!!error && !INLINE.includes(screen) && <Text accessibilityRole="alert" className="bg-red-50 text-red-700 p-3 text-right rounded-xl border border-red-200">{error}</Text>}
-          {!!notice && !INLINE.includes(screen) && <Text className="bg-green-50 text-green-800 p-3 text-right rounded-xl border border-green-200">{notice}</Text>}
+          {!!error && !INLINE.includes(screen) && <Text accessibilityRole="alert" className={cx("bg-red-50 text-red-700 p-3 text-right rounded-xl border border-red-200")}>{error}</Text>}
+          {!!notice && !INLINE.includes(screen) && <Text className={cx("bg-green-50 text-green-800 p-3 text-right rounded-xl border border-green-200")}>{notice}</Text>}
         </View>
         <KeyboardAvoidingView style={{ flex: 1, backgroundColor: "#ffffff" }} behavior={Platform.OS === "ios" ? "padding" : undefined}>
           <ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: "#ffffff", width: "100%", maxWidth: 804, alignSelf: "center" }} keyboardShouldPersistTaps="handled">
                         {busy && <ActivityIndicator color="#0757e9" />}
-            {pendingDevice&&Platform.OS!=='web'&&<View className="bg-white rounded-2xl p-3 m-3"><Text style={st.h3}>الدخول السريع على جهازك</Text><Text style={st.small}>اختياري. نحفظ مفتاحًا محميًا على الجهاز بدل إرسال كود كل مرة. تغيير البصمة أو انتهاء الجلسة أو إلغاؤها قد يطلب التحقق من جديد.</Text><Btn title="تفعيل الدخول المحمي" onPress={enableDevice}/><Btn title="مش دلوقتي" alt onPress={()=>setPendingDevice(null)}/></View>}
+            {pendingDevice&&Platform.OS!=='web'&&<View className={cx("bg-white rounded-2xl p-3 m-3")}><Text style={st.h3}>{t('الدخول السريع على جهازك')}</Text><Text style={st.small}>{t('اختياري. نحفظ مفتاحًا محميًا على الجهاز بدل إرسال كود كل مرة. تغيير البصمة أو انتهاء الجلسة أو إلغاؤها قد يطلب التحقق من جديد.')}</Text><Btn title={t('تفعيل الدخول المحمي')} onPress={enableDevice}/><Btn title={t('مش دلوقتي')} alt onPress={()=>setPendingDevice(null)}/></View>}
             {body}
           </ScrollView>
         </KeyboardAvoidingView>
         {screen === "product" && !!selected?.offers?.[0] && (
-          <View className="bg-white px-3 pt-2 pb-2 border-t border-slate-200">
-            <Cta title={selected.offers[0].stock ? "أضف للسلة 🛒" : "غير متوفر"} disabled={!selected.offers[0].stock} onPress={() => { addMany(selected, selected.offers[0], productQty); go("cart"); }} />
+          <View className={cx("bg-white px-3 pt-2 pb-2 border-t border-slate-200")}>
+            <Cta title={selected.offers[0].stock ? t('أضف للسلة 🛒') : t('غير متوفر')} disabled={!selected.offers[0].stock} onPress={() => { addMany(selected, selected.offers[0], productQty); go("cart"); }} />
           </View>
         )}
         {!NOTAB.includes(screen) && (
-          <View className="flex-row-reverse bg-white border-t border-slate-200">
+          <View className={cx("flex-row-reverse bg-white border-t border-slate-200")}>
             {tabs.map(([s, t, icon]) => (
-              <Pressable key={s} accessibilityRole="button" accessibilityLabel={t} onPress={() => go(s)} className={`flex-1 items-center py-2 ${active === s ? "border-b-[3px] border-accent" : ""}`}>
+              <Pressable key={s} accessibilityRole="button" accessibilityLabel={t} onPress={() => go(s)} className={cx(`flex-1 items-center py-2 ${active === s ? "border-b-[3px] border-accent" : ""}`)}>
                 <Image source={icon} style={{ width: 30, height: 30, marginBottom: 2, tintColor: active === s ? "#ff710a" : "#334155" }} />
-                <Text className={`text-sm font-extrabold ${active === s ? "text-accent" : "text-slate-700"}`}>{t}</Text>
+                <Text className={cx(`text-sm font-extrabold ${active === s ? "text-accent" : "text-slate-700"}`)}>{t}</Text>
               </Pressable>
             ))}
           </View>

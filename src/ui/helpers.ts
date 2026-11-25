@@ -1,8 +1,9 @@
+import { t } from "../i18n";
 import { imageUrl } from "../shared";
 export const groupByShop = (cart: any[], shops: any[]) => {
   const m: Record<string, { shopId: string; name: string; items: any[] }> = {};
   for (const i of cart) {
-    m[i.shopId] ||= { shopId: i.shopId, name: shops.find((s: any) => s.id === i.shopId)?.name || "محل", items: [] };
+    m[i.shopId] ||= { shopId: i.shopId, name: shops.find((s: any) => s.id === i.shopId)?.name || t('محل'), items: [] };
     m[i.shopId].items.push(i);
   }
   return Object.values(m);

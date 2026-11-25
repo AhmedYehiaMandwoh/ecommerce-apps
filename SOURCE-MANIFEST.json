@@ -14,8 +14,8 @@
     },
     {
       "path": "App.tsx",
-      "bytes": 22301,
-      "sha256": "833beaa1146db49dee9f06948b2af2b2e45733ae57343b694e36c99fcdb5e92f"
+      "bytes": 22496,
+      "sha256": "1e8b22962a7589613398f9b924b501a40ae673899553452239f5ab149eeb9645"
     },
     {
       "path": "HANDOVER.md",
@@ -499,133 +499,133 @@
     },
     {
       "path": "src/screens/AccountScreen.tsx",
-      "bytes": 2739,
-      "sha256": "8cdc550417d3aac913ae2d9eb6680e377f0f05d043f17c7fcc8b2afdbc6f6c42"
+      "bytes": 2900,
+      "sha256": "ecab8c25e89cafd4d34bb28e22545b729666bca33958f90f077e4d7faac6f62d"
     },
     {
       "path": "src/screens/AddAddressScreen.tsx",
-      "bytes": 2485,
-      "sha256": "cc8165f56f65c2d6344197a83e68e47e2fd762014fe2de5cf0eeed95977542d6"
+      "bytes": 2618,
+      "sha256": "16fcec8162195aaf4ae4dbc2b1d234793ae14618f2df1eeae56be95aeca4eb04"
     },
     {
       "path": "src/screens/AddressesScreen.tsx",
-      "bytes": 3388,
-      "sha256": "b2706c985a6e1bb997ed7caec6de7d73decc7b912cbefc019e1e0d3cf3fc3321"
+      "bytes": 3592,
+      "sha256": "9b549e1d6060a73e9268d74be0450b709e37a74918db38218f3d8b7f621ba90a"
     },
     {
       "path": "src/screens/CartScreen.tsx",
-      "bytes": 4392,
-      "sha256": "71619cb997c616ea91deba96f6fb7a1c08393429873ce0578bbba13c0622d085"
+      "bytes": 4640,
+      "sha256": "dff1df87d5d8234b6274ee4b9c5ca3edca18e8cd8fded3139e612ebc580b09bb"
     },
     {
       "path": "src/screens/CheckoutScreen.tsx",
-      "bytes": 6475,
-      "sha256": "2c0f46f3aed1f9fb4174bfd8f29e011f677b216c62c3b27df3e04a632b0685a4"
+      "bytes": 6932,
+      "sha256": "0a3223fd9c9a05bdf10688cb09d425bff0fcb33cc46b6db1af56210f45b89e7a"
     },
     {
       "path": "src/screens/EmailLoginScreen.tsx",
-      "bytes": 1172,
-      "sha256": "a7986e5f2478b8f667e57bb6e422a247263ea3c8596b3b33f84ff34845337941"
+      "bytes": 1255,
+      "sha256": "92c531c8e9cfcb5f96f6c337b770275cad2b14db98de8b1e64f0ff8e07c5d422"
     },
     {
       "path": "src/screens/FavoritesScreen.tsx",
-      "bytes": 1569,
-      "sha256": "6aac199ea36606ea042ff4d41d3e664b9a43658da530f1f56260b531bf8a3004"
+      "bytes": 1683,
+      "sha256": "5bd67dfdd2ca93cd00be8edfbc02219a63c1e7b136a352699f250f1ead768c87"
     },
     {
       "path": "src/screens/HomeScreen.tsx",
-      "bytes": 4999,
-      "sha256": "2a8d115293833e19a8de77e6c1b8c0d820413f1f912bea8dd562310f64f24356"
+      "bytes": 5323,
+      "sha256": "45f21d4a1cadd18e3994c8e73ae5428a57c35b8da5280b1f79920649fb8755c1"
     },
     {
       "path": "src/screens/OrderDetailScreen.tsx",
-      "bytes": 5569,
-      "sha256": "40e0921e6524c7edd4bccba337b7ac1f831c194fd0807755173c07262c106885"
+      "bytes": 5728,
+      "sha256": "8e747b9ea64c298be500682506db09f478dc63a61def0035b3637805d741ef0e"
     },
     {
       "path": "src/screens/OrdersScreen.tsx",
-      "bytes": 3958,
-      "sha256": "4e3d38347bc4ab3d252c28f79f20db66d72a989a200e4090cb06eae035e02741"
+      "bytes": 4154,
+      "sha256": "2990f269f0269228a857ebd02bcf415d0b06fe8d78da4b9817573ba232dabb87"
     },
     {
       "path": "src/screens/PaymentScreen.tsx",
-      "bytes": 2892,
-      "sha256": "f25e7a3f33b4712746f48c00e5bb0abec2820fd193ee9de12692710616cd28cf"
+      "bytes": 3115,
+      "sha256": "984af23ef515ae52fd8d6b1b84698553bb02147a62cc1d558f853cbc898786ab"
     },
     {
       "path": "src/screens/PhoneLoginScreen.tsx",
-      "bytes": 3793,
-      "sha256": "057cc0963f6a4b788bd33ecdc1b1c52034afb8713321b0e7fdc31ba9dc91fe74"
+      "bytes": 4012,
+      "sha256": "ae63e1905f3f53999e3f06f97b8c5adf6144531827bf7da27d91da11bd9e9bdd"
     },
     {
       "path": "src/screens/PlacedScreen.tsx",
-      "bytes": 3324,
-      "sha256": "c9ae5f8b0ecbd342a63cfa9185d92b9ec956b7e2a103c1479106c74cfa1c0cc2"
+      "bytes": 3550,
+      "sha256": "b7a7c97e5fed92a2dd1d1fd10609e93a4dfe4ef79863f07de142d226091df627"
     },
     {
       "path": "src/screens/ProductScreen.tsx",
-      "bytes": 6025,
-      "sha256": "0b78e78a9f471cb358cfb3594f455fca2abeb2eb888037eed209a2fbc1d92527"
+      "bytes": 6490,
+      "sha256": "ddf299cf68e35a6f130a3ba0820351f909ef038c463466784fa11989f13ab34d"
     },
     {
       "path": "src/screens/SearchScreen.tsx",
-      "bytes": 8105,
-      "sha256": "de46c7c9c1dffc97e741ca5056c98c104d7f85038eaad16895caea9e02fec190"
+      "bytes": 8554,
+      "sha256": "d4baad5d1d1d55bd4aaadf9fa47aca8f8aae37397716752d17ed9e360d22d348"
     },
     {
       "path": "src/screens/SettingsScreen.tsx",
-      "bytes": 2578,
-      "sha256": "fa160727130d2636b072857330a01856625815c1d0f92b2173cd148fa39a1f7c"
+      "bytes": 3285,
+      "sha256": "73e6ec5bdac3749c52d36372e7260469bcb18c984d02c19ee7a70eb2c99b1b9f"
     },
     {
       "path": "src/screens/ShopScreen.tsx",
-      "bytes": 5232,
-      "sha256": "aae0c3d22baa370f66538e9adb510fb14e8a68286d2938b33838031b8922735f"
+      "bytes": 5517,
+      "sha256": "4d265600984eb9ba11d8bba6d92506157718ab661f0b8c31e6340418e212f977"
     },
     {
       "path": "src/screens/ShopsScreen.tsx",
-      "bytes": 2911,
-      "sha256": "cbe62ca3d19270a3071c06b20ca02decfe7c5a0b5372629c7b9e776bf05e2f62"
+      "bytes": 3136,
+      "sha256": "2841df7912f2d5ea9dcf48430991f638932b5e8880b717e6004d1ad32930d99a"
     },
     {
       "path": "src/screens/SplashScreen.tsx",
-      "bytes": 2425,
-      "sha256": "40c5a79bed7e8169abd35ef221283872d961fa86b680035d0961bdcfccb029a4"
+      "bytes": 2580,
+      "sha256": "3264757158f1b5f88cf30f8a3b163e57678380cf53498bb95aa405336d270016"
     },
     {
       "path": "src/screens/SupportScreen.tsx",
-      "bytes": 6997,
-      "sha256": "13b217787cfb1a81ce2e53df6d331cb6b3ba7c36cdabf78b6a65522f608f8ba0"
+      "bytes": 7333,
+      "sha256": "aa9e6ab674838dec21dac9197fe07a4570af594ebeee0aaba6396cccacc7fcae"
     },
     {
       "path": "src/screens/TrackScreen.tsx",
-      "bytes": 4456,
-      "sha256": "bd85797be61f62b029fc70f57e075d8a3c672bbac63d83f3f4c6356de3ee5e2a"
+      "bytes": 4749,
+      "sha256": "6c738808261ebbdb6f9bef0aad7709485169be34dde2ec9619c8b23058203683"
     },
     {
       "path": "src/screens/VehicleScreen.tsx",
-      "bytes": 5312,
-      "sha256": "c3c2dd891dd676be05baf62eaa250049944956f8a7f2d9c8189be6454713a5d2"
+      "bytes": 5501,
+      "sha256": "6af50a0a268416910bc267fc643bfbd9e88d9736ba07dd90e989f1fa8ba3182c"
     },
     {
       "path": "src/shared.ts",
-      "bytes": 1362,
-      "sha256": "37eb237f4c5e66c9d09fd781907cd87065c94c6281b77fb257ad6c583b553d88"
+      "bytes": 1413,
+      "sha256": "4f1c10a502adb98756cd605fd173a52e5b2adc54836fa070f105b6488e7d9f17"
     },
     {
       "path": "src/styles.ts",
-      "bytes": 5275,
-      "sha256": "db09ccaf670fa9153f77d59d9d15a3c1620ba6b49c9420c7056dccc3506a7706"
+      "bytes": 5278,
+      "sha256": "f0004aff3487ba602354bb811c2f0eb78c06b2cd4e3b93a6dc81bfa0731f4997"
     },
     {
       "path": "src/ui/helpers.ts",
-      "bytes": 1677,
-      "sha256": "598e763f329ff0e1210e7dd0edc153928347ccab5c1ab9340484bd3f29f14b77"
+      "bytes": 1709,
+      "sha256": "fad0159002ead200402ba365430b4f0ff2edba76115028dd37846b1c00c59356"
     },
     {
       "path": "src/ui/kit.tsx",
-      "bytes": 8828,
-      "sha256": "9fbc3057f8ed1207a0d2f246e6043836a2582353c76ba9cfa89f5ae53d6e3539"
+      "bytes": 9150,
+      "sha256": "30a9e15d533f2c774303b48ec39358421d3fc7c72556777497168b44bbd56a05"
     },
     {
       "path": "src/webfont.ts",

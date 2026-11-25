@@ -1,3 +1,4 @@
+import { t, cx } from "../i18n";
 import React from "react";
 import { View, Text, Pressable, Image } from "react-native";
 import { Cta } from "../ui/kit";
@@ -7,30 +8,30 @@ const acctImg: Record<string, any> = {
   headset: require("../../assets/acct-headset.png"), gear: require("../../assets/acct-gear.png"),
 };
 const rows: [string, string, string, string, string][] = [
-  ["vehicle", "عرباتي", "إدارة سياراتك", "car", "bg-blue-100"],
-  ["addresses", "عناويني", "إدارة عناوين التوصيل", "pin", "bg-orange-100"],
-  ["favorites", "المفضلة", "القطع والمنتجات المحفوظة", "heart", "bg-red-100"],
-  ["support", "المساعدة", "مركز الدعم والمساعدة", "headset", "bg-green-100"],
-  ["settings", "الإعدادات", "تخصيص التطبيق", "gear", "bg-purple-100"],
+  ["vehicle", t('عرباتي'), t('إدارة سياراتك'), "car", "bg-blue-100"],
+  ["addresses", t('عناويني'), t('إدارة عناوين التوصيل'), "pin", "bg-orange-100"],
+  ["favorites", t('المفضلة'), t('القطع والمنتجات المحفوظة'), "heart", "bg-red-100"],
+  ["support", t('المساعدة'), t('مركز الدعم والمساعدة'), "headset", "bg-green-100"],
+  ["settings", t('الإعدادات'), t('تخصيص التطبيق'), "gear", "bg-purple-100"],
 ];
 export function AccountScreen({ c }: { c: any }) {
   const { user, go } = c;
   return (
-    <View className="bg-white flex-1 px-4 pt-4" style={{ minHeight: 700 }}>
-      <View className="flex-row items-center justify-center">
-        <Pressable accessibilityRole="button" accessibilityLabel="إعدادات التطبيق" onPress={() => go("settings")} style={{ position: "absolute", right: 4 }}><Text style={{ fontSize: 28, color: "#0f172a" }}>⚙︎</Text></Pressable>
-        <Text className="text-xl font-extrabold text-center">حسابي</Text>
+    <View className={cx("bg-white flex-1 px-4 pt-4")} style={{ minHeight: 700 }}>
+      <View className={cx("flex-row items-center justify-center")}>
+        <Pressable accessibilityRole="button" accessibilityLabel={t('إعدادات التطبيق')} onPress={() => go("settings")} style={{ position: "absolute", right: 4 }}><Text style={{ fontSize: 28, color: "#0f172a" }}>⚙︎</Text></Pressable>
+        <Text className={cx("text-xl font-extrabold text-center")}>{t('حسابي')}</Text>
       </View>
-      <View className="items-center my-2">
+      <View className={cx("items-center my-2")}>
         <Image accessibilityElementsHidden source={require("../../assets/acct-avatar.png")} style={{ width: 104, height: 104 }} />
-        <Text className="text-lg font-extrabold mt-1">{user ? user.name : "ضيف"}</Text>
-        <Text className="text-slate-500 text-sm">{user ? "مرحبا بك في غيار" : "سجّل الدخول عشان تحفظ عربيتك وعناوينك"}</Text>
-        {!user && <View className="w-full"><Cta title="تسجيل الدخول" onPress={() => go("phone")} /></View>}
+        <Text className={cx("text-lg font-extrabold mt-1")}>{user ? user.name : t('ضيف')}</Text>
+        <Text className={cx("text-slate-500 text-sm")}>{user ? t('مرحبا بك في غيار') : t('سجّل الدخول عشان تحفظ عربيتك وعناوينك')}</Text>
+        {!user && <View className={cx("w-full")}><Cta title={t('تسجيل الدخول')} onPress={() => go("phone")} /></View>}
       </View>
       {rows.map(([s, t, sub, icon, bg]) => (
-        <Pressable key={s} accessibilityRole="button" accessibilityLabel={t} onPress={() => go(user || s === "support" ? s : "phone")} className="flex-row items-center bg-slate-50 rounded-2xl p-3 mb-3 border border-slate-100">
-          <Text className="text-slate-500 text-2xl ml-2">‹</Text>
-          <View className="flex-1 mr-3 items-end"><Text className="font-extrabold text-base">{t}</Text><Text className="text-slate-500 text-sm">{sub}</Text></View>
+        <Pressable key={s} accessibilityRole="button" accessibilityLabel={t} onPress={() => go(user || s === "support" ? s : "phone")} className={cx("flex-row items-center bg-slate-50 rounded-2xl p-3 mb-3 border border-slate-100")}>
+          <Text className={cx("text-slate-500 text-2xl ml-2")}>‹</Text>
+          <View className={cx("flex-1 mr-3 items-end")}><Text className={cx("font-extrabold text-base")}>{t}</Text><Text className={cx("text-slate-500 text-sm")}>{sub}</Text></View>
           <Image accessibilityElementsHidden source={acctImg[icon]} style={{ width: 48, height: 48 }} />
         </Pressable>
       ))}
