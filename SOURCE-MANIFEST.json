@@ -339,8 +339,8 @@
     },
     {
       "path": "assets/ref/phone-hero.png",
-      "bytes": 135373,
-      "sha256": "5d950580039fdafc8f904710f5ead4c5b1c294eb9f5d5a3001c5967e31f672fe"
+      "bytes": 149948,
+      "sha256": "55539af336bfe29131cc0bce976b035aa9554b484800c6f3fb385df846a602a6"
     },
     {
       "path": "assets/ref/shop-banner.png",
@@ -449,8 +449,8 @@
     },
     {
       "path": "scripts/capture-matched.mjs",
-      "bytes": 5110,
-      "sha256": "39f0f42a2bbfd68db3de5b8cab120cee53047a603fcb0d87a34b335c67569115"
+      "bytes": 5630,
+      "sha256": "0028cc8139aac5c7fad4335e924200708eafd4ce549383b3fecd1f5d14604972"
     },
     {
       "path": "scripts/checkout-final-shot.mjs",
@@ -520,7 +520,7 @@
     {
       "path": "src/screens/CheckoutScreen.tsx",
       "bytes": 6475,
-      "sha256": "f52c55b6808126ae3d1ec53971e4db528c02cc19d5160f4f68830a90f22e3cc0"
+      "sha256": "2c0f46f3aed1f9fb4174bfd8f29e011f677b216c62c3b27df3e04a632b0685a4"
     },
     {
       "path": "src/screens/EmailLoginScreen.tsx",
@@ -560,7 +560,7 @@
     {
       "path": "src/screens/PlacedScreen.tsx",
       "bytes": 3324,
-      "sha256": "d209281f784787846a90ef91b91a1e2e9244f677c9a8ecfb28d9fcadf885e9b4"
+      "sha256": "c9ae5f8b0ecbd342a63cfa9185d92b9ec956b7e2a103c1479106c74cfa1c0cc2"
     },
     {
       "path": "src/screens/ProductScreen.tsx",
