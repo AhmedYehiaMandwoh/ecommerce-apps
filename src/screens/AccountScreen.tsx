@@ -22,16 +22,16 @@ export function AccountScreen({ c }: { c: any }) {
         <Text className="text-xl font-extrabold text-center">حسابي</Text>
       </View>
       <View className="items-center my-2">
-        <Image accessibilityElementsHidden source={require("../../assets/acct-avatar.png")} style={{ width: 92, height: 92 }} />
+        <Image accessibilityElementsHidden source={require("../../assets/acct-avatar.png")} style={{ width: 104, height: 104 }} />
         <Text className="text-lg font-extrabold mt-1">{user ? user.name : "ضيف"}</Text>
         <Text className="text-slate-500 text-sm">{user ? "مرحبا بك في غيار" : "سجّل الدخول عشان تحفظ عربيتك وعناوينك"}</Text>
         {!user && <View className="w-full"><Cta title="تسجيل الدخول" onPress={() => go("phone")} /></View>}
       </View>
       {rows.map(([s, t, sub, icon, bg]) => (
-        <Pressable key={s} accessibilityRole="button" accessibilityLabel={t} onPress={() => go(user || s === "support" ? s : "phone")} className="flex-row items-center bg-slate-50 rounded-2xl p-2 mb-2 border border-slate-100">
+        <Pressable key={s} accessibilityRole="button" accessibilityLabel={t} onPress={() => go(user || s === "support" ? s : "phone")} className="flex-row items-center bg-slate-50 rounded-2xl p-3 mb-3 border border-slate-100">
           <Text className="text-slate-500 text-2xl ml-2">‹</Text>
           <View className="flex-1 mr-3 items-end"><Text className="font-extrabold text-base">{t}</Text><Text className="text-slate-500 text-sm">{sub}</Text></View>
-          <Image accessibilityElementsHidden source={acctImg[icon]} style={{ width: 44, height: 44 }} />
+          <Image accessibilityElementsHidden source={acctImg[icon]} style={{ width: 48, height: 48 }} />
         </Pressable>
       ))}
     </View>

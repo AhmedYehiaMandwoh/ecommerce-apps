@@ -439,8 +439,8 @@
     },
     {
       "path": "src/screens/AccountScreen.tsx",
-      "bytes": 2737,
-      "sha256": "81bbc0befa8f9b5a78510a7ca007518b33483d2d405c4f08f8b0a6615d11ac92"
+      "bytes": 2739,
+      "sha256": "8cdc550417d3aac913ae2d9eb6680e377f0f05d043f17c7fcc8b2afdbc6f6c42"
     },
     {
       "path": "src/screens/AddAddressScreen.tsx",
@@ -454,8 +454,8 @@
     },
     {
       "path": "src/screens/CartScreen.tsx",
-      "bytes": 4337,
-      "sha256": "57fd973908f2e4929d6d0beb84501d0d734b67d8efffd99e12639f31d98a57c7"
+      "bytes": 4392,
+      "sha256": "71619cb997c616ea91deba96f6fb7a1c08393429873ce0578bbba13c0622d085"
     },
     {
       "path": "src/screens/CheckoutScreen.tsx",
@@ -509,8 +509,8 @@
     },
     {
       "path": "src/screens/SearchScreen.tsx",
-      "bytes": 8011,
-      "sha256": "d1cb1adbd3a2d2ddd7d3c76ec873c814e497819e7ae9244757ef3f30a0dee816"
+      "bytes": 8105,
+      "sha256": "4a8bf532133427019c10a7565892f0da414aad9c7337e9d8c7b3e6b07a68b03a"
     },
     {
       "path": "src/screens/SettingsScreen.tsx",

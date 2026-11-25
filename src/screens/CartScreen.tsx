@@ -37,9 +37,9 @@ export function CartScreen({ c }: { c: any }) {
             {g.items.map((i: any) => (
               <View key={i.offerId} className="flex-row items-center py-1">
                 <Pressable accessibilityRole="button" accessibilityLabel={"حذف " + i.title} onPress={() => del(i.offerId)} className="w-9 h-9 items-center justify-center"><Trash /></Pressable>
-                <Image source={img(i.image)} style={{ width: 100, height: 68, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 12, marginLeft: 4 }} />
-                <View className="flex-1 mx-2 items-end">
-                  <Text className="font-extrabold text-right text-base">{i.title}</Text>
+                <Image source={img(i.image)} style={{ width: 104, height: 76, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 12, marginLeft: 4 }} />
+                <View className="flex-1 min-w-0 mx-2 items-end">
+                  <Text className="font-extrabold text-right text-base" numberOfLines={2} accessibilityLabel={i.title}>{i.title}</Text>
                   <Text className="text-accent font-extrabold text-lg">{money(i.price)}</Text>
                   <Stepper value={i.quantity} onMinus={() => upd(i.offerId, -1)} onPlus={() => upd(i.offerId, 1)} />
                 </View>
