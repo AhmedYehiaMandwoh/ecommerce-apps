@@ -1,4 +1,4 @@
-import { t, cx } from "../i18n";
+import { t, cx, isEn } from "../i18n";
 import React from "react";
 import { View, Text, Image, Pressable } from "react-native";
 import { Cta, Header, Card, ErrorNote, Ico } from "../ui/kit";
@@ -33,7 +33,7 @@ export function VehicleScreen({ c }: { c: any }) {
             return (
               <View key={k} className={cx("mb-2.5")}>
                 <View className={cx("flex-row-reverse items-center")}>
-                  <View className={cx("flex-row-reverse items-center justify-start rounded-2xl")} style={{ width: 142, backgroundColor: "#eef3fb", paddingHorizontal: 10, height: 54 }}><Ico n={k === "year" ? "v-cal" : k === "engine" ? "v-engine" : "v-car"} size={26} /><Text className={cx("font-extrabold mr-2 text-base")}>{label}</Text></View>
+                  <View className={cx("flex-row-reverse items-center rounded-2xl")} style={{ width: 142, justifyContent: "flex-start", backgroundColor: "#eef3fb", paddingHorizontal: 10, height: 54 }}><Ico n={k === "year" ? "v-cal" : k === "engine" ? "v-engine" : "v-car"} size={26} /><Text className={cx("font-extrabold text-base")} style={isEn ? { marginLeft: 8 } : { marginRight: 8 }}>{label}</Text></View>
                   <Pressable accessibilityRole="button" accessibilityLabel={`${placeholder}${val ? ": " + val : ""}`} onPress={() => setOpen(isOpen ? "" : k)} className={cx("flex-1 flex-row items-center justify-between rounded-2xl border border-slate-200 bg-white px-3 ml-2")} style={{ height: 54, shadowColor: "#0f172a", shadowOpacity: 0.06, shadowRadius: 6, shadowOffset: { width: 0, height: 2 } }}>
                     <Text className={cx("text-slate-400")}>{isOpen ? "▲" : "▼"}</Text>
                     <Text className={cx(val ? "text-slate-900 font-bold flex-1 text-right text-base" : "text-slate-400 flex-1 text-right text-base")}>{val || placeholder}</Text>

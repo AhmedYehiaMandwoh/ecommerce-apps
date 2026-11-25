@@ -34,7 +34,7 @@ export function AddressesScreen({ c }: { c: any }) {
         })}
         {!addresses.length && <Text className={cx("text-center text-slate-500 my-6")}>{t('لسه مفيش عناوين محفوظة.')}</Text>}
         <Pressable accessibilityRole="button" accessibilityLabel={t('إضافة عنوان جديد')} onPress={() => go("addaddress")} className={cx("flex-row items-center justify-center bg-brand-light rounded-2xl p-6")}>
-          <Text className={cx("text-brand font-extrabold text-base ml-3")}>{t('إضافة عنوان جديد')}</Text>
+          <Text className={cx("text-brand font-extrabold text-base")} style={{ marginHorizontal: 12 }}>{t('إضافة عنوان جديد')}</Text>
           <View className={cx("w-9 h-9 rounded-full bg-brand items-center justify-center")}><Text className={cx("text-white text-2xl")}>+</Text></View>
         </Pressable>
       </View>
