@@ -21,7 +21,7 @@ export function Cta({ title, onPress, disabled, outline, soft, testID, chevron, 
 }
 
 export const icons: Record<string, any> = {
-  home: require("../../assets/icons/home.png"), shop: require("../../assets/icons/shop.png"), truck: require("../../assets/icons/truck.png"), car: require("../../assets/icons/car.png"),
+  search: require("../../assets/icons/search.png"), home: require("../../assets/icons/home.png"), shop: require("../../assets/icons/shop.png"), truck: require("../../assets/icons/truck.png"), car: require("../../assets/icons/car.png"),
   ticket: require("../../assets/icons/ticket.png"), pin: require("../../assets/icons/pin.png"),
   "f-pin": require("../../assets/icons/f-pin.png"), "f-map": require("../../assets/icons/f-map.png"), "f-road": require("../../assets/icons/f-road.png"),
   "send": require("../../assets/icons/send.png"), "f-doc": require("../../assets/icons/f-doc.png"), "f-landmark": require("../../assets/icons/f-landmark.png"),
