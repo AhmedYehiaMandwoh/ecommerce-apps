@@ -1,7 +1,7 @@
 import { t, cx, isEn } from "../i18n";
 import React from "react";
 import { View, Text, Pressable, Image } from "react-native";
-import { Cta, Chev } from "../ui/kit";
+import { Cta, Chev, Ico } from "../ui/kit";
 
 const acctImg: Record<string, any> = {
   car: require("../../assets/acct-car.png"), pin: require("../../assets/acct-pin.png"), heart: require("../../assets/acct-heart.png"),
@@ -19,7 +19,7 @@ export function AccountScreen({ c }: { c: any }) {
   return (
     <View className={cx("bg-white flex-1 px-4 pt-4")} style={{ minHeight: 700 }}>
       <View className={cx("flex-row items-center justify-center")}>
-        <Pressable accessibilityRole="button" accessibilityLabel={t('إعدادات التطبيق')} onPress={() => go("settings")} style={{ position: "absolute", right: 4 }}><Text style={{ fontSize: 28, color: "#0f172a" }}>⚙︎</Text></Pressable>
+        <Pressable accessibilityRole="button" accessibilityLabel={t('إعدادات التطبيق')} onPress={() => go("settings")} style={{ position: "absolute", right: 4 }}><Ico n="gear" size={26} color="#0f172a" /></Pressable>
         <Text className={cx("text-xl font-extrabold text-center")}>{t('حسابي')}</Text>
       </View>
       <View className={cx("items-center my-2")}>

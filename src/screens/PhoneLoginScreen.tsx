@@ -21,7 +21,7 @@ export function PhoneLoginScreen({ c }: { c: any }) {
           <ErrorNote error={error} notice={notice} />
           {!step2 ? (
             <View className={cx("flex-row items-center border border-slate-200 rounded-2xl h-16 px-3 bg-white mb-3")}>
-              <Text className={cx("font-extrabold text-lg")} numberOfLines={1} style={{ flexShrink: 0 }}>{t('⌄ 🇪🇬 مصر +20')}</Text>
+              <View style={{ flexDirection: "row", alignItems: "center", flexShrink: 0 }}><Text className={cx("font-extrabold text-lg")}>⌄</Text><View style={{ width: 24, height: 16, marginHorizontal: 6, borderRadius: 2, overflow: "hidden" }}><View style={{ flex: 1, backgroundColor: "#ce1126" }} /><View style={{ flex: 1, backgroundColor: "#fff", borderWidth: 0.5, borderColor: "#e2e8f0" }} /><View style={{ flex: 1, backgroundColor: "#000" }} /></View><Text className={cx("font-extrabold text-lg")} numberOfLines={1}>{t('مصر +20')}</Text></View>
               <View className={cx("w-px h-6 bg-slate-200 mx-3")} />
               <TextInput accessibilityLabel={t('رقم الموبايل')} value={phoneAuth.phone} onChangeText={(phone) => setPhoneAuth({ ...phoneAuth, phone })} placeholder={t('ادخل رقم الموبايل')} placeholderTextColor="#94a3b8" keyboardType="phone-pad" className={cx("flex-1 text-right text-base")} style={{ minWidth: 0, width: 0 }} />
             </View>

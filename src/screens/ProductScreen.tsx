@@ -26,7 +26,7 @@ export function ProductScreen({ c }: { c: any }) {
       </View>
       <View style={{ overflow: "hidden", borderBottomLeftRadius: 28, borderBottomRightRadius: 28 }}>
         <Image source={img(selected.image)} style={{ width: "100%", height: 176, resizeMode: "contain", backgroundColor: "#f3f1ee" }} />
-        <Pressable accessibilityRole="button" accessibilityLabel={t('حفظ / إزالة من المفضلة')} onPress={() => favorite(selected)} className={cx("absolute top-3 left-3 w-10 h-10 rounded-full bg-white items-center justify-center")}><Text className={cx("text-xl")}>{fav ? "❤" : "♡"}</Text></Pressable>
+        <Pressable accessibilityRole="button" accessibilityLabel={t('حفظ / إزالة من المفضلة')} onPress={() => favorite(selected)} className={cx("absolute top-3 left-3 w-10 h-10 rounded-full bg-white items-center justify-center")}><Ico n={fav ? "heart-on" : "heart-off"} size={22} color={fav ? "#ef4444" : "#64748b"} /></Pressable>
       </View>
       <View className={cx("px-4 pt-3")}>
         <Text className={cx("text-xl font-extrabold text-right")} numberOfLines={2}>{selected.title}</Text>
@@ -48,7 +48,7 @@ export function ProductScreen({ c }: { c: any }) {
           </View>
           <Pressable accessibilityRole="button" accessibilityLabel={t('اختر عربيتك')} onPress={() => go(user ? "vehicle" : "phone")} className={cx("bg-white border border-brand rounded-xl py-2 mt-2 items-center")}><View className={cx("flex-row items-center")}><Ico n="car" size={22} color="#0751e8" /><Text className={cx("text-brand font-extrabold mr-2")}>{vehicles.length ? t('غيّر عربيتك') : t('اختر عربيتك')}</Text></View></Pressable>
         </Card>
-        <Card className={cx("flex-row items-center justify-between p-2 mb-1")}><Text className={cx("font-bold")}>{t('جديد')}</Text><Text className={cx("text-slate-500")}>{t('حالة القطعة ⚙')}</Text></Card>
+        <Card className={cx("flex-row items-center justify-between p-2 mb-1")}><Text className={cx("font-bold")}>{t('جديد')}</Text><View className={cx("flex-row items-center")}><Ico n="gear" size={16} color="#64748b" /><Text className={cx("text-slate-500 ml-1")}>{t('حالة القطعة')}</Text></View></Card>
         <View className={cx("flex-row border-b border-slate-200")}>
           {([["shop", t('المتجر')], ["details", t('التفاصيل')]] as const).map(([k, t]) => (
             <Pressable key={k} accessibilityRole="button" accessibilityLabel={t} onPress={() => setTab(k)} className={cx(`flex-1 items-center py-2 ${tab === k ? "border-b-4 border-brand" : ""}`)}><Text className={cx(tab === k ? "text-brand font-extrabold" : "text-slate-500 font-bold")}>{t}</Text></Pressable>

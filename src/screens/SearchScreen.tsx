@@ -1,7 +1,7 @@
 import { t, cx, isEn } from "../i18n";
 import React, { useState } from "react";
 import { View, Text, Image, Pressable, TextInput, ScrollView } from "react-native";
-import { Chip, Chev } from "../ui/kit";
+import { Chip, Chev, Ico } from "../ui/kit";
 import { img } from "../ui/helpers";
 import { money } from "../shared";
 
@@ -27,9 +27,9 @@ export function SearchScreen({ c }: { c: any }) {
           <View className={cx("w-10")} />
         </View>
         <View className={cx("bg-white rounded-full h-12 mt-2 px-4 flex-row items-center")}>
-          <Pressable accessibilityRole="button" accessibilityLabel={t('مسح')} onPress={() => { setSearch(""); browse("", category, shop); }}><Text className={cx("text-slate-500 text-lg ml-2")}>✕</Text></Pressable>
+          <Pressable accessibilityRole="button" accessibilityLabel={t('مسح')} onPress={() => { setSearch(""); browse("", category, shop); }}><View className={cx("ml-2")}><Ico n="x" size={14} color="#64748b" /></View></Pressable>
           <TextInput style={{ minWidth: 0, paddingEnd: 8 }} accessibilityLabel={t('البحث في المنتجات')} value={search} onChangeText={setSearch} onSubmitEditing={() => load(category)} placeholder={t('ابحث باسم القطعة أو رقمها')} placeholderTextColor="#94a3b8" className={cx("flex-1 text-right text-lg")} />
-          <Pressable accessibilityRole="button" accessibilityLabel={t('بحث')} onPress={() => load(category)}><Text className={cx("text-lg ml-2")}>🔍</Text></Pressable>
+          <Pressable accessibilityRole="button" accessibilityLabel={t('بحث')} onPress={() => load(category)}><View className={cx("ml-2")}><Ico n="search" size={20} color="#64748b" /></View></Pressable>
         </View>
         <View className={cx("flex-row-reverse mt-2 justify-between")}>
           {pills.map(([k, label, opts, set]) => (
@@ -41,7 +41,7 @@ export function SearchScreen({ c }: { c: any }) {
         </View>
         {!!category && (
           <Pressable accessibilityRole="button" accessibilityLabel={t('إلغاء قسم')} onPress={() => { setCategory(""); load(""); }} className={cx("self-end mt-2 flex-row items-center bg-white rounded-full px-3 h-8")}>
-            <Text className={cx("text-brand-dark font-bold text-xs")}>{t(category)}  ✕</Text>
+            <Text className={cx("text-brand-dark font-bold text-xs")}>{t(category)}</Text><Ico n="x" size={10} color="#0b3fb8" />
           </Pressable>
         )}
         {!!open && (

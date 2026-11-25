@@ -52,7 +52,7 @@ export function HomeScreen({ c }: { c: any }) {
         <View className={cx("flex-row-reverse flex-wrap")}>
           {recent.length === 0 && <Text className={cx("text-slate-400 text-sm")}>{t('لسه ما بحثتش عن حاجة')}</Text>}
           {recent.map((h: string) => (
-            <Pressable key={h} accessibilityRole="button" onPress={() => browse(h, "")} className={cx("flex-row-reverse items-center border border-slate-200 rounded-xl px-4 py-3 ml-2 mb-2")}><Text className={cx("ml-2")}>🕘</Text><Text className={cx("font-semibold")}>{h}</Text></Pressable>
+            <Pressable key={h} accessibilityRole="button" onPress={() => browse(h, "")} className={cx("flex-row-reverse items-center border border-slate-200 rounded-xl px-4 py-3 ml-2 mb-2")}><View className={cx("ml-2")}><Ico n="clock" size={16} color="#475569" /></View><Text className={cx("font-semibold")}>{h}</Text></Pressable>
           ))}
         </View>
         <Text className={cx("text-center text-xs text-slate-400 my-5")}>{t('تصميم مبدئي • بيانات تجريبية • الدفع كاش فقط')}</Text>

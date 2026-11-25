@@ -18,7 +18,7 @@ export function ShopsScreen({ c }: { c: any }) {
         </View>
         <View className={cx("bg-white rounded-full h-12 mt-2 px-4 flex-row items-center")}>
           <TextInput style={{ minWidth: 0, paddingEnd: 8 }} accessibilityLabel={t('ابحث باسم المحل')} value={q} onChangeText={setQ} placeholder={t('ابحث باسم المحل')} placeholderTextColor="#94a3b8" className={cx("flex-1 text-right text-base")} />
-          <Text className={cx("text-lg ml-2")}>🔍</Text>
+          <View className={cx("ml-2")}><Ico n="search" size={20} color="#64748b" /></View>
         </View>
         <View className={cx("flex-row-reverse mt-3")}>
           {[t('الأقرب'), t('التخصص'), t('الترتيب')].map((t) => <View key={t} className={cx("bg-white rounded-2xl py-2 ml-2 flex-1 items-center")}><Text className={cx("font-extrabold text-slate-800 text-base")}>{t}  ⌄</Text></View>)}

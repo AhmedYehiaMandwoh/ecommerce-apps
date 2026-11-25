@@ -346,7 +346,7 @@ export default function App() {
         </KeyboardAvoidingView>
         {screen === "product" && !!selected?.offers?.[0] && (
           <View className={cx("bg-white px-3 pt-2 pb-2 border-t border-slate-200")}>
-            <Cta title={selected.offers[0].stock ? t('أضف للسلة 🛒') : t('غير متوفر')} disabled={!selected.offers[0].stock} onPress={() => { addMany(selected, selected.offers[0], productQty); go("cart"); }} />
+            <Cta title={selected.offers[0].stock ? t('أضف للسلة') : t('غير متوفر')} disabled={!selected.offers[0].stock} onPress={() => { addMany(selected, selected.offers[0], productQty); go("cart"); }} />
           </View>
         )}
         {!NOTAB.includes(screen) && (

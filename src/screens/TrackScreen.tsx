@@ -40,7 +40,7 @@ export function TrackScreen({ c }: { c: any }) {
           <View className={cx("flex-1 items-end")}><Text className={cx("font-extrabold")}>{o.shop.name}</Text><Text className={cx("text-slate-500 text-xs")}>{o.items.length}  {isEn && o.items.length === 1 ? 'part' : t('قطع')}</Text></View>
         </View>
         <View className={cx("flex-row")} style={{ gap: 10, marginTop: 16, marginBottom: 8 }}>
-          <Pressable accessibilityRole="button" accessibilityLabel={t('تواصل مع الدعم 🎧')} onPress={() => go("support")} className={cx("flex-1 bg-white border-2 border-brand rounded-2xl items-center justify-center")} style={{ height: 52 }}><Text className={cx("text-brand font-extrabold text-base")}>{t('تواصل مع الدعم 🎧')}</Text></Pressable>
+          <Pressable accessibilityRole="button" accessibilityLabel={t('تواصل مع الدعم')} onPress={() => go("support")} className={cx("flex-1 bg-white border-2 border-brand rounded-2xl items-center justify-center")} style={{ height: 52 }}><View style={{ flexDirection: "row", alignItems: "center" }}><Ico n="headset" size={20} color="#0751e8" /><Text className={cx("text-brand font-extrabold text-base ml-2")}>{t('تواصل مع الدعم')}</Text></View></Pressable>
           <Pressable accessibilityRole="button" accessibilityLabel={t('تفاصيل الطلب')} onPress={() => go("orderdetail")} className={cx("flex-1 bg-accent rounded-2xl items-center justify-center")} style={{ height: 52 }}><Text className={cx("text-white font-extrabold text-base")}>{t('تفاصيل الطلب')}</Text></Pressable>
         </View>
       </View>

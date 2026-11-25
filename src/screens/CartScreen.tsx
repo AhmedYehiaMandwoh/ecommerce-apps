@@ -51,7 +51,7 @@ export function CartScreen({ c }: { c: any }) {
         {!!cart.length && (
           <>
             <Card className={cx("p-2 mb-2")}><View className={cx("flex-row justify-between")}><Text className={cx("text-xl font-extrabold")}>{money(subtotal)}</Text><Text className={cx("text-slate-600")}>{t('إجمالي المنتجات')}</Text></View>
-              <View className={cx("flex-row justify-between mt-2")}><View className={cx("flex-row items-center")}><Text className={cx("font-bold text-slate-700")}>{t('يحدد عند إتمام الطلب')}</Text><Text className={cx("text-slate-500 text-lg ml-1")}>🚚</Text></View><Text className={cx("text-slate-600")}>{t('مصاريف التوصيل')}</Text></View></Card>
+              <View className={cx("flex-row justify-between mt-2")}><View className={cx("flex-row items-center")}><Text className={cx("font-bold text-slate-700")}>{t('يحدد عند إتمام الطلب')}</Text><View className={cx("ml-1")}><Ico n="truck" size={20} color="#64748b" /></View></View><Text className={cx("text-slate-600")}>{t('مصاريف التوصيل')}</Text></View></Card>
             {groups.length > 1 && <Text className={cx("bg-amber-100 text-amber-900 rounded-xl p-2 text-right mb-1 font-semibold")}>{t('قد تصل منتجات كل محل في شحنة منفصلة.')}</Text>}
             <Cta title={t('متابعة الطلب')} onPress={() => go(user ? "checkout" : "phone")} />
           </>

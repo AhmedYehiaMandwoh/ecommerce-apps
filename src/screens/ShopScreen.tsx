@@ -1,4 +1,4 @@
-import { t, cx } from "../i18n";
+import { t, cx, isEn } from "../i18n";
 import React from "react";
 import { View, Text, Image, Pressable, ScrollView, TextInput } from "react-native";
 import { Chip, art, Ico, Chev } from "../ui/kit";
@@ -21,7 +21,7 @@ export function ShopScreen({ c }: { c: any }) {
             {!!count && <View className={cx("absolute top-0 right-0 bg-accent rounded-full min-w-[18px] h-[18px] items-center justify-center")}><Text className={cx("text-white text-[11px] font-bold")}>{count}</Text></View>}
           </Pressable>
         </View>
-        <View className={cx("bg-white rounded-full h-12 mt-1 px-4 justify-center")}><Text className={cx("text-right text-slate-400 text-base")}>{t('ابحث باسم القطعة أو رقمها 🔍')}</Text></View>
+        <View className={cx("bg-white rounded-full h-12 mt-1 px-4 justify-center")}><View style={{ flexDirection: isEn ? "row" : "row-reverse", alignItems: "center" }}><Ico n="search" size={18} color="#94a3b8" /><Text className={cx("text-slate-400 text-base mx-2")}>{t('ابحث باسم القطعة أو رقمها')}</Text></View></View>
       </View>
       <View>
         <Image source={shopCover(s, n).source} style={{ width: "100%", height: 150, resizeMode: "cover" }} />
@@ -40,7 +40,7 @@ export function ShopScreen({ c }: { c: any }) {
           const o = p.offers.find((x: any) => x.shopId === shop);
           return (
             <View key={p.id} className={cx("w-[48%] bg-white rounded-2xl border border-slate-200 mb-3 overflow-hidden")}>
-              <Pressable style={{ zIndex: 10 }} accessibilityRole="button" accessibilityLabel={t('مفضلة {0}', p.title)} onPress={() => favorite(p)} className={cx("absolute z-10 top-2 left-2")}><Text className={cx("text-lg")}>{favorites.some((f: any) => f.id === p.id) ? "❤" : "♡"}</Text></Pressable>
+              <Pressable style={{ zIndex: 10 }} accessibilityRole="button" accessibilityLabel={t('مفضلة {0}', p.title)} onPress={() => favorite(p)} className={cx("absolute z-10 top-2 left-2")}><Ico n={favorites.some((f: any) => f.id === p.id) ? "heart-on" : "heart-off"} size={20} color={favorites.some((f: any) => f.id === p.id) ? "#ef4444" : "#64748b"} /></Pressable>
               <Image source={img(p.image)} style={{ width: "100%", height: 120, resizeMode: "cover", backgroundColor: "#fbf4ec" }} />
               <View className={cx("p-2 items-end")}><Text className={cx("font-bold text-sm text-right")} numberOfLines={2}>{p.title}</Text></View>
               <View className={cx("flex-row items-center justify-between p-2")} style={{ zIndex: 10 }}>

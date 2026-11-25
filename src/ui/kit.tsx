@@ -26,7 +26,7 @@ export const icons: Record<string, any> = {
   ticket: require("../../assets/icons/ticket.png"), pin: require("../../assets/icons/pin.png"),
   "f-pin": require("../../assets/icons/f-pin.png"), "f-map": require("../../assets/icons/f-map.png"), "f-road": require("../../assets/icons/f-road.png"),
   "send": require("../../assets/icons/send.png"), "f-doc": require("../../assets/icons/f-doc.png"), "f-landmark": require("../../assets/icons/f-landmark.png"),
-  "v-car": require("../../assets/icons/v-car.png"), "v-cal": require("../../assets/icons/v-cal.png"), "v-engine": require("../../assets/icons/v-engine.png"), "clip": require("../../assets/icons/clip.png"),
+  "v-car": require("../../assets/icons/v-car.png"), "v-cal": require("../../assets/icons/v-cal.png"), "v-engine": require("../../assets/icons/v-engine.png"), "clip": require("../../assets/icons/clip.png"), "heart-on": require("../../assets/icons/heart-on.png"), "heart-off": require("../../assets/icons/heart-off.png"), headset: require("../../assets/icons/headset.png"), clock: require("../../assets/icons/clock.png"), phone: require("../../assets/icons/phone.png"), x: require("../../assets/icons/x.png"), gear: require("../../assets/icons/gear.png"),
 };
 // Icons are cropped from the supplied PDF and used as tintable masks.
 export function Ico({ n, size = 22, color = "#0b2a5b" }: { n: string; size?: number; color?: string }) {

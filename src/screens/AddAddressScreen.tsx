@@ -24,7 +24,7 @@ export function AddAddressScreen({ c }: { c: any }) {
         <Input inline label={t('الشارع')} icon="f-road" value={street} onChange={setStreet} placeholder={t('أدخل اسم الشارع')} />
         <Input inline label={t('تفاصيل العنوان')} icon="f-doc" value={address.details} onChange={(details) => setAddress({ ...address, details })} placeholder={t('أدخل تفاصيل العنوان')} />
         <Input inline label={t('معلم قريب (اختياري)')} icon="f-landmark" value={landmark} onChange={setLandmark} placeholder={t('أدخل المعلم')} />
-        <Input inline label={t('رقم التواصل')} icon="📞" numeric value={address.phone} onChange={(phone) => setAddress({ ...address, phone })} placeholder="01XXXXXXXXX" />
+        <Input inline label={t('رقم التواصل')} icon="phone" numeric value={address.phone} onChange={(phone) => setAddress({ ...address, phone })} placeholder="01XXXXXXXXX" />
         <Cta title={t('حفظ العنوان')} onPress={save} />
       </View>
     </View>

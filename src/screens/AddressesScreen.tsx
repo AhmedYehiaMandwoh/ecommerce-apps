@@ -18,8 +18,8 @@ export function AddressesScreen({ c }: { c: any }) {
               <View className={cx(`w-7 h-7 rounded-full border-2 items-center justify-center ${on ? "border-accent" : "border-slate-400"}`)}>{on && <View className={cx("w-3.5 h-3.5 rounded-full bg-accent")} />}</View>
               <View className={cx("flex-1 mx-3 items-end")}>
                 <Text className={cx("font-extrabold text-lg")}>{a.label}</Text>
-                <Text className={cx("text-slate-600 text-sm")} numberOfLines={1}>{t('📍 المدينة :')} {a.city}</Text>
-                <Text className={cx("text-slate-600 text-sm")} numberOfLines={1}>🗺 {a.details}</Text>
+                <Text className={cx("text-slate-600 text-sm")} numberOfLines={1}>{t('المدينة :')} {a.city}</Text>
+                <Text className={cx("text-slate-600 text-sm")} numberOfLines={1}>{a.details}</Text>
               </View>
               <Image source={n % 2 ? require("../../assets/ref/building.png") : require("../../assets/ref/house.png")} style={{ width: 92, height: 86, resizeMode: "contain" }} />
               </Pressable>
