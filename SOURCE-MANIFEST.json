@@ -494,8 +494,8 @@
     },
     {
       "path": "src/screens/ShopScreen.tsx",
-      "bytes": 4490,
-      "sha256": "8d13e1d3a1702e8774273b602a2ccda9eac0cb4b6d0afa8c6154a0644e3d1b83"
+      "bytes": 4487,
+      "sha256": "7b1256d4bd7872b5d59b660d0b816620a67ba13e22fb214131a0329e752d0802"
     },
     {
       "path": "src/screens/ShopsScreen.tsx",

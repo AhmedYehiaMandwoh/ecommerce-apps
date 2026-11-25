@@ -22,10 +22,10 @@ export function ShopScreen({ c }: { c: any }) {
         </View>
         <View className="bg-white rounded-full h-12 mt-1 px-4 justify-center"><Text className="text-right text-slate-400 text-base">ابحث باسم القطعة أو رقمها 🔍</Text></View>
       </View>
-      <Image source={shopPhoto(n)} style={{ width: "100%", height: 170, resizeMode: "cover" }} />
+      <Image source={shopPhoto(n)} style={{ width: "100%", height: 150, resizeMode: "cover" }} />
       <View className="flex-row items-center px-4 -mt-9" style={{ zIndex: 2, position: "relative" }}>
-        <View className="w-24 h-24 rounded-full bg-orange-50 border-4 border-white items-center justify-center"><Ico n="shop" size={52} color="#0b2a5b" /></View>
-        <View className="flex-1 ml-3 mt-10 items-end"><Text className="text-lg font-extrabold text-right">{s?.name || "المحل"}</Text><Text className="text-slate-500 text-base">قطع غيار وصيانة</Text></View>
+        <View className="w-20 h-20 rounded-full bg-orange-50 border-4 border-white items-center justify-center"><Ico n="shop" size={44} color="#0b2a5b" /></View>
+        <View className="flex-1 ml-3 mt-8 items-end"><Text className="text-xl font-extrabold text-right">{s?.name || "المحل"}</Text><Text className="text-slate-500 text-base">قطع غيار وصيانة</Text></View>
       </View>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} className="px-4 mt-3 flex-grow-0">
         {["", ...categories].map((k: string) => <Chip key={k || "all"} title={k || "الكل"} active={category === k} onPress={() => { setCategory(k); load(k); }} />)}
@@ -36,7 +36,7 @@ export function ShopScreen({ c }: { c: any }) {
           return (
             <View key={p.id} className="w-[48%] bg-white rounded-2xl border border-slate-200 mb-3 overflow-hidden">
               <Pressable style={{ zIndex: 10 }} accessibilityRole="button" accessibilityLabel={"مفضلة " + p.title} onPress={() => favorite(p)} className="absolute z-10 top-2 left-2"><Text className="text-lg">{favorites.some((f: any) => f.id === p.id) ? "❤" : "♡"}</Text></Pressable>
-              <Image source={img(p.image)} style={{ width: "100%", height: 110, resizeMode: "contain", backgroundColor: "#fbf4ec" }} />
+              <Image source={img(p.image)} style={{ width: "100%", height: 120, resizeMode: "cover", backgroundColor: "#fbf4ec" }} />
               <View className="p-2 items-end"><Text className="font-bold text-sm text-right" numberOfLines={2}>{p.title}</Text></View>
               <View className="flex-row items-center justify-between p-2" style={{ zIndex: 10 }}>
                 <Pressable style={{ position: "relative", zIndex: 10 }} accessibilityRole="button" accessibilityLabel={"أضف " + p.title} onPress={() => add(p, o)} className="z-10 w-9 h-9 rounded-full bg-accent items-center justify-center"><Text className="text-white text-xl">+</Text></Pressable>
