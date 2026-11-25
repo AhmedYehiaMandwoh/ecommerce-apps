@@ -14,7 +14,7 @@ export function PlacedScreen({ c }: { c: any }) {
         <View style={{ width: "100%", height: 140, overflow: "hidden" }}><Image source={require("../../assets/ref/confirm.png")} style={{ width: "100%", height: 150, resizeMode: "contain" }} /></View>
         <Text className="text-2xl font-extrabold text-center mt-1">تم استلام طلبك</Text>
         <Text className="text-accent text-lg font-extrabold text-center">طلب تجريبي</Text>
-        <Text className="text-center text-slate-600 mt-1">رقم الطلب: {lastPlacedOrder.id.slice(0, 8)}</Text>
+        <Text className="text-center text-slate-600 mt-1">رقم الطلب: {(() => { const mine = orders.filter((x: any) => x.checkoutId === lastPlacedOrder.id); return mine.length ? mine.map((x: any) => "#" + x.id.slice(0, 8)).join(" • ") : lastPlacedOrder.id.slice(0, 8); })()}</Text>
         <Text className="bg-brand-light text-brand rounded-xl p-2 text-center my-2 text-sm">ⓘ حالة توضيحية وليست عملية شراء. الدفع كاش عند الاستلام.</Text>
         <Text className="font-extrabold text-right text-lg mb-1">المنتجات من محلات مختلفة</Text>
         {groups.map((g) => (
@@ -27,7 +27,7 @@ export function PlacedScreen({ c }: { c: any }) {
         ))}
         <View className="flex-row mt-2" style={{ gap: 10 }}>
           <View className="flex-[1.15]"><Cta title="الرئيسية" soft onPress={() => setScreen("home")} /></View>
-          <View className="flex-[1.35]"><Cta title="تتبع الطلب" onPress={() => { const o = orders.find((x: any) => x.checkoutId === lastPlacedOrder.id) || orders[0]; setDetailId(o?.id || ""); go("track"); }} /></View>
+          <View className="flex-[1.35]"><Cta title="تتبع الطلب" onPress={() => { const o = orders.find((x: any) => x.checkoutId === lastPlacedOrder.id); setDetailId(o?.id || ""); go("track"); }} /></View>
         </View>
       </View>
     </View>

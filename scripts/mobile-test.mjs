@@ -29,8 +29,8 @@ await click('حفظ العنوان');await p.waitForTimeout(2000);await snap('05
 await click('الرئيسية');await click('السلة');await p.waitForTimeout(800);await click('متابعة الطلب');await p.waitForTimeout(1500);
 await p.locator('[role=button]').filter({hasText:'مدينة نصر'}).first().click();await click('أضف كود خصم');await p.getByPlaceholder('أدخل كود الخصم').fill('ghiyar10');await click('راجع التكلفة');await p.waitForTimeout(2000);await snap('13-checkout');if(!(await p.getByText('خصم (GHIYAR10)').count()))errs.push('discount line missing on checkout');
 await click('متابعة ‹');await p.waitForTimeout(1000);await snap('14-payment');
-await click('مراجعة الطلب وتأكيده ‹');await p.waitForTimeout(3000);await snap('15-placed');
-await click('تتبع الطلب');await p.waitForTimeout(1500);await snap('17-track');
+await click('مراجعة الطلب وتأكيده ‹');await p.waitForTimeout(3000);await snap('15-placed');const placedTxt=await p.locator('text=رقم الطلب').first().innerText();
+await click('تتبع الطلب');await p.waitForTimeout(1500);await snap('17-track');const trackTxt=await p.locator('text=/#[0-9a-f]{8}/').first().innerText();const pid=(placedTxt.match(/[0-9a-f]{8}/g)||[]);console.log('placed ids',pid.join(','),'track text',trackTxt);if(!pid.some(x=>trackTxt.includes(x)))throw new Error('tracking opened a different order than the placed one');
 await click('رجوع');await p.waitForTimeout(600);await click('الرئيسية');await click('طلباتي');await p.waitForTimeout(1500);await snap('16-orders');
 await click('الرئيسية');await click('اختر عربيتك');await p.waitForTimeout(800);if(await p.getByRole('button',{name:'اختر الماركة'}).count()){await click('اختر الماركة');await click('Toyota');await click('اختر الموديل');await click('Corolla');await click('اختر سنة الصنع');await click('2020');await click('اختر المحرك');await click('1.6L');await snap('04-vehicle')}else{await snap('04-vehicle-fail');errs.push('vehicle selectors not shown')};await click('حسابي');await click('المساعدة');await snap('18-support');
 // Support ticket with a real image attachment through the UI (file chooser -> preview -> send -> shown on ticket).
