@@ -15,14 +15,14 @@ export function PhoneLoginScreen({ c }: { c: any }) {
         </View>
         <Text className="text-3xl font-extrabold text-brand-dark text-center">{step2 ? "كود التحقق" : "رقم موبايلك"}</Text>
         <Text className="text-slate-500 text-center mt-1">{step2 ? "اكتب الكود اللي وصلك" : "هنرسل لك رمز التحقق على موبايلك"}</Text>
-        <Image source={require("../../assets/ref/phone-hero.png")} style={{ width: "100%", height: 215, resizeMode: "contain", marginVertical: 6 }} />
+        <Image source={require("../../assets/ref/phone-hero.png")} style={{ width: "100%", height: 200, resizeMode: "contain", marginVertical: 4 }} />
         <View className="w-full">
           <ErrorNote error={error} notice={notice} />
           {!step2 ? (
             <View className="flex-row items-center border border-slate-200 rounded-2xl h-16 px-3 bg-white mb-3">
               <Text className="font-bold" numberOfLines={1} style={{ flexShrink: 0 }}>⌄  🇪🇬 مصر +20</Text>
               <View className="w-px h-6 bg-slate-200 mx-3" />
-              <TextInput accessibilityLabel="رقم الموبايل" value={phoneAuth.phone} onChangeText={(phone) => setPhoneAuth({ ...phoneAuth, phone })} placeholder="ادخل رقم الموبايل" placeholderTextColor="#94a3b8" keyboardType="phone-pad" className="flex-1 text-right text-base" />
+              <TextInput accessibilityLabel="رقم الموبايل" value={phoneAuth.phone} onChangeText={(phone) => setPhoneAuth({ ...phoneAuth, phone })} placeholder="ادخل رقم الموبايل" placeholderTextColor="#94a3b8" keyboardType="phone-pad" className="flex-1 text-right text-base" style={{ minWidth: 0, width: 0 }} />
             </View>
           ) : (
             <>
