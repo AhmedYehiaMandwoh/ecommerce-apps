@@ -18,7 +18,7 @@ export function CheckoutScreen({ c }: { c: any }) {
       <View className={cx("px-3 pt-2")}>
         <ErrorNote error={error} notice={notice} />
         <Card className={cx("bg-slate-50 p-1.5 mb-1")}>
-          <Pressable accessibilityRole="button" accessibilityLabel={t('اختر عنوان التوصيل')} onPress={() => go("addresses")} className="items-center" style={{ flexDirection: "row" }}>
+          <Pressable accessibilityRole="button" accessibilityLabel={t('اختر عنوان التوصيل')} onPress={() => go("addresses")} className={cx("flex-row items-center")}>
           <Text className={cx("text-slate-400 text-2xl")}>{isEn ? "›" : "‹"}</Text>
           <View className={cx("flex-1 mx-3 items-end")} style={isEn ? { alignItems: "flex-start" } : undefined}><Text className={cx("font-extrabold")}>{t('اختر عنوان التوصيل')}</Text><Text className={cx("text-slate-500 text-sm")} numberOfLines={1}>{addr ? `${addr.label} - ${selArea ? t('{0}، {1}', selArea.area, selArea.city) : addr.city}` : t('لم يتم اختيار عنوان')}</Text></View>
           <Ico n="pin" size={26} color="#0751e8" />
@@ -53,7 +53,7 @@ export function CheckoutScreen({ c }: { c: any }) {
           <Card key={g.shopId} className={cx("p-1.5 mb-1")}>
             <View className={cx("flex-row items-center justify-end mb-0.5")}><Text className={cx("font-extrabold ml-2")}>{g.name}</Text><View className={cx("w-7 h-7 rounded-lg bg-accent items-center justify-center")}><Ico n="shop" size={16} color="#fff" /></View></View>
             <View className={cx("flex-row mb-0.5")} style={{ gap: 6 }}>{g.items.slice(0, 4).map((i: any) => <Image key={i.offerId} source={thumb(i.image)} style={{ width: "23.5%", height: 36, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 8 }} />)}</View>
-            <View className="items-center bg-brand-light rounded-xl px-2" style={{ paddingVertical: 0, flexDirection: "row" }}><Text className={cx("text-slate-400 text-xl")}>{isEn ? "›" : "‹"}</Text><View className={cx("flex-1 mx-2 items-end")} style={isEn ? { alignItems: "flex-start" } : undefined}><Text className={cx("font-bold")}>{t('خيارات التوصيل')}</Text><Text className={cx("text-slate-500 text-xs")}>{quote ? t('محسوب حسب المنطقة') : t('تحدد بعد اختيار المنطقة')}</Text></View><Ico n="truck" size={22} /></View>
+            <View className={cx("flex-row items-center bg-brand-light rounded-xl px-2")} style={{ paddingVertical: 0 }}><Text className={cx("text-slate-400 text-xl")}>{isEn ? "›" : "‹"}</Text><View className={cx("flex-1 mx-2 items-end")} style={isEn ? { alignItems: "flex-start" } : undefined}><Text className={cx("font-bold")}>{t('خيارات التوصيل')}</Text><Text className={cx("text-slate-500 text-xs")}>{quote ? t('محسوب حسب المنطقة') : t('تحدد بعد اختيار المنطقة')}</Text></View><Ico n="truck" size={22} /></View>
           </Card>
         ))}
         <Card className={cx("bg-slate-50 p-1.5 mb-1")}>

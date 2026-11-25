@@ -38,7 +38,7 @@ export function cx(c?: string): string | undefined {
   if (!isEn || !c) return c;
   const tk = c.split(/\s+/);
   // Plain flex-row content rows with justify-between were laid out for RTL (first child on the left): reverse them.
-  const swapRow = tk.includes("flex-row") && tk.includes("justify-between") && !tk.some((k) => /^h-(10|12|14)$/.test(k));
+  const swapRow = tk.includes("flex-row") && !tk.some((k) => /^h-(10|12|14)$/.test(k));
   return tk.map((k) => {
     if (k === "flex-row" && swapRow) return "flex-row-reverse";
     if (FLIP[k]) return FLIP[k];
@@ -51,4 +51,6 @@ export function cx(c?: string): string | undefined {
 if (Platform.OS === "web" && typeof document !== "undefined") {
   document.documentElement.lang = lang;
   document.documentElement.dir = writingDirection;
+  // The layouts are authored visually (explicit row-reverse for Arabic); keep flex direction LTR so Arabic matches the original and English mirrors by rule.
+  const st = document.createElement("style"); st.textContent = "#root{direction:ltr}" + (lang === "ar" ? "#root input,#root textarea{direction:rtl}#root [dir=auto]{unicode-bidi:plaintext}" : ""); document.head.appendChild(st);
 }

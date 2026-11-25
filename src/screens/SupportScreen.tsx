@@ -1,4 +1,4 @@
-import { t, cx, ENDITEMS } from "../i18n";
+import { t, cx, ENDITEMS, isEn } from "../i18n";
 import React, { useState } from "react";
 import { View, Text, Image, Pressable, TextInput } from "react-native";
 import * as ImagePicker from "expo-image-picker";
@@ -32,7 +32,7 @@ export function SupportScreen({ c }: { c: any }) {
         <ErrorNote error={error} notice={notice} />
         <View className={cx("flex-row rounded-2xl overflow-hidden items-center")} style={{ backgroundColor: "#f4f8fd", height: 124, marginTop: 2 }}>
           <Image source={require("../../assets/ref/support-hero.png")} style={{ width: "52%", height: 124, resizeMode: "contain" }} />
-          <View className={cx("flex-1 items-end px-3")}><Text className={cx("font-extrabold text-right text-brand")} style={{ fontSize: 24, lineHeight: 30 }}>{t('نحن هنا')}{"\n"}{t('لمساعدتك')}</Text><Text className={cx("text-slate-500 text-right text-sm mt-1")}>{t('اختر نوع المشكلة')}{"\n"}{t('وسيتم الرد عليك قريبًا')}</Text></View>
+          <View className={cx("flex-1 items-end px-3")}><Text className={cx("font-extrabold text-right text-brand")} style={{ fontSize: isEn ? 19 : 24, lineHeight: isEn ? 24 : 30 }}>{t('نحن هنا')}{"\n"}{t('لمساعدتك')}</Text><Text className={cx("text-slate-500 text-right text-sm mt-1")}>{t('اختر نوع المشكلة')}{"\n"}{t('وسيتم الرد عليك قريبًا')}</Text></View>
         </View>
         <View className={cx("flex-row-reverse justify-between")} style={{ marginVertical: 8 }}>
           {kinds.map(([t, icon, bg]) => (

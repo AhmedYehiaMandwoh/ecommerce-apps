@@ -1,4 +1,4 @@
-import { t, cx, isEn } from "../i18n";
+import { t, cx, isEn, ENDITEMS } from "../i18n";
 import React, { useState } from "react";
 import { View, Text, Image, Pressable, TextInput } from "react-native";
 import { shopCover } from "../ui/helpers";
@@ -33,7 +33,7 @@ export function ShopsScreen({ c }: { c: any }) {
             </View>
             <View className="items-center px-3 py-1" style={{ flexDirection: "row" }}>
               <View className={cx("w-11 h-11 rounded-full bg-accent items-center justify-center")}><Ico n="shop" size={30} color="#fff" /></View>
-              <View className={cx("flex-1 mx-3 items-start")}><Text className={cx("font-extrabold text-lg")}>{s.name}</Text><Text className={cx("text-slate-500 text-sm")}>{s.description || t('قطع غيار وصيانة')} • {s.city}{s.district ? " • " + s.district : ""}</Text></View>
+              <View className={cx("flex-1 mx-3")} style={{ alignItems: ENDITEMS }}><Text className={cx("font-extrabold text-lg")}>{s.name}</Text><Text className={cx("text-slate-500 text-sm")}>{s.description || t('قطع غيار وصيانة')} • {s.city}{s.district ? " • " + s.district : ""}</Text></View>
               <Text className={cx("text-slate-500 text-3xl")}>{isEn ? "›" : "‹"}</Text>
             </View>
           </Pressable>
