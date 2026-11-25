@@ -435,7 +435,7 @@
     {
       "path": "src/screens/CheckoutScreen.tsx",
       "bytes": 6326,
-      "sha256": "f37cf7f334c6763da138e274b6a56c387e1e1c0f9c55a428ac63a7e962e17f13"
+      "sha256": "008147e6ddacf2ac030f96d9b228019a70ff14fa1505cbf3c8607d8f2d252e75"
     },
     {
       "path": "src/screens/EmailLoginScreen.tsx",
@@ -474,8 +474,8 @@
     },
     {
       "path": "src/screens/PlacedScreen.tsx",
-      "bytes": 2790,
-      "sha256": "0b12bbcee67344c08b0848e99857e984c91ffcac48f4d0d320616dc76afffd80"
+      "bytes": 2857,
+      "sha256": "d40589640a77e310c761cfa6930e6d658b1bf66686bfc21d4fecf299ec46fcba"
     },
     {
       "path": "src/screens/ProductScreen.tsx",
@@ -494,8 +494,8 @@
     },
     {
       "path": "src/screens/ShopScreen.tsx",
-      "bytes": 4487,
-      "sha256": "7b1256d4bd7872b5d59b660d0b816620a67ba13e22fb214131a0329e752d0802"
+      "bytes": 4550,
+      "sha256": "ea3346b5619c79f9b5122e38f50ba7a37edaf42b3a80ccd568c06ce033048bb4"
     },
     {
       "path": "src/screens/ShopsScreen.tsx",
