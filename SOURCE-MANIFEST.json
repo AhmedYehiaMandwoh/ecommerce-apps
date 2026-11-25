@@ -163,6 +163,21 @@
       "sha256": "36101326540db2f291fe6ef987b73883996ba332c4078656e40c4989dc4b8236"
     },
     {
+      "path": "assets/icons/s-chat.png",
+      "bytes": 13440,
+      "sha256": "094da13dca3aa72fd5492901fde215a2cb52d6077e74c0efcdfd7b622a272bd8"
+    },
+    {
+      "path": "assets/icons/s-swap.png",
+      "bytes": 13290,
+      "sha256": "f6fe09b67dc7d8687c1298d904c467eb19cb06b641d704b5de3cf29fa9d579dd"
+    },
+    {
+      "path": "assets/icons/s-warn.png",
+      "bytes": 12158,
+      "sha256": "8351e8c8808d45824b26edc2cd31cb7c04667136793c53d4f529bd82c19df8d8"
+    },
+    {
       "path": "assets/icons/shop.png",
       "bytes": 1225,
       "sha256": "995f63a248306d7b6e42235f0efe91fc43aef5f7f959142e7dc67ce3e2307226"
@@ -263,6 +278,11 @@
       "sha256": "3e967a5b0551764accc6feda5eadff4dd189672b940d1c65a6af29e0a0be3a67"
     },
     {
+      "path": "assets/ref/logo-blue.png",
+      "bytes": 34544,
+      "sha256": "4dd5f4e3c48781bc34a0bc292d94d28eea4adf79869b37294ed201bc897677e6"
+    },
+    {
       "path": "assets/ref/map-small.png",
       "bytes": 70331,
       "sha256": "413817533395fc0affb9d8f857d16ac4a9e66beb5c4b3dfc0d4f98c631d6bcd3"
@@ -311,6 +331,11 @@
       "path": "assets/ref/skyline.png",
       "bytes": 58458,
       "sha256": "b960c19894b16e87769727671778813a6de31d37a114b139a3e0045ee28dc0f9"
+    },
+    {
+      "path": "assets/ref/support-hero.png",
+      "bytes": 155779,
+      "sha256": "093bc82d588b5e0d853b0dc2641fd06527b76dc603406c04bfce5926c1f69bb2"
     },
     {
       "path": "assets/ref/track-map.png",
@@ -479,8 +504,8 @@
     },
     {
       "path": "src/screens/ProductScreen.tsx",
-      "bytes": 5996,
-      "sha256": "6f4e2c66e412bc92d6d1d57bc05a8c51790de644181d8ba70c79c88c522c98bd"
+      "bytes": 6025,
+      "sha256": "0b78e78a9f471cb358cfb3594f455fca2abeb2eb888037eed209a2fbc1d92527"
     },
     {
       "path": "src/screens/SearchScreen.tsx",
@@ -500,7 +525,7 @@
     {
       "path": "src/screens/ShopsScreen.tsx",
       "bytes": 2608,
-      "sha256": "8d5412dc78d542c938ff8f205f0ad330f361f6021fdb8ab3370c6aeb00284f00"
+      "sha256": "3a9cdcea1e1a0b105448dadbbf1fd975146431fa39021a4b1b618c1532903620"
     },
     {
       "path": "src/screens/SplashScreen.tsx",
@@ -509,8 +534,8 @@
     },
     {
       "path": "src/screens/SupportScreen.tsx",
-      "bytes": 5868,
-      "sha256": "77da2bc722a13bcfab63e771c988a48fccb30d2178a275555ae75000b8c4b4d5"
+      "bytes": 5875,
+      "sha256": "798a9390384071c6eb49da50ceb180e9e0c3359d075dc4140cb569a131eccaff"
     },
     {
       "path": "src/screens/TrackScreen.tsx",
@@ -539,8 +564,8 @@
     },
     {
       "path": "src/ui/kit.tsx",
-      "bytes": 8047,
-      "sha256": "f76b40a73f9dc61af784317659d6f8c31389c83a959eeed6619aa5d32e5422bd"
+      "bytes": 8109,
+      "sha256": "6e6729fdb3321d4d8353bd419a85344344a4f43ff25e327602d7f5f093ea119b"
     },
     {
       "path": "src/webfont.ts",

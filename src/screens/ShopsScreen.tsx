@@ -26,7 +26,7 @@ export function ShopsScreen({ c }: { c: any }) {
       <View className="px-3 pt-2">
         {list.map((s: any, n: number) => (
           <Pressable key={s.id} accessibilityRole="button" accessibilityLabel={s.name} onPress={() => browse("", "", s.id)} className="bg-white rounded-2xl border border-slate-200 mb-2 overflow-hidden">
-            <Image source={shopPhoto(n)} style={{ width: "100%", height: 62, resizeMode: "cover" }} />
+            <Image source={shopPhoto(n)} style={{ width: "100%", height: 96, resizeMode: "cover" }} />
             <View className="flex-row items-center px-3 py-1">
               <View className="w-11 h-11 rounded-full bg-accent items-center justify-center"><Ico n="shop" size={30} color="#fff" /></View>
               <View className="flex-1 mx-3 items-start"><Text className="font-extrabold text-lg">{s.name}</Text><Text className="text-slate-500 text-sm">قطع غيار وصيانة • {s.city}</Text></View>
