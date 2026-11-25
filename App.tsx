@@ -352,9 +352,9 @@ export default function App() {
         {!NOTAB.includes(screen) && (
           <View className={cx("flex-row-reverse bg-white border-t border-slate-200")}>
             {tabs.map(([s, t, icon]) => (
-              <Pressable key={s} accessibilityRole="button" accessibilityLabel={t} onPress={() => go(s)} className={cx(`flex-1 items-center py-2 ${active === s ? "border-b-[3px] border-accent" : ""}`)}>
-                <Image source={icon} style={{ width: 30, height: 30, marginBottom: 2, tintColor: active === s ? "#ff710a" : "#334155" }} />
-                <Text className={cx(`text-sm font-extrabold ${active === s ? "text-accent" : "text-slate-700"}`)}>{t}</Text>
+              <Pressable key={s} accessibilityRole="button" accessibilityLabel={t} onPress={() => go(s)} className={cx("flex-1 items-center")} style={{ paddingTop: 5, paddingBottom: 5 }}>
+                <Image source={icon} style={{ width: 28, height: 28, marginBottom: 1, tintColor: active === s ? "#ff710a" : "#64748b" }} />
+                <Text className={cx(`font-bold ${active === s ? "text-accent" : "text-slate-500"}`)} style={{ fontSize: 12.5, lineHeight: 16 }}>{t}</Text>
               </Pressable>
             ))}
           </View>
