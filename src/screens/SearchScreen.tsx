@@ -65,15 +65,15 @@ export function SearchScreen({ c }: { c: any }) {
           const best = offers.reduce((a: any, o: any) => (o.price < a.price ? o : a), offers[0]);
           return (
             <View key={p.id} className="flex-row bg-white rounded-2xl border border-slate-200 mb-3 overflow-hidden">
-              <Pressable style={{ position: "relative", zIndex: 10 }} accessibilityRole="button" accessibilityLabel={"أضف " + p.title} onPress={() => add(p, best)} className="z-10 w-12 h-12 rounded-full bg-accent items-center justify-center self-center mx-2"><Text className="text-white text-3xl">+</Text></Pressable>
-              <View className="flex-1 min-w-0 py-2 items-end">
+              <Pressable style={{ position: "relative", zIndex: 10 }} accessibilityRole="button" accessibilityLabel={"أضف " + p.title} onPress={() => add(p, best)} className="z-10 w-14 h-14 rounded-full bg-accent items-center justify-center self-center mx-2"><Text className="text-white text-3xl">+</Text></Pressable>
+              <View className="flex-1 min-w-0 py-3 items-end">
                 <Text className="font-extrabold text-base text-right" numberOfLines={2} accessibilityLabel={p.title}>{p.title}</Text>
                 <Text className="text-slate-500 text-sm" numberOfLines={1}>من {best?.shop?.name}</Text>
                 <Text className="text-accent font-extrabold text-xl">{money(best.price)}</Text>
                 <Text className="text-slate-500 text-[11px]" numberOfLines={1}>{p.brand} • {p.partNumber}</Text>
                 <View className="bg-slate-100 rounded-lg px-3 py-1 mt-1"><Text className="text-slate-600 text-xs font-bold">راجع التوافق</Text></View>
               </View>
-              <Image source={img(p.image)} style={{ width: 116, height: 116, resizeMode: "contain", backgroundColor: "#fbf4ec" }} />
+              <Image source={img(p.image)} style={{ width: 132, height: 132, resizeMode: "contain", backgroundColor: "#fbf4ec" }} />
             <Pressable accessibilityRole="button" accessibilityLabel={p.title} onPress={() => { setSelected({ ...p, offers }); go("product"); }} className="absolute inset-0 z-[5]" />
             </View>
           );
