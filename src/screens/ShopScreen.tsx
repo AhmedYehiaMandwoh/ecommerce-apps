@@ -24,7 +24,7 @@ export function ShopScreen({ c }: { c: any }) {
         <View className={cx("bg-white rounded-full h-12 mt-1 px-4 justify-center")}><View style={{ flexDirection: isEn ? "row" : "row-reverse", alignItems: "center" }}><Ico n="search" size={18} color="#94a3b8" /><Text className={cx("text-slate-400 text-base mx-2")}>{t('ابحث باسم القطعة أو رقمها')}</Text></View></View>
       </View>
       <View>
-        <Image source={shopCover(s, n).source} style={{ width: "100%", height: 150, resizeMode: "cover" }} />
+        <Image source={shopCover(s, n).source} style={{ width: "100%", height: 176, resizeMode: "cover" }} />
         {shopCover(s, n).demo && <View className={cx("absolute bottom-3 left-3 bg-slate-900/80 rounded px-2")}><Text className={cx("text-white text-[11px]")}>{t('صورة تجريبية')}</Text></View>}
       </View>
       {shopGallery(s).length > 0 && <ScrollView horizontal showsHorizontalScrollIndicator={false} className={cx("px-4 pt-2 flex-grow-0")} style={{ flexGrow: 0 }}>{shopGallery(s).map((p: any) => <Image key={p.id} source={img(p.url)} style={{ width: 72, height: 54, borderRadius: 8, marginLeft: 8 }} />)}</ScrollView>}

@@ -25,7 +25,7 @@ export function ProductScreen({ c }: { c: any }) {
         </View>
       </View>
       <View style={{ overflow: "hidden", borderBottomLeftRadius: 28, borderBottomRightRadius: 28 }}>
-        <Image source={img(selected.image)} style={{ width: "100%", height: 176, resizeMode: "contain", backgroundColor: "#f3f1ee" }} />
+        <Image source={img(selected.image)} style={{ width: "100%", height: 224, resizeMode: "contain", backgroundColor: "#f3f1ee" }} />
         <Pressable accessibilityRole="button" accessibilityLabel={t('حفظ / إزالة من المفضلة')} onPress={() => favorite(selected)} className={cx("absolute top-3 left-3 w-10 h-10 rounded-full bg-white items-center justify-center")}><Ico n={fav ? "heart-on" : "heart-off"} size={22} color={fav ? "#ef4444" : "#64748b"} /></Pressable>
       </View>
       <View className={cx("px-4 pt-3")}>

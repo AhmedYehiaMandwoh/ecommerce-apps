@@ -14,7 +14,7 @@ export function PhoneLoginScreen({ c }: { c: any }) {
           <Pressable accessibilityRole="button" accessibilityLabel={t('رجوع')} onPress={back} style={{ position: "absolute", left: 0, top: 0, bottom: 0, justifyContent: "center", zIndex: 5 }}><Text className={cx("text-brand text-3xl")}>‹</Text></Pressable>
           <Pressable accessible={false} delayLongPress={1200} onLongPress={() => go("emaillogin")}><Image source={require("../../assets/ref/logo-blue.png")} style={{ width: 92, height: 46, resizeMode: "contain" }} /></Pressable>
         </View>
-        <Text className={cx("text-3xl font-extrabold text-brand-dark text-center")}>{step2 ? t('كود التحقق') : t('رقم موبايلك')}</Text>
+        <Text className={cx("font-extrabold text-brand-dark text-center")} style={{ fontSize: 36, lineHeight: 44 }}>{step2 ? t('كود التحقق') : t('رقم موبايلك')}</Text>
         <Text className={cx("text-slate-500 text-center mt-1")}>{step2 ? t('اكتب الكود اللي وصلك') : t('هنرسل لك رمز التحقق على موبايلك')}</Text>
         <Image source={require("../../assets/ref/phone-hero.png")} style={{ width: "100%", height: 184, resizeMode: "contain", marginVertical: 2 }} />
         <View className={cx("w-full")}>
