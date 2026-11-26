@@ -13,7 +13,7 @@ export function TrackScreen({ c }: { c: any }) {
   const idx = Math.max(0, steps.findIndex(([k]) => k === (o.status === "ACCEPTED" ? "PLACED" : o.status)));
   return (
     <View className={cx("bg-white flex-1")} style={{ minHeight: 760 }}>
-      <Header back onBack={back} onCart={() => go("cart")} count={count} />
+      <Header sheet back onBack={back} onCart={() => go("cart")} count={count} />
       <View className={cx("bg-white rounded-t-3xl -mt-2 pt-3")}><Text className={cx("text-slate-900 text-center text-lg font-extrabold")}>{t('تتبع الطلب')}</Text></View>
       <View className={cx("px-3 pb-3 pt-1")} style={{ minHeight: 400 }}>
         <View><Image source={require("../../assets/ref/track-map.png")} style={{ width: "100%", height: 168, resizeMode: "cover", borderRadius: 16 }} /><Text className={cx("absolute bottom-2 left-2 bg-white/90 text-slate-700 text-xs px-2 py-1 rounded-lg")}>{t('رسم توضيحي ثابت، ليس تتبعًا مباشرًا')}</Text></View>

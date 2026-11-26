@@ -24,7 +24,7 @@ export function CartScreen({ c }: { c: any }) {
   const del = (offerId: string) => { key.current = ""; setCart(cart.filter((i: any) => i.offerId !== offerId)); };
   return (
     <View className={cx("bg-white flex-1")} style={{ minHeight: 700 }}>
-      <Header back onBack={back} />
+      <Header sheet back onBack={back} />
       <View className={cx("p-2")}>
         <Text className={cx("text-center font-extrabold text-lg mb-1")}>{t('السلة')}</Text>
         {!cart.length && <Text className={cx("text-center text-slate-500 my-10")}>{t('السلة فاضية.')}</Text>}

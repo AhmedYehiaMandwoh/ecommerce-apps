@@ -14,7 +14,7 @@ export function OrdersScreen({ c }: { c: any }) {
   const tone = (s: string) => s === "DELIVERED" ? "bg-green-100 text-green-800" : s === "SHIPPED" ? "bg-blue-100 text-blue-800" : s === "CANCELLED" ? "bg-red-100 text-red-800" : "bg-orange-100 text-orange-800";
   return (
     <View className={cx("bg-white flex-1")}>
-      <Header back onBack={back} onCart={() => go("cart")} count={count} />
+      <Header sheet back onBack={back} onCart={() => go("cart")} count={count} />
       <View className={cx("bg-white rounded-t-3xl -mt-2 pt-3")}><Text className={cx("text-slate-900 text-center text-lg font-extrabold")}>{t('طلباتي')}</Text></View>
       <View className={cx("px-4 mt-1")}>
         <View className={cx("flex-row bg-slate-100 rounded-full p-1")}>

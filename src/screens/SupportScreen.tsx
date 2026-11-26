@@ -26,9 +26,9 @@ export function SupportScreen({ c }: { c: any }) {
   });
   return (
     <View className={cx("bg-white flex-1")} style={{ minHeight: 760 }}>
-      <Header small back onBack={back} onCart={() => go("cart")} count={count} />
+      <Header small sheet back onBack={back} onCart={() => go("cart")} count={count} />
       <View className={cx("px-3 pt-1")}>
-        <Text className={cx("text-center font-extrabold text-xl")}>{t('المساعدة')}</Text>
+        <Text className={cx("text-center font-extrabold text-brand")} style={{ fontSize: 26 }}>{t('المساعدة')}</Text>
         <ErrorNote error={error} notice={notice} />
         <View className={cx("flex-row rounded-2xl overflow-hidden items-center")} style={{ backgroundColor: "#f4f8fd", height: 124, marginTop: 2 }}>
           <Image source={require("../../assets/ref/support-hero.png")} style={{ width: "52%", height: 124, resizeMode: "contain" }} />
