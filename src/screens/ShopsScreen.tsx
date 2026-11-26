@@ -13,7 +13,7 @@ export function ShopsScreen({ c }: { c: any }) {
       <View className={cx("bg-brand px-4 pt-3 pb-3")} style={{ borderBottomLeftRadius: 24, borderBottomRightRadius: 24 }}>
         <View className={cx("flex-row items-center justify-between h-10")}>
           <Pressable accessibilityRole="button" accessibilityLabel={t('رجوع')} onPress={back} className={cx("w-10")}><Chev dir="left" color="#fff" size={13} /></Pressable>
-          <Text className={cx("text-white text-2xl font-extrabold")}>{t('المحلات')}</Text>
+          <Text className={cx("text-white font-extrabold")} style={{ fontSize: 28 }}>{t('المحلات')}</Text>
           <View className={cx("w-10")} />
         </View>
         <View className={cx("bg-white rounded-full h-12 mt-2 px-4 flex-row items-center")}>
