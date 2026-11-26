@@ -2,7 +2,7 @@ import { t, cx, isEn } from "../i18n";
 import React, { useState } from "react";
 import { View, Text, Image, Pressable, TextInput, ScrollView } from "react-native";
 import { Chip, Chev, Ico } from "../ui/kit";
-import { img } from "../ui/helpers";
+import { img, thumb } from "../ui/helpers";
 import { money } from "../shared";
 
 export function SearchScreen({ c }: { c: any }) {
@@ -74,7 +74,7 @@ export function SearchScreen({ c }: { c: any }) {
                 <Text className={cx("text-slate-500 text-[11px]")} numberOfLines={1}>{p.brand} • {p.partNumber}</Text>
                 <View className={cx("bg-slate-100 rounded-lg px-3 py-1 mt-1")}><Text className={cx("text-slate-600 text-xs font-bold")}>{t('راجع التوافق')}</Text></View>
               </View>
-              <Image source={img(p.image)} style={{ width: 132, height: 132, resizeMode: "contain", backgroundColor: "#fbf4ec" }} />
+              <Image source={thumb(p.image)} style={{ width: 132, height: 132, resizeMode: "contain", backgroundColor: "#fbf4ec" }} />
             <Pressable accessibilityRole="button" accessibilityLabel={p.title} onPress={() => { setSelected({ ...p, offers }); go("product"); }} className={cx("absolute inset-0 z-[5]")} />
             </View>
           );

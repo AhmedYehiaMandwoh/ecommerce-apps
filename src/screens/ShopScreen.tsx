@@ -2,7 +2,7 @@ import { t, cx, isEn } from "../i18n";
 import React from "react";
 import { View, Text, Image, Pressable, ScrollView, TextInput } from "react-native";
 import { Chip, art, Ico, Chev } from "../ui/kit";
-import { img, shopCover, shopGallery } from "../ui/helpers";
+import { img, shopCover, shopGallery, thumb } from "../ui/helpers";
 import { money } from "../shared";
 
 export function ShopScreen({ c }: { c: any }) {
@@ -41,7 +41,7 @@ export function ShopScreen({ c }: { c: any }) {
           return (
             <View key={p.id} className={cx("w-[48%] bg-white rounded-2xl border border-slate-200 mb-3 overflow-hidden")}>
               <Pressable style={{ zIndex: 10 }} accessibilityRole="button" accessibilityLabel={t('مفضلة {0}', p.title)} onPress={() => favorite(p)} className={cx("absolute z-10 top-2 left-2")}><Ico n={favorites.some((f: any) => f.id === p.id) ? "heart-on" : "heart-off"} size={20} color={favorites.some((f: any) => f.id === p.id) ? "#ef4444" : "#64748b"} /></Pressable>
-              <Image source={img(p.image)} style={{ width: "100%", height: 120, resizeMode: "cover", backgroundColor: "#fbf4ec" }} />
+              <Image source={thumb(p.image)} style={{ width: "100%", height: 120, resizeMode: "cover", backgroundColor: "#fbf4ec" }} />
               <View className={cx("p-2 items-end")}><Text className={cx("font-bold text-sm text-right")} numberOfLines={2}>{p.title}</Text></View>
               <View className={cx("flex-row items-center justify-between p-2")} style={{ zIndex: 10 }}>
                 <Pressable style={{ position: "relative", zIndex: 10 }} accessibilityRole="button" accessibilityLabel={t('أضف {0}', p.title)} onPress={() => add(p, o)} className={cx("z-10 w-9 h-9 rounded-full bg-accent items-center justify-center")}><Text className={cx("text-white text-xl")}>+</Text></Pressable>
