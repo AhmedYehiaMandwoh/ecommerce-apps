@@ -33,9 +33,9 @@ export function Ico({ n, size = 22, color = "#0b2a5b" }: { n: string; size?: num
   return <Image accessibilityElementsHidden importantForAccessibility="no-hide-descendants" source={icons[n]} style={{ width: size, height: size, resizeMode: "contain", tintColor: color }} />;
 }
 
-export function Header({ title, subtitle, back, onBack, count, onCart, tall, small }: { small?: boolean; title?: string; subtitle?: string; back?: boolean; onBack?: () => void; count?: number; onCart?: () => void; tall?: boolean }) {
-  return (
-    <View className={cx(`bg-brand px-4 ${tall ? "pb-6" : small ? "pb-3" : "pb-4"} pt-3`)} style={tall ? { borderBottomLeftRadius: 28, borderBottomRightRadius: 28 } : undefined}>
+export function Header({ title, subtitle, back, onBack, count, onCart, tall, small, sheet }: { sheet?: boolean; small?: boolean; title?: string; subtitle?: string; back?: boolean; onBack?: () => void; count?: number; onCart?: () => void; tall?: boolean }) {
+  const hdr = (
+    <View className={cx(`bg-brand px-4 ${tall ? "pb-6" : small ? "pb-3" : "pb-4"} pt-3`)} style={{ ...(tall ? { borderBottomLeftRadius: 28, borderBottomRightRadius: 28 } : {}), ...(sheet ? { paddingBottom: 26 } : {}) }}>
       <View className={cx("flex-row items-center justify-between h-12")}>
         {back ? (
           <Pressable accessibilityRole="button" accessibilityLabel={t('رجوع')} onPress={onBack} className={cx("w-10 h-10 items-center justify-center")}>
@@ -54,6 +54,7 @@ export function Header({ title, subtitle, back, onBack, count, onCart, tall, sma
       {!!subtitle && <Text className={cx("text-white/90 text-sm text-center mt-1")}>{subtitle}</Text>}
     </View>
   );
+  return sheet ? <View style={{ backgroundColor: "#0057d9" }}>{hdr}<View style={{ height: 22, marginTop: -22, backgroundColor: "#fff", borderTopLeftRadius: 24, borderTopRightRadius: 24 }} /></View> : hdr;
 }
 
 export function Card({ children, className = "", onPress }: { children: React.ReactNode; className?: string; onPress?: () => void }) {

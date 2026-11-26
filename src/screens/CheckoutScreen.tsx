@@ -14,14 +14,14 @@ export function CheckoutScreen({ c }: { c: any }) {
   const [areaOpen, setAreaOpen] = React.useState(false);
   return (
     <View className={cx("bg-white flex-1")} style={{ minHeight: 760 }}>
-      <Header small back onBack={back} title={t('إتمام الطلب')} onCart={() => go("cart")} count={count} />
-      <View className={cx("px-3 pt-2")}>
+      <Header small sheet back onBack={back} title={t('إتمام الطلب')} onCart={() => go("cart")} count={count} />
+      <View className={cx("px-3 pt-0")}>
         <ErrorNote error={error} notice={notice} />
-        <Card className={cx("bg-slate-50 p-1.5 mb-1")}>
+        <View style={{ backgroundColor: "#eef3fb", borderRadius: 16, padding: 9, marginBottom: 10 }}>
           <Pressable accessibilityRole="button" accessibilityLabel={t('اختر عنوان التوصيل')} onPress={() => go("addresses")} className={cx("flex-row items-center")}>
-          <Chev dir={isEn ? "right" : "left"} color="#94a3b8" size={10} />
-          <View className={cx("flex-1 mx-3 items-end")} style={isEn ? { alignItems: "flex-start" } : undefined}><Text className={cx("font-extrabold")}>{t('اختر عنوان التوصيل')}</Text><Text className={cx("text-slate-500 text-sm")} numberOfLines={1}>{addr ? `${addr.label} - ${selArea ? t('{0}، {1}', selArea.area, selArea.city) : addr.city}` : t('لم يتم اختيار عنوان')}</Text></View>
           <Ico n="pin" size={26} color="#0751e8" />
+          <View className={cx("flex-1 mx-3 items-end")} style={isEn ? { alignItems: "flex-start" } : undefined}><Text className={cx("font-extrabold")}>{t('اختر عنوان التوصيل')}</Text><Text className={cx("text-slate-500 text-sm")} numberOfLines={1}>{addr ? `${addr.label} - ${selArea ? t('{0}، {1}', selArea.area, selArea.city) : addr.city}` : t('لم يتم اختيار عنوان')}</Text></View>
+          <Chev dir="right" color="#1e293b" size={11} />
           </Pressable>
         {(() => {
           const sel = deliveryAreas.find((x: any) => x.id === deliveryAreaId);
@@ -47,22 +47,22 @@ export function CheckoutScreen({ c }: { c: any }) {
             </>
           );
         })()}
-        </Card>
-        <Text className={cx("font-extrabold text-right mb-1")}>{t('المنتجات حسب كل محل')}</Text>
+        </View>
+        <Text className={cx("font-extrabold text-right mb-1")} style={{ fontSize: 16 }}>{t('المنتجات حسب كل محل')}</Text>
         {groups.map((g) => (
-          <Card key={g.shopId} className={cx("p-1.5 mb-1")}>
-            <View className={cx("flex-row items-center justify-end mb-0.5")}><Text className={cx("font-extrabold ml-2")}>{g.name}</Text><View className={cx("w-7 h-7 rounded-lg bg-accent items-center justify-center")}><Ico n="shop" size={16} color="#fff" /></View></View>
-            <View className={cx("flex-row mb-0.5")} style={{ gap: 6 }}>{g.items.slice(0, 4).map((i: any) => <Image key={i.offerId} source={thumb(i.image)} style={{ width: "23.5%", height: 36, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 8 }} />)}</View>
-            <View className={cx("flex-row items-center bg-brand-light rounded-xl px-2")} style={{ paddingVertical: 0 }}><Chev dir={isEn ? "right" : "left"} color="#94a3b8" size={9} /><View className={cx("flex-1 mx-2 items-end")} style={isEn ? { alignItems: "flex-start" } : undefined}><Text className={cx("font-bold")}>{t('خيارات التوصيل')}</Text><Text className={cx("text-slate-500 text-xs")}>{quote ? t('محسوب حسب المنطقة') : t('تحدد بعد اختيار المنطقة')}</Text></View><Ico n="truck" size={22} /></View>
+          <Card key={g.shopId} className={cx("p-2 mb-2")}>
+            <View className={cx("flex-row items-center justify-end mb-0.5")}><Text className={cx("font-extrabold ml-2")}>{g.name}</Text><View className={cx("bg-accent items-center justify-center")} style={{ width: 34, height: 34, borderRadius: 17 }}><Ico n="shop" size={18} color="#fff" /></View></View>
+            <View className={cx("flex-row mb-0.5")} style={{ gap: 6 }}>{g.items.slice(0, 4).map((i: any) => <Image key={i.offerId} source={thumb(i.image)} style={{ width: "23.5%", height: 62, resizeMode: "contain", backgroundColor: "#f3eee8", borderRadius: 8 }} />)}</View>
+            <View className={cx("flex-row items-center rounded-xl px-2")} style={{ paddingVertical: 4, backgroundColor: "#eef3fb" }}><Ico n="truck" size={28} /><View className={cx("flex-1 mx-2 items-end")} style={isEn ? { alignItems: "flex-start" } : undefined}><Text className={cx("font-bold")}>{t('خيارات التوصيل')}</Text><Text className={cx("text-slate-500 text-xs")}>{quote ? t('محسوب حسب المنطقة') : t('تحدد بعد اختيار المنطقة')}</Text></View><Chev dir="right" color="#475569" size={10} /></View>
           </Card>
         ))}
-        <Card className={cx("bg-slate-50 p-1.5 mb-1")}>
+        <Card className={cx("bg-white p-2 mb-2")}>
           <View className={cx("flex-row justify-between")}><Text className={cx("font-bold")}>{money(subtotal)}</Text><Text className={cx("text-slate-600")}>{t('سعر المنتجات')}</Text></View>
           {!!quote?.discount && <View className={cx("flex-row justify-between mt-1")}><Text className={cx("font-bold text-green-700")}>- {money(quote.discount)}</Text><Text className={cx("text-slate-600")}>{t('خصم (')}{quote.discountCode})</Text></View>}
           <View className={cx("flex-row justify-between mt-1")}><Text className={cx("font-bold")}>{quote ? money(quote.total - quote.subtotal) : t('يحدد حسب العنوان')}</Text><Text className={cx("text-slate-600")}>{t('التوصيل')}</Text></View>
           <View className={cx("flex-row justify-between mt-1")}><Text className={cx("font-extrabold")}>{quote ? money(quote.total) : t('يظهر بعد تحديد التوصيل')}</Text><Text className={cx("font-extrabold")}>{t('الإجمالي')}</Text></View>
         </Card>
-        <Pressable accessibilityRole="button" accessibilityLabel={t('أضف كود خصم')} onPress={() => setCodeOpen(!codeOpen)} className={cx("flex-row items-center justify-between bg-slate-50 rounded-xl p-1.5 mb-1")}><Text className={cx("text-slate-500 text-xl")}>{codeOpen || discountCode ? "⌄" : isEn ? "›" : "\u200e‹"}</Text><Text className={cx("text-slate-600 font-bold")}>{t('أضف كود خصم')}</Text><View className={cx("ml-2")}><Ico n="ticket" size={24} color="#475569" /></View></Pressable>
+        <Pressable accessibilityRole="button" accessibilityLabel={t('أضف كود خصم')} onPress={() => setCodeOpen(!codeOpen)} className={cx("flex-row items-center rounded-xl p-2 mb-1")} style={{ backgroundColor: "#eef3fb" }}><Ico n="ticket" size={26} color="#475569" /><Text className={cx("text-slate-600 font-bold flex-1 text-right mx-2")}>{t('أضف كود خصم')}</Text><Text className={cx("text-slate-800 text-xl")}>{codeOpen || discountCode ? "⌄" : "›"}</Text></Pressable>
         {(codeOpen || !!discountCode) && <Input label={t('كود الخصم')} value={discountCode} onChange={setDiscountCode} placeholder={t('أدخل كود الخصم (اختياري)')} />}
         {(() => { const needsReview = !quote || (discountCode || "").trim().toUpperCase() !== (quote.discountCode || "").toUpperCase(); return <Cta title={needsReview ? t('راجع التكلفة ‹') : t('متابعة ‹')} disabled={!addressId || !deliveryAreaId || busy} onPress={needsReview ? reviewQuote : () => go("payment")} />; })()}
       </View>
