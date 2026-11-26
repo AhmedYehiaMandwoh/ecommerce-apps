@@ -10,7 +10,7 @@ export function ShopsScreen({ c }: { c: any }) {
   const list = shops.filter((s: any) => !q || s.name.includes(q));
   return (
     <View className={cx("bg-white flex-1")}>
-      <View className={cx("bg-brand px-4 pt-3 pb-3")}>
+      <View className={cx("bg-brand px-4 pt-3 pb-3")} style={{ borderBottomLeftRadius: 24, borderBottomRightRadius: 24 }}>
         <View className={cx("flex-row items-center justify-between h-10")}>
           <Pressable accessibilityRole="button" accessibilityLabel={t('رجوع')} onPress={back} className={cx("w-10")}><Chev dir="left" color="#fff" size={13} /></Pressable>
           <Text className={cx("text-white text-2xl font-extrabold")}>{t('المحلات')}</Text>

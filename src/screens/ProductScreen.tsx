@@ -14,7 +14,7 @@ export function ProductScreen({ c }: { c: any }) {
   const fav = favorites.some((f: any) => f.id === selected.id);
   return (
     <View className={cx("bg-white flex-1")}>
-      <View className={cx("bg-brand px-4 pt-3 pb-2")}>
+      <View className={cx("bg-brand px-4 pt-3 pb-2")} style={{ borderBottomLeftRadius: 24, borderBottomRightRadius: 24 }}>
         <View className={cx("flex-row items-center justify-between h-12")}>
           <Pressable accessibilityRole="button" accessibilityLabel={t('رجوع')} onPress={back} className={cx("w-10")}><Chev dir="left" color="#fff" size={13} /></Pressable>
           <Image source={art.logo} style={{ width: 92, height: 40, resizeMode: "contain" }} />
