@@ -1,7 +1,7 @@
 import { t, cx, isEn } from "../i18n";
 import React from "react";
 import { View, Text, Image, Pressable, ScrollView, TextInput } from "react-native";
-import { Chip, art, Ico, Chev } from "../ui/kit";
+import { Chip, art, Ico, Chev, ProductGridCard } from "../components";
 import { img, shopCover, shopGallery, thumb } from "../ui/helpers";
 import { money } from "../shared";
 
@@ -28,7 +28,7 @@ export function ShopScreen({ c }: { c: any }) {
         {shopCover(s, n).demo && <View className={cx("absolute bottom-3 left-3 bg-slate-900/80 rounded px-2")}><Text className={cx("text-white text-[11px]")}>{t('صورة تجريبية')}</Text></View>}
       </View>
       {shopGallery(s).length > 0 && <ScrollView horizontal showsHorizontalScrollIndicator={false} className={cx("px-4 pt-2 flex-grow-0")} style={{ flexGrow: 0 }}>{shopGallery(s).map((p: any) => <Image key={p.id} source={img(p.url)} style={{ width: 72, height: 54, borderRadius: 8, marginLeft: 8 }} />)}</ScrollView>}
-      <View className={cx("flex-row items-center px-4 -mt-9")} style={{ zIndex: 2, position: "relative" }}>
+      <View className={cx("flex-row items-center px-4 -mt-9 z-[2]")} style={{ position: "relative" }}>
         <View className={cx("w-20 h-20 rounded-full bg-orange-50 border-4 border-white items-center justify-center")}><Ico n="shop" size={44} color="#0b2a5b" /></View>
         <View className={cx("flex-1 ml-3 mt-8 items-end")}><Text className={cx("text-xl font-extrabold text-right")} numberOfLines={2} accessibilityLabel={s?.name || t('المحل')}>{s?.name || t('المحل')}</Text><Text className={cx("text-slate-500 text-base")}>{s?.description || t('قطع غيار وصيانة')}</Text>{!!s?.workingHours && <Text className={cx("text-slate-500 text-sm")}>{t('مواعيد العمل:')} {s.workingHours}</Text>}</View>
       </View>
@@ -39,16 +39,7 @@ export function ShopScreen({ c }: { c: any }) {
         {list.map((p: any) => {
           const o = p.offers.find((x: any) => x.shopId === shop);
           return (
-            <View key={p.id} className={cx("w-[48%] bg-white rounded-2xl border border-slate-200 mb-3 overflow-hidden")}>
-              <Pressable style={{ zIndex: 10 }} accessibilityRole="button" accessibilityLabel={t('مفضلة {0}', p.title)} onPress={() => favorite(p)} className={cx("absolute z-10 top-2 left-2")}><Ico n={favorites.some((f: any) => f.id === p.id) ? "heart-on" : "heart-off"} size={20} color={favorites.some((f: any) => f.id === p.id) ? "#ef4444" : "#64748b"} /></Pressable>
-              <Image source={thumb(p.image)} style={{ width: "100%", height: 120, resizeMode: "cover", backgroundColor: "#fbf4ec" }} />
-              <View className={cx("p-2 items-end")}><Text className={cx("font-bold text-sm text-right")} numberOfLines={2}>{p.title}</Text></View>
-              <View className={cx("flex-row items-center justify-between p-2")} style={{ zIndex: 10 }}>
-                <Pressable style={{ position: "relative", zIndex: 10 }} accessibilityRole="button" accessibilityLabel={t('أضف {0}', p.title)} onPress={() => add(p, o)} className={cx("z-10 w-9 h-9 rounded-full bg-accent items-center justify-center")}><Text className={cx("text-white text-xl")}>+</Text></Pressable>
-                <Text className={cx("text-accent font-extrabold")}>{money(o.price)}</Text>
-              </View>
-            <Pressable accessibilityRole="button" accessibilityLabel={p.title} onPress={() => { setSelected({ ...p, offers: p.offers.filter((x: any) => x.shopId === shop) }); go("product"); }} className={cx("absolute inset-0 z-[5]")} />
-            </View>
+            <ProductGridCard key={p.id} p={p} offer={o} isFavorite={favorites.some((f: any) => f.id === p.id)} onFavorite={() => favorite(p)} onAdd={() => add(p, o)} onOpen={() => { setSelected({ ...p, offers: p.offers.filter((x: any) => x.shopId === shop) }); go("product"); }} />
           );
         })}
       </View>

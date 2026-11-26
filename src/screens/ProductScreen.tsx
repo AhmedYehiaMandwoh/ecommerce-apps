@@ -1,7 +1,7 @@
 import { t, cx, isEn } from "../i18n";
 import React, { useState } from "react";
 import { View, Text, Image, Pressable } from "react-native";
-import { Cta, Stepper, Card, art, Ico, Chev } from "../ui/kit";
+import { Cta, Stepper, Card, art, Ico, Chev } from "../components";
 import { img } from "../ui/helpers";
 import { money } from "../shared";
 

@@ -1,13 +1,13 @@
 import { t, cx } from "../i18n";
 import React from "react";
 import { View, Text, Image, Pressable } from "react-native";
-import { Cta, Header } from "../ui/kit";
+import { Cta, Header } from "../components";
 
 export function AddressesScreen({ c }: { c: any }) {
   const { addresses, addressId, setAddressId, back, go, count, api, run, personal, setNotice } = c;
   const [menu, setMenu] = React.useState("");
   return (
-    <View className={cx("bg-white flex-1")} style={{ minHeight: 700 }}>
+    <View className={cx("bg-white flex-1 min-h-[700px]")}>
       <Header back onBack={back} title={t('عناويني')} subtitle={t('اختر عنوانك للتوصيل')} onCart={() => go("cart")} count={count} tall />
       <View className={cx("p-4")}>
         {addresses.map((a: any, n: number) => {
@@ -24,7 +24,7 @@ export function AddressesScreen({ c }: { c: any }) {
               <Image source={n % 2 ? require("../../assets/ref/building.png") : require("../../assets/ref/house.png")} style={{ width: 92, height: 86, resizeMode: "contain" }} />
               </Pressable>
               <View>
-                <Pressable accessibilityRole="button" accessibilityLabel={t('خيارات عنوان {0}', a.label)} hitSlop={8} onPress={() => setMenu(menu === a.id ? "" : a.id)} className={cx("items-center justify-center")} style={{ width: 28, height: 28 }}><Text className={cx("text-slate-500 font-extrabold text-lg")}>⋮</Text></Pressable>
+                <Pressable accessibilityRole="button" accessibilityLabel={t('خيارات عنوان {0}', a.label)} hitSlop={8} onPress={() => setMenu(menu === a.id ? "" : a.id)} className={cx("items-center justify-center w-[28px] h-[28px]")}><Text className={cx("text-slate-500 font-extrabold text-lg")}>⋮</Text></Pressable>
                 {menu === a.id && (
                   <Pressable accessibilityRole="button" accessibilityLabel={t('حذف عنوان {0}', a.label)} onPress={() => run(async () => { await api("/addresses/" + a.id, "DELETE"); if (addressId === a.id) setAddressId(""); await personal(); setMenu(""); setNotice(t('تم حذف العنوان')); })} className={cx("bg-white border border-red-200 rounded-lg px-3 py-1 mt-1")}><Text className={cx("text-red-600 font-bold text-xs")}>{t('حذف العنوان')}</Text></Pressable>
                 )}
@@ -34,7 +34,7 @@ export function AddressesScreen({ c }: { c: any }) {
         })}
         {!addresses.length && <Text className={cx("text-center text-slate-500 my-6")}>{t('لسه مفيش عناوين محفوظة.')}</Text>}
         <Pressable accessibilityRole="button" accessibilityLabel={t('إضافة عنوان جديد')} onPress={() => go("addaddress")} className={cx("flex-row items-center justify-center bg-brand-light rounded-2xl p-6")}>
-          <Text className={cx("text-brand font-extrabold text-base")} style={{ marginHorizontal: 12 }}>{t('إضافة عنوان جديد')}</Text>
+          <Text className={cx("text-brand font-extrabold text-base mx-[12px]")}>{t('إضافة عنوان جديد')}</Text>
           <View className={cx("w-9 h-9 rounded-full bg-brand items-center justify-center")}><Text className={cx("text-white text-2xl")}>+</Text></View>
         </Pressable>
       </View>

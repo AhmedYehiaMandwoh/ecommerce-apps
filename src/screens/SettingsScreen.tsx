@@ -2,13 +2,13 @@ import { t, cx, lang, setLang } from "../i18n";
 import React from "react";
 import { View, Text, Platform } from "react-native";
 import * as SecureStore from "expo-secure-store";
-import { Cta, Header, Input, Card, ErrorNote } from "../ui/kit";
+import { Cta, Header, Input, Card, ErrorNote } from "../components";
 import { storage } from "../shared";
 
 export function SettingsScreen({ c }: { c: any }) {
   const { user, profileName, setProfileName, api, run, setUser, setToken, setCart, setNotice, setScreen, protectedOptions, setHasDevice, setPendingDevice, back, error, notice } = c;
   return (
-    <View className={cx("bg-white flex-1")} style={{ minHeight: 600 }}>
+    <View className={cx("bg-white flex-1 min-h-[600px]")}>
       <Header back onBack={back} title={t('الإعدادات')} tall />
       <View className={cx("p-4")}>
         <ErrorNote error={error} notice={notice} />

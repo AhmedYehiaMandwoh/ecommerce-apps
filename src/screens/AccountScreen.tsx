@@ -1,7 +1,7 @@
 import { t, cx, isEn } from "../i18n";
 import React from "react";
 import { View, Text, Pressable, Image } from "react-native";
-import { Cta, Chev, Ico } from "../ui/kit";
+import { Cta, Chev, Ico, ListRow } from "../components";
 
 const acctImg: Record<string, any> = {
   car: require("../../assets/acct-car.png"), pin: require("../../assets/acct-pin.png"), heart: require("../../assets/acct-heart.png"),
@@ -17,7 +17,7 @@ const rows: [string, string, string, string, string][] = [
 export function AccountScreen({ c }: { c: any }) {
   const { user, go } = c;
   return (
-    <View className={cx("bg-white flex-1 px-4 pt-4")} style={{ minHeight: 700 }}>
+    <View className={cx("bg-white flex-1 px-4 pt-4 min-h-[700px]")}>
       <View className={cx("flex-row items-center justify-center")}>
         <Pressable accessibilityRole="button" accessibilityLabel={t('إعدادات التطبيق')} onPress={() => go("settings")} style={{ position: "absolute", right: 4 }}><Ico n="gear" size={26} color="#0f172a" /></Pressable>
         <Text className={cx("text-xl font-extrabold text-center")}>{t('حسابي')}</Text>
@@ -29,11 +29,7 @@ export function AccountScreen({ c }: { c: any }) {
         {!user && <View className={cx("w-full")}><Cta title={t('تسجيل الدخول')} onPress={() => go("phone")} /></View>}
       </View>
       {rows.map(([s, t, sub, icon, bg]) => (
-        <Pressable key={s} accessibilityRole="button" accessibilityLabel={t} onPress={() => go(user || s === "support" ? s : "phone")} className={cx("flex-row items-center bg-slate-50 rounded-2xl p-3 mb-3 border border-slate-100")}>
-          <Chev dir={isEn ? "right" : "left"} color="#64748b" size={10} />
-          <View className={cx("flex-1 mr-3 items-end")}><Text className={cx("font-extrabold text-base")}>{t}</Text><Text className={cx("text-slate-500 text-sm")}>{sub}</Text></View>
-          <Image accessibilityElementsHidden source={acctImg[icon]} style={{ width: 48, height: 48 }} />
-        </Pressable>
+        <ListRow key={s} title={t} sub={sub} image={acctImg[icon]} onPress={() => go(user || s === "support" ? s : "phone")} />
       ))}
     </View>
   );

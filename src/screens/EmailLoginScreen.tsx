@@ -1,12 +1,12 @@
 import { t, cx } from "../i18n";
 import React from "react";
 import { View, Text } from "react-native";
-import { Cta, Input, Header, Card } from "../ui/kit";
+import { Cta, Input, Header, Card } from "../components";
 
 export function EmailLoginScreen({ c }: { c: any }) {
   const { auth, setAuth, login, register, setRegister, back } = c;
   return (
-    <View className={cx("bg-white flex-1")} style={{ minHeight: 700 }}>
+    <View className={cx("bg-white flex-1 min-h-[700px]")}>
       <Header back onBack={back} title={register ? t('حساب جديد') : t('دخول بالبريد')} subtitle={t('للتطوير والاختبار فقط')} tall />
       <View className={cx("p-4")}>
         <Card>

@@ -1,7 +1,7 @@
 import { t, cx } from "../i18n";
 import React, { useState } from "react";
 import { View, Text, Image } from "react-native";
-import { Cta, Header, Input, ErrorNote } from "../ui/kit";
+import { Cta, Header, Input, ErrorNote } from "../components";
 
 export function AddAddressScreen({ c }: { c: any }) {
   const { address, setAddress, api, run, personal, setAddressId, setNotice, back, go, count, error, notice, user } = c;
@@ -14,7 +14,7 @@ export function AddAddressScreen({ c }: { c: any }) {
     setAddressId(a.id); await personal(); setNotice(t('تم حفظ العنوان')); back();
   });
   return (
-    <View className={cx("bg-white flex-1")} style={{ minHeight: 700 }}>
+    <View className={cx("bg-white flex-1 min-h-[700px]")}>
       <Header back onBack={back} title={t('أضف عنوان')} subtitle={t('أدخل بيانات العنوان بالكامل')} onCart={() => go("cart")} count={count} tall />
       <Image source={require("../../assets/ref/map-small.png")} style={{ width: "100%", height: 112, resizeMode: "cover" }} />
       <View className={cx("px-4 pt-3 pb-2 -mt-3 bg-white rounded-t-3xl")}>

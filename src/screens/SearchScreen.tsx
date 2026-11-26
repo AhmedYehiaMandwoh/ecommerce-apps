@@ -1,7 +1,7 @@
 import { t, cx, isEn } from "../i18n";
 import React, { useState } from "react";
 import { View, Text, Image, Pressable, TextInput, ScrollView } from "react-native";
-import { Chip, Chev, Ico } from "../ui/kit";
+import { Chip, Chev, Ico, SearchResultCard } from "../components";
 import { img, thumb } from "../ui/helpers";
 import { money } from "../shared";
 
@@ -23,7 +23,7 @@ export function SearchScreen({ c }: { c: any }) {
       <View className={cx("bg-brand px-4 pt-3 pb-3")} style={{ borderBottomLeftRadius: 24, borderBottomRightRadius: 24 }}>
         <View className={cx("flex-row items-center justify-between h-10")}>
           <Pressable accessibilityRole="button" accessibilityLabel={t('رجوع')} onPress={back} className={cx("w-10")}><Chev dir="left" color="#fff" size={13} /></Pressable>
-          <Text className={cx("text-white font-extrabold")} style={{ fontSize: 28 }}>{shop ? shops.find((s: any) => s.id === shop)?.name || t('المحل') : t('نتائج البحث')}</Text>
+          <Text className={cx("text-white font-extrabold text-[28px]")}>{shop ? shops.find((s: any) => s.id === shop)?.name || t('المحل') : t('نتائج البحث')}</Text>
           <View className={cx("w-10")} />
         </View>
         <View className={cx("bg-white rounded-full h-12 mt-2 px-4 flex-row items-center")}>
@@ -65,18 +65,7 @@ export function SearchScreen({ c }: { c: any }) {
           const offers = p.offers.filter((o: any) => !shop || o.shopId === shop);
           const best = offers.reduce((a: any, o: any) => (o.price < a.price ? o : a), offers[0]);
           return (
-            <View key={p.id} className={cx("flex-row bg-white rounded-2xl border border-slate-200 mb-3 overflow-hidden")}>
-              <Pressable style={{ position: "relative", zIndex: 10 }} accessibilityRole="button" accessibilityLabel={t('أضف {0}', p.title)} onPress={() => add(p, best)} className={cx("z-10 w-14 h-14 rounded-full bg-accent items-center justify-center self-center mx-2")}><Text className={cx("text-white text-3xl")}>+</Text></Pressable>
-              <View className={cx("flex-1 min-w-0 py-3 items-end")}>
-                <Text className={cx("font-extrabold text-base text-right")} numberOfLines={2} accessibilityLabel={p.title}>{p.title}</Text>
-                <Text className={cx("text-slate-500 text-sm")} numberOfLines={1}>{t('من')} {best?.shop?.name}</Text>
-                <Text className={cx("text-accent font-extrabold text-xl")}>{money(best.price)}</Text>
-                <Text className={cx("text-slate-500 text-[11px]")} numberOfLines={1}>{p.brand} • {p.partNumber}</Text>
-                <View className={cx("bg-slate-100 rounded-lg px-3 py-1 mt-1")}><Text className={cx("text-slate-600 text-xs font-bold")}>{t('راجع التوافق')}</Text></View>
-              </View>
-              <Image source={thumb(p.image)} style={{ width: 132, height: 132, resizeMode: "contain", backgroundColor: "#fbf4ec" }} />
-            <Pressable accessibilityRole="button" accessibilityLabel={p.title} onPress={() => { setSelected({ ...p, offers }); go("product"); }} className={cx("absolute inset-0 z-[5]")} />
-            </View>
+            <SearchResultCard key={p.id} p={p} best={best} onAdd={() => add(p, best)} onOpen={() => { setSelected({ ...p, offers }); go("product"); }} />
           );
         })}
         {!list.length && <Text className={cx("text-center text-slate-500 my-10")}>{t('مفيش نتائج. جرّب كلمة تانية.')}</Text>}

@@ -2,7 +2,7 @@ import { t, cx, isEn, ENDITEMS } from "../i18n";
 import React, { useState } from "react";
 import { View, Text, Image, Pressable, TextInput } from "react-native";
 import { shopCover } from "../ui/helpers";
-import { Ico, Chev } from "../ui/kit";
+import { Ico, Chev, ShopCard } from "../components";
 
 export function ShopsScreen({ c }: { c: any }) {
   const { shops, browse, back } = c;
@@ -13,7 +13,7 @@ export function ShopsScreen({ c }: { c: any }) {
       <View className={cx("bg-brand px-4 pt-3 pb-3")} style={{ borderBottomLeftRadius: 24, borderBottomRightRadius: 24 }}>
         <View className={cx("flex-row items-center justify-between h-10")}>
           <Pressable accessibilityRole="button" accessibilityLabel={t('رجوع')} onPress={back} className={cx("w-10")}><Chev dir="left" color="#fff" size={13} /></Pressable>
-          <Text className={cx("text-white font-extrabold")} style={{ fontSize: 28 }}>{t('المحلات')}</Text>
+          <Text className={cx("text-white font-extrabold text-[28px]")}>{t('المحلات')}</Text>
           <View className={cx("w-10")} />
         </View>
         <View className={cx("bg-white rounded-full h-12 mt-2 px-4 flex-row items-center")}>
@@ -26,17 +26,7 @@ export function ShopsScreen({ c }: { c: any }) {
       </View>
       <View className={cx("px-3 pt-2")}>
         {list.map((s: any, n: number) => (
-          <Pressable key={s.id} accessibilityRole="button" accessibilityLabel={s.name} onPress={() => browse("", "", s.id)} className={cx("bg-white rounded-2xl border border-slate-200 mb-2 overflow-hidden")}>
-            <View>
-              <Image source={shopCover(s, n).source} style={{ width: "100%", height: 96, resizeMode: "cover" }} />
-              {shopCover(s, n).demo && <View className={cx("absolute bottom-1 left-2 bg-slate-900/80 rounded px-2")}><Text className={cx("text-white text-[11px]")}>{t('صورة تجريبية')}</Text></View>}
-            </View>
-            <View className="items-center px-3 py-1" style={{ flexDirection: "row" }}>
-              <View className={cx("w-11 h-11 rounded-full bg-accent items-center justify-center")}><Ico n="shop" size={30} color="#fff" /></View>
-              <View className={cx("flex-1 mx-3")} style={{ alignItems: ENDITEMS }}><Text className={cx("font-extrabold text-lg")}>{s.name}</Text><Text className={cx("text-slate-500 text-sm")}>{s.description || t('قطع غيار وصيانة')} • {s.city}{s.district ? " • " + s.district : ""}</Text></View>
-              <Chev dir={isEn ? "right" : "left"} color="#64748b" size={10} />
-            </View>
-          </Pressable>
+          <ShopCard key={s.id} s={s} n={n} onPress={() => browse("", "", s.id)} />
         ))}
         {!list.length && <Text className={cx("text-center text-slate-500 my-10")}>{t('مفيش محلات مطابقة.')}</Text>}
       </View>

@@ -27,7 +27,7 @@ import { FavoritesScreen } from "./src/screens/FavoritesScreen";
 import "./global.css";
 import { API, BASE, imageUrl, money, statuses, storage, egPhone } from "./src/shared";
 import React, { useState, useEffect } from "react";
-import { Cta } from "./src/ui/kit";
+import { Cta } from "./src/components";
 import {
   View,
   Text,

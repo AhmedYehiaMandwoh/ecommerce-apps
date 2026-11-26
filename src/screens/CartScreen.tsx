@@ -1,7 +1,7 @@
 import { t, cx } from "../i18n";
 import React from "react";
 import { View, Text, Image, Pressable } from "react-native";
-import { Cta, Header, Stepper, Card, Ico, Chev } from "../ui/kit";
+import { Cta, Header, Stepper, Card, Ico, Chev } from "../components";
 import { groupByShop, img, thumb } from "../ui/helpers";
 import { money } from "../shared";
 
@@ -23,7 +23,7 @@ export function CartScreen({ c }: { c: any }) {
   const upd = (offerId: string, d: number) => { key.current = ""; setCart(cart.map((i: any) => i.offerId === offerId ? { ...i, quantity: Math.max(1, Math.min(i.stock, i.quantity + d)) } : i)); };
   const del = (offerId: string) => { key.current = ""; setCart(cart.filter((i: any) => i.offerId !== offerId)); };
   return (
-    <View className={cx("bg-white flex-1")} style={{ minHeight: 700 }}>
+    <View className={cx("bg-white flex-1 min-h-[700px]")}>
       <Header sheet back onBack={back} />
       <View className={cx("p-2")}>
         <Text className={cx("text-center font-extrabold text-lg mb-1")}>{t('السلة')}</Text>
